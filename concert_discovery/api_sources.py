@@ -75,7 +75,7 @@ def fetch_ticketmaster(days=90,official=()):
     if not key:return []
     rows=[]
     for page in range(5):
-        data=get_json('https://app.ticketmaster.com/discovery/v2/events.json',dict(apikey=key,latlong='35.5951,-82.5515',radius=30,unit='miles',classificationName='music',size=200,page=page,
+        data=get_json('https://app.ticketmaster.com/discovery/v2/events.json',dict(apikey=key,latlong='35.5951,-82.5515',radius=30,unit='miles',size=200,page=page,
             startDateTime=date.today().isoformat()+'T04:00:00Z',endDateTime=(date.today()+timedelta(days=days+1)).isoformat()+'T04:59:59Z'),'Ticketmaster')
         for e in data.get('_embedded',{}).get('events',[]):
             if e.get('dates',{}).get('status',{}).get('code') in ('cancelled','canceled'):continue
@@ -87,7 +87,7 @@ def fetch_ticketmaster(days=90,official=()):
             acts=e.get('_embedded',{}).get('attractions',[])
             performers=[dict(name=a['name'],role='headliner_candidate' if i==0 else 'support',confidence=1,note='Ticketmaster lineup order.') for i,a in enumerate(acts)]
             row=event('Ticketmaster',e['id'],e['name'],day+(' '+start['localTime'] if start.get('localTime') else ''),vid,performers,e.get('url'),spotify_ids(acts))
-            row['artist_metadata']={a['name']:{'genre':a.get('classifications',[{}])[0].get('genre',{}).get('name')} for a in acts}
+            row['artist_metadata']={a['name']:{'genre':(a.get('classifications') or [{}])[0].get('genre',{}).get('name')} for a in acts}
             rows.append(row)
         if page+1>=data.get('page',{}).get('totalPages',1):break
     return rows

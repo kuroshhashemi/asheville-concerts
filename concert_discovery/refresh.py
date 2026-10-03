@@ -18,7 +18,7 @@ def save_events(events,db_path=DATABASE_PATH):
                 aid=upsert_artist(c,name)
                 genre=metadata.get('genre')
                 if genre and genre.lower() not in ('undefined','music'):
-                    c.execute('INSERT INTO artist_genres VALUES(?,?,?,?) ON CONFLICT(artist_id) DO UPDATE SET genre=excluded.genre,source_url=excluded.source_url,updated_at=excluded.updated_at',(aid,genre,e['source_url'],utc_now()))
+                    c.execute('INSERT INTO artist_genres(artist_id,genre,source_url) VALUES(?,?,?) ON CONFLICT(artist_id) DO UPDATE SET genre=excluded.genre,source_url=excluded.source_url',(aid,genre,e['source_url']))
 
 def enrich(limit=40,db_path=DATABASE_PATH):
     with connect(db_path) as c:
