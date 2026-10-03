@@ -1,0 +1,38 @@
+name: Refresh concerts
+on:
+  schedule:
+    - cron: '17 10 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: concert-catalog
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt playwright
+      - run: playwright install --with-deps chromium
+      - name: Refresh calendar and weekly metrics
+        env:
+          JAMBASE_API_KEY: ${{ secrets.JAMBASE_API_KEY }}
+          TICKETMASTER_API_KEY: ${{ secrets.TICKETMASTER_API_KEY }}
+          JAMBASE_CALL_LIMIT: '900'
+        run: python -m concert_discovery.refresh --browser --metrics
+      - name: Preserve request ledger even when collection fails
+        if: always()
+        run: |
+          git config user.name 'Concert refresh'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add concert_discovery/concert_data.sqlite3 concert_discovery/api_budget.sqlite3
+          if test -f concert_discovery/freshness.json; then git add concert_discovery/freshness.json; fi
+          if ! git diff --cached --quiet; then
+            git commit -m 'Refresh shared concert catalog'
+            git push
+          fi
