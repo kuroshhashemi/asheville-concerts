@@ -1,0 +1,9 @@
+<!doctype html><html><body><script>
+const key='asheville-soundcheck:filters:v1';let loaded=false;
+const send=(type,extra={})=>parent.postMessage({isStreamlitMessage:true,type,...extra},'*');
+window.addEventListener('message',e=>{if(e.data.type!=='streamlit:render')return;const args=e.data.args;
+ if(!loaded){loaded=true;let preferences=null;try{preferences=JSON.parse(localStorage.getItem(key)||'null')}catch(_){}send('streamlit:setComponentValue',{value:{preferences},dataType:'json'});}
+ if(args.preferences)try{localStorage.setItem(key,JSON.stringify(args.preferences))}catch(_){}
+ send('streamlit:setFrameHeight',{height:0});
+});send('streamlit:componentReady',{apiVersion:1});
+</script></body></html>

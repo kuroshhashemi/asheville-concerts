@@ -8,9 +8,9 @@ BIT_VENUES={
  'asheville-music-hall':'10012070-asheville-music-hall','one-stop':'10005935-the-one-stop-at-asheville-music-hall',
  'eulogy':'10387643-eulogy','hellbender':'10608918-hellbender-by-the-orange-peel',
  'sierra-nevada':'10033253-sierra-nevada-brewing-co.'}
-def fetch_browser_calendars(days=90):
+def fetch_browser_calendars(days=None):
     from playwright.sync_api import sync_playwright
-    rows=[];errors=[];end=date.today()+timedelta(days=days)
+    rows=[];errors=[];end=(date.today()+timedelta(days=days)) if days is not None else date.max
     with sync_playwright() as p:
         browser=p.chromium.launch(headless=True)
         page=browser.new_page()

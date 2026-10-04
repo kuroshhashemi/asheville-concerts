@@ -61,7 +61,7 @@ def _decode_state(markup: str) -> dict:
             raise ValueError("Spotify initialState payload format changed.") from error
 
 
-def fetch_public_artist_metrics(
+def fetch_public_artist_profile(
     spotify_artist_id: str, expected_name: Optional[str] = None
 ) -> Dict[str, object]:
     if not PROFILE_ID.fullmatch(spotify_artist_id):
@@ -93,8 +93,8 @@ def fetch_public_artist_metrics(
 
     followers = stats.get("followers")
     monthly_listeners = stats.get("monthlyListeners")
-    if not isinstance(followers, int) or not isinstance(monthly_listeners, int):
-        raise ValueError("Spotify profile is missing follower or monthly-listener metrics.")
+    followers = followers if isinstance(followers,int) and not isinstance(followers,bool) and followers>=0 else None
+    monthly_listeners = monthly_listeners if isinstance(monthly_listeners,int) and not isinstance(monthly_listeners,bool) and monthly_listeners>=0 else None
 
     return {
         "spotify_artist_id": spotify_artist_id,
@@ -102,5 +102,12 @@ def fetch_public_artist_metrics(
         "followers": followers,
         "monthly_listeners": monthly_listeners,
         "source_url": url,
-        "image_url": next((i.get('url') for i in entity.get('visuals',{}).get('avatarImage',{}).get('sources',[]) if i.get('url')),None),
+        "image_url": next((i.get('url') for i in ((entity.get('visuals') or {}).get('avatarImage') or {}).get('sources',[]) if i.get('url')),None),
     }
+
+
+def fetch_public_artist_metrics(spotify_artist_id, expected_name=None):
+    profile=fetch_public_artist_profile(spotify_artist_id,expected_name)
+    if profile['monthly_listeners'] is None:
+        raise ValueError('Spotify profile matched, but monthly listeners were not supplied. Missing is not zero.')
+    return profile

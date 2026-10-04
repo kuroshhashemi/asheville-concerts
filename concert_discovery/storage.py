@@ -3,6 +3,8 @@
 from datetime import date, datetime, timezone
 from pathlib import Path
 import re
+import gzip
+import threading
 import sqlite3
 import unicodedata
 from typing import Dict, List, Optional
@@ -23,6 +25,9 @@ VENUE_ROWS = [
     ("grey-eagle", "The Grey Eagle", "https://www.thegreyeagle.com/", "Grey Eagle", "The feed includes both the hall and patio; keep the reported room for review."),
     ("orange-peel", "The Orange Peel", "https://theorangepeel.net/", "Orange Peel", "The promoter page may include Hellbender; do not infer actual venue from promoter."),
 ]
+
+from concert_discovery.additional_venues import ADDITIONAL_VENUES
+VENUE_ROWS.extend((vid, name, url, alias, "JamBase coverage; official calendar completeness not yet audited.") for vid, name, url, alias in ADDITIONAL_VENUES)
 
 SCHEMA = """
 PRAGMA foreign_keys = ON;
@@ -145,7 +150,24 @@ def utc_now() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
 
+_seed_lock = threading.Lock()
+
+def ensure_catalog_seed():
+    """Upgrade the pre-history catalog once; preserve later scheduled refreshes."""
+    seed = PROJECT_DIR / 'catalog_seed.sqlite3.gz'
+    if not seed.exists():return
+    with _seed_lock:
+        if DATABASE_PATH.exists():
+            with sqlite3.connect(str(DATABASE_PATH)) as current:
+                if current.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='listener_history'").fetchone():return
+        payload = gzip.decompress(seed.read_bytes())
+        if not payload.startswith(b'SQLite format 3\x00'):raise ValueError('Invalid packaged catalog')
+        temporary = DATABASE_PATH.with_suffix('.seed-tmp')
+        temporary.write_bytes(payload)
+        temporary.replace(DATABASE_PATH)
+
 def connect(db_path: Optional[Path] = None) -> sqlite3.Connection:
+    if db_path is None:ensure_catalog_seed()
     connection = sqlite3.connect(str(db_path or DATABASE_PATH), timeout=30)
     connection.row_factory = sqlite3.Row
     connection.execute("PRAGMA foreign_keys = ON")
@@ -252,6 +274,9 @@ def upsert_show(connection: sqlite3.Connection, event: Dict[str, object]) -> int
             name,
             spotify_artist_id=spotify_links.get(normalized_name),
         )
+        if spotify_links.get(normalized_name):
+            from concert_discovery.source_links import record
+            record(connection,artist_id,spotify_links[normalized_name],str(event["source_url"]),"Provider explicit Spotify link")
         add_show_artist(
             connection,
             show_id,

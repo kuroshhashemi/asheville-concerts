@@ -32,7 +32,7 @@ def _start_run(connection, started_at: str) -> int:
     return int(cursor.lastrowid)
 
 
-def collect_artist_metric(artist_id: str, db_path=DATABASE_PATH) -> Dict[str, object]:
+def collect_artist_metric(artist_id: str, db_path=DATABASE_PATH, verified_metrics=None) -> Dict[str, object]:
     with connect(db_path) as connection:
         artist = connection.execute(
             "SELECT display_name, spotify_artist_id FROM artists WHERE artist_id=?",
@@ -41,6 +41,10 @@ def collect_artist_metric(artist_id: str, db_path=DATABASE_PATH) -> Dict[str, ob
     if not artist:
         raise ValueError("Unknown artist ID.")
     artist_name = str(artist["display_name"])
+    with connect(db_path) as connection:
+        if connection.execute("SELECT 1 FROM sqlite_master WHERE name='spotify_identity_evidence'").fetchone():
+            evidence=connection.execute('SELECT profile_name FROM spotify_identity_evidence WHERE artist_id=? AND spotify_id=?',(artist_id,artist['spotify_artist_id'])).fetchone()
+            if evidence:artist_name=evidence[0]
     spotify_id = artist["spotify_artist_id"]
     if not spotify_id:
         detail = "No Spotify profile is confirmed. Open Spotify search, choose the exact artist profile, then save its ID."
@@ -50,7 +54,8 @@ def collect_artist_metric(artist_id: str, db_path=DATABASE_PATH) -> Dict[str, ob
 
     source_url = "https://open.spotify.com/artist/" + str(spotify_id)
     try:
-        metrics = fetch_public_artist_metrics(str(spotify_id), expected_name=artist_name)
+        metrics = verified_metrics if verified_metrics is not None else fetch_public_artist_metrics(str(spotify_id), expected_name=artist_name)
+        if metrics.get("monthly_listeners") is None:raise ValueError("Spotify profile matched, but monthly listeners were not supplied. Missing is not zero.")
     except requests.HTTPError as error:
         status = "rate_limited" if error.response is not None and error.response.status_code == 429 else "blocked" if error.response is not None and error.response.status_code == 403 else "http_error"
         detail = str(error)[:1000]
@@ -75,8 +80,8 @@ def collect_artist_metric(artist_id: str, db_path=DATABASE_PATH) -> Dict[str, ob
     except ValueError as error:
         detail = str(error)[:1000]
         with connect(db_path) as connection:
-            add_metric_snapshot(connection, artist_id, status="identity_or_parse_error", detail=detail, source_url=source_url)
-        return {"status": "identity_or_parse_error", "detail": detail}
+            add_metric_snapshot(connection, artist_id, status="metrics_unavailable" if "monthly listeners were not supplied" in detail else "identity_or_parse_error", detail=detail, source_url=source_url)
+        return {"status": "metrics_unavailable" if "monthly listeners were not supplied" in detail else "identity_or_parse_error", "detail": detail}
 
     with connect(db_path) as connection:
         if metrics.get('image_url'):

@@ -34,13 +34,19 @@ class Tree(HTMLParser):
     def handle_data(self, data):
         self.stack[-1].children.append(data)
 
-def parse_calendar(html, today=None, days=75,source_name='OrangePeelOfficial'):
-    today = today or date.today(); end = today + timedelta(days=days)
-    p = Tree(); p.feed(html); events = {}; year = None
-    for n in p.root.walk():
-        if n.has('rhp-events-list-separator-month'):
-            m = re.search(r'\b(20\d\d)\b', n.text())
-            if m: year = int(m.group(1))
+def parse_calendar(html, today=None, days=None,source_name='OrangePeelOfficial'):
+    today = today or date.today(); end = (today + timedelta(days=days)) if days is not None else date.max
+    p = Tree(); p.feed(html); events = {}
+    def scoped_nodes(node, year=None):
+        # Month headers belong to their layout container, not the whole document.
+        yield node, year
+        for child in node.children:
+            if not isinstance(child, Node): continue
+            if child.has('rhp-events-list-separator-month'):
+                m = re.search(r'\b(20\d\d)\b', child.text())
+                if m: year = int(m.group(1))
+            yield from scoped_nodes(child, year)
+    for n, year in scoped_nodes(p.root):
         if not n.has('eventWrapper'):
             continue
         nodes = list(n.walk())
@@ -55,13 +61,15 @@ def parse_calendar(html, today=None, days=75,source_name='OrangePeelOfficial'):
         event_year=year or today.year
         show_date = datetime.datetime.strptime(f'{event_year} {raw_date.group(1)} {raw_date.group(2)}', '%Y %b %d').date()
         if year is None and show_date.month<today.month:show_date=show_date.replace(year=today.year+1)
+        weekday = re.search(r'\b(Mon|Tue|Wed|Thu|Fri|Sat|Sun)\b', date_node.text(), re.I)
+        if weekday and show_date.strftime('%a').lower() != weekday[1].lower(): continue
         if not today <= show_date <= end: continue
         venue = venue_node.text()
         vid = venue_id_for(venue)
         if vid is None: continue
         title = ' '.join(title_node.text().split()); url = title_node.attrs['href']
         if re.search(r'\bcancell?ed\b',n.text(),re.I):continue
-        if re.search(r'\bnurse blake\b|\bjaboukie young-white\b|\bcomedy\b|\bmarket\b|\btrivia\b|\bopen mic\b|\bthe moth\b|\bburlesque\b|\byoga\b|\bcraft\b', title, re.I): continue
+        if re.search(r'\bmarket\b|\btrivia\b|\bopen mic\b|\bthe moth\b|\bburlesque\b|\byoga\b|\bcraft\b', title, re.I): continue
         tm = re.search(r'Show:\s*(\d{1,2})(?::(\d{2}))?\s*(am|pm)', n.text(), re.I)
         # Keep unknown time explicit instead of inventing a showtime.
         start = show_date.isoformat()
@@ -93,7 +101,7 @@ def parse_calendar(html, today=None, days=75,source_name='OrangePeelOfficial'):
         raise ValueError('Official calendar returned no parseable concerts; retain prior data and inspect source.')
     return sorted(events.values(), key=lambda e:e['performance_start'])
 
-def fetch_official_events(days=75):
+def fetch_official_events(days=None):
     r = requests.get('https://theorangepeel.net/events/', headers={'User-Agent':'Mozilla/5.0'}, timeout=30)
     r.raise_for_status()
     return parse_calendar(r.text, days=days)
@@ -105,9 +113,9 @@ def _event(source,url,title,start,venue,performers,ticket=None):
         date_status='venue_confirmed' if source.endswith('Official') else 'source_listed',
         date_note='Read from '+source+'.',artist_spotify_links={},performers=performers)
 
-def parse_structured_events(html,source,today=None,days=75):
+def parse_structured_events(html,source,today=None,days=None):
     """Public schema.org listings on the linked DICE calendar and Songkick."""
-    today=today or date.today();end=today+timedelta(days=days)
+    today=today or date.today();end=(today+timedelta(days=days)) if days is not None else date.max
     p=Tree();p.feed(html);out={}
     def visit(obj):
         if isinstance(obj,list):
@@ -134,8 +142,8 @@ def parse_structured_events(html,source,today=None,days=75):
     if not out:raise ValueError(source+' returned no parseable upcoming events.')
     return list(out.values())
 
-def parse_harrah(html,today=None,days=75):
-    today=today or date.today();end=today+timedelta(days=days);p=Tree();p.feed(html);out={}
+def parse_harrah(html,today=None,days=None):
+    today=today or date.today();end=(today+timedelta(days=days)) if days is not None else date.max;p=Tree();p.feed(html);out={}
     for n in p.root.walk():
         if not n.has('event-wrap_feed'):continue
         nodes=list(n.walk());heading=next((x for x in nodes if x.tag=='h3'),None)
@@ -144,7 +152,7 @@ def parse_harrah(html,today=None,days=75):
         anchor=next((x for x in heading.walk() if x.tag=='a'),None)
         if not anchor:continue
         title=heading.text();url=anchor.attrs['href']
-        if re.search(r'cancel|skate|derby|craft fair|forum|daniel tosh|comedy|competition|championship|basketball|wrestling|expo|dance theatre|ballet|nutcracker',title,re.I):continue
+        if re.search(r'cancel|october skate party|roller derby|craft fair|justice forum|dance competition|championship|basketball|wrestling|expo|dance theatre|ballet|nutcracker',title,re.I) and not re.search(r'benefit show|music competition',title,re.I):continue
         raw=re.search(r'([A-Za-z]{3})\s+(\d{1,2})',' '.join(dn.text().split()))
         if not raw:continue
         ym=re.search(r'/events/(20\d\d)-',url);year=int(ym[1]) if ym else today.year
@@ -173,7 +181,7 @@ CALENDARS=[
  ('SongkickAMH','https://www.songkick.com/venues/107138-asheville-music-hall/calendar','structured'),
  ('SongkickEulogy','https://www.songkick.com/venues/4519500-eulogy/calendar','structured'),
 ]
-def fetch_all_calendars(days=75):
+def fetch_all_calendars(days=None):
     from concurrent.futures import ThreadPoolExecutor
     def fetch(spec):
         source,url,kind=spec

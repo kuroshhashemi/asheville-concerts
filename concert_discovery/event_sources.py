@@ -49,6 +49,9 @@ VENUES = {
     },
 }
 
+from concert_discovery.additional_venues import ADDITIONAL_VENUES
+VENUES.update({vid: dict(name=name, official_url=url, aliases=(alias,), note="JamBase coverage.") for vid, name, url, alias in ADDITIONAL_VENUES})
+
 OFFICIAL_EVENT_CHECKS = {
     "the midnight: time machines w/ bonnie mckee": (
         "https://theorangepeel.net/event/the-midnight-time-machines/the-orange-peel/asheville-north-carolina/",
@@ -150,6 +153,10 @@ def parse_performers(title: str) -> List[Dict[str, object]]:
             for name, role, confidence in checked[1]
         ]
 
+    if clean.startswith('Foundation Skatepark Benefit Show with '):
+        return [dict(name=n,role='co-headliner',confidence=1.0,note='Explicit benefit-show performers.') for n in ['Voivod','Bat']]
+    if clean=='The 2026 Christmas YARN Ball':
+        return [dict(name='Yarn',role='headliner_candidate',confidence=1.0,note='Named artist in holiday bill.')]
     if "sort of damocles" in normalize(clean):
         return [{
             "name": "Sort of Damocles",
@@ -160,11 +167,19 @@ def parse_performers(title: str) -> List[Dict[str, object]]:
     if re.search(r"womyn rising|artisan market|community celebration", clean, re.I):
         return []
     clean = re.sub(r"^(?:free show\s*[–—-]\s*|(?:free\s+)?patio(?:\s+show)?:\s*)", "", clean, flags=re.I)
+    clean = re.sub(r"^rescheduled\s*:\s*", "", clean, flags=re.I)
+    clean = re.sub(r"^live nation presents\s*:\s*", "", clean, flags=re.I)
+    clean = re.sub(r"^an evening with\s+", "", clean, flags=re.I)
     clean = re.sub(r"^eulogy presents:\s*", "", clean, flags=re.I)
     clean = re.sub(r"^coming\s+[^|]+\|\s*", "", clean, flags=re.I)
-    clean = re.sub(r'\s*\((?:DJ Set|Album Release|Night \d|Both Nights)[^)]*\)\s*','',clean,flags=re.I)
+    clean = re.sub(r'\s*\((?:DJ Set|Album Release|Night \d|Both Nights|full band|US)[^)]*\)\s*','',clean,flags=re.I)
+    clean = re.sub(r'\s+[“\"][^”\"]*tour[^”\"]*[”\"]', '', clean, flags=re.I)
+    clean = re.sub(r'\s+-\s+.*(?:tour|night \d).*$', '', clean, flags=re.I)
+    clean = re.sub(r'\s+(?:Play|play) Grateful Dead.*$', '', clean)
     clean = re.split(r'\s*[:–]\s*',clean)[0]
     clean = re.sub(r'\s+(?:Farewell tour|Annual Thanksgiving Homecoming Concert|Album Release|Family Jamboree|Birthday Celebration).*','',clean,flags=re.I)
+    clean = re.sub(r'[’\']s$', '', clean)
+    clean = re.sub(r'(?<=[A-Za-z])w/', ' w/ ', clean)
     marker = re.search(r"\s+(w/|with|ft\.?|feat\.?|featuring)\s+", clean, re.I)
     if marker:
         headliner = clean[:marker.start()].strip(" :–—-")
@@ -178,7 +193,14 @@ def parse_performers(title: str) -> List[Dict[str, object]]:
         )
         return acts
 
-    if " + " in clean or clean=='Wednesday & Mannequin Pussy':
+    if clean=='Kelli O’Hara and the Asheville Symphony':
+        return [dict(name='Kelli O’Hara',role='headliner',confidence=1.0,note='Explicit evening-with billing.'),dict(name='Asheville Symphony',role='co-headliner',confidence=1.0,note='Explicit evening-with billing.')]
+    if clean.startswith('The Travers Brothership Presents'):
+        return [dict(name='The Travers Brothership',role='headliner_candidate',confidence=1.0,note='Named performing group presents the event.')]
+    explicit_bills={'Free Throw & Microwave','Knocked Loose & Denzel Curry','Wednesday & Mannequin Pussy','Benjamin Tod & Lost Dog Street Band','Gillian Welch & David Rawlings','Larry Keel & Jon Stickley','The Scribblers & Killer Skillet'}
+    if clean in explicit_bills:
+        return [{"name":name.strip(),"role":"co-headliner","confidence":1.0,"note":"Explicit co-headliner bill checked against official venue calendar."} for name in clean.split(' & ')]
+    if " + " in clean:
         names = [name.strip() for name in re.split(r"\s+[+&]\s+", clean) if name.strip()]
         if len(names) > 1:
             return [

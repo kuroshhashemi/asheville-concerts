@@ -7,3 +7,14 @@ class OfficialTests(unittest.TestCase):
   es=parse_calendar('<span class="rhp-events-list-separator-month">October 2026</span>'+event+event,date(2026,10,1))
   self.assertEqual(len(es),1); self.assertEqual(es[0]['venue_id'],'hellbender');self.assertEqual(es[0]['performance_start'],'2026-10-30 19:00:00')
   self.assertIn('Snõõper',[p['name'] for p in es[0]['performers']])
+
+ def test_year_does_not_leak_between_desktop_mobile_layouts(self):
+  def card(name,weekday,month,day):
+   return f'<div class="eventWrapper"><span id="eventDate">{weekday}, {month} {day}</span><a id="eventTitle" href="https://example.com/{name}">{name}</a><a class="venueLink">The Orange Peel</a></div>'
+  html='<section><span class="rhp-events-list-separator-month">April 2027</span>'+card('Future','Thu','Apr',22)+'</section><section>'+card('Cannons','Tue','Oct',13)+'</section>'
+  rows=parse_calendar(html,date(2026,10,4))
+  self.assertEqual(next(r for r in rows if r['title']=='Cannons')['performance_start'],'2026-10-13')
+  self.assertEqual(next(r for r in rows if r['title']=='Future')['performance_start'],'2027-04-22')
+ def test_contradictory_weekday_is_not_saved(self):
+  html='<span class="rhp-events-list-separator-month">October 2027</span><div class="eventWrapper"><span id="eventDate">Tue, Oct 13</span><a id="eventTitle" href="https://example.com/cannons">Cannons</a><a class="venueLink">The Orange Peel</a></div>'
+  with self.assertRaises(ValueError):parse_calendar(html,date(2026,10,4))

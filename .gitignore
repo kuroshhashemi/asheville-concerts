@@ -6,3 +6,5 @@ __pycache__/
 .streamlit/secrets.toml
 *.sqlite3-wal
 *.sqlite3-shm
+
+.auth-deps/
