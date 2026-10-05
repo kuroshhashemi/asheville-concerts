@@ -1,6 +1,6 @@
 {
-  "refreshed_at": "2026-10-04T15:25:21+00:00",
-  "source_records": 592,
+  "refreshed_at": "2026-10-05T19:20:02+00:00",
+  "source_records": 582,
   "warnings": [
     "SongkickPublic: 406 Client Error: Not Acceptable for url: https://www.songkick.com/metro-areas/86726-us-mills-river",
     "SongkickOrange: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/289-orange-peel/calendar",
@@ -10,9 +10,9 @@
     "Sierra official browser calendar unavailable.",
     "Spotify concert feed not enabled: separate CheckLeaked provider key missing."
   ],
-  "source_candidates_found": 1,
+  "source_candidates_found": 2,
   "page_requests": 40,
-  "attempted": 40,
-  "metrics_saved": 5,
+  "attempted": 38,
+  "metrics_saved": 6,
   "history_requests": 1
 }
