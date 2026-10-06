@@ -15,9 +15,14 @@ class StatusStore:
         self.url=url.rstrip('/').removesuffix('/rest/v1')+'/rest/v1/user_show_statuses'
         self.headers={'apikey':secret,'Content-Type':'application/json'}
     def load(self,user_id):
-        r=requests.get(self.url,headers=self.headers,params={'user_id':'eq.'+user_id,'select':'show_key,status'},timeout=12)
+        r=requests.get(self.url,headers=self.headers,params={'user_id':'eq.'+user_id,'select':'show_key,status,updated_at'},timeout=12)
         r.raise_for_status()
-        return {x['show_key']:x['status'] for x in r.json()}
+        from concert_discovery.reconciliation import key_aliases
+        aliases=key_aliases()
+        result={}
+        for x in sorted(r.json(),key=lambda x:x.get('updated_at') or ''):
+            result[aliases.get(x['show_key'],x['show_key'])]=x['status']
+        return result
     def save(self,user_id,show_key,status):
         if status not in STATUSES:raise ValueError('Invalid status')
         r=requests.post(self.url,headers={**self.headers,'Prefer':'resolution=merge-duplicates,return=minimal'},

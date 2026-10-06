@@ -10,8 +10,9 @@ Install requirements.txt, then run:
     streamlit run concert_discovery/shortlist_app.py
 
 The web app reads a shared catalog; it never calls paid event APIs during browsing.
-Personal statuses live in browser storage for this first release. Login and cross-device
-sync can later replace that store; the database already keys decisions by user ID.
+Google login saves personal statuses and filters in Supabase across devices.
+Anonymous browser filters are stored locally. New visitors start with Live Music only,
+at least 500k Spotify listeners, and unknown listener counts hidden.
 Do not use local SQLite as a durable multiuser cloud database.
 
 ## Scheduled collection

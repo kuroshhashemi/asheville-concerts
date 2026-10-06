@@ -61,8 +61,6 @@ def match_artist(client,artist,db_path):
         c.execute("UPDATE artists SET match_status='candidate',match_confidence=NULL WHERE artist_id=?",(artist['artist_id'],))
         if chosen.get('images'):
             c.execute('INSERT OR REPLACE INTO artist_images VALUES(?,?,?,?)',(artist['artist_id'],chosen['images'][-1]['url'],profile,utc_now()))
-        if chosen.get('genres'):
-            c.execute('INSERT OR REPLACE INTO artist_genres VALUES(?,?,?)',(artist['artist_id'],', '.join(chosen['genres']),profile))
     return 'candidate'
 
 def match_bandsintown_link(artist,db_path):
@@ -78,7 +76,7 @@ def match_bandsintown_link(artist,db_path):
     sid=ids.pop();profile=fetch_public_artist_profile(sid)
     expected=name_key(artist['display_name']);actual=name_key(profile['name'])
     # Exact source artist + explicit Spotify link supports a lead-artist/band-name alias.
-    alias=artist['display_name'].casefold().startswith(profile['name'].casefold()+' & ')
+    alias=bool(re.match(re.escape(profile['name'])+r'\s+(?:&|and)\s+',artist['display_name'],re.I))
     if expected!=actual and not alias:return None
     evidence=data.get('url') or 'https://www.bandsintown.com/'
     return remember_source_identity(artist,profile,evidence,'Explicit matching Bandsintown artist-to-Spotify link',db_path)
@@ -90,12 +88,24 @@ def remember_source_identity(artist,profile,evidence_url,method,db_path):
     with connect(db_path) as c:
         c.execute('''CREATE TABLE IF NOT EXISTS spotify_identity_evidence(
           artist_id TEXT PRIMARY KEY,spotify_id TEXT,profile_name TEXT,source_url TEXT,method TEXT,checked_at TEXT)''')
-        upsert_artist(c,artist['display_name'],sid,method+'; evidence: '+evidence_url+'; Spotify name: '+profile['name'])
-        if c.execute('SELECT spotify_artist_id FROM artists WHERE artist_id=?',(artist['artist_id'],)).fetchone()[0]!=sid:
-            raise ValueError('Spotify profile already belongs to another saved artist identity.')
-        c.execute("UPDATE artists SET match_status='source_link',match_confidence=NULL WHERE artist_id=?",(artist['artist_id'],))
-        c.execute('INSERT OR REPLACE INTO spotify_identity_evidence VALUES(?,?,?,?,?,?)',(artist['artist_id'],sid,profile['name'],evidence_url,method,utc_now()))
-        if profile.get('image_url'):c.execute('INSERT OR REPLACE INTO artist_images VALUES(?,?,?,?)',(artist['artist_id'],profile['image_url'],profile['source_url'],utc_now()))
+        owner=c.execute('SELECT artist_id FROM artists WHERE spotify_artist_id=?',(sid,)).fetchone()
+        aid=artist['artist_id']
+        if owner and owner[0]!=aid:
+            # An explicit source link establishes an alias to the already known
+            # profile. Preserve the old identity record and bill evidence.
+            c.execute('CREATE TABLE IF NOT EXISTS artist_name_aliases(name_key TEXT PRIMARY KEY,artist_id TEXT,source_url TEXT,evidence TEXT)')
+            c.execute('INSERT OR REPLACE INTO artist_name_aliases VALUES(?,?,?,?)',(name_key(artist['display_name']),owner[0],evidence_url,method))
+            c.execute('INSERT OR IGNORE INTO show_artists SELECT show_id,?,billing_role,role_confidence,role_source,role_note FROM show_artists WHERE artist_id=?',(owner[0],aid))
+            c.execute('DELETE FROM show_artists WHERE artist_id=?',(aid,))
+            aid=owner[0]
+        else:
+            upsert_artist(c,artist['display_name'],sid,method+'; evidence: '+evidence_url+'; Spotify name: '+profile['name'])
+        if c.execute('SELECT spotify_artist_id FROM artists WHERE artist_id=?',(aid,)).fetchone()[0]!=sid:
+            raise ValueError('Spotify profile conflicts with saved identity.')
+        c.execute("UPDATE artists SET match_status='source_link',match_confidence=NULL WHERE artist_id=?",(aid,))
+        c.execute('INSERT OR REPLACE INTO spotify_identity_evidence VALUES(?,?,?,?,?,?)',(aid,sid,profile['name'],evidence_url,method,utc_now()))
+        if profile.get('image_url'):c.execute('INSERT OR REPLACE INTO artist_images VALUES(?,?,?,?)',(aid,profile['image_url'],profile['source_url'],utc_now()))
+    profile=dict(profile);profile['canonical_artist_id']=aid
     return profile
 
 def match_official_website(client,artist,url,db_path):

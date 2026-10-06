@@ -5,7 +5,8 @@ import re
 import json
 from datetime import datetime
 import requests
-from concert_discovery.event_sources import parse_performers, normalize,venue_id_for
+from concert_discovery.availability import text_availability,structured_availability
+from concert_discovery.event_sources import parse_performers, normalize,venue_id_for,strip_billing_prefix
 
 class Node:
     def __init__(self, tag='', attrs=()):
@@ -68,8 +69,7 @@ def parse_calendar(html, today=None, days=None,source_name='OrangePeelOfficial')
         vid = venue_id_for(venue)
         if vid is None: continue
         title = ' '.join(title_node.text().split()); url = title_node.attrs['href']
-        if re.search(r'\bcancell?ed\b',n.text(),re.I):continue
-        if re.search(r'\bmarket\b|\btrivia\b|\bopen mic\b|\bthe moth\b|\bburlesque\b|\byoga\b|\bcraft\b', title, re.I): continue
+        cancelled=bool(re.search(r'\bcancell?ed\b',n.text(),re.I))
         tm = re.search(r'Show:\s*(\d{1,2})(?::(\d{2}))?\s*(am|pm)', n.text(), re.I)
         # Keep unknown time explicit instead of inventing a showtime.
         start = show_date.isoformat()
@@ -92,11 +92,14 @@ def parse_calendar(html, today=None, days=None,source_name='OrangePeelOfficial')
                     if normalize(name) not in {normalize(a['name']) for a in performers}:
                         performers.append({'name':name,'role':'support','confidence':1.0,'note':'Explicit official calendar support billing.'})
         ticket = next((x.attrs.get('href') for x in nodes if x.tag == 'a' and 'etix.com/ticket/' in x.attrs.get('href','')), None)
+        # Repeated responsive layouts cannot overwrite the first dated occurrence.
+        if url in events:continue
         events[url] = dict(source_key=source_name+':'+url, source_name=source_name, source_event_id=url,
             source_url=url, official_event_url=url, venue_id=vid, venue_as_reported=venue,
             title=title, performance_start=start, timezone='America/New_York', ticket_url=ticket,
             date_status='venue_confirmed', date_note='Date and venue read directly from official calendar.',
-            artist_spotify_links={}, performers=performers)
+            artist_spotify_links={}, performers=performers, ticket_availability=text_availability(n.text()),
+            event_status='cancelled' if cancelled else 'scheduled',category_text=n.text())
     if not events:
         raise ValueError('Official calendar returned no parseable concerts; retain prior data and inspect source.')
     return sorted(events.values(), key=lambda e:e['performance_start'])
@@ -126,13 +129,14 @@ def parse_structured_events(html,source,today=None,days=None):
                 venue=location.get('name','');vid=venue_id_for(venue)
                 if vid=='sierra-nevada' and location.get('address',{}).get('addressLocality')!='Mills River':return
                 if not vid or not today<=date.fromisoformat(start[:10])<=end:return
-                if 'Cancelled' in obj.get('eventStatus',''):return
                 title=obj['name'].split(' @ ')[0];url=obj['url'].split('?')[0]
                 bill=obj.get('performer',[])
                 if isinstance(bill,dict):bill=[bill]
                 # Structured Songkick order is the headline act followed by support.
                 performers=[dict(name=b['name'],role='headliner' if i==0 else 'support',confidence=1,note='Source lineup order.') for i,b in enumerate(bill)] or parse_performers(title)
                 out[url]=_event(source,url,title,datetime.fromisoformat(start).strftime('%Y-%m-%d %H:%M:%S'),venue,performers,url)
+                out[url]['ticket_availability']=structured_availability(obj)
+                out[url]['event_status']='cancelled' if 'Cancelled' in obj.get('eventStatus','') else 'scheduled'
             for key,value in obj.items():
                 if key in ('event','@graph','itemListElement','item'):visit(value)
     for n in p.root.walk():
@@ -152,7 +156,6 @@ def parse_harrah(html,today=None,days=None):
         anchor=next((x for x in heading.walk() if x.tag=='a'),None)
         if not anchor:continue
         title=heading.text();url=anchor.attrs['href']
-        if re.search(r'cancel|october skate party|roller derby|craft fair|justice forum|dance competition|championship|basketball|wrestling|expo|dance theatre|ballet|nutcracker',title,re.I) and not re.search(r'benefit show|music competition',title,re.I):continue
         raw=re.search(r'([A-Za-z]{3})\s+(\d{1,2})',' '.join(dn.text().split()))
         if not raw:continue
         ym=re.search(r'/events/(20\d\d)-',url);year=int(ym[1]) if ym else today.year
@@ -161,41 +164,78 @@ def parse_harrah(html,today=None,days=None):
         if not today<=day<=end:continue
         venue=vn.text();vid=venue_id_for(venue)
         if not vid:continue
-        billing=re.split(r'\s*[–:]\s*',title)[0]
+        billing_title=strip_billing_prefix(title)
+        billing=re.split(r'\s*[–:]\s*',billing_title)[0]
         billing=re.sub(r'\s+Play Grateful Dead.*','',billing,flags=re.I)
         if billing=='JJ Grey & Mofro':performers=[dict(name=billing,role='headliner',confidence=1)]
         else:performers=parse_performers(billing)
         out[url]=_event('HarrahOfficial',url,title,day.isoformat(),venue,performers,url)
+        out[url]['ticket_availability']=text_availability(n.text())
+        out[url]['category_text']=n.text()
+        out[url]['event_status']='cancelled' if re.search(r'\bcancell?ed\b',n.text(),re.I) else 'scheduled'
     if not out:raise ValueError('Harrah calendar returned no concerts.')
     return list(out.values())
 
 CALENDARS=[
+ ('BrevardOfficial','https://www.brevardmusic.org/events/','brevard'),
  ('OrangePeelOfficial','https://theorangepeel.net/events/','rhp'),
- ('MusicHallOfficial','https://ashevillemusichall.com/','rhp'),
+ ('MusicHallOfficial','https://ashevillemusichall.com/all-shows/','rhp'),
  ('GreyEagleOfficial','https://www.thegreyeagle.com/calendar/','rhp'),
  ('HarrahOfficial','https://www.harrahscherokeecenterasheville.com/events-tickets/','harrah'),
- ('EulogyOfficial','https://dice.fm/venue/eulogy-7bd7?lng=en-US','structured'),
+ ('EulogyOfficial','https://burialbeer.com/pages/eulogy','eulogy'),
  ('SongkickPublic','https://www.songkick.com/metro-areas/86726-us-mills-river','structured'),
  ('SongkickOrange','https://www.songkick.com/venues/289-orange-peel/calendar','structured'),
  ('SongkickGrey','https://www.songkick.com/venues/39035-grey-eagle/calendar','structured'),
  ('SongkickAMH','https://www.songkick.com/venues/107138-asheville-music-hall/calendar','structured'),
  ('SongkickEulogy','https://www.songkick.com/venues/4519500-eulogy/calendar','structured'),
 ]
-def fetch_all_calendars(days=None):
+def fetch_all_calendars(days=None,snapshots=None):
     from concurrent.futures import ThreadPoolExecutor
     def fetch(spec):
         source,url,kind=spec
         try:
+            if kind=='brevard':
+                from concert_discovery.brevard_calendar import fetch_brevard
+                rows,snapshot=fetch_brevard()
+                return rows,None,snapshot
+            if kind=='eulogy':
+                from concert_discovery.eulogy_calendar import fetch_eulogy
+                rows,snapshot=fetch_eulogy()
+                return rows,None,snapshot
             r=requests.get(url,headers={'User-Agent':'Mozilla/5.0'},timeout=30);r.raise_for_status()
-            if kind=='rhp':events=parse_calendar(r.text,days=days,source_name=source)
-            elif kind=='harrah':events=parse_harrah(r.text,days=days)
+            if kind=='rhp':
+                from concert_discovery.calendar_audit import collect_pages,snapshots as make_snapshots
+                def load(page_url):
+                    if page_url==url:return r.text
+                    response=requests.get(page_url,headers={'User-Agent':'Mozilla/5.0'},timeout=30);response.raise_for_status();return response.text
+                events,pages=collect_pages(url,load,lambda text:parse_calendar(text,days=days,source_name=source))
+                return events,None,make_snapshots(events,url,pages) if days is None else None
+            elif kind=='harrah':
+                events=parse_harrah(r.text,days=days)
+                tree=Tree();tree.feed(r.text)
+                parsed_urls={e['source_url'] for e in events}
+                for card in tree.root.walk():
+                    if card.has('event-wrap_feed'):
+                        link=next((a for h in card.walk() if h.tag=='h3' for a in h.walk() if a.tag=='a'),None)
+                        if link and link.attrs.get('href') not in parsed_urls:
+                            # Explicitly dated past cards are outside an upcoming snapshot.
+                            dn=next((n for n in card.walk() if n.has('event-date')),None)
+                            dm=re.search(r'([A-Za-z]{3})\s+(\d{1,2})',dn.text()) if dn else None
+                            ym=re.search(r'/events/(20\d\d)-',link.attrs.get('href',''))
+                            if dm and ym and datetime.strptime(f'{ym[1]} {dm[1]} {dm[2]}','%Y %b %d').date()<date.today():continue
+                            raise ValueError('Unparsed Harrah card; retirement disabled')
+                controls=[n for n in tree.root.walk() if n.tag in ('a','button') and re.search(r'load more|show more|next page',n.text(),re.I)]
+                if controls:raise ValueError('Harrah calendar has uncollected pages; retirement disabled')
+                from concert_discovery.calendar_audit import snapshots as make_snapshots
+                return events,None,make_snapshots(events,url,1) if days is None else None
             else:events=parse_structured_events(r.text,source,days=days)
             if source=='SongkickPublic':events=[e for e in events if e['venue_id']=='sierra-nevada']
-            return events,None
-        except (requests.RequestException,ValueError) as error:return [],source+': '+str(error)
+            return events,None,None
+        except (requests.RequestException,ValueError) as error:return [],source+': '+str(error),None
     events=[];errors=[]
     with ThreadPoolExecutor(max_workers=4) as pool:
-        for listings,error in pool.map(fetch,CALENDARS):
+        for listings,error,snapshot in pool.map(fetch,CALENDARS):
+            if snapshot and snapshots is not None:snapshots.extend(snapshot if isinstance(snapshot,list) else [snapshot])
             events.extend(listings)
             if error:errors.append(error)
     return events,errors

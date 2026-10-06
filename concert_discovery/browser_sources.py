@@ -8,7 +8,7 @@ BIT_VENUES={
  'asheville-music-hall':'10012070-asheville-music-hall','one-stop':'10005935-the-one-stop-at-asheville-music-hall',
  'eulogy':'10387643-eulogy','hellbender':'10608918-hellbender-by-the-orange-peel',
  'sierra-nevada':'10033253-sierra-nevada-brewing-co.'}
-def fetch_browser_calendars(days=None):
+def fetch_browser_calendars(days=None,snapshots=None):
     from playwright.sync_api import sync_playwright
     rows=[];errors=[];end=(date.today()+timedelta(days=days)) if days is not None else date.max
     with sync_playwright() as p:
@@ -32,18 +32,30 @@ def fetch_browser_calendars(days=None):
                     rows.append(row)
             except Exception:errors.append('Bandsintown '+vid+' unavailable; cached data retained.')
         try:
-            page.goto('https://sierranevada.com/events/mills-river',wait_until='domcontentloaded',timeout=30000)
+            page.goto('https://sierranevada.com/events',wait_until='domcontentloaded',timeout=30000)
             page.get_by_role('group',name='event',exact=True).first.wait_for(timeout=20000)
-            cards=page.get_by_role('group',name='event',exact=True).evaluate_all("""xs=>xs.map(x=>({title:x.querySelector('h3')?.innerText,text:x.innerText,url:x.querySelector('a')?.href}))""")
-            for card in cards:
-                m=re.search(r'(January|February|March|April|May|June|July|August|September|October|November|December) (\d{1,2})',card['text'])
-                if not m or not card['title']:continue
-                month=datetime.strptime(m[1],'%B').month;day=date(date.today().year+(month<date.today().month),month,int(m[2]))
-                if not date.today()<=day<=end:continue
-                acts=parse_performers(card['title'])
-                if not acts:continue
-                row=event('SierraOfficial',card['url'],card['title'],day.isoformat(),'sierra-nevada',acts,card['url'])
-                row['official_event_url']=card['url'];row['date_status']='venue_confirmed';rows.append(row)
+            cards=page.get_by_role('group',name='event',exact=True).evaluate_all("""xs=>xs.map(x=>({title:x.querySelector('h3')?.textContent,text:x.innerText,url:x.querySelector('a')?.href}))""")
+            from concert_discovery.sierra_calendar import parse_cards
+            sierra_rows=parse_cards(cards,days=days)
+            rows.extend(sierra_rows)
+            if snapshots is not None and days is None and sierra_rows:
+                # Retirement only after all rendered event groups were parsed and no more-pages control remains.
+                more=page.get_by_role('region',name='event filters').get_by_role('button',name=re.compile('load more|show more|next',re.I))
+                if not more.count():
+                    from concert_discovery.calendar_audit import snapshots as make_snapshots
+                    snapshots.extend(make_snapshots(sierra_rows,'https://sierranevada.com/events',1))
         except Exception:errors.append('Sierra official browser calendar unavailable.')
+        for source,url in [('MusicHallOfficial','https://ashevillemusichall.com/all-shows/'),('OrangePeelOfficial','https://theorangepeel.net/events/?view=list'),('GreyEagleOfficial','https://www.thegreyeagle.com/calendar/')]:
+            try:
+                from concert_discovery.official_calendar import parse_calendar
+                from concert_discovery.calendar_audit import collect_pages,snapshots as make_snapshots
+                def load(page_url):
+                    page.goto(page_url,wait_until='domcontentloaded',timeout=30000)
+                    page.locator('#eventTitle').first.wait_for(timeout=20000)
+                    return page.content()
+                official,pages=collect_pages(url,load,lambda html:parse_calendar(html,days=days,source_name=source))
+                rows.extend(official)
+                if snapshots is not None and days is None:snapshots.extend(make_snapshots(official,url,pages))
+            except Exception as error:errors.append(source+' browser calendar unavailable: '+str(error))
         browser.close()
     return rows,errors

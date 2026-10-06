@@ -15,6 +15,7 @@ PROJECT_DIR = Path(__file__).resolve().parent
 DATABASE_PATH = PROJECT_DIR / "concert_data.sqlite3"
 
 VENUE_ROWS = [
+    ("pulp", "Pulp", "https://theorangepeel.net/what-is-pulp/", "Pulp", "Separate room operated by The Orange Peel."),
     ('one-stop','The One Stop','https://ashevillemusichall.com/','The One Stop','Separate room from Asheville Music Hall.'),
     ('harrahs-arena',"Harrah’s Cherokee Center · Arena",'https://www.harrahscherokeecenterasheville.com/events-tickets/','ExploreAsheville.com Arena','Arena within Harrah’s Cherokee Center.'),
     ('thomas-wolfe','Thomas Wolfe Auditorium','https://www.harrahscherokeecenterasheville.com/events-tickets/','Thomas Wolfe Auditorium','Auditorium within Harrah’s Cherokee Center.'),
@@ -140,6 +141,20 @@ CREATE TABLE IF NOT EXISTS artist_images (
     artist_id TEXT PRIMARY KEY REFERENCES artists(artist_id), image_url TEXT,
     source_url TEXT NOT NULL, updated_at TEXT NOT NULL
 );
+CREATE TABLE IF NOT EXISTS calendar_checks (
+    check_id TEXT PRIMARY KEY,venue_id TEXT NOT NULL,source_url TEXT NOT NULL,checked_at TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS calendar_presence (
+    show_id INTEGER PRIMARY KEY REFERENCES shows(show_id),misses INTEGER NOT NULL,checked_at TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS show_review_exclusions (
+    show_id INTEGER PRIMARY KEY REFERENCES shows(show_id), reason TEXT NOT NULL, evidence_url TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS ticket_availability (
+    source_key TEXT PRIMARY KEY, show_id INTEGER NOT NULL REFERENCES shows(show_id),
+    status TEXT NOT NULL CHECK(status IN ('sold_out','available')),
+    source_url TEXT NOT NULL, observed_at TEXT NOT NULL
+);
 CREATE TABLE IF NOT EXISTS venue_icons (
     venue_id TEXT PRIMARY KEY REFERENCES venues(venue_id), icon_url TEXT NOT NULL
 );
@@ -184,6 +199,8 @@ def initialize(db_path: Optional[Path] = None) -> None:
             "INSERT OR IGNORE INTO venues (venue_id, name, official_url, feed_alias, coverage_note) VALUES (?, ?, ?, ?, ?)",
             VENUE_ROWS,
         )
+        from concert_discovery.additional_venues import VENUE_ICONS
+        connection.executemany("INSERT OR IGNORE INTO venue_icons(venue_id,icon_url) VALUES (?,?)", VENUE_ICONS.items())
 
 
 def stable_artist_id(name: str) -> str:
@@ -197,22 +214,26 @@ def upsert_show(connection: sqlite3.Connection, event: Dict[str, object]) -> int
     ticket_identity = ticket_url.split("?", 1)[0].rstrip("/").casefold()
     show_date = str(event["performance_start"])[:10]
     if ticket_identity:
-        dedupe_key = "ticket:{}:{}:{}".format(event["venue_id"],ticket_identity, show_date)
+        dedupe_key = "ticket:{}:{}:{}".format(event["venue_id"],ticket_identity, str(event["performance_start"]))
     else:
         normalized_title = " ".join(str(event["title"]).casefold().split())
-        dedupe_key = "event:{}:{}:{}".format(event["venue_id"], show_date, normalized_title)
-    # Sources can use different ticket hosts. Reconcile on actual room/date and
-    # common billed artist, but keep separately timed performances distinct.
-    names={stable_artist_id(p['name']) for p in event.get('performers',[])}
-    for prior in connection.execute('SELECT * FROM shows WHERE venue_id=? AND substr(performance_start,1,10)=?',(event['venue_id'],show_date)):
-        prior_names={r[0] for r in connection.execute('SELECT artist_id FROM show_artists WHERE show_id=?',(prior['show_id'],))}
-        same_names=bool(names & prior_names)
-        title_key=lambda s:re.sub(r'[^a-z0-9]','',s.casefold())
-        title_match=title_key(str(event['title']))==title_key(prior['title'])
-        old_time=str(prior['performance_start'])[11:16];new_time=str(event['performance_start'])[11:16]
-        if (same_names or title_match) and (not old_time or not new_time or old_time==new_time):
+        dedupe_key = "event:{}:{}:{}".format(event["venue_id"], str(event["performance_start"]), normalized_title)
+    from concert_discovery.reconciliation import catalog_rows,duplicate,canonical
+    priors=catalog_rows(connection,event['venue_id'],show_date)
+    incoming=dict(event,sources=[{'source_name':event.get('source_name','')}],headliners=[{'display_name':p['name']} for p in event.get('performers',[]) if 'headliner' in p.get('role','')])
+    for prior in priors:
+        if duplicate(incoming,prior,priors+[incoming]):
             dedupe_key=prior['dedupe_key'];break
+    # Source identities continue to resolve even after a reversible consolidation.
+    source_existing=connection.execute('SELECT show_id FROM show_sources WHERE source_key=?',(event['source_key'],)).fetchone()
+    if source_existing:
+        sid=canonical(connection,source_existing['show_id'])
+        dedupe_key=connection.execute('SELECT dedupe_key FROM shows WHERE show_id=?',(sid,)).fetchone()[0]
     existing=connection.execute('SELECT * FROM shows WHERE dedupe_key=?',(dedupe_key,)).fetchone()
+    if existing and str(event['title']).casefold()==existing['title'].casefold():
+        event=dict(event);event['title']=existing['title']
+    if existing and not str(event['performance_start'])[11:] and str(existing['performance_start'])[11:]:
+        event=dict(event);event['performance_start']=existing['performance_start']
     if existing and existing['date_status']=='venue_confirmed' and not event.get('source_name','').endswith('Official'):
         event=dict(event)
         for col in ('title','performance_start','official_event_url','ticket_url','date_status','date_note'):
@@ -251,6 +272,8 @@ def upsert_show(connection: sqlite3.Connection, event: Dict[str, object]) -> int
         "SELECT show_id FROM shows WHERE dedupe_key=?", (dedupe_key,)
     ).fetchone()
     show_id = int(show_row["show_id"])
+    connection.execute("CREATE TABLE IF NOT EXISTS show_discovery(show_id INTEGER PRIMARY KEY,first_seen_at TEXT,eligible INTEGER)")
+    connection.execute("INSERT OR IGNORE INTO show_discovery VALUES(?,?,?)",(show_id,utc_now(),int(existing is None)))
     add_show_source(
         connection,
         show_id,
@@ -260,6 +283,13 @@ def upsert_show(connection: sqlite3.Connection, event: Dict[str, object]) -> int
         str(event["source_url"]),
         str(event.get("venue_as_reported", "")),
     )
+    if event.get('ticket_availability') in ('sold_out','available'):
+        connection.execute('''INSERT INTO ticket_availability VALUES(?,?,?,?,?)
+            ON CONFLICT(source_key) DO UPDATE SET show_id=excluded.show_id,status=excluded.status,
+            source_url=excluded.source_url,observed_at=excluded.observed_at''',
+            (event['source_key'],show_id,event['ticket_availability'],event['source_url'],utc_now()))
+    from concert_discovery.event_classification import save as save_classification
+    save_classification(connection,show_id,event)
     spotify_links = {
         " ".join(str(label).casefold().split()): spotify_id
         for label, spotify_id in event.get("artist_spotify_links", {}).items()
@@ -268,6 +298,17 @@ def upsert_show(connection: sqlite3.Connection, event: Dict[str, object]) -> int
         connection.execute('DELETE FROM show_artists WHERE show_id=?',(show_id,))
     for performer in event.get("performers", []):
         name = str(performer["name"]).strip()
+        # Preserve a verified existing identity when the source adds/removes "The".
+        article_key=lambda n:re.sub(r'^the\s+','',n.strip().casefold())
+        aliases=[dict(r) for r in connection.execute('SELECT * FROM artists WHERE spotify_artist_id IS NOT NULL') if article_key(r['display_name'])==article_key(name)]
+        if len(aliases)==1:name=aliases[0]['display_name']
+        elif not aliases:
+            # A cleaner source lineup must not orphan a previously source-verified
+            # identity stored under this very bill's tour/project label.
+            from concert_discovery.reconciliation import same_bill
+            verified_bill=[dict(r) for r in connection.execute("SELECT * FROM artists WHERE spotify_artist_id IS NOT NULL AND match_status IN ('source_link','manual_confirmed')")
+                if r['display_name'].strip().casefold()==str(event['title']).strip().casefold() and (same_bill(name,r['display_name']) or r['display_name'].casefold().startswith(name.casefold()+' - '))]
+            if len(verified_bill)==1:name=verified_bill[0]['display_name']
         normalized_name = " ".join(name.casefold().split())
         artist_id = upsert_artist(
             connection,
@@ -294,7 +335,15 @@ def upsert_artist(
     spotify_artist_id: Optional[str] = None,
     match_reason: str = "No source-provided Spotify artist URL; left unmatched for manual review.",
 ) -> str:
-    artist_id = stable_artist_id(name)
+    from concert_discovery.artist_identity import key
+    if connection.execute("SELECT 1 FROM sqlite_master WHERE name='artist_name_aliases'").fetchone():
+        from concert_discovery.spotify_matching import name_key
+        alias=connection.execute('SELECT artist_id FROM artist_name_aliases WHERE name_key=?',(name_key(name),)).fetchone()
+        if alias:return alias[0]
+    variants=[dict(r) for r in connection.execute('SELECT * FROM artists') if key(r['display_name'])==key(name)]
+    compatible=[r for r in variants if not spotify_artist_id or not r['spotify_artist_id'] or r['spotify_artist_id']==spotify_artist_id]
+    compatible.sort(key=lambda r:(not bool(r['spotify_artist_id']),r['artist_id']))
+    artist_id = compatible[0]['artist_id'] if compatible else stable_artist_id(name)
     now = utc_now()
     profile_url = (
         "https://open.spotify.com/artist/" + spotify_artist_id
@@ -317,6 +366,9 @@ def upsert_artist(
            VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
         (artist_id, name, spotify_artist_id, profile_url, status, confidence, match_reason, now),
     )
+    prior=connection.execute('SELECT display_name FROM artists WHERE artist_id=?',(artist_id,)).fetchone()
+    if prior and prior[0].rstrip(' -–:')==name and prior[0]!=name:
+        connection.execute('UPDATE artists SET display_name=? WHERE artist_id=?',(name,artist_id))
     if spotify_artist_id:
         conflict=connection.execute('SELECT artist_id FROM artists WHERE spotify_artist_id=?',(spotify_artist_id,)).fetchone()
         if not conflict or conflict[0]==artist_id:

@@ -79,7 +79,6 @@ def fetch_ticketmaster(days=None,official=()):
         data=get_json('https://app.ticketmaster.com/discovery/v2/events.json',dict(apikey=key,latlong='35.5951,-82.5515',radius=30,unit='miles',size=200,page=page,
             startDateTime=date.today().isoformat()+'T04:00:00Z',**({'endDateTime':(date.today()+timedelta(days=days+1)).isoformat()+'T04:59:59Z'} if days is not None else {})),'Ticketmaster')
         for e in data.get('_embedded',{}).get('events',[]):
-            if e.get('dates',{}).get('status',{}).get('code') in ('cancelled','canceled'):continue
             start=e['dates']['start'];day=start.get('localDate')
             if not day:continue
             venue=e.get('_embedded',{}).get('venues',[{}])[0].get('name','')
@@ -90,6 +89,8 @@ def fetch_ticketmaster(days=None,official=()):
             row=event('Ticketmaster',e['id'],e['name'],day+(' '+start['localTime'] if start.get('localTime') else ''),vid,performers,e.get('url'),spotify_ids(acts))
             from concert_discovery.source_links import spotify_artist_ids
             row['artist_metadata']={a['name']:{'genre':(a.get('classifications') or [{}])[0].get('genre',{}).get('name'),'spotify_candidates':sorted(spotify_artist_ids(json.dumps(a.get('externalLinks',{}))))} for a in acts}
+            row['classifications']=e.get('classifications',[])
+            row['event_status']='cancelled' if e.get('dates',{}).get('status',{}).get('code') in ('cancelled','canceled') else 'scheduled'
             rows.append(row)
         if page+1>=data.get('page',{}).get('totalPages',1):break
     return rows
@@ -103,7 +104,7 @@ def fetch_jambase(days=None,db_path=None):
         for e in data.get('events',[]):
             if e.get('eventStatus') in ('cancelled','canceled'):continue
             location=e.get('location',{});name=location.get('name','')
-            if location.get('address',{}).get('addressLocality') not in ('Asheville','Mills River'):continue
+            if location.get('address',{}).get('addressLocality') not in ('Asheville','Mills River','Black Mountain','Brevard'):continue
             vid=venue_id_for(name)
             if not vid:continue
             acts=e.get('performer',[])
@@ -111,6 +112,7 @@ def fetch_jambase(days=None,db_path=None):
             primary=next((o.get('url') for o in e.get('offers',[]) if o.get('category')=='ticketingLinkPrimary'),e.get('url'))
             row=event('JamBase',e['identifier'],e['name'],e['startDate'].replace('T',' '),vid,performers,primary)
             row['source_url']=e['url']
+            if e.get('@type')=='Concert':row['classifications']=[{'segment':{'name':'Music'}}]
             row['artist_metadata']={a['name']:{'genre':', '.join(a.get('genre',[])),'image_url':a.get('image'),'source_pages':[a.get('url')] if a.get('url') else []} for a in acts}
             from concert_discovery.source_links import spotify_artist_ids
             for a in acts:

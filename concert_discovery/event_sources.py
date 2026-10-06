@@ -50,6 +50,7 @@ VENUES = {
 }
 
 from concert_discovery.additional_venues import ADDITIONAL_VENUES
+VENUES['pulp']=dict(name='Pulp',official_url='https://theorangepeel.net/what-is-pulp/',aliases=('pulp',),note='Separate Orange Peel room.')
 VENUES.update({vid: dict(name=name, official_url=url, aliases=(alias,), note="JamBase coverage.") for vid, name, url, alias in ADDITIONAL_VENUES})
 
 OFFICIAL_EVENT_CHECKS = {
@@ -135,8 +136,10 @@ def venue_id_for(source_venue) -> Optional[str]:
     else:
         source_name = str(source_venue or "")
     value = normalize(source_name)
+    if value=='pulp':return 'pulp'
     if 'one stop' in value:return 'one-stop'
     if 'hellbender' in value:return 'hellbender'
+    if 'parker concert hall' in value:return 'brevard-music-center'
     matches = [
         venue_id for venue_id, venue in VENUES.items()
         if any(alias in value for alias in venue["aliases"])
@@ -144,8 +147,15 @@ def venue_id_for(source_venue) -> Optional[str]:
     return matches[0] if len(matches) == 1 else None
 
 
+def strip_billing_prefix(title):
+    clean=unescape(title or '').strip()
+    clean=re.sub(r"^(?:(?:rescheduled|postponed|cancelled|canceled)\s*[:–—-]\s*)+",'',clean,flags=re.I)
+    clean=re.sub(r"^(?:[\w’'& .-]+\s+presents\s*:\s*)",'',clean,flags=re.I)
+    return clean
+
 def parse_performers(title: str) -> List[Dict[str, object]]:
-    clean = unescape(title or "").strip()
+    clean = strip_billing_prefix(title)
+    clean = re.sub(r"^(?:(?:rescheduled|postponed|cancelled|canceled)\s*[:–—-]\s*)+", "", clean, flags=re.I)
     checked = OFFICIAL_EVENT_CHECKS.get(normalize(clean))
     if checked:
         return [
@@ -155,8 +165,6 @@ def parse_performers(title: str) -> List[Dict[str, object]]:
 
     if clean.startswith('Foundation Skatepark Benefit Show with '):
         return [dict(name=n,role='co-headliner',confidence=1.0,note='Explicit benefit-show performers.') for n in ['Voivod','Bat']]
-    if clean=='The 2026 Christmas YARN Ball':
-        return [dict(name='Yarn',role='headliner_candidate',confidence=1.0,note='Named artist in holiday bill.')]
     if "sort of damocles" in normalize(clean):
         return [{
             "name": "Sort of Damocles",

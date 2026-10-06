@@ -84,7 +84,7 @@ class PageReader:
         return markup if status==200 else None
 
 
-def discover(db_path,budget=40):
+def discover(db_path,budget=40,artist_ids=None):
     reader=PageReader(db_path,budget);found=0
     with connect(db_path) as c:
         schema(c)
@@ -96,7 +96,7 @@ def discover(db_path,budget=40):
     visible_ids={s['show_id'] for s in get_shows(db_path)}
     groups={}
     for row in rows:
-        if row['show_id'] in visible_ids:groups.setdefault(row['source_url'],{})[row['display_name']]=row['artist_id']
+        if row['show_id'] in visible_ids and (artist_ids is None or row['artist_id'] in artist_ids):groups.setdefault(row['source_url'],{})[row['display_name']]=row['artist_id']
     for url,artists in groups.items():
         markup=reader.get(url)
         if not markup:continue
@@ -126,6 +126,7 @@ def discover(db_path,budget=40):
     with connect(db_path) as c:
         saved=c.execute("SELECT DISTINCT p.*,a.display_name FROM artist_source_pages p JOIN artists a USING(artist_id) JOIN show_artists sa USING(artist_id) JOIN shows s USING(show_id) WHERE substr(s.performance_start,1,10)>=date('now') ORDER BY a.spotify_artist_id IS NOT NULL,s.performance_start").fetchall()
     for row in saved:
+        if artist_ids is not None and row['artist_id'] not in artist_ids:continue
         content=reader.get(row['url'])
         if content:
             ids,_=page_candidates(content,[row['display_name']],row['url'],artist_page=True)
@@ -146,7 +147,7 @@ def apply_candidates(artist,db_path):
     if artist.get('spotify_artist_id') and artist['spotify_artist_id']!=sid:return None
     profile=fetch_public_artist_profile(sid)
     exact=name_key(profile['name'])==name_key(artist['display_name'])
-    lead_alias=artist['display_name'].casefold().startswith(profile['name'].casefold()+' & ')
+    lead_alias=bool(re.match(re.escape(profile['name'])+r'\s+(?:&|and)\s+',artist['display_name'],re.I))
     if not exact and not lead_alias:return None
     row=rows[0]
     return remember_source_identity(artist,profile,row['source_url'],row['method'],db_path)

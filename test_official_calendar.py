@@ -18,3 +18,13 @@ class OfficialTests(unittest.TestCase):
  def test_contradictory_weekday_is_not_saved(self):
   html='<span class="rhp-events-list-separator-month">October 2027</span><div class="eventWrapper"><span id="eventDate">Tue, Oct 13</span><a id="eventTitle" href="https://example.com/cannons">Cannons</a><a class="venueLink">The Orange Peel</a></div>'
   with self.assertRaises(ValueError):parse_calendar(html,date(2026,10,4))
+
+class HarrahStatusPrefixTests(unittest.TestCase):
+ def test_scheduling_prefix_is_not_a_performer(self):
+  from concert_discovery.official_calendar import parse_harrah
+  for prefix in ('RESCHEDULED: ', 'POSTPONED — ', 'CANCELLED: '):
+   title=prefix+'Daniel Tosh: My First Farewell Tour'
+   html=f'<div class="event-wrap_feed"><h3><a href="https://www.harrahscherokeecenterasheville.com/events/2026-daniel-tosh/">{title}</a></h3><div class="event-date">Oct 16</div><div class="event-venue">Thomas Wolfe Auditorium</div></div>'
+   row=parse_harrah(html,date(2026,10,6))[0]
+   self.assertEqual(row['title'],title)
+   self.assertEqual([p['name'] for p in row['performers']],['Daniel Tosh'])

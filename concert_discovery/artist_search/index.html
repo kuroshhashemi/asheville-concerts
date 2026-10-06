@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{box-sizing:border-box}body{margin:0;font:13px system-ui;color:#63717d;background:transparent}.search-field{height:42px;display:flex;align-items:center;gap:8px;padding:0 12px;border:1px solid transparent;border-radius:999px;background:#f0f4f6;transition:background .12s,border-color .12s}.search-field:hover{background:#e7f0f1;border-color:#b2c8cb}.search-field:focus-within{background:#e7f0f1;border-color:#247e79}.search-field.active{color:#102c43}svg{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:2.7;stroke-linecap:round;stroke-linejoin:round}input{min-width:0;width:100%;padding:0;border:0;background:transparent;outline:none;font:inherit;color:#102c43;font-weight:500}input::placeholder{color:#63717d;font-weight:400}input::-webkit-search-cancel-button{display:none}button{display:flex;align-items:center;justify-content:center;flex:none;width:22px;height:22px;padding:2px;border:0;border-radius:50%;background:transparent;color:#63717d;cursor:pointer}button:hover{background:#d6e6e2;color:#102c43}button svg{width:15px;height:15px}button[hidden]{display:none}@media(prefers-color-scheme:dark){body{color:#b5c6ce}.search-field{background:#233843}.search-field:hover{background:#2b464d;border-color:#537a7a}.search-field:focus-within{background:#2b464d;border-color:#bde6de}.search-field.active,input{color:#e4f3ef}input::placeholder{color:#b5c6ce}button{color:#b5c6ce}button:hover{background:#314f58;color:#e4f3ef}}
+</style></head><body><div class="search-field"><svg aria-hidden="true"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21 21-4.34-4.34" />
+  <circle cx="11" cy="11" r="8" />
+</svg>
+<input id="search" aria-label="Search artists" type="search" placeholder="Search artists…" autocomplete="off"><button type="button" aria-label="Clear search" title="Clear search" hidden><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div><script>
+const input=document.querySelector('input'),clear=document.querySelector('button'),field=document.querySelector('.search-field');let initialized=false,timer;
+function send(type,extra={}){parent.postMessage({isStreamlitMessage:true,type,...extra},'*')}
+function appearance(){clear.hidden=!input.value;field.classList.toggle('active',Boolean(input.value))}
+function publish(){send('streamlit:setComponentValue',{value:input.value,dataType:'json'})}
+function reset(){clearTimeout(timer);input.value='';appearance();publish();input.focus()}
+input.addEventListener('input',()=>{appearance();clearTimeout(timer);timer=setTimeout(publish,80)});
+clear.addEventListener('click',reset);input.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();reset()}});
+window.addEventListener('message',ev=>{if(ev.data.type==='streamlit:render'){if(!initialized){input.value=ev.data.args.value||'';initialized=true;appearance()}send('streamlit:setFrameHeight',{height:42})}});
+send('streamlit:componentReady',{apiVersion:1});
+</script></body></html>
