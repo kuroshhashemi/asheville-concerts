@@ -1,6 +1,6 @@
 {
-  "refreshed_at": "2026-10-05T19:20:02+00:00",
-  "source_records": 582,
+  "refreshed_at": "2026-10-06T16:51:17+00:00",
+  "source_records": 584,
   "warnings": [
     "SongkickPublic: 406 Client Error: Not Acceptable for url: https://www.songkick.com/metro-areas/86726-us-mills-river",
     "SongkickOrange: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/289-orange-peel/calendar",
@@ -12,7 +12,7 @@
   ],
   "source_candidates_found": 2,
   "page_requests": 40,
-  "attempted": 38,
+  "attempted": 10,
   "metrics_saved": 6,
   "history_requests": 1
 }
