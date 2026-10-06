@@ -1,7 +1,6 @@
 # Asheville Soundcheck
 
-A Streamlit concert table with venue and status filters, Spotify monthly listeners,
-inline artwork, and audience comparison bars.
+Discover Asheville shows. Listen on Spotify, find rising artists, and save your next night out.
 
 ## Run
 
