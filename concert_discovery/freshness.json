@@ -1,24 +1,56 @@
 {
-  "refreshed_at": "2026-10-06T01:06:10+00:00",
-  "source_records": 8,
+  "refreshed_at": "2026-10-07T17:29:32+00:00",
+  "source_records": 763,
   "warnings": [
-    "asheville-music-hall: No complete calendar snapshot; cached listings retained",
-    "one-stop: No complete calendar snapshot; cached listings retained",
-    "eulogy: No complete calendar snapshot; cached listings retained",
-    "orange-peel: No complete calendar snapshot; cached listings retained",
-    "hellbender: No complete calendar snapshot; cached listings retained",
-    "grey-eagle: No complete calendar snapshot; cached listings retained",
-    "harrahs-arena: No complete calendar snapshot; cached listings retained",
-    "thomas-wolfe: No complete calendar snapshot; cached listings retained",
+    "SongkickPublic: 406 Client Error: Not Acceptable for url: https://www.songkick.com/metro-areas/86726-us-mills-river",
+    "SongkickOrange: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/289-orange-peel/calendar",
+    "SongkickGrey: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/39035-grey-eagle/calendar",
+    "SongkickAMH: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/107138-asheville-music-hall/calendar",
+    "SongkickEulogy: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/4519500-eulogy/calendar",
+    "Sierra official browser calendar unavailable.",
+    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"SHINYRIBS w/ Seth Walker\" href=\"https://www.thegreyeagle.com/event/shinyribs-w-seth-walker/grey-eagle-music-hall/asheville-north-carolina/\">\u2026</a>\n",
+    "Spotify concert feed not enabled: separate CheckLeaked provider key missing.",
     "sierra-nevada: No complete calendar snapshot; cached listings retained"
   ],
-  "duplicates_consolidated": [],
-  "run_id": "727c5b83-eda0-46f0-95e4-d272280a54ec",
-  "matching_attempted": 7,
-  "matching_matched": 6,
-  "matching_ambiguous": 1,
-  "matching_blocked": 0,
-  "matching_pending": 0,
+  "duplicates_consolidated": [
+    {
+      "keep": 273,
+      "removed": 27,
+      "title": "FAUST with live metal score ",
+      "date": "2026-10-08",
+      "reason": "reversible duplicate alias"
+    },
+    {
+      "keep": 61,
+      "removed": 2838,
+      "title": "Knocked Loose & Denzel Curry",
+      "date": "2026-10-14",
+      "reason": "reversible duplicate alias"
+    },
+    {
+      "keep": 74,
+      "removed": 2900,
+      "title": "Bitch Cabal feat. Wednesday & Mannequin Pussy",
+      "date": "2026-10-30",
+      "reason": "reversible duplicate alias"
+    },
+    {
+      "keep": 618,
+      "removed": 3043,
+      "title": "Sammy Rae & The Friends \u2013 the GET DOWN!",
+      "date": "2027-03-12",
+      "reason": "reversible duplicate alias"
+    }
+  ],
+  "run_id": "5e413786-6cd7-4a85-8a84-8a855728de6b",
+  "matching_attempted": 25,
+  "matching_matched": 5,
+  "matching_ambiguous": 0,
+  "matching_blocked": 20,
+  "matching_pending": 7,
   "source_candidates_found": 0,
-  "page_requests": 7
+  "page_requests": 40,
+  "attempted": 5,
+  "metrics_saved": 4,
+  "history_requests": 1
 }
