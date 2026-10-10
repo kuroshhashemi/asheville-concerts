@@ -30,8 +30,15 @@ jobs:
         run: |
           git config user.name 'Concert refresh'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add concert_discovery/concert_data.sqlite3 concert_discovery/api_budget.sqlite3
-          if test -f concert_discovery/freshness.json; then git add concert_discovery/freshness.json; fi
+          git add concert_discovery/api_budget.sqlite3
+          if python -m concert_discovery.compact_catalog; then
+            git add concert_discovery/concert_data.sqlite3
+            if test -f concert_discovery/freshness.json; then git add concert_discovery/freshness.json; fi
+          else
+            git commit -m 'Preserve API request ledger after catalog packaging failure' || true
+            git push
+            exit 1
+          fi
           if ! git diff --cached --quiet; then
             git commit -m 'Refresh shared concert catalog'
             git push

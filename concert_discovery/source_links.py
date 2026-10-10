@@ -1,9 +1,19 @@
 """Source-first identity discovery, with provenance and bounded cached page reads."""
-import json,re
+import json,re,zlib,base64
 from html import unescape
 from urllib.parse import urljoin,urlparse,unquote
 import requests
 from concert_discovery.storage import connect,utc_now
+
+
+def encode_markup(markup):
+    return 'zlib64:' + base64.b64encode(zlib.compress(markup.encode('utf-8'))).decode('ascii')
+
+
+def decode_markup(markup):
+    if markup.startswith('zlib64:'):
+        return zlib.decompress(base64.b64decode(markup[7:])).decode('utf-8')
+    return markup  # Existing plaintext cache entries remain readable.
 
 
 def spotify_artist_ids(value):
@@ -70,7 +80,7 @@ class PageReader:
         if parsed.scheme!='https' or not parsed.hostname or parsed.hostname in ('localhost','127.0.0.1') or parsed.hostname.replace('.','').isdigit():return None
         with connect(self.db_path) as c:
             schema(c);row=c.execute("SELECT markup,status FROM identity_page_cache WHERE url=? AND checked_at>=datetime('now','-7 days')",(url,)).fetchone()
-        if row:return row[0] if row[1]==200 else None
+        if row:return decode_markup(row[0]) if row[1]==200 else None
         if self.remaining<=0:return None
         self.remaining-=1
         try:
@@ -80,7 +90,7 @@ class PageReader:
                 return self.get(target) if target!=url else None
             status=response.status_code;markup=response.text[:2000000] if status==200 else ''
         except requests.RequestException:status=0;markup=''
-        with connect(self.db_path) as c:c.execute('INSERT OR REPLACE INTO identity_page_cache VALUES(?,?,?,?)',(url,markup,status,utc_now()))
+        with connect(self.db_path) as c:c.execute('INSERT OR REPLACE INTO identity_page_cache VALUES(?,?,?,?)',(url,encode_markup(markup),status,utc_now()))
         return markup if status==200 else None
 
 
