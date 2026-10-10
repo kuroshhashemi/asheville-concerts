@@ -1,0 +1,37 @@
+name: Weekly new-show email
+on:
+  schedule:
+    # Both UTC hours keep the local send time at 9 a.m. through daylight saving.
+    # The code skips the early winter run; delivery claims prevent duplicate sends.
+    - cron: '17 13,14 * * 1'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Preview, send a test to the sender, or run the Monday digest
+        type: choice
+        options: [preview, test, send]
+        default: preview
+permissions:
+  contents: read
+concurrency:
+  group: weekly-soundcheck-email
+  cancel-in-progress: false
+jobs:
+  digest:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - run: python -m unittest test_weekly_digest -q
+      - name: Build and send new-show digest
+        env:
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+          EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          DIGEST_MODE: ${{ github.event_name == 'schedule' && 'send' || inputs.mode }}
+        run: python -m concert_discovery.weekly_digest --mode "$DIGEST_MODE"
