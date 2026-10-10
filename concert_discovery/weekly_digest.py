@@ -22,6 +22,7 @@ from concert_discovery.email_store import EmailStore
 APP_URL = 'https://asheville-soundcheck.streamlit.app/'
 ZONE = ZoneInfo('America/New_York')
 FIRST_SEND = date(2026, 10, 19)
+SUBJECT = 'Asheville Soundcheck - New Announced Shows'
 VENUE_NAMES = {'sierra-nevada': 'Sierra Nevada', 'thomas-wolfe': "Harrah's", 'harrahs-arena': "Harrah's",
                'ayurprana': 'AyurPrana', 'oskar-blues-brevard': 'Oskar Blues', 'revival': 'Revival'}
 
@@ -63,11 +64,11 @@ def safe_url(value):
 def render(shows, unsubscribe_url, end, prices=None):
     prices = load_prices() if prices is None else prices
     esc = lambda value: html.escape(str(value), quote=True)
-    cards, plain = [], ['Asheville Soundcheck', f'{len(shows)} newly discovered shows', APP_URL, '']
+    rows, plain = [], ['Asheville Soundcheck', f'{len(shows)} newly discovered shows', APP_URL, '']
     for show in shows:
         name = display_name(show)
         venue = VENUE_NAMES.get(show['venue_id'], show['venue_name'])
-        when = datetime.fromisoformat(show['performance_start']).strftime("%a %b %d '%y")
+        when = datetime.fromisoformat(show['performance_start']).strftime("%a %b %d" + (" '%y" if datetime.fromisoformat(show['performance_start']).year != end.year else ""))
         artist = show.get('audience_artist') or next(iter(show['headliners']), {})
         genre = artist.get('genre') or next((a.get('genre') for a in show['headliners'] if a.get('genre')), None)
         genre = ', '.join(genre_labels(genre)) if genre else '—'
@@ -81,7 +82,7 @@ def render(shows, unsubscribe_url, end, prices=None):
         category = show['event_classification']['category']
         tags = ([] if category == 'live_music' else [category.replace('_', ' ').title()]) + (['Sold out'] if show.get('sold_out') else [])
         image = safe_url(artist.get('image_url') or next((a.get('image_url') for a in show['headliners'] if a.get('image_url')), None))
-        photo = f'<img src="{esc(image)}" width="40" height="40" alt="" style="border-radius:50%;vertical-align:middle;margin-right:10px;object-fit:cover">' if image else ''
+        photo = f'<img src="{esc(image)}" width="28" height="28" alt="" style="border-radius:50%;vertical-align:middle;margin-right:10px;object-fit:cover">' if image else ''
         links = []
         if listen:
             links.append(f'<a href="{esc(listen)}" style="color:#102c43">Listen on Spotify</a>')
@@ -89,19 +90,21 @@ def render(shows, unsubscribe_url, end, prices=None):
             links.append(f'<a href="{esc(buy)}" style="color:#102c43">Tickets{(" · " + esc(price)) if price != "—" else ""}</a>')
             calendar = google_calendar_link({**show, 'venue_name': venue}, name, buy)
             links.append(f'<a href="{esc(calendar)}" style="color:#102c43">Add to calendar</a>')
-        cards.append(f'''<table role="presentation" width="100%" style="border-bottom:1px solid #e1e7eb;padding:18px 0"><tr><td>
-<div style="font-size:13px;color:#63717d">{esc(when)} · {esc(venue)}</div>
-<h2 style="font-size:20px;color:#102c43;margin:10px 0">{photo}{esc(name)}</h2>
-<div style="font-size:13px;color:#63717d">{esc(genre)}{(' · ' + esc(' · '.join(tags))) if tags else ''}</div>
-<p style="font-size:14px">Spotify Listeners <strong>{esc(listeners)}</strong> &nbsp; Trending <strong style="color:{growth_color}">{esc(growth_label)}</strong> &nbsp; Price <strong>{esc(price)}</strong></p>
-<div style="font-size:14px">{' &nbsp; · &nbsp; '.join(links)}</div></td></tr></table>''')
+        play = f'<a href="{esc(listen)}" title="Listen on Spotify" aria-label="Listen on Spotify" style="display:inline-block;border-radius:50%;background:#102c43;color:white;text-decoration:none;padding:7px 10px">▶</a>' if listen else ''
+        ticket = f'<a href="{esc(buy)}" style="display:inline-block;background:#eef2f4;color:#102c43;border-radius:8px;padding:7px;text-decoration:none">{esc(price) if price != "—" else "Tickets"}</a>' if buy else ''
+        calendar_link = f'<a href="{esc(calendar)}" title="Add to calendar" style="color:#102c43;margin-left:6px">▦</a>' if buy else ''
+        badges = ''.join(f'<span style="font-size:10px;background:#eef7f5;padding:3px 5px;border-radius:6px;margin-left:5px">{esc(t)}</span>' for t in ['New'] + tags)
+        cells = [esc(when), play, photo + esc(name) + badges, esc(venue), esc(genre), esc(listeners),
+                 f'<span style="color:{growth_color}">{esc(growth_label)}</span>',
+                 f'<a href="{APP_URL}" style="color:#102c43">Review</a>', ticket + calendar_link]
+        rows.append('<tr>' + ''.join(f'<td style="padding:13px 9px;border-bottom:1px solid #edf0f3;font-size:13px;vertical-align:middle;{("text-align:center;" if i in (1,6) else "")}">{cell}</td>' for i, cell in enumerate(cells)) + '</tr>')
         plain.extend([f'{when} | {name} | {venue}', f'{genre} | Spotify Listeners: {listeners} | Trending: {growth_label} | Price: {price}',
                       (' · '.join(tags)), *([f'Spotify: {listen}'] if listen else []), f'Tickets: {buy}', ''])
     plain.extend(['Review shows and mark Hidden, Interested or Going: ' + APP_URL, 'Unsubscribe: ' + unsubscribe_url])
     content = f'''<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0;background:#f0f4f6;font-family:Arial,sans-serif;color:#102c43">
-<table role="presentation" width="100%"><tr><td align="center"><table role="presentation" width="100%" style="max-width:640px;background:#fff"><tr><td style="padding:24px">
+<table role="presentation" width="100%"><tr><td align="center"><table role="presentation" width="100%" style="max-width:1100px;background:#fff"><tr><td style="padding:24px">
 <h1 style="font-size:26px;margin:0">Asheville Soundcheck</h1><p style="color:#63717d">{len(shows)} newly discovered shows · {esc(end.astimezone(ZONE).strftime('%b %d'))}</p>
-<p style="font-size:14px">All newly discovered shows, independent of your filters.</p>{''.join(cards)}
+<p style="font-size:14px">All newly discovered shows, independent of your filters.</p><table width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;text-align:left"><thead><tr>{''.join(f'<th style="padding:10px 9px;background:#eef7f5;color:#526071;font-size:12px;text-align:left">{label}</th>' for label in ['Date', 'Spotify', 'Artist', 'Venue', 'Genre', 'Spotify Listeners', 'Trending', 'Make moves', 'Tickets'])}</tr></thead><tbody>{''.join(rows)}</tbody></table>
 <p><a href="{APP_URL}" style="display:inline-block;background:#102c43;color:#fff;text-decoration:none;border-radius:12px;padding:12px 18px">Review on Soundcheck</a></p>
 <p style="font-size:12px;color:#63717d">Trending is six-month listener growth. — means data is unavailable. Prices and availability can change.</p>
 <p style="font-size:12px"><a href="{esc(unsubscribe_url)}" style="color:#63717d">Unsubscribe</a> · You opted into this weekly email.</p>
@@ -156,7 +159,7 @@ def run(store, sender, password, current=None, db_path=DATABASE_PATH):
         unsubscribe_url = APP_URL + '?' + urlencode({'unsubscribe': subscription['unsubscribe_token']})
         content, plain = render(shows, unsubscribe_url, end)
         try:
-            mid = send_email(sender, password, subscription['email'], f'{len(shows)} new shows · Asheville Soundcheck', content, plain, unsubscribe_url)
+            mid = send_email(sender, password, subscription['email'], SUBJECT, content, plain, unsubscribe_url)
         except (smtplib.SMTPAuthenticationError, smtplib.SMTPSenderRefused, smtplib.SMTPRecipientsRefused, smtplib.SMTPDataError):
             store.finish(sid, end.isoformat(), 'failed'); result['failed'] += 1
         except Exception:
@@ -171,10 +174,11 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--mode', choices=('preview', 'test', 'send'), default='preview')
     parser.add_argument('--output', default='/tmp/soundcheck-digest-preview.html')
+    parser.add_argument('--db', type=Path, default=DATABASE_PATH)
     args = parser.parse_args()
     current = datetime.now(timezone.utc)
     if args.mode in ('preview', 'test'):
-        shows = new_shows(current - timedelta(days=7), current) or get_shows(user_id='email-view')[:5]
+        shows = new_shows(current - timedelta(days=7), current, args.db) or get_shows(args.db, user_id='email-view')[:5]
         unsubscribe_url = APP_URL
         if args.mode == 'test':
             store = EmailStore(os.environ['SUPABASE_URL'], os.environ['SUPABASE_SECRET_KEY'])
@@ -187,11 +191,11 @@ def main():
         if args.mode == 'test':
             # Test mode never reads subscriber addresses or changes delivery history.
             send_email(os.environ['EMAIL_SENDER'], os.environ['EMAIL_APP_PASSWORD'], os.environ['EMAIL_SENDER'],
-                       '[Test] Asheville Soundcheck weekly digest', content, plain, unsubscribe_url)
+                       '[Test] ' + SUBJECT, content, plain, unsubscribe_url)
         print(json.dumps({'mode': args.mode, 'preview_shows': len(shows)}))
     else:
         store = EmailStore(os.environ['SUPABASE_URL'], os.environ['SUPABASE_SECRET_KEY'])
-        result = run(store, os.environ['EMAIL_SENDER'], os.environ['EMAIL_APP_PASSWORD'])
+        result = run(store, os.environ['EMAIL_SENDER'], os.environ['EMAIL_APP_PASSWORD'], db_path=args.db)
         print(json.dumps(result))
         if result.get('failed') or result.get('uncertain'):
             raise SystemExit(1)
