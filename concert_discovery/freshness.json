@@ -1,6 +1,6 @@
 {
-  "refreshed_at": "2026-10-07T17:29:32+00:00",
-  "source_records": 763,
+  "refreshed_at": "2026-10-10T16:17:52+00:00",
+  "source_records": 723,
   "warnings": [
     "SongkickPublic: 406 Client Error: Not Acceptable for url: https://www.songkick.com/metro-areas/86726-us-mills-river",
     "SongkickOrange: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/289-orange-peel/calendar",
@@ -8,49 +8,42 @@
     "SongkickAMH: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/107138-asheville-music-hall/calendar",
     "SongkickEulogy: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/4519500-eulogy/calendar",
     "Sierra official browser calendar unavailable.",
-    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"SHINYRIBS w/ Seth Walker\" href=\"https://www.thegreyeagle.com/event/shinyribs-w-seth-walker/grey-eagle-music-hall/asheville-north-carolina/\">\u2026</a>\n",
+    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"Blue Country Line Dance\u2019s Giddy Up Brunch\" href=\"https://www.thegreyeagle.com/event/blue-country-line-dances-giddy-up-brunch-18/special-events-at-the-grey-eagle-music-hall/asheville-north-carolina/\">\u2026</a>\n",
     "Spotify concert feed not enabled: separate CheckLeaked provider key missing.",
     "sierra-nevada: No complete calendar snapshot; cached listings retained"
   ],
   "duplicates_consolidated": [
     {
-      "keep": 273,
-      "removed": 27,
-      "title": "FAUST with live metal score ",
-      "date": "2026-10-08",
+      "keep": 185,
+      "removed": 2997,
+      "title": "Daniel Donato\u2019s Cosmic Country: Down One Horse (Unplugged & Acoustic) w/s/g Aron Magner (Disco Biscuits)",
+      "date": "2026-12-09",
       "reason": "reversible duplicate alias"
     },
     {
-      "keep": 61,
-      "removed": 2838,
-      "title": "Knocked Loose & Denzel Curry",
-      "date": "2026-10-14",
+      "keep": 186,
+      "removed": 3000,
+      "title": "Daniel Donato\u2019s Cosmic Country: Down One Horse (Unplugged & Acoustic) w/s/g Jeff Sipe (ARU)",
+      "date": "2026-12-10",
       "reason": "reversible duplicate alias"
     },
     {
-      "keep": 74,
-      "removed": 2900,
-      "title": "Bitch Cabal feat. Wednesday & Mannequin Pussy",
-      "date": "2026-10-30",
-      "reason": "reversible duplicate alias"
-    },
-    {
-      "keep": 618,
-      "removed": 3043,
-      "title": "Sammy Rae & The Friends \u2013 the GET DOWN!",
-      "date": "2027-03-12",
+      "keep": 187,
+      "removed": 3001,
+      "title": "Daniel Donato\u2019s Cosmic Country: Down One Horse (Unplugged & Acoustic) w/s/g Kyser George (Shadowgrass)",
+      "date": "2026-12-11",
       "reason": "reversible duplicate alias"
     }
   ],
-  "run_id": "5e413786-6cd7-4a85-8a84-8a855728de6b",
+  "run_id": "1897554e-8496-4d8f-8e72-0409df1bbbe1",
   "matching_attempted": 25,
-  "matching_matched": 5,
+  "matching_matched": 7,
   "matching_ambiguous": 0,
-  "matching_blocked": 20,
-  "matching_pending": 7,
+  "matching_blocked": 18,
+  "matching_pending": 0,
   "source_candidates_found": 0,
   "page_requests": 40,
-  "attempted": 5,
-  "metrics_saved": 4,
+  "attempted": 3,
+  "metrics_saved": 2,
   "history_requests": 1
 }
