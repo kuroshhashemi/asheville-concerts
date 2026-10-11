@@ -117,10 +117,9 @@ def render(shows, unsubscribe_url, end, prices=None):
         if bar_width < 150:
             bar_cells += f'<td width="{150-bar_width}" bgcolor="#f4f6f8" style="width:{150-bar_width}px;height:6px;font-size:0;line-height:0">&nbsp;</td>'
         audience_content = f'<div style="font-variant-numeric:tabular-nums">{esc(listeners)}</div><table role="presentation" width="150" cellspacing="0" cellpadding="0" style="width:150px;table-layout:fixed;border-collapse:collapse"><tr>{bar_cells}</tr></table>' 
-        moves = ''.join(f'<a href="{APP_URL}" title="{label} on Soundcheck" style="display:inline-block;background:#e8f3ef;border-radius:10px;padding:6px 7px;margin-right:5px;text-decoration:none">{icon(kind,label)}</a>' for kind,label in [('eye-closed','Hide'),('bookmark','Interested'),('badge-check','Going')])
         cells = [esc(when), play, artist_content + badges, venue_content, esc(genre), audience_content,
                  f'<span style="color:{growth_color}">{esc(growth_label)}</span>',
-                 moves, ticket + calendar_link]
+                 ticket + calendar_link]
         rows.append('<tr>' + ''.join(f'<td style="padding:11px 12px;border-bottom:1px solid #edf0f3;font-size:14px;vertical-align:middle;{("text-align:center;" if i in (1,6) else "")}{("white-space:nowrap;" if i in (0,1,3,6,7,8) else "")}">{cell}</td>' for i, cell in enumerate(cells)) + '</tr>')
         plain.extend([f'{when} | {name} | {venue}', f'{genre} | Spotify Listeners: {listeners} | Trending: {growth_label} | Price: {price}',
                       (' · '.join(tags)), *([f'Spotify: {listen}'] if listen else []), f'Tickets: {buy}', ''])
@@ -128,7 +127,7 @@ def render(shows, unsubscribe_url, end, prices=None):
     content = f'''<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0;background:#fff;font-family:Arial,sans-serif;color:#102c43">
 <table role="presentation" width="100%"><tr><td align="center"><table role="presentation" width="100%" style="max-width:1250px;background:#fff"><tr><td style="padding:8px 0">
 <table role="presentation" width="100%" cellspacing="0" cellpadding="0"><tr><td><h1 style="font-size:26px;margin:0">Asheville Soundcheck</h1></td><td align="right"><a href="{APP_URL}" style="display:inline-block;background:#102c43;color:#fff;text-decoration:none;border-radius:12px;padding:12px 18px;white-space:nowrap">Open app</a></td></tr></table><p style="color:#63717d">{len(shows)} newly discovered shows · {esc(end.astimezone(ZONE).strftime('%b %d'))}</p>
-<table width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;text-align:left;min-width:1100px"><thead><tr>{''.join(f'<th style="padding:13px 12px;background:#eef7f5;color:#526071;font-size:12px;text-align:{"center" if i == 1 else "left"};white-space:nowrap">{label}</th>' for i, label in enumerate(['Date', icon('spotify','Spotify'), 'Artist', 'Venue', 'Genre', 'Spotify Listeners', 'Trending', 'Make moves', 'Tickets']))}</tr></thead><tbody>{''.join(rows)}</tbody></table>
+<table width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;text-align:left;min-width:950px"><thead><tr>{''.join(f'<th style="padding:13px 12px;background:#eef7f5;color:#526071;font-size:12px;text-align:{"center" if i == 1 else "left"};white-space:nowrap">{label}</th>' for i, label in enumerate(['Date', icon('spotify','Spotify'), 'Artist', 'Venue', 'Genre', 'Spotify Listeners', 'Trending', 'Tickets']))}</tr></thead><tbody>{''.join(rows)}</tbody></table>
 <p style="font-size:14px;text-align:center"><a href="{esc(unsubscribe_url)}" style="color:#63717d">Unsubscribe</a></p>
 </td></tr></table></td></tr></table></body></html>'''
     return content, '\n'.join(plain)
