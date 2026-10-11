@@ -1,5 +1,6 @@
 """Monday new-show digest: no live data fetching, AI calls, or personal filters."""
 import argparse
+import base64
 import html
 import json
 import os
@@ -64,6 +65,8 @@ def safe_url(value):
 def render(shows, unsubscribe_url, end, prices=None):
     prices = load_prices() if prices is None else prices
     esc = lambda value: html.escape(str(value), quote=True)
+    icon = lambda name, alt: f'<img src="cid:soundcheck-{name}" width="20" height="20" alt="{esc(alt)}" style="vertical-align:middle;border:0">'
+    max_listeners = max([show.get('audience') or 0 for show in shows] + [1])
     rows, plain = [], ['Asheville Soundcheck', f'{len(shows)} newly discovered shows', APP_URL, '']
     for show in shows:
         name = display_name(show)
@@ -94,17 +97,34 @@ def render(shows, unsubscribe_url, end, prices=None):
         ticket = f'<a href="{esc(buy)}" style="display:inline-block;background:#eef2f4;color:#102c43;border-radius:8px;padding:7px;text-decoration:none">{esc(price) if price != "—" else "Tickets"}</a>' if buy else ''
         calendar_link = f'<a href="{esc(calendar)}" title="Add to calendar" style="color:#102c43;margin-left:6px">▦</a>' if buy else ''
         badges = ''.join(f'<span style="font-size:10px;background:#eef7f5;padding:3px 5px;border-radius:6px;margin-left:5px">{esc(t)}</span>' for t in ['New'] + tags)
-        cells = [esc(when), play, photo + esc(name) + badges, esc(venue), esc(genre), esc(listeners),
+        if price == '—' and buy:
+            ticket = ticket.replace('Tickets</a>', icon('ticket', 'Buy tickets') + '</a>')
+        if buy:
+            calendar_link = f'<a href="{esc(calendar)}" title="Add to calendar" style="display:inline-block;background:#edf0f3;border-radius:10px;padding:6px 7px;margin-left:7px">{icon("calendar-plus", "Add to calendar")}</a>'
+        artist_parts = []
+        if category in ('live_music', 'cover_band'):
+            for headliner in show['headliners']:
+                profile = safe_url(headliner.get('spotify_profile_url'))
+                head_image = safe_url(headliner.get('image_url'))
+                part = (f'<img src="{esc(head_image)}" width="28" height="28" alt="" style="border-radius:50%;vertical-align:middle;margin-right:7px;object-fit:cover">' if head_image else '') + esc(headliner.get('display_name', ''))
+                artist_parts.append(f'<a href="{esc(profile)}" style="color:#247e79;text-decoration:none">{part}</a>' if profile else part)
+        artist_content = ' &amp; '.join(artist_parts) if artist_parts else photo + esc(name)
+        venue_icon = safe_url(show.get('venue_icon'))
+        venue_content = (f'<img src="{esc(venue_icon)}" width="18" height="18" alt="" style="vertical-align:middle;margin-right:9px">' if venue_icon else '') + esc(venue)
+        proportion = max(0, min(100, (show.get('audience') or 0) / max_listeners * 100))
+        audience_content = f'<div style="min-width:130px;border-radius:4px;padding:5px 9px;background:linear-gradient(to right,#bde6de {proportion:.1f}%,#f4f6f8 {proportion:.1f}%);font-variant-numeric:tabular-nums">{esc(listeners)}</div>'
+        moves = ''.join(f'<a href="{APP_URL}" title="{label} on Soundcheck" style="display:inline-block;background:#e8f3ef;border-radius:10px;padding:6px 7px;margin-right:5px;text-decoration:none">{icon(kind,label)}</a>' for kind,label in [('eye-closed','Hide'),('bookmark','Interested'),('badge-check','Going')])
+        cells = [esc(when), play, artist_content + badges, venue_content, esc(genre), audience_content,
                  f'<span style="color:{growth_color}">{esc(growth_label)}</span>',
-                 f'<a href="{APP_URL}" style="color:#102c43">Review</a>', ticket + calendar_link]
-        rows.append('<tr>' + ''.join(f'<td style="padding:13px 9px;border-bottom:1px solid #edf0f3;font-size:13px;vertical-align:middle;{("text-align:center;" if i in (1,6) else "")}">{cell}</td>' for i, cell in enumerate(cells)) + '</tr>')
+                 moves, ticket + calendar_link]
+        rows.append('<tr>' + ''.join(f'<td style="padding:11px 12px;border-bottom:1px solid #edf0f3;font-size:14px;vertical-align:middle;{("text-align:center;" if i in (1,6) else "")}{("white-space:nowrap;" if i in (0,1,3,6,7,8) else "")}">{cell}</td>' for i, cell in enumerate(cells)) + '</tr>')
         plain.extend([f'{when} | {name} | {venue}', f'{genre} | Spotify Listeners: {listeners} | Trending: {growth_label} | Price: {price}',
                       (' · '.join(tags)), *([f'Spotify: {listen}'] if listen else []), f'Tickets: {buy}', ''])
     plain.extend(['Review shows and mark Hidden, Interested or Going: ' + APP_URL, 'Unsubscribe: ' + unsubscribe_url])
     content = f'''<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0;background:#f0f4f6;font-family:Arial,sans-serif;color:#102c43">
-<table role="presentation" width="100%"><tr><td align="center"><table role="presentation" width="100%" style="max-width:1100px;background:#fff"><tr><td style="padding:24px">
+<table role="presentation" width="100%"><tr><td align="center"><table role="presentation" width="100%" style="max-width:1250px;background:#fff"><tr><td style="padding:24px">
 <h1 style="font-size:26px;margin:0">Asheville Soundcheck</h1><p style="color:#63717d">{len(shows)} newly discovered shows · {esc(end.astimezone(ZONE).strftime('%b %d'))}</p>
-<p style="font-size:14px">All newly discovered shows, independent of your filters.</p><table width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;text-align:left"><thead><tr>{''.join(f'<th style="padding:10px 9px;background:#eef7f5;color:#526071;font-size:12px;text-align:left">{label}</th>' for label in ['Date', 'Spotify', 'Artist', 'Venue', 'Genre', 'Spotify Listeners', 'Trending', 'Make moves', 'Tickets'])}</tr></thead><tbody>{''.join(rows)}</tbody></table>
+<p style="font-size:14px">All newly discovered shows, independent of your filters. Make moves opens the app to save your choice.</p><table width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;text-align:left;min-width:1100px"><thead><tr>{''.join(f'<th style="padding:13px 12px;background:#eef7f5;color:#526071;font-size:12px;text-align:left;white-space:nowrap">{label}</th>' for label in ['Date', icon('spotify','Spotify'), 'Artist', 'Venue', 'Genre', 'Spotify Listeners', 'Trending', 'Make moves', 'Tickets'])}</tr></thead><tbody>{''.join(rows)}</tbody></table>
 <p><a href="{APP_URL}" style="display:inline-block;background:#102c43;color:#fff;text-decoration:none;border-radius:12px;padding:12px 18px">Review on Soundcheck</a></p>
 <p style="font-size:12px;color:#63717d">Trending is six-month listener growth. — means data is unavailable. Prices and availability can change.</p>
 <p style="font-size:12px"><a href="{esc(unsubscribe_url)}" style="color:#63717d">Unsubscribe</a> · You opted into this weekly email.</p>
@@ -121,6 +141,8 @@ def send_email(sender, password, recipient, subject, content, plain, unsubscribe
     message['List-Unsubscribe'] = '<' + unsubscribe_url + '>'
     message.set_content(plain)
     message.add_alternative(content, subtype='html')
+    for name, data in json.loads((Path(__file__).parent / 'assets/email-icons.json').read_text()).items():
+        message.get_payload()[-1].add_related(base64.b64decode(data), maintype='image', subtype='png', cid=f'<soundcheck-{name}>', disposition='inline')
     # Authentication/connection failures occur before any message submission.
     with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=ssl.create_default_context(), timeout=30) as smtp:
         smtp.login(sender, password.replace(' ', ''))
@@ -187,7 +209,10 @@ def main():
                 raise RuntimeError('Register the sender subscription before sending a test')
             unsubscribe_url += '?' + urlencode({'unsubscribe': subscription['unsubscribe_token']})
         content, plain = render(shows, unsubscribe_url, current)
-        Path(args.output).write_text(content)
+        preview = content
+        for name, data in json.loads((Path(__file__).parent / 'assets/email-icons.json').read_text()).items():
+            preview = preview.replace(f'cid:soundcheck-{name}', 'data:image/png;base64,' + data)
+        Path(args.output).write_text(preview)
         if args.mode == 'test':
             # Test mode never reads subscriber addresses or changes delivery history.
             send_email(os.environ['EMAIL_SENDER'], os.environ['EMAIL_APP_PASSWORD'], os.environ['EMAIL_SENDER'],

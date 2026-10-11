@@ -129,7 +129,9 @@ class DigestTests(unittest.TestCase):
         message = smtp.send_message.call_args.args[0]
         self.assertEqual(message['To'], 'recipient@example.com')
         self.assertEqual(message['List-Unsubscribe'], '<https://example.com/unsubscribe>')
-        self.assertEqual([part.get_content_type() for part in message.iter_parts()], ['text/plain', 'text/html'])
+        self.assertEqual([part.get_content_type() for part in message.iter_parts()], ['text/plain', 'multipart/related'])
+        self.assertEqual(len([part for part in message.walk() if part.get_content_type() == 'image/png']), 6)
+        self.assertIn('text/html', [part.get_content_type() for part in message.walk()])
 
     def test_atomic_claim_and_scoped_unsubscribe(self):
         store = EmailStore('https://example.supabase.co', 'private-key')
