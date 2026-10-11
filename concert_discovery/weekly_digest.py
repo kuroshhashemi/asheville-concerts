@@ -19,7 +19,7 @@ from concert_discovery.genre_labels import genre_labels
 from concert_discovery.prices import load as load_prices, for_show, label as price_label
 from concert_discovery.calendar_links import google_calendar_link
 from concert_discovery.email_store import EmailStore
-from concert_discovery.email_images import play_button, revival_icon, listener_bar, inline_images
+from concert_discovery.email_images import play_button, revival_icon, inline_images
 
 APP_URL = 'https://asheville-soundcheck.streamlit.app/'
 ZONE = ZoneInfo('America/New_York')
@@ -109,10 +109,14 @@ def render(shows, unsubscribe_url, end, prices=None):
                 head_image = safe_url(headliner.get('image_url'))
                 part = (f'<img src="{esc(head_image)}" width="28" height="28" alt="" style="border-radius:50%;vertical-align:middle;margin-right:7px;object-fit:cover">' if head_image else '') + esc(headliner.get('display_name', ''))
                 artist_parts.append(f'<a href="{esc(profile)}" style="color:#247e79;text-decoration:none">{part}</a>' if profile else part)
-        artist_content = ' &amp; '.join(artist_parts) if artist_parts else photo + esc(name)
+        artist_content = ' &amp; '.join(artist_parts) if artist_parts else (f'<a href="{esc(listen)}" style="color:#247e79;text-decoration:none">{photo}{esc(name)}</a>' if listen else photo + esc(name))
         venue_icon = revival_icon() if show['venue_id'] == 'revival' else safe_url(show.get('venue_icon'))
         venue_content = (f'<img src="{esc(venue_icon)}" width="18" height="18" alt="" style="vertical-align:middle;margin-right:9px">' if venue_icon else '') + esc(venue)
-        audience_content = f'<img src="{listener_bar(show.get("audience"), max_listeners, listeners)}" width="150" height="29" alt="{esc(listeners)}" style="display:block;border-radius:4px;border:0">'
+        bar_width = round(max(0, show.get('audience') or 0) / max_listeners * 150)
+        bar_cells = (f'<td width="{bar_width}" bgcolor="#bde6de" style="width:{bar_width}px;height:6px;font-size:0;line-height:0">&nbsp;</td>' if bar_width else '')
+        if bar_width < 150:
+            bar_cells += f'<td width="{150-bar_width}" bgcolor="#f4f6f8" style="width:{150-bar_width}px;height:6px;font-size:0;line-height:0">&nbsp;</td>'
+        audience_content = f'<div style="font-variant-numeric:tabular-nums">{esc(listeners)}</div><table role="presentation" width="150" cellspacing="0" cellpadding="0" style="width:150px;table-layout:fixed;border-collapse:collapse"><tr>{bar_cells}</tr></table>' 
         moves = ''.join(f'<a href="{APP_URL}" title="{label} on Soundcheck" style="display:inline-block;background:#e8f3ef;border-radius:10px;padding:6px 7px;margin-right:5px;text-decoration:none">{icon(kind,label)}</a>' for kind,label in [('eye-closed','Hide'),('bookmark','Interested'),('badge-check','Going')])
         cells = [esc(when), play, artist_content + badges, venue_content, esc(genre), audience_content,
                  f'<span style="color:{growth_color}">{esc(growth_label)}</span>',
@@ -121,8 +125,8 @@ def render(shows, unsubscribe_url, end, prices=None):
         plain.extend([f'{when} | {name} | {venue}', f'{genre} | Spotify Listeners: {listeners} | Trending: {growth_label} | Price: {price}',
                       (' · '.join(tags)), *([f'Spotify: {listen}'] if listen else []), f'Tickets: {buy}', ''])
     plain.extend(['Review shows and mark Hidden, Interested or Going: ' + APP_URL, 'Unsubscribe: ' + unsubscribe_url])
-    content = f'''<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0;background:#f0f4f6;font-family:Arial,sans-serif;color:#102c43">
-<table role="presentation" width="100%"><tr><td align="center"><table role="presentation" width="100%" style="max-width:1250px;background:#fff"><tr><td style="padding:24px">
+    content = f'''<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0;background:#fff;font-family:Arial,sans-serif;color:#102c43">
+<table role="presentation" width="100%"><tr><td align="center"><table role="presentation" width="100%" style="max-width:1250px;background:#fff"><tr><td style="padding:8px 0">
 <h1 style="font-size:26px;margin:0">Asheville Soundcheck</h1><p style="color:#63717d">{len(shows)} newly discovered shows · {esc(end.astimezone(ZONE).strftime('%b %d'))}</p>
 <table width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;text-align:left;min-width:1100px"><thead><tr>{''.join(f'<th style="padding:13px 12px;background:#eef7f5;color:#526071;font-size:12px;text-align:left;white-space:nowrap">{label}</th>' for label in ['Date', icon('spotify','Spotify'), 'Artist', 'Venue', 'Genre', 'Spotify Listeners', 'Trending', 'Make moves', 'Tickets'])}</tr></thead><tbody>{''.join(rows)}</tbody></table>
 <p><a href="{APP_URL}" style="display:inline-block;background:#102c43;color:#fff;text-decoration:none;border-radius:12px;padding:12px 18px">Review on Soundcheck</a></p>
