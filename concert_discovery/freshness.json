@@ -1,6 +1,6 @@
 {
-  "refreshed_at": "2026-10-10T16:17:52+00:00",
-  "source_records": 723,
+  "refreshed_at": "2026-10-11T16:22:25+00:00",
+  "source_records": 713,
   "warnings": [
     "SongkickPublic: 406 Client Error: Not Acceptable for url: https://www.songkick.com/metro-areas/86726-us-mills-river",
     "SongkickOrange: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/289-orange-peel/calendar",
@@ -8,42 +8,20 @@
     "SongkickAMH: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/107138-asheville-music-hall/calendar",
     "SongkickEulogy: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/4519500-eulogy/calendar",
     "Sierra official browser calendar unavailable.",
-    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"Blue Country Line Dance\u2019s Giddy Up Brunch\" href=\"https://www.thegreyeagle.com/event/blue-country-line-dances-giddy-up-brunch-18/special-events-at-the-grey-eagle-music-hall/asheville-north-carolina/\">\u2026</a>\n",
+    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"COUNTRY BRUNCH w/ Vaden Landers\" href=\"https://www.thegreyeagle.com/event/country-brunch-w-vaden-landers-2/the-patio/asheville-north-carolina/\">\u2026</a>\n",
     "Spotify concert feed not enabled: separate CheckLeaked provider key missing.",
     "sierra-nevada: No complete calendar snapshot; cached listings retained"
   ],
-  "duplicates_consolidated": [
-    {
-      "keep": 185,
-      "removed": 2997,
-      "title": "Daniel Donato\u2019s Cosmic Country: Down One Horse (Unplugged & Acoustic) w/s/g Aron Magner (Disco Biscuits)",
-      "date": "2026-12-09",
-      "reason": "reversible duplicate alias"
-    },
-    {
-      "keep": 186,
-      "removed": 3000,
-      "title": "Daniel Donato\u2019s Cosmic Country: Down One Horse (Unplugged & Acoustic) w/s/g Jeff Sipe (ARU)",
-      "date": "2026-12-10",
-      "reason": "reversible duplicate alias"
-    },
-    {
-      "keep": 187,
-      "removed": 3001,
-      "title": "Daniel Donato\u2019s Cosmic Country: Down One Horse (Unplugged & Acoustic) w/s/g Kyser George (Shadowgrass)",
-      "date": "2026-12-11",
-      "reason": "reversible duplicate alias"
-    }
-  ],
-  "run_id": "1897554e-8496-4d8f-8e72-0409df1bbbe1",
+  "duplicates_consolidated": [],
+  "run_id": "87cc9be2-29b1-46a7-bf54-5b69692b08fb",
   "matching_attempted": 25,
-  "matching_matched": 7,
+  "matching_matched": 0,
   "matching_ambiguous": 0,
-  "matching_blocked": 18,
+  "matching_blocked": 25,
   "matching_pending": 0,
   "source_candidates_found": 0,
   "page_requests": 40,
-  "attempted": 3,
-  "metrics_saved": 2,
+  "attempted": 40,
+  "metrics_saved": 40,
   "history_requests": 1
 }
