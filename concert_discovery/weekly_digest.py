@@ -127,11 +127,9 @@ def render(shows, unsubscribe_url, end, prices=None):
     plain.extend(['Review shows and mark Hidden, Interested or Going: ' + APP_URL, 'Unsubscribe: ' + unsubscribe_url])
     content = f'''<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0;background:#fff;font-family:Arial,sans-serif;color:#102c43">
 <table role="presentation" width="100%"><tr><td align="center"><table role="presentation" width="100%" style="max-width:1250px;background:#fff"><tr><td style="padding:8px 0">
-<h1 style="font-size:26px;margin:0">Asheville Soundcheck</h1><p style="color:#63717d">{len(shows)} newly discovered shows · {esc(end.astimezone(ZONE).strftime('%b %d'))}</p>
-<table width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;text-align:left;min-width:1100px"><thead><tr>{''.join(f'<th style="padding:13px 12px;background:#eef7f5;color:#526071;font-size:12px;text-align:left;white-space:nowrap">{label}</th>' for label in ['Date', icon('spotify','Spotify'), 'Artist', 'Venue', 'Genre', 'Spotify Listeners', 'Trending', 'Make moves', 'Tickets'])}</tr></thead><tbody>{''.join(rows)}</tbody></table>
-<p><a href="{APP_URL}" style="display:inline-block;background:#102c43;color:#fff;text-decoration:none;border-radius:12px;padding:12px 18px">Review on Soundcheck</a></p>
-<p style="font-size:12px;color:#63717d">Trending is six-month listener growth. — means data is unavailable. Prices and availability can change.</p>
-<p style="font-size:12px"><a href="{esc(unsubscribe_url)}" style="color:#63717d">Unsubscribe</a> · You opted into this weekly email.</p>
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0"><tr><td><h1 style="font-size:26px;margin:0">Asheville Soundcheck</h1></td><td align="right"><a href="{APP_URL}" style="display:inline-block;background:#102c43;color:#fff;text-decoration:none;border-radius:12px;padding:12px 18px;white-space:nowrap">Open app</a></td></tr></table><p style="color:#63717d">{len(shows)} newly discovered shows · {esc(end.astimezone(ZONE).strftime('%b %d'))}</p>
+<table width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;text-align:left;min-width:1100px"><thead><tr>{''.join(f'<th style="padding:13px 12px;background:#eef7f5;color:#526071;font-size:12px;text-align:{"center" if i == 1 else "left"};white-space:nowrap">{label}</th>' for i, label in enumerate(['Date', icon('spotify','Spotify'), 'Artist', 'Venue', 'Genre', 'Spotify Listeners', 'Trending', 'Make moves', 'Tickets']))}</tr></thead><tbody>{''.join(rows)}</tbody></table>
+<p style="font-size:14px;text-align:center"><a href="{esc(unsubscribe_url)}" style="color:#63717d">Unsubscribe</a></p>
 </td></tr></table></td></tr></table></body></html>'''
     return content, '\n'.join(plain)
 
