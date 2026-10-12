@@ -18,3 +18,11 @@ CREATE TABLE IF NOT EXISTS public.user_filter_settings (
 ALTER TABLE public.user_filter_settings ENABLE ROW LEVEL SECURITY;
 REVOKE ALL ON public.user_filter_settings FROM anon, authenticated;
 GRANT SELECT, INSERT, UPDATE ON public.user_filter_settings TO service_role;
+
+CREATE TABLE IF NOT EXISTS public.app_user_activity (
+ user_id text PRIMARY KEY, email text NOT NULL, display_name text,
+ first_seen_at timestamptz NOT NULL DEFAULT now(), last_active_at timestamptz NOT NULL DEFAULT now()
+);
+ALTER TABLE public.app_user_activity ENABLE ROW LEVEL SECURITY;
+REVOKE ALL ON public.app_user_activity FROM anon, authenticated;
+GRANT SELECT, INSERT, UPDATE ON public.app_user_activity TO service_role;
