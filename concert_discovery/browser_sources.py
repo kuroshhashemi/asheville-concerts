@@ -44,7 +44,7 @@ def fetch_browser_calendars(days=None,snapshots=None):
                 if not more.count():
                     from concert_discovery.calendar_audit import snapshots as make_snapshots
                     snapshots.extend(make_snapshots(sierra_rows,'https://sierranevada.com/events',1))
-        except Exception:errors.append('Sierra official browser calendar unavailable.')
+        except Exception as exc:errors.append('Sierra official browser calendar unavailable: '+str(exc)[:700])
         for source,url in [('MusicHallOfficial','https://ashevillemusichall.com/all-shows/'),('OrangePeelOfficial','https://theorangepeel.net/events/?view=list'),('GreyEagleOfficial','https://www.thegreyeagle.com/calendar/')]:
             try:
                 from concert_discovery.official_calendar import parse_calendar

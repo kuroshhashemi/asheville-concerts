@@ -32,7 +32,18 @@ def unsubscribe_page():
 
 
 def preferences(account_id, auth_configured):
-    with st.popover('Emails', icon=':material/mail_outline:'):
+    if account_id and st.session_state.get('email_owner') != (account_id, st.user.get('email')):
+        try:
+            subscription = store().get(st.user.get('email'))
+            st.session_state['email_subscription'] = subscription
+            st.session_state['email_owner'] = (account_id, st.user.get('email'))
+            st.session_state['weekly_email_enabled'] = bool(subscription and subscription['enabled'])
+        except Exception:
+            st.session_state.pop('email_subscription', None)
+    state = 'On' if account_id and st.session_state.get('weekly_email_enabled', False) else 'Off'
+    if account_id and 'email_subscription' not in st.session_state:
+        state = 'Unavailable'
+    with st.popover('Weekly Emails · ' + state, icon=':material/mail_outline:'):
         st.write('**Weekly new shows**')
         st.write('All newly discovered shows, with Spotify Listeners, Trending, prices, and links.')
         st.caption('Mondays · Your filters don’t affect emails.')
