@@ -161,6 +161,10 @@ growth_low,growth_high=st.session_state['growth_range']
 growth_summary='Any' if (growth_low,growth_high)==(growth_floor,growth_ceiling) else f'≥{growth_low:+,}%' if growth_high==growth_ceiling else f'≤{growth_high:+,}%' if growth_low==growth_floor else f'{growth_low:+,}% to {growth_high:+,}%' 
 selected_genres=[g for g in genres if st.session_state['genre_'+g]]
 selected_types=[t for t in show_types if st.session_state['type_'+t]]
+# Highlight audience restrictions without treating type/unknown defaults as warnings.
+restricted=[len(selected_venues)!=len(venues),(low_k,high_k)!=(0,upper),(growth_low,growth_high)!=(growth_floor,growth_ceiling),False,len(selected_genres)!=len(genres)]
+filter_styles=''.join(f'.st-key-filter_bar [data-testid="stHorizontalBlock"] > [data-testid="stColumn"]:nth-child({i+1}) button[data-testid="stPopoverButton"]{{background:#d8eeea;border:1px solid #69a99f;color:#17685f}} .st-key-filter_bar [data-testid="stHorizontalBlock"] > [data-testid="stColumn"]:nth-child({i+1}) button[data-testid="stPopoverButton"] strong{{color:#17685f}}' for i,active in enumerate(restricted) if active)
+st.markdown('<style>'+filter_styles+'.st-key-weekly_email_control button[data-testid="stPopoverButton"]{background:#102c43!important;color:white!important;border:0!important;height:42px;display:flex;align-items:center;justify-content:center}.st-key-weekly_email_control button p{color:white!important}.st-key-weekly_email_control{display:flex;align-items:center}</style>',unsafe_allow_html=True)
 review_navigation=st.container(key='review_navigation')
 with st.container(key='filter_bar'):
  cols=st.columns([1.2,1.7,1.3,.9,1.1,.35,1],gap='small')
@@ -200,7 +204,7 @@ with cols[4].popover('**Genre** · '+selection_label(genres,selected_genres),use
  st.checkbox(counted('All','genre'),key='all_genres_control',on_change=lambda:set_checks('genre_',genres,st.session_state['all_genres_control']))
  st.markdown('<div style="border-top:1px solid #cbd2d9;margin:3px 0 5px"></div>',unsafe_allow_html=True)
  selected_genres=[g for g in genres if st.checkbox(counted(g,'genre',g),key='genre_'+g)]
-with cols[3].popover('**Type** · '+selection_label(show_types,selected_types),use_container_width=True):
+with cols[3].popover('**Type** · '+('Live Music' if selected_types==['Live Music'] else selection_label(show_types,selected_types)),use_container_width=True):
  st.session_state['all_types_control']=len(selected_types)==len(show_types)
  st.checkbox(counted('All','type'),key='all_types_control',on_change=lambda:set_checks('type_',show_types,st.session_state['all_types_control']))
  st.markdown('<div style="border-top:1px solid #cbd2d9;margin:3px 0 5px"></div>',unsafe_allow_html=True)

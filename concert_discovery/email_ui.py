@@ -43,7 +43,7 @@ def preferences(account_id, auth_configured):
     state = 'On' if account_id and st.session_state.get('weekly_email_enabled', False) else 'Off'
     if account_id and 'email_subscription' not in st.session_state:
         state = 'Unavailable'
-    with st.popover('Weekly Emails · ' + state, icon=':material/mail_outline:'):
+    with st.popover('Weekly Emails · ' + state, icon=':material/mail_outline:', help='Email me a list of new shows discovered that week'):
         st.write('**Weekly new shows**')
         st.write('All newly discovered shows, with Spotify Listeners, Trending, prices, and links.')
         st.caption('Mondays · Your filters don’t affect emails.')
