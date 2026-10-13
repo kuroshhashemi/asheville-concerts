@@ -32,7 +32,7 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add concert_discovery/api_budget.sqlite3
           if python -m concert_discovery.compact_catalog; then
-            git add concert_discovery/concert_data.sqlite3
+            git add concert_discovery/concert_data.sqlite3 concert_discovery/assets/ticket-prices.json
             if test -f concert_discovery/freshness.json; then git add concert_discovery/freshness.json; fi
           else
             git commit -m 'Preserve API request ledger after catalog packaging failure' || true

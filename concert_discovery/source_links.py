@@ -80,7 +80,12 @@ class PageReader:
         if parsed.scheme!='https' or not parsed.hostname or parsed.hostname in ('localhost','127.0.0.1') or parsed.hostname.replace('.','').isdigit():return None
         with connect(self.db_path) as c:
             schema(c);row=c.execute("SELECT markup,status FROM identity_page_cache WHERE url=? AND checked_at>=datetime('now','-7 days')",(url,)).fetchone()
-        if row:return decode_markup(row[0]) if row[1]==200 else None
+        if row:
+            markup=decode_markup(row[0]) if row[1]==200 else None
+            if markup:
+                from concert_discovery.prices import from_markup,save
+                save({'source_url':url},from_markup(markup))
+            return markup
         if self.remaining<=0:return None
         self.remaining-=1
         try:
@@ -91,6 +96,9 @@ class PageReader:
             status=response.status_code;markup=response.text[:2000000] if status==200 else ''
         except requests.RequestException:status=0;markup=''
         with connect(self.db_path) as c:c.execute('INSERT OR REPLACE INTO identity_page_cache VALUES(?,?,?,?)',(url,encode_markup(markup),status,utc_now()))
+        if status==200:
+            from concert_discovery.prices import from_markup,save
+            save({'source_url':url},from_markup(markup))
         return markup if status==200 else None
 
 

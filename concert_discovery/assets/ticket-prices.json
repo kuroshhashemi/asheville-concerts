@@ -1712,11 +1712,12 @@
   "songkick.com/concerts/43363142-stews-us-at-eulogy": {
     "min": 30.86,
     "max": 30.86,
-    "from_price": false,
-    "source": "DICE",
-    "detail": "ticket tier total and face value in minor units",
-    "checked_at": "2026-10-06",
-    "source_url": "https://dice.fm/event/6a750b073a926d00015520fa"
+    "from_price": true,
+    "source_url": "https://www.songkick.com/concerts/43363142-stews-us-at-eulogy",
+    "source": "Cached event page",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-13",
+    "observed_at": "2026-10-13T15:00:41.106009+00:00"
   },
   "dice.fm/event/6a837b6fb132fb00016ee284": {
     "min": 30.86,
@@ -2134,12 +2135,13 @@
   },
   "songkick.com/concerts/43373114-lespecial-at-eulogy": {
     "min": 38.57,
-    "max": 38.57,
-    "from_price": false,
-    "source": "DICE",
-    "detail": "ticket tier total and face value in minor units",
-    "checked_at": "2026-10-06",
-    "source_url": "https://dice.fm/event/6a7f3adb374f850001d07185"
+    "max": 70.53,
+    "from_price": true,
+    "source_url": "https://www.songkick.com/concerts/43373114-lespecial-at-eulogy",
+    "source": "Cached event page",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-13",
+    "observed_at": "2026-10-13T15:00:41.090618+00:00"
   },
   "jambase.com/show/mary-lattimore-ayurprana-listening-room-20261121": {
     "min": 34.72,
@@ -2180,11 +2182,12 @@
   "songkick.com/concerts/43373115-lespecial-at-eulogy": {
     "min": 38.57,
     "max": 38.57,
-    "from_price": false,
-    "source": "DICE",
-    "detail": "ticket tier total and face value in minor units",
-    "checked_at": "2026-10-06",
-    "source_url": "https://dice.fm/event/6a7f36b4dc003400015fe398"
+    "from_price": true,
+    "source_url": "https://www.songkick.com/concerts/43373115-lespecial-at-eulogy",
+    "source": "Cached event page",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-13",
+    "observed_at": "2026-10-13T15:00:41.094124+00:00"
   },
   "dice.fm/event/6a56764d9b7bc30001328a14": {
     "min": 25.35,
@@ -2234,11 +2237,12 @@
   "songkick.com/concerts/43368344-claudio-simonetti-at-eulogy": {
     "min": 64.25,
     "max": 64.25,
-    "from_price": false,
-    "source": "DICE",
-    "detail": "ticket tier total and face value in minor units",
-    "checked_at": "2026-10-06",
-    "source_url": "https://dice.fm/event/6a7c7a91c8387b000112ba8d"
+    "from_price": true,
+    "source_url": "https://www.songkick.com/concerts/43368344-claudio-simonetti-at-eulogy",
+    "source": "Cached event page",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-13",
+    "observed_at": "2026-10-13T15:00:41.128542+00:00"
   },
   "thegreyeagle.com/event/the-travers-brothership-presents-the-last-waltz/grey-eagle-music-hall/asheville-north-carolina": {
     "min": 26.66,
@@ -2297,11 +2301,12 @@
   "dice.fm/event/xeg63a-planet-ruti-the-wizard-album-release-party-29th-nov-eulogy-asheville-tickets": {
     "min": 19.84,
     "max": 19.84,
-    "from_price": false,
-    "source": "DICE",
-    "detail": "ticket tier total and face value in minor units",
-    "checked_at": "2026-10-06",
-    "source_url": "https://dice.fm/event/xeg63a-planet-ruti-the-wizard-album-release-party-29th-nov-eulogy-asheville-tickets"
+    "from_price": true,
+    "source_url": "https://dice.fm/event/xeg63a-planet-ruti-the-wizard-album-release-party-29th-nov-eulogy-asheville-tickets",
+    "source": "Cached event page",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-13",
+    "observed_at": "2026-10-13T15:00:41.097407+00:00"
   },
   "link.dice.fm/p3aa4a26b04c": {
     "min": 19.84,
@@ -2432,11 +2437,12 @@
   "songkick.com/concerts/43406981-sheer-mag-at-eulogy": {
     "min": 30.86,
     "max": 30.86,
-    "from_price": false,
-    "source": "DICE",
-    "detail": "ticket tier total and face value in minor units",
-    "checked_at": "2026-10-06",
-    "source_url": "https://link.dice.fm/h5664484d806"
+    "from_price": true,
+    "source_url": "https://www.songkick.com/concerts/43406981-sheer-mag-at-eulogy",
+    "source": "Cached event page",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-13",
+    "observed_at": "2026-10-13T15:00:41.099994+00:00"
   },
   "link.dice.fm/Da522a7c95f2": {
     "min": 30.86,
@@ -2707,5 +2713,26 @@
     "detail": "calendar price label",
     "checked_at": "2026-10-06",
     "source_url": "https://www.thegreyeagle.com/event/thao-full-band-show-me-tour/grey-eagle-music-hall/asheville-north-carolina/"
+  },
+  "sierranevada.com/event/larkin-poe": {
+    "min": 50.0,
+    "max": 50.0,
+    "from_price": false,
+    "source_url": "https://sierranevada.com/event/larkin-poe",
+    "observed_at": "2026-10-13T14:40:55.004860+00:00"
+  },
+  "sierranevada.com/event/spafford-2": {
+    "min": 50.0,
+    "max": 50.0,
+    "from_price": false,
+    "source_url": "https://sierranevada.com/event/spafford-2",
+    "observed_at": "2026-10-13T14:40:55.043123+00:00"
+  },
+  "sierranevada.com/event/somewhat-petty": {
+    "min": 50.0,
+    "max": 50.0,
+    "from_price": false,
+    "source_url": "https://sierranevada.com/event/somewhat-petty",
+    "observed_at": "2026-10-13T14:40:55.059621+00:00"
   }
 }

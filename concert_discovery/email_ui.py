@@ -32,52 +32,34 @@ def unsubscribe_page():
 
 
 def preferences(account_id, auth_configured):
-    if account_id and st.session_state.get('email_owner') != (account_id, st.user.get('email')):
+    email = st.user.get('email') if account_id else None
+    owner = (account_id, email)
+    if account_id and st.session_state.get('email_owner') != owner:
         try:
-            subscription = store().get(st.user.get('email'))
+            subscription = store().get(email)
             st.session_state['email_subscription'] = subscription
-            st.session_state['email_owner'] = (account_id, st.user.get('email'))
+            st.session_state['email_owner'] = owner
             st.session_state['weekly_email_enabled'] = bool(subscription and subscription['enabled'])
         except Exception:
             st.session_state.pop('email_subscription', None)
-    state = 'On' if account_id and st.session_state.get('weekly_email_enabled', False) else 'Off'
-    if account_id and 'email_subscription' not in st.session_state:
-        state = 'Unavailable'
-    with st.popover('Weekly Emails · ' + state, icon=':material/mail_outline:', help='Email me a list of new shows discovered that week'):
-        st.write('**Weekly new shows**')
-        st.write('All newly discovered shows, with Spotify Listeners, Trending, prices, and links.')
-        st.caption('Mondays · Your filters don’t affect emails.')
-        if not account_id:
-            if auth_configured:
-                st.button('Sign in to subscribe', on_click=st.login, key='email_sign_in')
-            else:
-                st.caption('Sign-in is required to subscribe.')
-            return
-        email = st.user.get('email')
-        if not email or st.user.get('email_verified') is False:
-            st.warning('A verified Google email address is required.')
-            return
-        owner = (account_id, email)
-        if st.session_state.get('email_owner') != owner or 'email_subscription' not in st.session_state:
+    unavailable = bool(account_id and 'email_subscription' not in st.session_state)
+    enabled = bool(account_id and st.session_state.get('weekly_email_enabled', False))
+    from pathlib import Path
+    import streamlit.components.v1 as components
+    control=components.declare_component('email_control_v1',path=str(Path(__file__).parent/'email_control'))
+    action=control(enabled=enabled,account_id=account_id,unavailable=unavailable,ack=st.session_state.get('email_action_ack'),key='email_control_'+(account_id or 'guest'),default=None)
+    if action and action.get('event_id')!=st.session_state.get('email_action_ack'):
+        if action.get('login_requested'):
+            st.session_state['email_action_ack']=action['event_id']
+            st.session_state['email_login_requested']=True
+        elif account_id and email and st.user.get('email_verified') is not False:
             try:
-                subscription = store().get(email)
+                target=bool(action['enabled'])
+                st.session_state['email_subscription']=store().set_enabled(email,target,account_id)
+                st.session_state['weekly_email_enabled']=target
+                st.session_state.pop('email_save_error',None)
             except Exception:
-                st.error('Email preferences are unavailable. Please reload to try again.')
-                return
-            st.session_state['email_owner'] = owner
-            st.session_state['email_subscription'] = subscription
-            st.session_state['weekly_email_enabled'] = bool(subscription and subscription['enabled'])
-
-        def save():
-            previous = st.session_state['email_subscription']
-            try:
-                st.session_state['email_subscription'] = store().set_enabled(email, st.session_state['weekly_email_enabled'], account_id)
-                st.session_state.pop('email_save_error', None)
-            except Exception:
-                st.session_state['weekly_email_enabled'] = bool(previous and previous['enabled'])
-                st.session_state['email_save_error'] = 'Could not save your preference. Please try again.'
-
-        st.toggle('Email me new shows', key='weekly_email_enabled', on_change=save)
-        st.caption('Delivered to ' + email)
-        if st.session_state.get('email_save_error'):
-            st.error(st.session_state['email_save_error'])
+                st.session_state['email_save_error']='Could not save your email preference. Please try again.'
+            st.session_state['email_action_ack']=action['event_id']
+            st.rerun()
+    if st.session_state.get('email_save_error'):st.error(st.session_state['email_save_error'])

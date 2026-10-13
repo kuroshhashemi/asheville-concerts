@@ -89,6 +89,8 @@ def fetch_ticketmaster(days=None,official=()):
             row=event('Ticketmaster',e['id'],e['name'],day+(' '+start['localTime'] if start.get('localTime') else ''),vid,performers,e.get('url'),spotify_ids(acts))
             from concert_discovery.source_links import spotify_artist_ids
             row['artist_metadata']={a['name']:{'genre':(a.get('classifications') or [{}])[0].get('genre',{}).get('name'),'spotify_candidates':sorted(spotify_artist_ids(json.dumps(a.get('externalLinks',{}))))} for a in acts}
+            from concert_discovery.prices import structured
+            row['advertised_price']=structured(e)
             row['classifications']=e.get('classifications',[])
             row['event_status']='cancelled' if e.get('dates',{}).get('status',{}).get('code') in ('cancelled','canceled') else 'scheduled'
             rows.append(row)
@@ -112,6 +114,8 @@ def fetch_jambase(days=None,db_path=None):
             primary=next((o.get('url') for o in e.get('offers',[]) if o.get('category')=='ticketingLinkPrimary'),e.get('url'))
             row=event('JamBase',e['identifier'],e['name'],e['startDate'].replace('T',' '),vid,performers,primary)
             row['source_url']=e['url']
+            from concert_discovery.prices import structured
+            row['advertised_price']=structured(e)
             if e.get('@type')=='Concert':row['classifications']=[{'segment':{'name':'Music'}}]
             row['artist_metadata']={a['name']:{'genre':', '.join(a.get('genre',[])),'image_url':a.get('image'),'source_pages':[a.get('url')] if a.get('url') else []} for a in acts}
             from concert_discovery.source_links import spotify_artist_ids

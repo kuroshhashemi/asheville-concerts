@@ -56,7 +56,7 @@ class DigestTests(unittest.TestCase):
                 (3, (END - timedelta(days=8)).isoformat(), 1),
                 (4, END.isoformat(), 1),
                 (5, (END - timedelta(days=1)).isoformat(), 1)])
-        catalog = [{'show_id': i, 'dedupe_key': str(i)} for i in range(1, 6)]
+        catalog = [{'show_id': i, 'dedupe_key': str(i), 'audience':1000, 'event_classification':{'category':'live_music'}} for i in range(1, 6)]
         with patch('concert_discovery.weekly_digest.get_shows', return_value=catalog), patch('concert_discovery.reconciliation.key_aliases', return_value={'old-key': '5'}):
             self.assertEqual([s['show_id'] for s in new_shows(END - timedelta(days=7), END, self.db, ['old-key'])], [1])
 
@@ -129,8 +129,8 @@ class DigestTests(unittest.TestCase):
         message = smtp.send_message.call_args.args[0]
         self.assertEqual(message['To'], 'recipient@example.com')
         self.assertEqual(message['List-Unsubscribe'], '<https://example.com/unsubscribe>')
-        self.assertEqual([part.get_content_type() for part in message.iter_parts()], ['text/plain', 'multipart/related'])
-        self.assertEqual(len([part for part in message.walk() if part.get_content_type() == 'image/png']), 6)
+        self.assertEqual([part.get_content_type() for part in message.iter_parts()], ['text/plain', 'text/html'])
+        self.assertEqual(len([part for part in message.walk() if part.get_content_type() == 'image/png']), 0)
         self.assertIn('text/html', [part.get_content_type() for part in message.walk()])
 
     def test_atomic_claim_and_scoped_unsubscribe(self):

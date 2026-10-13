@@ -17,6 +17,8 @@ def save_events(events,db_path=DATABASE_PATH):
             from concert_discovery.bill_evidence import apply
             e=apply(c,e)
             upsert_show(c,e)
+            from concert_discovery.prices import save as save_price
+            save_price(e,e.get('advertised_price'))
             for name,metadata in e.get('artist_metadata',{}).items():
                 aid=upsert_artist(c,name)
                 from concert_discovery.source_links import schema

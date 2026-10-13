@@ -21,6 +21,7 @@ from concert_discovery.calendar_links import google_calendar_link
 from concert_discovery.email_store import EmailStore
 from concert_discovery.email_images import play_button, revival_icon, inline_images
 
+EMAIL_ASSETS = 'https://raw.githubusercontent.com/kuroshhashemi/asheville-concerts/main/concert_discovery/assets/email-icons/'
 APP_URL = 'https://asheville-soundcheck.streamlit.app/'
 ZONE = ZoneInfo('America/New_York')
 FIRST_SEND = date(2026, 10, 19)
@@ -53,7 +54,9 @@ def new_shows(start, end, db_path=DATABASE_PATH, sent_keys=()):
     for show in catalog:
         record = discovered.get(show['show_id'])
         if (record and record['eligible'] and start <= instant(record['first_seen_at']) < end
-                and show['dedupe_key'] not in already_sent):
+                and show['dedupe_key'] not in already_sent
+                and show.get('audience') is not None
+                and show.get('event_classification',{}).get('category')=='live_music'):
             result.append(show)
     return result
 
@@ -63,12 +66,14 @@ def safe_url(value):
     return value if urlsplit(value).scheme in ('http', 'https') else ''
 
 
-def render(shows, unsubscribe_url, end, prices=None):
+def render(shows, unsubscribe_url, end, prices=None, start=None):
     prices = load_prices() if prices is None else prices
+    start = start or end - timedelta(days=7)
+    since = start.astimezone(ZONE).strftime('%b %d, %Y').replace(' 0',' ')
     esc = lambda value: html.escape(str(value), quote=True)
-    icon = lambda name, alt: f'<img src="cid:soundcheck-{name}" width="20" height="20" alt="{esc(alt)}" style="vertical-align:middle;border:0">'
+    icon = lambda name, alt: f'<img src="{EMAIL_ASSETS}{name}.png" width="20" height="20" alt="{esc(alt)}" style="vertical-align:middle;border:0">'
     max_listeners = max([show.get('audience') or 0 for show in shows] + [1])
-    rows, plain = [], ['Asheville Soundcheck', f'{len(shows)} newly discovered shows', APP_URL, '']
+    rows, plain = [], ['Asheville Soundcheck', f'{len(shows)} newly discovered shows since {since}', APP_URL, '']
     for show in shows:
         name = display_name(show)
         venue = VENUE_NAMES.get(show['venue_id'], show['venue_name'])
@@ -94,7 +99,7 @@ def render(shows, unsubscribe_url, end, prices=None):
             links.append(f'<a href="{esc(buy)}" style="color:#102c43">Tickets{(" · " + esc(price)) if price != "—" else ""}</a>')
             calendar = google_calendar_link({**show, 'venue_name': venue}, name, buy)
             links.append(f'<a href="{esc(calendar)}" style="color:#102c43">Add to calendar</a>')
-        play = f'<a href="{esc(listen)}" title="Listen on Spotify" aria-label="Listen on Spotify"><img src="{play_button()}" width="29" height="29" alt="Play on Spotify" style="display:block;border:0"></a>' if listen else ''
+        play = f'<a href="{esc(listen)}" title="Listen on Spotify" aria-label="Listen on Spotify"><img src="{EMAIL_ASSETS}play.png" width="29" height="29" alt="Play on Spotify" style="display:block;border:0"></a>' if listen else ''
         ticket = f'<a href="{esc(buy)}" style="display:inline-block;background:#eef2f4;color:#102c43;border-radius:8px;padding:7px;text-decoration:none">{esc(price) if price != "—" else "Tickets"}</a>' if buy else ''
         calendar_link = f'<a href="{esc(calendar)}" title="Add to calendar" style="color:#102c43;margin-left:6px">▦</a>' if buy else ''
         badges = ''.join(f'<span style="font-size:10px;background:#eef7f5;padding:3px 5px;border-radius:6px;margin-left:5px">{esc(t)}</span>' for t in ['New'] + tags)
@@ -110,7 +115,7 @@ def render(shows, unsubscribe_url, end, prices=None):
                 part = (f'<img src="{esc(head_image)}" width="28" height="28" alt="" style="border-radius:50%;vertical-align:middle;margin-right:7px;object-fit:cover">' if head_image else '') + esc(headliner.get('display_name', ''))
                 artist_parts.append(f'<a href="{esc(profile)}" style="color:#247e79;text-decoration:none">{part}</a>' if profile else part)
         artist_content = ' &amp; '.join(artist_parts) if artist_parts else (f'<a href="{esc(listen)}" style="color:#247e79;text-decoration:none">{photo}{esc(name)}</a>' if listen else photo + esc(name))
-        venue_icon = revival_icon() if show['venue_id'] == 'revival' else safe_url(show.get('venue_icon'))
+        venue_icon = EMAIL_ASSETS+'revival.png' if show['venue_id'] == 'revival' else safe_url(show.get('venue_icon'))
         venue_content = (f'<img src="{esc(venue_icon)}" width="18" height="18" alt="" style="vertical-align:middle;margin-right:9px">' if venue_icon else '') + esc(venue)
         bar_width = round(max(0, show.get('audience') or 0) / max_listeners * 150)
         bar_cells = (f'<td width="{bar_width}" bgcolor="#bde6de" style="width:{bar_width}px;height:6px;font-size:0;line-height:0">&nbsp;</td>' if bar_width else '')
@@ -125,8 +130,8 @@ def render(shows, unsubscribe_url, end, prices=None):
                       (' · '.join(tags)), *([f'Spotify: {listen}'] if listen else []), f'Tickets: {buy}', ''])
     plain.extend(['Review shows and mark Hidden, Interested or Going: ' + APP_URL, 'Unsubscribe: ' + unsubscribe_url])
     content = f'''<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0;background:#fff;font-family:Arial,sans-serif;color:#102c43">
-<table role="presentation" width="100%"><tr><td align="center"><table role="presentation" width="100%" style="max-width:1250px;background:#fff"><tr><td style="padding:8px 0">
-<table role="presentation" width="100%" cellspacing="0" cellpadding="0"><tr><td><h1 style="font-size:26px;margin:0">Asheville Soundcheck</h1></td><td align="right"><a href="{APP_URL}" style="display:inline-block;background:#102c43;color:#fff;text-decoration:none;border-radius:12px;padding:12px 18px;white-space:nowrap">Open app</a></td></tr></table><p style="color:#63717d">{len(shows)} newly discovered shows · {esc(end.astimezone(ZONE).strftime('%b %d'))}</p>
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0"><tr><td align="left"><table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#fff"><tr><td style="padding:0">
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0"><tr><td><h1 style="font-size:26px;margin:0">Asheville Soundcheck</h1></td><td align="right"><a href="{APP_URL}" style="display:inline-block;background:#102c43;color:#fff;text-decoration:none;border-radius:12px;padding:12px 18px;white-space:nowrap">Open app</a></td></tr></table><p style="color:#63717d">{len(shows)} newly discovered shows since {esc(since)}</p>
 <table width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;text-align:left;min-width:950px"><thead><tr>{''.join(f'<th style="padding:13px 12px;background:#eef7f5;color:#526071;font-size:12px;text-align:{"center" if i == 1 else "left"};white-space:nowrap">{label}</th>' for i, label in enumerate(['Date', icon('spotify','Spotify'), 'Artist', 'Venue', 'Genre', 'Spotify Listeners', 'Trending', 'Tickets']))}</tr></thead><tbody>{''.join(rows)}</tbody></table>
 <p style="font-size:14px;text-align:center"><a href="{esc(unsubscribe_url)}" style="color:#63717d">Unsubscribe</a></p>
 </td></tr></table></td></tr></table></body></html>'''
@@ -141,12 +146,7 @@ def send_email(sender, password, recipient, subject, content, plain, unsubscribe
     message['Message-ID'] = make_msgid(domain='gmail.com')
     message['List-Unsubscribe'] = '<' + unsubscribe_url + '>'
     message.set_content(plain)
-    content, visuals = inline_images(content)
     message.add_alternative(content, subtype='html')
-    for name, data in visuals.items():
-        message.get_payload()[-1].add_related(data, maintype='image', subtype='png', cid=f'<{name}>', disposition='inline')
-    for name, data in json.loads((Path(__file__).parent / 'assets/email-icons.json').read_text()).items():
-        message.get_payload()[-1].add_related(base64.b64decode(data), maintype='image', subtype='png', cid=f'<soundcheck-{name}>', disposition='inline')
     # Authentication/connection failures occur before any message submission.
     with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=ssl.create_default_context(), timeout=30) as smtp:
         smtp.login(sender, password.replace(' ', ''))
@@ -183,7 +183,7 @@ def run(store, sender, password, current=None, db_path=DATABASE_PATH):
             store.finish(sid, end.isoformat(), 'empty'); result['empty'] += 1
             continue
         unsubscribe_url = APP_URL + '?' + urlencode({'unsubscribe': subscription['unsubscribe_token']})
-        content, plain = render(shows, unsubscribe_url, end)
+        content, plain = render(shows, unsubscribe_url, end, start=start)
         try:
             mid = send_email(sender, password, subscription['email'], SUBJECT, content, plain, unsubscribe_url)
         except (smtplib.SMTPAuthenticationError, smtplib.SMTPSenderRefused, smtplib.SMTPRecipientsRefused, smtplib.SMTPDataError):

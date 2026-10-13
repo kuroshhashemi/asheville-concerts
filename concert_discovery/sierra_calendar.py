@@ -27,3 +27,40 @@ def parse_cards(cards,today=None,days=None):
   rows.append(row)
  if not rows:raise ValueError('No upcoming Mills River event cards; retain prior catalog')
  return rows
+
+API_URL='https://webadmin.sierranevada.com/wp-json/tribe/events/v1/events'
+
+def parse_api(data,today=None):
+ import html
+ from concert_discovery.prices import structured,advertised
+ today=today or date.today();rows=[]
+ for item in data.get('events',[]):
+  venue=item.get('venue') or {}
+  city=str(venue.get('city','')).casefold()
+  explicit_mills=city=='mills river' or (not city and ('/mills-river/' in venue.get('url','') or re.search(r'\bMills River\b',html.unescape(item.get('title','')),re.I)))
+  if not explicit_mills:continue
+  start=item.get('start_date','')
+  if not start or date.fromisoformat(start[:10])<today:continue
+  title=html.unescape(item['title']);url=item['url']
+  row=event('SierraOfficial',url,title,start,'sierra-nevada',parse_performers(title),item.get('website') or url)
+  description=re.sub('<[^>]+>',' ',html.unescape(item.get('description','')))
+  row.update(official_event_url=url,date_status='venue_confirmed',category_text=description,
+             advertised_price=structured(item) or advertised(description),event_status='cancelled' if item.get('event_status') in ('cancelled','canceled') else 'scheduled')
+  rows.append(row)
+ return rows
+
+def fetch_api(snapshots=None):
+ import requests
+ rows=[];total=None;seen=0
+ for page in range(1,21):
+  r=requests.get(API_URL,params={'start_date':date.today().isoformat(),'per_page':100,'page':page},timeout=25);r.raise_for_status();data=r.json()
+  if total is None:total=int(data['total']);pages=int(data['total_pages'])
+  seen+=len(data.get('events',[]))
+  rows.extend(parse_api(data))
+  if page>=pages:
+   if seen!=total:raise ValueError('Sierra pagination count mismatch; no completeness snapshot')
+   if snapshots is not None and rows:
+    from concert_discovery.calendar_audit import snapshots as make_snapshots
+    snapshots.extend(make_snapshots(rows,'https://sierranevada.com/events',page))
+   return rows
+ raise ValueError('Sierra calendar exceeded bounded pagination; no completeness snapshot')

@@ -298,6 +298,10 @@ def upsert_show(connection: sqlite3.Connection, event: Dict[str, object]) -> int
         connection.execute('DELETE FROM show_artists WHERE show_id=?',(show_id,))
     for performer in event.get("performers", []):
         name = str(performer["name"]).strip()
+        # A weak provider spelling cannot add a second identity to an official bill.
+        if existing and existing['date_status']=='venue_confirmed' and not event.get('source_name','').endswith('Official') and 'candidate' in performer.get('role','') and not spotify_links.get(' '.join(name.casefold().split())):
+            from concert_discovery.bill_presentation import canonical_billing_name
+            name=canonical_billing_name(name,event['title'])
         # Preserve a verified existing identity when the source adds/removes "The".
         article_key=lambda n:re.sub(r'^the\s+','',n.strip().casefold())
         aliases=[dict(r) for r in connection.execute('SELECT * FROM artists WHERE spotify_artist_id IS NOT NULL') if article_key(r['display_name'])==article_key(name)]

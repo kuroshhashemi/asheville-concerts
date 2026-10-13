@@ -100,6 +100,8 @@ def parse_calendar(html, today=None, days=None,source_name='OrangePeelOfficial')
             date_status='venue_confirmed', date_note='Date and venue read directly from official calendar.',
             artist_spotify_links={}, performers=performers, ticket_availability=text_availability(n.text()),
             event_status='cancelled' if cancelled else 'scheduled',category_text=n.text())
+        from concert_discovery.prices import advertised
+        events[url]['advertised_price']=advertised(n.text())
     if not events:
         raise ValueError('Official calendar returned no parseable concerts; retain prior data and inspect source.')
     return sorted(events.values(), key=lambda e:e['performance_start'])

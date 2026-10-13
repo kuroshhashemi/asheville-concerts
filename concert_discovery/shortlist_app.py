@@ -17,7 +17,21 @@ from concert_discovery.email_ui import unsubscribe_page, preferences as email_pr
 unsubscribe_page()
 st.markdown('''<style>[data-testid="stHeader"]{display:none}.block-container{padding-top:0!important}.st-key-review_navigation [data-testid="stHorizontalBlock"]{flex-wrap:wrap;gap:24px;align-items:center}.st-key-review_navigation [data-testid="stHorizontalBlock"]>[data-testid="stColumn"]:first-child{flex:0 0 auto!important;width:auto!important;min-width:0!important}.st-key-review_navigation [data-testid="stHorizontalBlock"]>[data-testid="stColumn"]:last-child{flex:1 1 420px!important;min-width:0!important}.st-key-review_guide [data-testid="stMarkdownContainer"]{margin-bottom:0!important}.st-key-review_guide p{font-size:13px;color:#63717d;margin:0;line-height:1.5}.st-key-review_guide strong{font-weight:600;color:#526071}@media(prefers-color-scheme:dark){.st-key-review_guide p{color:#b5c6ce}.st-key-review_guide strong{color:#e4f3ef}}.st-key-review_navigation [role="radiogroup"]{gap:8px;border:0;background:transparent;flex-wrap:wrap}.st-key-review_navigation button[data-testid*="segmented_control"]{border-radius:999px!important;border:0!important;padding:8px 16px;background:transparent;color:#526071;min-height:40px;box-shadow:none!important}.st-key-review_navigation button[data-testid*="segmented_control"]:hover{background:#edf3f4;color:#102c43}.st-key-review_navigation button[data-testid="stBaseButton-segmented_controlActive"]{background:#102c43!important;color:#fff!important}.st-key-review_navigation button p{font-size:14px;font-weight:600}.st-key-review_navigation button code{font-family:inherit;font-size:11px;border-radius:999px;background:#e6ecef;color:#526071;padding:2px 6px;margin-left:5px}.st-key-review_navigation button[data-testid="stBaseButton-segmented_controlActive"] code{background:#ffffff24;color:#d9eee9}.st-key-filter_bar button[data-testid="stPopoverButton"]{border-radius:999px;border:1px solid transparent;background:#f0f4f6;color:#63717d;padding:7px 12px;height:42px;min-height:42px;box-shadow:none}.st-key-filter_bar button[data-testid="stPopoverButton"]:hover{border-color:#b2c8cb;background:#e7f0f1}.st-key-filter_bar button[data-testid="stPopoverButton"] p{font-size:13px}.st-key-filter_bar button[data-testid="stPopoverButton"] strong{color:#102c43;font-weight:600}.st-key-filter_bar [data-testid="stHorizontalBlock"]{gap:8px;flex-wrap:wrap}.st-key-filter_bar [data-testid="stHorizontalBlock"]>[data-testid="stColumn"]{flex:0 0 auto!important;width:auto!important;min-width:0!important}.st-key-filter_bar button[data-testid="stPopoverButton"]{width:auto!important}.st-key-filter_bar button[data-testid="stPopoverButton"] p{white-space:nowrap}.st-key-filter_bar [data-testid="stColumn"]:has(.st-key-search_filter){width:220px!important;max-width:100%!important}.st-key-search_filter{width:100%}@media(prefers-color-scheme:dark){.st-key-review_navigation button[data-testid*="segmented_control"]{color:#b7c7d0}.st-key-review_navigation button[data-testid*="segmented_control"]:hover{background:#263d49;color:#fff}.st-key-review_navigation button[data-testid="stBaseButton-segmented_controlActive"]{background:#bde6de!important;color:#102c43!important}.st-key-review_navigation button code{background:#314752;color:#c5d6de}.st-key-review_navigation button[data-testid="stBaseButton-segmented_controlActive"] code{background:#102c4320;color:#102c43}.st-key-filter_bar button[data-testid="stPopoverButton"]{background:#233843;color:#b5c6ce}.st-key-filter_bar button[data-testid="stPopoverButton"] strong{color:#e4f3ef}.st-key-filter_bar button[data-testid="stPopoverButton"]:hover{background:#2b464d;border-color:#537a7a}}
 .st-key-review_navigation{border-bottom:1px solid #e1e7eb;margin-bottom:8px}.st-key-review_navigation button[data-testid*="segmented_control"]{border-radius:0!important;background:transparent!important;padding:10px 4px!important;margin-right:24px;border-bottom:3px solid transparent!important;color:#71808b!important}.st-key-review_navigation button[data-testid="stBaseButton-segmented_controlActive"]{color:#102c43!important;border-bottom-color:#102c43!important}.st-key-review_navigation button[data-testid="stBaseButton-segmented_controlActive"] code{background:#e6ecef!important;color:#526071!important}
-[data-testid=stPopoverBody]:has(.st-key-growth_range){width:300px!important;min-width:0!important;max-width:calc(100vw - 32px)!important}[data-testid=stCheckbox] code{font-family:inherit;font-size:11px;font-weight:600;color:#526071;background:#eef0f3;border-radius:999px;padding:1px 7px;margin-left:6px;white-space:nowrap}.block-container{max-width:1600px;padding-top:2rem}h1{letter-spacing:-1px}.soundcheck-header{width:100vw;margin-left:calc(50% - 50vw);box-sizing:border-box;padding:32px max(5rem,calc((100vw - 1440px)/2));margin-bottom:20px;display:flex;align-items:center;gap:16px}@media(max-width:640px){.soundcheck-header{padding:24px 1rem;gap:12px}.soundcheck-header h1{font-size:1.8rem}.soundcheck-header img{width:60px}}[data-testid="stElementContainer"]:has(iframe[title="shortlist_app.filter_preferences_v1"]){display:none}.st-key-brand_header{position:relative}.st-key-banner_auth{position:absolute;right:0;top:3rem;width:auto;z-index:10}.st-key-banner_auth button{background:#102c43;color:#fff;border-color:#bde6de}@media(max-width:640px){.st-key-banner_auth{top:2rem;right:0}.soundcheck-header h1{max-width:210px}}.st-key-search_filter button [data-testid="stIconMaterial"]{display:none}.st-key-search_filter button::before{content:"";width:18px;height:18px;background:currentColor;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.3-4.3'/%3E%3C/svg%3E") center/contain no-repeat}.st-key-filter_bar [data-testid="stColumn"]:has(.st-key-weekly_email_control){margin-left:auto!important}.st-key-weekly_email_control button{border:1px solid #b2c8cb!important;background:#eef7f5!important}</style>''',unsafe_allow_html=True)
+[data-testid=stPopoverBody]:has(.st-key-growth_range){width:300px!important;min-width:0!important;max-width:calc(100vw - 32px)!important}[data-testid=stCheckbox] code{font-family:inherit;font-size:11px;font-weight:600;color:#526071;background:#eef0f3;border-radius:999px;padding:1px 7px;margin-left:6px;white-space:nowrap}.block-container{max-width:1600px;padding-top:2rem}h1{letter-spacing:-1px}.soundcheck-header{width:100vw;margin-left:calc(50% - 50vw);box-sizing:border-box;padding:32px max(5rem,calc((100vw - 1440px)/2));margin-bottom:20px;display:flex;align-items:center;gap:16px}@media(max-width:640px){.soundcheck-header{padding:24px 1rem;gap:12px}.soundcheck-header h1{font-size:1.8rem}.soundcheck-header img{width:60px}}[data-testid="stElementContainer"]:has(iframe[title="shortlist_app.filter_preferences_v1"]){display:none}.st-key-brand_header{position:relative}.st-key-banner_auth{position:absolute;right:0;top:3rem;width:auto;z-index:10}.st-key-banner_auth button{background:#102c43;color:#fff;border-color:#bde6de}@media(max-width:640px){.st-key-banner_auth{top:2rem;right:0}.soundcheck-header h1{max-width:210px}}.st-key-search_filter button [data-testid="stIconMaterial"]{display:none}.st-key-search_filter button::before{content:"";width:18px;height:18px;background:currentColor;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.3-4.3'/%3E%3C/svg%3E") center/contain no-repeat}.st-key-filter_bar [data-testid="stColumn"]:has(.st-key-weekly_email_control){margin-left:auto!important;width:176px!important}.st-key-weekly_email_control button{border:1px solid #b2c8cb!important;background:#eef7f5!important}</style>''',unsafe_allow_html=True)
+def dismiss_login():
+ st.session_state['login_intro_seen']=True
+ st.query_params.pop('preview_signin',None)
+def login_prompt(arrival=False):
+ @st.dialog('Welcome' if arrival else 'Sign In to Save',on_dismiss=dismiss_login)
+ def show_prompt():
+  st.markdown('<style>[data-testid=stDialog] .st-key-google_signin_popup button{background:#102c43!important;color:white!important;border:0!important;border-radius:999px!important;gap:8px!important}[data-testid=stDialog] .st-key-google_signin_popup button p{color:white!important}[data-testid=stDialog] button{border-radius:999px!important}[data-testid=stDialog] h2{width:100%;text-align:center}[role=dialog] [style*="font-size: 1.5rem"]>div{width:100%}[role=dialog] [style*="font-size: 1.5rem"] p{text-align:center}</style>',unsafe_allow_html=True)
+  st.write('Sign in to bookmark/hide shows, get emails about new shows, or save filters')
+  with st.container(key='google_signin_popup'):
+   st.button('Sign In',on_click=st.login,key='popup_google_signin',use_container_width=True)
+  if st.button('Browse without sign in',key='browse_without_signin',use_container_width=True):
+   dismiss_login();st.rerun()
+ show_prompt()
+st.markdown('<style>[data-testid="stDialog"] [role="dialog"]{position:fixed!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important;margin:0!important;border-radius:24px!important}.st-key-banner_auth button,.st-key-google_signin_popup button,.st-key-weekly_email_control button{border-radius:999px!important}.st-key-google_signin_popup button::before,.st-key-banner_google_signin button::before{content:"";width:18px;height:18px;background:url(https://www.google.com/favicon.ico) center/contain no-repeat}.st-key-google_signin_popup button{background:#102c43;color:white;height:42px}</style>',unsafe_allow_html=True)
 with st.container(key='brand_header'):
  logo_data=base64.b64encode((Path(__file__).parent/'assets/soundcheck-logo.png').read_bytes()).decode()
  header_data=base64.b64encode((Path(__file__).parent/'assets/concert-header.jpg').read_bytes()).decode()
@@ -52,7 +66,7 @@ with st.container(key='brand_header'):
     st.session_state['status_account']=account_id
   else:
    with st.container(key='banner_auth'):
-    st.button('Sign in',on_click=st.login)
+    st.button('Sign In',on_click=login_prompt,key='banner_google_signin')
 @st.cache_resource
 def prepare_catalog():
  initialize()
@@ -162,9 +176,10 @@ growth_summary='Any' if (growth_low,growth_high)==(growth_floor,growth_ceiling) 
 selected_genres=[g for g in genres if st.session_state['genre_'+g]]
 selected_types=[t for t in show_types if st.session_state['type_'+t]]
 # Highlight audience restrictions without treating type/unknown defaults as warnings.
-restricted=[len(selected_venues)!=len(venues),(low_k,high_k)!=(0,upper),(growth_low,growth_high)!=(growth_floor,growth_ceiling),False,len(selected_genres)!=len(genres)]
-filter_styles=''.join(f'.st-key-filter_bar [data-testid="stHorizontalBlock"] > [data-testid="stColumn"]:nth-child({i+1}) button[data-testid="stPopoverButton"]{{background:#d8eeea;border:1px solid #69a99f;color:#17685f}} .st-key-filter_bar [data-testid="stHorizontalBlock"] > [data-testid="stColumn"]:nth-child({i+1}) button[data-testid="stPopoverButton"] strong{{color:#17685f}}' for i,active in enumerate(restricted) if active)
-st.markdown('<style>'+filter_styles+'.st-key-weekly_email_control button[data-testid="stPopoverButton"]{background:#102c43!important;color:white!important;border:0!important;height:42px;display:flex;align-items:center;justify-content:center}.st-key-weekly_email_control button p{color:white!important}.st-key-weekly_email_control{display:flex;align-items:center}</style>',unsafe_allow_html=True)
+restricted=[len(selected_venues)!=len(venues),(low_k,high_k)!=(0,upper),(growth_low,growth_high)!=(growth_floor,growth_ceiling),selected_types!=['Live Music'] and len(selected_types)!=len(show_types),len(selected_genres)!=len(genres)]
+filter_styles=''.join(f'.st-key-filter_bar [data-testid="stHorizontalBlock"] > [data-testid="stColumn"]:nth-child({i+1}) button[data-testid="stPopoverButton"] em{{color:#247e79}}' for i,active in enumerate(restricted) if active)
+st.markdown('<style>.st-key-filter_bar button em{font-style:normal;color:inherit}'+filter_styles+'.st-key-weekly_email_control button{background:#102c43!important;color:white;border:0!important;height:42px;display:flex;align-items:center;justify-content:center;border-radius:999px!important}.st-key-weekly_email_control{display:flex;align-items:center}</style>',unsafe_allow_html=True)
+
 review_navigation=st.container(key='review_navigation')
 with st.container(key='filter_bar'):
  cols=st.columns([1.2,1.7,1.3,.9,1.1,.35,1],gap='small')
@@ -183,7 +198,7 @@ option_counts,all_counts=facet_counts(shows,selected_venues,selected_genres,sele
 def counted(label,facet,value=None):
  count=all_counts[facet] if value is None else option_counts[facet].get(value,0)
  return label+' `'+str(count)+'`'
-with cols[0].popover('**Venues** · '+selection_label(venues,selected_venues),use_container_width=True):
+with cols[0].popover('**Venues** · '+'*'+selection_label(venues,selected_venues)+'*',use_container_width=True):
  st.session_state['all_venues_control']=len(selected_venues)==len(venues)
  st.checkbox(counted('All','venue'),key='all_venues_control',on_change=lambda:set_checks('venue_',venues,st.session_state['all_venues_control']))
  st.markdown('<div style="border-top:1px solid #cbd2d9;margin:3px 0 5px"></div>',unsafe_allow_html=True)
@@ -193,18 +208,18 @@ with cols[0].popover('**Venues** · '+selection_label(venues,selected_venues),us
  selected_venues=[v for v in venues if v in core_names and st.checkbox(counted(v,'venue',v),key='venue_'+v)]
  st.caption('Other venues · Select shows')
  selected_venues += [v for v in venues if v not in core_names and st.checkbox(counted(v,'venue',v),key='venue_'+v)]
-with cols[1].popover('**Spotify Listeners** · '+listener_summary,use_container_width=True):
+with cols[1].popover('**Spotify Listeners** · '+'*'+listener_summary.replace(' · Hide unknown','')+'*'+(' · Hide unknown' if st.session_state.get('hide_unknown') else ''),use_container_width=True):
  low_k,high_k=st.slider("Listeners ('000s)",0,upper,step=50,key='listener_range',help='Values are thousands: 250 = 250k.')
  hide_unknown=st.checkbox("Hide 'unknown'",key='hide_unknown')
  minimum=low_k*1000
-with cols[2].popover('**Trending** · '+growth_summary,use_container_width=True):
+with cols[2].popover('**Trending** · '+'*'+growth_summary+'*',use_container_width=True):
  growth_low,growth_high=st.slider('Six-month growth (%)',growth_floor,growth_ceiling,step=1,key='growth_range',format='%d%%')
-with cols[4].popover('**Genre** · '+selection_label(genres,selected_genres),use_container_width=True):
+with cols[4].popover('**Genre** · '+'*'+selection_label(genres,selected_genres)+'*',use_container_width=True):
  st.session_state['all_genres_control']=len(selected_genres)==len(genres)
  st.checkbox(counted('All','genre'),key='all_genres_control',on_change=lambda:set_checks('genre_',genres,st.session_state['all_genres_control']))
  st.markdown('<div style="border-top:1px solid #cbd2d9;margin:3px 0 5px"></div>',unsafe_allow_html=True)
  selected_genres=[g for g in genres if st.checkbox(counted(g,'genre',g),key='genre_'+g)]
-with cols[3].popover('**Type** · '+('Live Music' if selected_types==['Live Music'] else selection_label(show_types,selected_types)),use_container_width=True):
+with cols[3].popover('**Type** · '+'*'+('Live Music' if selected_types==['Live Music'] else selection_label(show_types,selected_types))+'*',use_container_width=True):
  st.session_state['all_types_control']=len(selected_types)==len(show_types)
  st.checkbox(counted('All','type'),key='all_types_control',on_change=lambda:set_checks('type_',show_types,st.session_state['all_types_control']))
  st.markdown('<div style="border-top:1px solid #cbd2d9;margin:3px 0 5px"></div>',unsafe_allow_html=True)
@@ -267,7 +282,7 @@ if data:
   price=for_show(show,prices)
   rows.append(dict(id=show['dedupe_key'] if account_id else item['show_id'],date_sort=show['performance_start'],date=item['Date'].strftime('%a %b %d')+(item['Date'].strftime(" '%y") if item['Date'].year!=datetime.now().year else ''),name=item['Name'],artist_image=item['Artist image'],artists=[dict(name=a['display_name'],image=a.get('image_url'),url=a.get('spotify_profile_url')) for a in show['headliners']] if show['event_classification']['category'] in ('live_music','cover_band') else [],
       venue=item['Venue'],venue_icon=item['Venue icon'],show_type=((show.get('event_classification') or {}).get('category') or 'unknown').replace('_',' ').title(),type_evidence=(show.get('event_classification') or {}).get('evidence',''),genre=item['Genre'],listeners=show['audience'],listeners_label=item['Monthly listeners'],
-      price=price['min'] if price else None,price_label=price_label(price),price_detail=(f"Advertised price · {price['source']} · checked {price['checked_at']}. Fees may vary by source." if price else ''),
+      price=price['min'] if price else None,price_label=price_label(price),price_detail=(f"Advertised price · {price.get('source','Structured event data')} · checked {price.get('checked_at',price.get('observed_at',''))}. Fees may vary by source." if price else ''),
       growth=show['listener_growth_6m'],growth_artist=(show['growth_artist'] or {}).get('display_name'),growth_detail=(show['growth_artist'] or {}).get('growth_detail'),
       just_announced=show.get('just_announced'),sold_out=show.get('sold_out'),status=item['Status'],listen=item['Listen'],buy=item['Buy'],calendar=google_calendar_link(show,item['Name'],item['Buy'],calendar_id),calendar_label='Add to Family Google Calendar' if calendar_id else 'Add to Google Calendar',listener_artist=(show['audience_artist'] or {}).get('display_name'),
       sources=[dict(label=x['source_name'],url=x['source_url']) for x in show['sources']],
@@ -279,12 +294,6 @@ if data:
  if action and action.get('event_id')!=st.session_state.get('last_status_event'):
   if action.get('login_requested') and not account_id:
    st.session_state['last_status_event']=action['event_id']
-   @st.dialog('Sign in to save your choices')
-   def login_prompt():
-    if auth_configured:
-     left,center,right=st.columns([1,2,1])
-     with center:st.button('Sign in with Google',on_click=st.login,key='status_login',use_container_width=True)
-    else:st.info('Sign-in is not configured for this app yet.')
    login_prompt()
   elif account_id:
    changes=action.get('changes') or ([action['change']] if action.get('change') else [])
@@ -312,7 +321,6 @@ else:
  elif view=='Saved':st.info('No saved shows here yet. Bookmark a show as Interested or mark it Going.' if account_id else 'Sign in to see your Interested and Going shows.')
  elif view=='Hidden':st.info('No hidden shows match your filters.')
  else:st.info('No shows match your filters. Try more venues or a lower listener minimum.')
-st.caption('Six-month growth uses PastSpot dated listener history; multi-artist bills show the highest headliner growth. — means not enough history. No minimum includes shows without audience data. Growth and audience filters work independently.')
 with st.expander('Excluded events'):
  from concert_discovery.discovery import excluded_events
  exclusions=excluded_events()
@@ -323,3 +331,14 @@ with st.expander('Excluded events'):
 if account_id:
  from concert_discovery.activity import admin_view
  admin_view(st,activity_store,dict(st.user),st.secrets.get('calendar_defaults',{}).get('owner_email'))
+
+if not account_id and auth_configured and not st.session_state.get('login_intro_seen'):
+ st.session_state['login_intro_seen']=True
+ login_prompt(arrival=True)
+
+if st.session_state.pop('email_login_requested',False) and not account_id:
+ login_prompt()
+
+from concert_discovery.activity import is_owner
+if st.query_params.get('preview_signin') in ('1','welcome') and is_owner(dict(st.user),st.secrets.get('calendar_defaults',{}).get('owner_email')):
+ login_prompt(arrival=st.query_params.get('preview_signin')=='welcome')
