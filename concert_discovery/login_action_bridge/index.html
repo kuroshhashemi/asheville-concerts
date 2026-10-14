@@ -1,0 +1,25 @@
+<!doctype html><html><body><script>
+const key='asheville-soundcheck:pending-login-action:v1',host=parent,doc=host.document;
+const send=(type,extra={})=>host.postMessage({isStreamlitMessage:true,type,...extra},'*');
+function read(){try{const x=JSON.parse(host.sessionStorage.getItem(key)||'null');if(x&&Date.now()-x.created_at<600000&&Date.now()>=x.created_at-30000)return x;host.sessionStorage.removeItem(key);}catch(e){}return null;}
+function clear(){try{host.sessionStorage.removeItem(key);}catch(e){}host.soundcheckAuthIntent=null;}
+if(!host.soundcheckLoginActionListeners){
+ host.soundcheckLoginActionListeners=true;
+ doc.addEventListener('click',e=>{
+  const button=e.target.closest('button');if(!button)return;
+  if(button.closest('.st-key-google_signin_popup')){const x=read();if(x){x.stage='signing-in';x.created_at=Date.now();try{host.sessionStorage.setItem(key,JSON.stringify(x));}catch(e){}}}
+  else if(button.closest('[data-testid="stDialog"]')&&(button.textContent.trim()==='Browse without sign in'||button.getAttribute('aria-label')==='Close'))clear();
+ },true);
+ doc.addEventListener('keydown',e=>{if(e.key==='Escape'&&doc.querySelector('[data-testid="stDialog"]'))clear();},true);
+}
+let posted=null;
+window.addEventListener('message',e=>{
+ if(e.data.type!=='streamlit:render')return;const args=e.data.args,intent=read();
+ if(intent&&args.acknowledged===intent.token){clear();return;}
+ if(args.signed_in&&intent?.stage==='signing-in'){
+  host.soundcheckAuthIntent=intent;host.dispatchEvent(new host.CustomEvent('soundcheck:auth-intent'));
+  if(posted!==intent.token){posted=intent.token;send('streamlit:setComponentValue',{value:intent,dataType:'json'});}
+ }
+ send('streamlit:setFrameHeight',{height:0});
+});send('streamlit:componentReady',{apiVersion:1});
+</script></body></html>
