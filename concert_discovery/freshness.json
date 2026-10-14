@@ -1,24 +1,63 @@
 {
-  "refreshed_at": "2026-10-06T01:06:10+00:00",
-  "source_records": 8,
+  "refreshed_at": "2026-10-14T15:14:36+00:00",
+  "source_records": 720,
   "warnings": [
-    "asheville-music-hall: No complete calendar snapshot; cached listings retained",
-    "one-stop: No complete calendar snapshot; cached listings retained",
-    "eulogy: No complete calendar snapshot; cached listings retained",
-    "orange-peel: No complete calendar snapshot; cached listings retained",
-    "hellbender: No complete calendar snapshot; cached listings retained",
-    "grey-eagle: No complete calendar snapshot; cached listings retained",
-    "harrahs-arena: No complete calendar snapshot; cached listings retained",
-    "thomas-wolfe: No complete calendar snapshot; cached listings retained",
-    "sierra-nevada: No complete calendar snapshot; cached listings retained"
+    "SongkickPublic: 406 Client Error: Not Acceptable for url: https://www.songkick.com/metro-areas/86726-us-mills-river",
+    "SongkickOrange: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/289-orange-peel/calendar",
+    "SongkickGrey: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/39035-grey-eagle/calendar",
+    "SongkickAMH: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/107138-asheville-music-hall/calendar",
+    "SongkickEulogy: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/4519500-eulogy/calendar",
+    "Sierra admission labels unavailable; existing prices retained.",
+    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    42 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" title=\"Patio Show: CHA trio\" data-cya11y-org-font-size=\"16\" href=\"https://www.thegreyeagle.com/event/patio-show-cha-trio/the-patio/asheville-north-carolina/\">\u2026</a>\n",
+    "Third Room ticket links unavailable; saved destinations retained.",
+    "Spotify concert feed not enabled: separate CheckLeaked provider key missing."
   ],
-  "duplicates_consolidated": [],
-  "run_id": "727c5b83-eda0-46f0-95e4-d272280a54ec",
-  "matching_attempted": 7,
-  "matching_matched": 6,
-  "matching_ambiguous": 1,
-  "matching_blocked": 0,
+  "duplicates_consolidated": [
+    {
+      "keep": 64,
+      "removed": 2855,
+      "title": "*CANCELLED* Foundation Skatepark Benefit Show with Voivod & Bat",
+      "date": "2026-10-17",
+      "reason": "reversible duplicate alias"
+    },
+    {
+      "keep": 351,
+      "removed": 3015,
+      "title": "Grahame Lesh & Friends",
+      "date": "2026-12-18",
+      "reason": "reversible duplicate alias"
+    },
+    {
+      "keep": 616,
+      "removed": 3039,
+      "title": "Dan and Peggy Reeder",
+      "date": "2027-02-27",
+      "reason": "reversible duplicate alias"
+    }
+  ],
+  "run_id": "186db933-1817-4c57-94af-5f503c99c4ab",
+  "matching_attempted": 25,
+  "matching_matched": 2,
+  "matching_ambiguous": 0,
+  "matching_blocked": 23,
   "matching_pending": 0,
   "source_candidates_found": 0,
-  "page_requests": 7
+  "page_requests": 40,
+  "attempted": 40,
+  "metrics_saved": 40,
+  "history_requests": 1,
+  "price_page_requests": 12,
+  "price_pages_checked": 11,
+  "price_pages_priced": 3,
+  "price_providers_blocked": [
+    "etix.com",
+    "prod-nts-api.seeticketsusa.us",
+    "tixr.com"
+  ],
+  "brightdata_requests": 0,
+  "brightdata_prices_saved": 0,
+  "brightdata_failed": 0,
+  "brightdata_state": "not_configured",
+  "rendered_price_pages": 1,
+  "rendered_prices_saved": 0
 }
