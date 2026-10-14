@@ -36,6 +36,13 @@ def fetch_browser_calendars(days=None,snapshots=None):
             rows.extend(fetch_api(snapshots if days is None else None))
         except Exception as exc:
             errors.append('Sierra official API unavailable: '+str(exc)[:700])
+        try:
+            page.goto('https://sierranevada.com/events/mills-river',wait_until='domcontentloaded',timeout=30000)
+            page.locator('.event-card').first.wait_for(timeout=15000)
+            from concert_discovery.prices import save_sierra_card_prices
+            save_sierra_card_prices(page.content())
+        except Exception:
+            errors.append('Sierra admission labels unavailable; existing prices retained.')
         for source,url in [('MusicHallOfficial','https://ashevillemusichall.com/all-shows/'),('OrangePeelOfficial','https://theorangepeel.net/events/?view=list'),('GreyEagleOfficial','https://www.thegreyeagle.com/calendar/')]:
             try:
                 from concert_discovery.official_calendar import parse_calendar
@@ -48,5 +55,11 @@ def fetch_browser_calendars(days=None,snapshots=None):
                 rows.extend(official)
                 if snapshots is not None and days is None:snapshots.extend(make_snapshots(official,url,pages))
             except Exception as error:errors.append(source+' browser calendar unavailable: '+str(error))
+        try:
+            page.goto('https://thirdroom.art/',wait_until='domcontentloaded',timeout=30000)
+            page.locator('.seetickets-list-event-container').first.wait_for(timeout=20000)
+            from concert_discovery.ticket_destinations import collect
+            collect(page.content(),'https://thirdroom.art/')
+        except Exception:errors.append('Third Room ticket links unavailable; saved destinations retained.')
         browser.close()
     return rows,errors

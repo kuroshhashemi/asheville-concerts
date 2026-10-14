@@ -6,7 +6,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from unittest.mock import patch, Mock
 import smtplib
-from concert_discovery.weekly_digest import monday_end, new_shows, render, run, send_email
+from concert_discovery.weekly_digest import monday_end, new_shows, render, run, send_email, spotify_email_link
 from concert_discovery.email_store import EmailStore
 
 UTC = timezone.utc
@@ -32,6 +32,16 @@ class FakeStore:
 
 
 class DigestTests(unittest.TestCase):
+    def test_email_spotify_link_retains_same_artist_fallback(self):
+        from urllib.parse import urlsplit,parse_qs
+        profile='https://open.spotify.com/artist/34482S5nfxR441wcnVfrHi'
+        link=spotify_email_link(profile)
+        self.assertEqual(urlsplit(link).hostname,'spotify.link')
+        data=parse_qs(urlsplit(link).query)
+        self.assertEqual(data['$canonical_url'],[profile])
+        self.assertEqual(data['$fallback_url'],[profile])
+        self.assertEqual(data['$ios_url'],[profile])
+        self.assertEqual(spotify_email_link('https://example.com/artist/a'),'https://example.com/artist/a')
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.db = Path(self.temp.name) / 'db.sqlite3'
@@ -86,10 +96,18 @@ class DigestTests(unittest.TestCase):
 
     def execute(self, store, shows=None, error=None):
         with patch('concert_discovery.weekly_digest.new_shows', return_value=shows if shows is not None else [{'dedupe_key': 'concert'}]), \
+             patch('concert_discovery.digest_readiness.require_ready'), \
              patch('concert_discovery.weekly_digest.render', return_value=('html', 'plain')), \
              patch('concert_discovery.weekly_digest.send_email', return_value='message-id', side_effect=error) as send:
             result = run(store, 'sender@example.com', 'secret', END + timedelta(hours=1), self.db)
             return result, send.call_count
+
+    def test_pending_enrichment_blocks_before_claim_or_email(self):
+        store=FakeStore()
+        with patch('concert_discovery.weekly_digest.new_shows',return_value=[{'dedupe_key':'new'}]),patch('concert_discovery.digest_readiness.require_ready',side_effect=RuntimeError('Digest held')),patch('concert_discovery.weekly_digest.send_email') as send:
+            with self.assertRaisesRegex(RuntimeError,'Digest held'):run(store,'sender@example.com','secret',END+timedelta(hours=1),self.db)
+            send.assert_not_called()
+        self.assertEqual(store.claimed,{})
 
     def test_success_and_rerun_do_not_duplicate(self):
         store = FakeStore()

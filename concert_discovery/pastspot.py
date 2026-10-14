@@ -34,15 +34,20 @@ def comparison(rows, today=None):
     if n==0:return None
     return dict(value=(count/n-1)*100,baseline_date=baseline.isoformat(),latest_date=latest.isoformat(),source_url=url)
 
-def refresh_history(db_path=None, limit=40):
+def refresh_history(db_path=None, limit=40, spotify_ids=None):
     """Bounded weekly checks; missing artists retry after 30 days. No UI requests."""
     with connect(db_path) as c:
         schema(c)
         artists=[dict(r) for r in c.execute('''SELECT DISTINCT a.spotify_artist_id,h.checked_at,h.status
           FROM artists a JOIN show_artists sa USING(artist_id) JOIN shows s USING(show_id)
+          LEFT JOIN show_discovery d USING(show_id)
           LEFT JOIN history_checks h ON h.spotify_id=a.spotify_artist_id
           WHERE a.spotify_artist_id IS NOT NULL AND s.performance_start>=?
-          AND sa.billing_role LIKE '%headliner%' ORDER BY COALESCE(h.checked_at,'')''',(date.today().isoformat(),))]
+          AND sa.billing_role LIKE '%headliner%'
+          GROUP BY a.spotify_artist_id
+          ORDER BY h.checked_at IS NOT NULL, MAX(d.first_seen_at) DESC, COALESCE(h.checked_at,'')''',(date.today().isoformat(),))]
+    if spotify_ids is not None:
+        artists=[a for a in artists if a['spotify_artist_id'] in spotify_ids]
     attempted=0
     for a in artists:
         if a['checked_at']:

@@ -36,8 +36,9 @@ def get_shows(db_path=None, user_id=OWNER, include_recurring=False):
         c.execute('CREATE TABLE IF NOT EXISTS artist_entity_types(name_key TEXT PRIMARY KEY,kind TEXT,evidence TEXT)')
         entity_types={r[0]:r[1] for r in c.execute('SELECT name_key,kind FROM artist_entity_types')}
         availability={}
-        for r in c.execute("SELECT * FROM ticket_availability WHERE status='sold_out'"):
+        for r in c.execute("SELECT * FROM ticket_availability ORDER BY observed_at DESC"):
             availability.setdefault(r['show_id'],dict(r))
+        availability={sid:r for sid,r in availability.items() if r['status']=='sold_out'}
         genres = {}; genre_sources={};image_sources={};sources={}
         icons={};images={}
         for r in c.execute('SELECT * FROM show_sources ORDER BY source_name'):

@@ -6,12 +6,13 @@ Discover Asheville shows. Listen on Spotify, find rising artists, and save your 
 
 Install requirements.txt, then run:
 
-    streamlit run concert_discovery/shortlist_app.py
+    ./run_local.sh
+
+Use this launcher locally: it loads the authentication dependency before Streamlit starts, so sign-in and sign-out routes are registered. Opening the app directly without it can leave `/auth/logout` displaying a blank page.
 
 The web app reads a shared catalog; it never calls paid event APIs during browsing.
-Google login saves personal statuses and filters in Supabase across devices.
-Anonymous browser filters are stored locally. New visitors start with Live Music only,
-at least 500k Spotify listeners, and unknown listener counts hidden.
+Personal statuses live in browser storage for this first release. Login and cross-device
+sync can later replace that store; the database already keys decisions by user ID.
 Do not use local SQLite as a durable multiuser cloud database.
 
 ## Scheduled collection
@@ -34,23 +35,3 @@ may change; unknown metrics remain missing and are never invented.
 
 Six-month growth requires an actual six-month baseline; the prototype does not create
 historical listener numbers. Automated collection contains no model calls.
-
-## Weekly email digest
-
-Optional Monday email of newly discovered shows, with the same catalog visibility rules
-and artist/venue/genre/listener/growth/price/link data as the site. Personal filters do not
-apply. Empty weeks send no email. First scheduled digest: October 19, 2026, around
-9 a.m. America/New_York (GitHub may delay scheduled jobs).
-
-Run setup_digest.sql in the existing Supabase project. Subscriptions and delivery records
-are private server-only tables with row-level security; they are never put in the catalog.
-Signed-in visitors opt in under Emails. Every email includes an unsubscribe confirmation
-link that works without signing in. Existing subscriptions start opted out.
-
-The weekly-digest workflow needs encrypted Actions secrets EMAIL_SENDER,
-EMAIL_APP_PASSWORD, SUPABASE_URL, and SUPABASE_SECRET_KEY. Use a Gmail app password,
-never a regular Google password. Its manual default is preview; test mode sends only to
-the sender. Send mode honors the Monday/start-date gate. Duplicate delivery claims and
-sent show keys prevent resends; uncertain SMTP outcomes require review instead of blind
-retries. A 200-recipient safeguard keeps this small personal deployment bounded.
-No AI models, event APIs, or new scraping calls run during digest generation.

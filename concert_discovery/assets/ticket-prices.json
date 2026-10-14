@@ -531,13 +531,14 @@
     "source_url": "https://www.thegreyeagle.com/event/patio-show-nate-hadley/the-patio/asheville-north-carolina/"
   },
   "etix.com/ticket/p/77623422/patio-shownate-hadley-asheville-grey-eagle-patio-stage": {
-    "min": 12.05,
-    "max": 12.05,
-    "from_price": false,
-    "source": "grey-current.html",
-    "detail": "calendar price label",
-    "checked_at": "2026-10-06",
-    "source_url": "https://www.thegreyeagle.com/event/patio-show-nate-hadley/the-patio/asheville-north-carolina/"
+    "min": 14.31,
+    "max": 14.31,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/77623422/patio-shownate-hadley-asheville-grey-eagle-patio-stage?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:23:55+00:00"
   },
   "thegreyeagle.com/event/jeff-coffin-jordan-perlson-viktor-krauss-with-bob-lanzetti/grey-eagle-music-hall/asheville-north-carolina": {
     "min": 30.75,
@@ -549,13 +550,14 @@
     "source_url": "https://www.thegreyeagle.com/event/jeff-coffin-jordan-perlson-viktor-krauss-with-bob-lanzetti/grey-eagle-music-hall/asheville-north-carolina/"
   },
   "etix.com/ticket/p/74366038/jeff-coffinjordan-perlsonviktor-krauss-with-bob-lanzetti-asheville-grey-eagle-music-hall": {
-    "min": 30.75,
-    "max": 41.05,
-    "from_price": false,
-    "source": "grey-current.html",
-    "detail": "calendar price label",
-    "checked_at": "2026-10-06",
-    "source_url": "https://www.thegreyeagle.com/event/jeff-coffin-jordan-perlson-viktor-krauss-with-bob-lanzetti/grey-eagle-music-hall/asheville-north-carolina/"
+    "min": 33.84,
+    "max": 33.84,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/74366038/jeff-coffinjordan-perlsonviktor-krauss-with-bob-lanzetti-asheville-grey-eagle-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:24:29+00:00"
   },
   "thegreyeagle.com/event/patio-show-cha-trio/the-patio/asheville-north-carolina": {
     "min": 12.05,
@@ -569,11 +571,12 @@
   "etix.com/ticket/p/54625267/patio-showcha-trio-asheville-grey-eagle-patio-stage": {
     "min": 12.05,
     "max": 12.05,
-    "from_price": false,
-    "source": "grey-current.html",
-    "detail": "calendar price label",
-    "checked_at": "2026-10-06",
-    "source_url": "https://www.thegreyeagle.com/event/patio-show-cha-trio/the-patio/asheville-north-carolina/"
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/54625267/patio-showcha-trio-asheville-grey-eagle-patio-stage?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:24:47+00:00"
   },
   "thegreyeagle.com/event/josiah-and-the-bonnevilles-2/grey-eagle-music-hall/asheville-north-carolina": {
     "min": 31.25,
@@ -695,11 +698,12 @@
   "etix.com/ticket/p/59228107/joshua-ray-walker-wcecilia-castleman-asheville-grey-eagle-music-hall": {
     "min": 25.6,
     "max": 25.6,
-    "from_price": false,
-    "source": "grey-current.html",
-    "detail": "calendar price label",
-    "checked_at": "2026-10-06",
-    "source_url": "https://www.thegreyeagle.com/event/joshua-ray-walker-w-cecilia-castleman/grey-eagle-music-hall/asheville-north-carolina/"
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/59228107/joshua-ray-walker-wcecilia-castleman-asheville-grey-eagle-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:25:39+00:00"
   },
   "dice.fm/event/6a847ced7e451500016553ef": {
     "min": 64.25,
@@ -740,11 +744,12 @@
   "etix.com/ticket/p/90384649/patio-showthe-scribblers-killer-skillet-asheville-grey-eagle-patio-stage": {
     "min": 11.8,
     "max": 11.8,
-    "from_price": false,
-    "source": "grey-current.html",
-    "detail": "calendar price label",
-    "checked_at": "2026-10-06",
-    "source_url": "https://www.thegreyeagle.com/event/patio-show-the-scribblers-killer-skillet/the-patio/asheville-north-carolina/"
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/90384649/patio-showthe-scribblers-killer-skillet-asheville-grey-eagle-patio-stage?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:25:39+00:00"
   },
   "jambase.com/show/maya-de-vitry-ayurprana-listening-room-20261017": {
     "min": 21.49,
@@ -821,11 +826,12 @@
   "etix.com/ticket/p/79338298/free-patio-showeast-coast-dirt-asheville-grey-eagle-patio-stage": {
     "min": 0.75,
     "max": 0.75,
-    "from_price": false,
-    "source": "grey-current.html",
-    "detail": "calendar price label",
-    "checked_at": "2026-10-06",
-    "source_url": "https://www.thegreyeagle.com/event/free-patio-show-east-coast-dirt-3/the-patio/asheville-north-carolina/"
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/79338298/free-patio-showeast-coast-dirt-asheville-grey-eagle-patio-stage?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:26:30+00:00"
   },
   "thegreyeagle.com/event/david-nihill-taking-tangents-tour/grey-eagle-music-hall/asheville-north-carolina": {
     "min": 35.37,
@@ -838,12 +844,13 @@
   },
   "etix.com/ticket/p/94229898/david-nihilltaking-tangents-tour-asheville-grey-eagle-music-hall": {
     "min": 35.37,
-    "max": 45.67,
-    "from_price": false,
-    "source": "grey-current.html",
-    "detail": "calendar price label",
-    "checked_at": "2026-10-06",
-    "source_url": "https://www.thegreyeagle.com/event/david-nihill-taking-tangents-tour/grey-eagle-music-hall/asheville-north-carolina/"
+    "max": 35.37,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/94229898/david-nihilltaking-tangents-tour-asheville-grey-eagle-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:26:30+00:00"
   },
   "jambase.com/show/cor-de-lux-static-age-records-20261018": {
     "min": 18.19,
@@ -893,11 +900,12 @@
   "etix.com/ticket/p/34635908/patio-showemily-woodhull-wlaney-barnett-asheville-grey-eagle-patio-stage": {
     "min": 12.05,
     "max": 12.05,
-    "from_price": false,
-    "source": "grey-current.html",
-    "detail": "calendar price label",
-    "checked_at": "2026-10-06",
-    "source_url": "https://www.thegreyeagle.com/event/patio-show-emily-woodhull-w-laney-barnett/the-patio/asheville-north-carolina/"
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/34635908/patio-showemily-woodhull-wlaney-barnett-asheville-grey-eagle-patio-stage?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:26:30+00:00"
   },
   "thegreyeagle.com/event/golden-folk-sessions-21/grey-eagle-music-hall/asheville-north-carolina": {
     "min": 14.3,
@@ -947,11 +955,12 @@
   "etix.com/ticket/p/91679228/patio-showsean-tobin-asheville-grey-eagle-patio-stage": {
     "min": 12.05,
     "max": 12.05,
-    "from_price": false,
-    "source": "grey-current.html",
-    "detail": "calendar price label",
-    "checked_at": "2026-10-06",
-    "source_url": "https://www.thegreyeagle.com/event/patio-show-sean-tobin/the-patio/asheville-north-carolina/"
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/91679228/patio-showsean-tobin-asheville-grey-eagle-patio-stage?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:27:06+00:00"
   },
   "thegreyeagle.com/event/nick-shoulders/grey-eagle-music-hall/asheville-north-carolina": {
     "min": 31.25,
@@ -974,11 +983,12 @@
   "etix.com/ticket/p/40668186/nick-shoulders-asheville-grey-eagle-music-hall": {
     "min": 31.25,
     "max": 31.25,
-    "from_price": false,
-    "source": "grey-current.html",
-    "detail": "calendar price label",
-    "checked_at": "2026-10-06",
-    "source_url": "https://www.thegreyeagle.com/event/nick-shoulders/grey-eagle-music-hall/asheville-north-carolina/"
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/40668186/nick-shoulders-asheville-grey-eagle-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:27:06+00:00"
   },
   "dice.fm/event/6a46e907e01722000140b0fc": {
     "min": 22.04,
@@ -1028,11 +1038,12 @@
   "etix.com/ticket/p/36444696/patio-showtall-boys-avl-duo-asheville-grey-eagle-patio-stage": {
     "min": 12.05,
     "max": 12.05,
-    "from_price": false,
-    "source": "grey-current.html",
-    "detail": "calendar price label",
-    "checked_at": "2026-10-06",
-    "source_url": "https://www.thegreyeagle.com/event/patio-show-tall-boys-avl-duo/the-patio/asheville-north-carolina/"
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/36444696/patio-showtall-boys-avl-duo-asheville-grey-eagle-patio-stage?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:27:06+00:00"
   },
   "thegreyeagle.com/event/aj-lee-blue-summit-w-the-cody-sisters/grey-eagle-music-hall/asheville-north-carolina": {
     "min": 27.86,
@@ -1082,11 +1093,12 @@
   "etix.com/ticket/p/50693931/patio-showdoss-church-the-unholy-noise-asheville-grey-eagle-patio-stage": {
     "min": 12.05,
     "max": 12.05,
-    "from_price": false,
-    "source": "grey-current.html",
-    "detail": "calendar price label",
-    "checked_at": "2026-10-06",
-    "source_url": "https://www.thegreyeagle.com/event/patio-show-doss-church-the-unholy-noise-2/the-patio/asheville-north-carolina/"
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/50693931/patio-showdoss-church-the-unholy-noise-asheville-grey-eagle-patio-stage?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:28:01+00:00"
   },
   "jambase.com/show/sean-johnson-the-wild-lotus-band-ayurprana-listening-room-20261024": {
     "min": 25.0,
@@ -1118,11 +1130,12 @@
   "etix.com/ticket/p/75128463/boot-scootinboogie-nights-asheville-grey-eagle-music-hall": {
     "min": 25.6,
     "max": 25.6,
-    "from_price": false,
-    "source": "grey-current.html",
-    "detail": "calendar price label",
-    "checked_at": "2026-10-06",
-    "source_url": "https://www.thegreyeagle.com/event/boot-scootin-boogie-nights/grey-eagle-music-hall/asheville-north-carolina/"
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/75128463/boot-scootinboogie-nights-asheville-grey-eagle-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:28:01+00:00"
   },
   "jambase.com/show/dogwood-tales-static-age-records-20261024": {
     "min": 14.56,
@@ -1172,11 +1185,12 @@
   "etix.com/ticket/p/85977457/25th-annual-newsong-music-competition-asheville-grey-eagle-music-hall": {
     "min": 30.75,
     "max": 46.2,
-    "from_price": false,
-    "source": "grey-current.html",
-    "detail": "calendar price label",
-    "checked_at": "2026-10-06",
-    "source_url": "https://www.thegreyeagle.com/event/25th-annual-newsong-music-competition/grey-eagle-music-hall/asheville-north-carolina/"
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/85977457/25th-annual-newsong-music-competition-asheville-grey-eagle-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:28:46+00:00"
   },
   "thegreyeagle.com/event/patio-show-julianna-jade-2/the-patio/asheville-north-carolina": {
     "min": 12.05,
@@ -1224,13 +1238,14 @@
     "source_url": "https://www.thegreyeagle.com/event/patio-show-laurel-canyon-east-2/the-patio/asheville-north-carolina/"
   },
   "etix.com/ticket/p/59846749/patio-showlaurel-canyon-east-asheville-grey-eagle-patio-stage": {
-    "min": 12.05,
-    "max": 12.05,
+    "min": 10.0,
+    "max": 10.0,
     "from_price": false,
-    "source": "grey-current.html",
-    "detail": "calendar price label",
-    "checked_at": "2026-10-06",
-    "source_url": "https://www.thegreyeagle.com/event/patio-show-laurel-canyon-east-2/the-patio/asheville-north-carolina/"
+    "source_url": "https://www.etix.com/ticket/p/59846749/patio-showlaurel-canyon-east-asheville-grey-eagle-patio-stage?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:29:24+00:00"
   },
   "thegreyeagle.com/event/ethan-regan-young-regan-tour/grey-eagle-music-hall/asheville-north-carolina": {
     "min": 32.25,
@@ -1244,11 +1259,12 @@
   "etix.com/ticket/p/87047887/ethan-reganyoung-regan-tour-asheville-grey-eagle-music-hall": {
     "min": 32.25,
     "max": 106.0,
-    "from_price": false,
-    "source": "grey-current.html",
-    "detail": "calendar price label",
-    "checked_at": "2026-10-06",
-    "source_url": "https://www.thegreyeagle.com/event/ethan-regan-young-regan-tour/grey-eagle-music-hall/asheville-north-carolina/"
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/87047887/ethan-reganyoung-regan-tour-asheville-grey-eagle-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:30:02+00:00"
   },
   "thegreyeagle.com/event/patio-show-katzilla/the-patio/asheville-north-carolina": {
     "min": 12.05,
@@ -1260,13 +1276,14 @@
     "source_url": "https://www.thegreyeagle.com/event/patio-show-katzilla/the-patio/asheville-north-carolina/"
   },
   "etix.com/ticket/p/70387675/patio-showkatzilla-asheville-grey-eagle-patio-stage": {
-    "min": 12.05,
-    "max": 12.05,
+    "min": 10.0,
+    "max": 10.0,
     "from_price": false,
-    "source": "grey-current.html",
-    "detail": "calendar price label",
-    "checked_at": "2026-10-06",
-    "source_url": "https://www.thegreyeagle.com/event/patio-show-katzilla/the-patio/asheville-north-carolina/"
+    "source_url": "https://www.etix.com/ticket/p/70387675/patio-showkatzilla-asheville-grey-eagle-patio-stage?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:30:02+00:00"
   },
   "thegreyeagle.com/event/neal-francis/grey-eagle-music-hall/asheville-north-carolina": {
     "min": 36.4,
@@ -1289,11 +1306,12 @@
   "etix.com/ticket/p/84980606/neal-francis-asheville-grey-eagle-music-hall": {
     "min": 36.4,
     "max": 36.4,
-    "from_price": false,
-    "source": "grey-current.html",
-    "detail": "calendar price label",
-    "checked_at": "2026-10-06",
-    "source_url": "https://www.thegreyeagle.com/event/neal-francis/grey-eagle-music-hall/asheville-north-carolina/"
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/84980606/neal-francis-asheville-grey-eagle-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:30:02+00:00"
   },
   "dice.fm/event/6a85cb44c0e75600010479be": {
     "min": 27.55,
@@ -1334,11 +1352,12 @@
   "etix.com/ticket/p/93975532/patio-showashley-heath-asheville-grey-eagle-patio-stage": {
     "min": 12.05,
     "max": 14.31,
-    "from_price": false,
-    "source": "grey-current.html",
-    "detail": "calendar price label",
-    "checked_at": "2026-10-06",
-    "source_url": "https://www.thegreyeagle.com/event/patio-show-ashley-heath/the-patio/asheville-north-carolina/"
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/93975532/patio-showashley-heath-asheville-grey-eagle-patio-stage?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:30:34+00:00"
   },
   "jambase.com/show/colin-miller-ayurprana-listening-room-20261030": {
     "min": 21.49,
@@ -1379,11 +1398,12 @@
   "etix.com/ticket/p/69182590/the-arcadian-wild-make-it-out-alive-tour-asheville-grey-eagle-music-hall": {
     "min": 27.66,
     "max": 38.46,
-    "from_price": false,
-    "source": "grey-current.html",
-    "detail": "calendar price label",
-    "checked_at": "2026-10-06",
-    "source_url": "https://www.thegreyeagle.com/event/the-arcadian-wild-make-it-out-alive-tour/grey-eagle-music-hall/asheville-north-carolina/"
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/69182590/the-arcadian-wild-make-it-out-alive-tour-asheville-grey-eagle-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:31:15+00:00"
   },
   "dice.fm/event/6a1c8d22b5ca140001d5c042": {
     "min": 19.84,
@@ -1424,11 +1444,12 @@
   "etix.com/ticket/p/60000482/patio-showreed-turchi-album-release-asheville-grey-eagle-patio-stage": {
     "min": 12.05,
     "max": 12.05,
-    "from_price": false,
-    "source": "grey-current.html",
-    "detail": "calendar price label",
-    "checked_at": "2026-10-06",
-    "source_url": "https://www.thegreyeagle.com/event/patio-show-reed-turchi-album-release/the-patio/asheville-north-carolina/"
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/60000482/patio-showreed-turchi-album-release-asheville-grey-eagle-patio-stage?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:31:15+00:00"
   },
   "thegreyeagle.com/event/dana-and-alden-papas-boat-tour-w-alex-amen/grey-eagle-music-hall/asheville-north-carolina": {
     "min": 27.06,
@@ -1476,13 +1497,14 @@
     "source_url": "https://www.thegreyeagle.com/event/sam-shackleton/grey-eagle-music-hall/asheville-north-carolina/"
   },
   "etix.com/ticket/p/68430114/sam-shackleton-asheville-grey-eagle-music-hall": {
-    "min": 22.21,
-    "max": 22.21,
+    "min": 17.0,
+    "max": 17.0,
     "from_price": false,
-    "source": "grey-current.html",
-    "detail": "calendar price label",
-    "checked_at": "2026-10-06",
-    "source_url": "https://www.thegreyeagle.com/event/sam-shackleton/grey-eagle-music-hall/asheville-north-carolina/"
+    "source_url": "https://www.etix.com/ticket/p/68430114/sam-shackleton-asheville-grey-eagle-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:32:07+00:00"
   },
   "jambase.com/show/jacuzzi-boys-static-age-records-20261102": {
     "min": 21.83,
@@ -1541,11 +1563,12 @@
   "etix.com/ticket/p/89000145/hayes-carll-wjoelton-mayfield-asheville-grey-eagle-music-hall": {
     "min": 32.81,
     "max": 32.81,
-    "from_price": false,
-    "source": "grey-current.html",
-    "detail": "calendar price label",
-    "checked_at": "2026-10-06",
-    "source_url": "https://www.thegreyeagle.com/event/hayes-carll-w-joelton-mayfield/grey-eagle-music-hall/asheville-north-carolina/"
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/89000145/hayes-carll-wjoelton-mayfield-asheville-grey-eagle-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:32:07+00:00"
   },
   "jambase.com/show/min-xiao-fen-ayurprana-listening-room-20261105": {
     "min": 23.7,
@@ -1577,11 +1600,12 @@
   "etix.com/ticket/p/47901972/aaron-lee-tasjan-asheville-grey-eagle-music-hall": {
     "min": 31.25,
     "max": 31.25,
-    "from_price": false,
-    "source": "grey-current.html",
-    "detail": "calendar price label",
-    "checked_at": "2026-10-06",
-    "source_url": "https://www.thegreyeagle.com/event/aaron-lee-tasjan-2/grey-eagle-music-hall/asheville-north-carolina/"
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/47901972/aaron-lee-tasjan-asheville-grey-eagle-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:32:57+00:00"
   },
   "jambase.com/show/ayurprana-listening-room-20261106": {
     "min": 23.7,
@@ -2301,12 +2325,13 @@
   "dice.fm/event/xeg63a-planet-ruti-the-wizard-album-release-party-29th-nov-eulogy-asheville-tickets": {
     "min": 19.84,
     "max": 19.84,
-    "from_price": true,
-    "source_url": "https://dice.fm/event/xeg63a-planet-ruti-the-wizard-album-release-party-29th-nov-eulogy-asheville-tickets",
-    "source": "Cached event page",
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://dice.fm/event/xeg63a-planet-ruti-the-wizard-album-release-party-29th-nov-eulogy-asheville-tickets?_branch_match_id=1635693177299389545&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1S8wTkw0STQySzIwSQYAcIHpOiEAAAA%3D",
+    "source": "Cached fee-inclusive ticket provider",
     "detail": "Advertised event price",
-    "checked_at": "2026-10-13",
-    "observed_at": "2026-10-13T15:00:41.097407+00:00"
+    "checked_at": "2026-10-05",
+    "observed_at": "2026-10-05T16:31:10+00:00"
   },
   "link.dice.fm/p3aa4a26b04c": {
     "min": 19.84,
@@ -2719,20 +2744,2090 @@
     "max": 50.0,
     "from_price": false,
     "source_url": "https://sierranevada.com/event/larkin-poe",
-    "observed_at": "2026-10-13T14:40:55.004860+00:00"
+    "source": "SierraOfficial",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:48:42.957889+00:00"
   },
   "sierranevada.com/event/spafford-2": {
     "min": 50.0,
     "max": 50.0,
     "from_price": false,
     "source_url": "https://sierranevada.com/event/spafford-2",
-    "observed_at": "2026-10-13T14:40:55.043123+00:00"
+    "source": "SierraOfficial",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:48:43.000057+00:00"
   },
   "sierranevada.com/event/somewhat-petty": {
     "min": 50.0,
     "max": 50.0,
     "from_price": false,
     "source_url": "https://sierranevada.com/event/somewhat-petty",
-    "observed_at": "2026-10-13T14:40:55.059621+00:00"
+    "source": "SierraOfficial",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:48:43.022144+00:00"
+  },
+  "tixr.com/groups/revivalavl/events/brigitte-calls-me-baby-irreversible-tour-198119": {
+    "min": 32.57,
+    "max": 32.57,
+    "includes_fees": true,
+    "source_url": "https://www.tixr.com/groups/revivalavl/events/brigitte-calls-me-baby-irreversible-tour-198119",
+    "source": "Ticket provider displayed total",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-13",
+    "observed_at": "2026-10-13T23:34:07.767456+00:00"
+  },
+  "dice.fm/event/xe8ppk-brody-price-narcan-racer-idle-county-16th-oct-static-age-records-asheville-tickets": {
+    "min": 12.12,
+    "max": 12.12,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://dice.fm/event/xe8ppk-brody-price-narcan-racer-idle-county-16th-oct-static-age-records-asheville-tickets?utm_source=jambase&_branch_match_id=1638701522008866496&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1c81NUxLTTM3SUtKS7QvLcmNL84vLUpOtc1KzE1KLE4FAKXBONM0AAAA",
+    "source": "Cached fee-inclusive ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-13",
+    "observed_at": "2026-10-13T23:45:15+00:00"
+  },
+  "link.dice.fm/m51fef74fbfa": {
+    "min": 12.12,
+    "max": 12.12,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://link.dice.fm/m51fef74fbfa?utm_source=jambase",
+    "source": "Ticket provider advertised price",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-13",
+    "observed_at": "2026-10-13T23:45:15+00:00"
+  },
+  "dice.fm/event/k678wp-wolves-in-the-throne-room-29th-jan-eulogy-asheville-tickets": {
+    "min": 39.0,
+    "max": 39.0,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://dice.fm/event/k678wp-wolves-in-the-throne-room-29th-jan-eulogy-asheville-tickets?_branch_match_id=1638709606446012497&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1Q9PTjVKSjQxTE01TAQALTcj%2FyEAAAA%3D",
+    "source": "Cached fee-inclusive ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:17:23+00:00"
+  },
+  "dice.fm/event/k67erp-canaries-tanner-york-blooming-17th-oct-static-age-records-asheville-tickets": {
+    "min": 12.12,
+    "max": 12.12,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://dice.fm/event/k67erp-canaries-tanner-york-blooming-17th-oct-static-age-records-asheville-tickets?utm_source=jambase&_branch_match_id=1638709588690178346&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1Q8zNLa0tDC0tDBNNLMvLcmNL84vLUpOtc1KzE1KLE4FAMuUf640AAAA",
+    "source": "Cached fee-inclusive ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:17:19+00:00"
+  },
+  "dice.fm/event/k67erp": {
+    "min": 12.12,
+    "max": 12.12,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://dice.fm/event/k67erp?utm_source=jambase&_branch_match_id=1638709588690178346&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1Q8zNLa0tDC0tDBNNLMvLcmNL84vLUpOtc1KzE1KLE4FAMuUf640AAAA",
+    "source": "Structured event data",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:17:19.241755+00:00"
+  },
+  "agzl.app.link/cDrlOtl146b": {
+    "min": 12.12,
+    "max": 12.12,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://agzl.app.link/cDrlOtl146b?utm_source=jambase",
+    "source": "Structured event data",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:17:19.262998+00:00"
+  },
+  "link.dice.fm/V139981985a6": {
+    "min": 12.12,
+    "max": 12.12,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://link.dice.fm/V139981985a6?utm_source=jambase",
+    "source": "Ticket provider advertised price",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:17:19+00:00"
+  },
+  "dice.fm/event/92v8vo-benny-the-butcher-12th-nov-eulogy-asheville-tickets": {
+    "min": 47.39,
+    "max": 47.39,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://dice.fm/event/92v8vo-benny-the-butcher-12th-nov-eulogy-asheville-tickets?_branch_match_id=1638709599119957454&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1Q8ys0xJMjGxsEwzNAUArlBvXyEAAAA%3D",
+    "source": "Cached fee-inclusive ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:17:21+00:00"
+  },
+  "dice.fm/event/92v8vo": {
+    "min": 47.39,
+    "max": 47.39,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://dice.fm/event/92v8vo?_branch_match_id=1638709599119957454&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1Q8ys0xJMjGxsEwzNAUArlBvXyEAAAA%3D",
+    "source": "Structured event data",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:17:21.500445+00:00"
+  },
+  "agzl.app.link/UVkbiHmYS6b": {
+    "min": 47.39,
+    "max": 47.39,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://agzl.app.link/UVkbiHmYS6b",
+    "source": "Structured event data",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:17:21.516994+00:00"
+  },
+  "link.dice.fm/R69db4489f15": {
+    "min": 47.39,
+    "max": 47.39,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://link.dice.fm/R69db4489f15",
+    "source": "Ticket provider advertised price",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:17:21+00:00"
+  },
+  "dice.fm/event/k678wp": {
+    "min": 39.0,
+    "max": 39.0,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://dice.fm/event/k678wp?_branch_match_id=1638709606446012497&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1Q9PTjVKSjQxTE01TAQALTcj%2FyEAAAA%3D",
+    "source": "Structured event data",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:17:23.071620+00:00"
+  },
+  "agzl.app.link/HoAO1J8nR6b": {
+    "min": 39.0,
+    "max": 39.0,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://agzl.app.link/HoAO1J8nR6b",
+    "source": "Structured event data",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:17:23.088146+00:00"
+  },
+  "link.dice.fm/Wce2ba41ee1a": {
+    "min": 39.0,
+    "max": 39.0,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://link.dice.fm/Wce2ba41ee1a",
+    "source": "Ticket provider advertised price",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:17:23+00:00"
+  },
+  "sierranevada.com/event/andrew-scotchie-4": {
+    "min": 0,
+    "max": 0,
+    "source_url": "https://sierranevada.com/event/andrew-scotchie-4",
+    "source": "Sierra Mills River calendar free-admission label",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:24:29.100288+00:00"
+  },
+  "sierranevada.com/event/luke-deuce": {
+    "min": 0,
+    "max": 0,
+    "source_url": "https://sierranevada.com/event/luke-deuce",
+    "source": "Sierra Mills River calendar free-admission label",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:24:29.103516+00:00"
+  },
+  "sierranevada.com/event/celebration-in-the-park-featuring-the-last-revel": {
+    "min": 0,
+    "max": 0,
+    "source_url": "https://sierranevada.com/event/celebration-in-the-park-featuring-the-last-revel",
+    "source": "Sierra Mills River calendar free-admission label",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:24:29.106353+00:00"
+  },
+  "sierranevada.com/event/big-blue": {
+    "min": 0,
+    "max": 0,
+    "source_url": "https://sierranevada.com/event/big-blue",
+    "source": "Sierra Mills River calendar free-admission label",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:24:29.108805+00:00"
+  },
+  "sierranevada.com/event/boot-juice-2": {
+    "min": 0,
+    "max": 0,
+    "source_url": "https://sierranevada.com/event/boot-juice-2",
+    "source": "Sierra Mills River calendar free-admission label",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:24:29.111459+00:00"
+  },
+  "sierranevada.com/event/king-garbage-5": {
+    "min": 0,
+    "max": 0,
+    "source_url": "https://sierranevada.com/event/king-garbage-5",
+    "source": "Sierra Mills River calendar free-admission label",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:24:29.114397+00:00"
+  },
+  "sierranevada.com/event/unihorn-2": {
+    "min": 0,
+    "max": 0,
+    "source_url": "https://sierranevada.com/event/unihorn-2",
+    "source": "Sierra Mills River calendar free-admission label",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:24:29.117972+00:00"
+  },
+  "sierranevada.com/event/magenta-sunshine": {
+    "min": 0,
+    "max": 0,
+    "source_url": "https://sierranevada.com/event/magenta-sunshine",
+    "source": "Sierra Mills River calendar free-admission label",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:24:29.120471+00:00"
+  },
+  "sierranevada.com/event/ashley-heath-and-her-heathens": {
+    "min": 0,
+    "max": 0,
+    "source_url": "https://sierranevada.com/event/ashley-heath-and-her-heathens",
+    "source": "Sierra Mills River calendar free-admission label",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:24:29.123022+00:00"
+  },
+  "sierranevada.com/event/daniel-shearin-7": {
+    "min": 0,
+    "max": 0,
+    "source_url": "https://sierranevada.com/event/daniel-shearin-7",
+    "source": "Sierra Mills River calendar free-admission label",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:24:29.125763+00:00"
+  },
+  "sierranevada.com/event/celly-drippins-release-2026": {
+    "min": 0,
+    "max": 0,
+    "source_url": "https://sierranevada.com/event/celly-drippins-release-2026",
+    "source": "Sierra Mills River calendar free-admission label",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:24:29.128417+00:00"
+  },
+  "sierranevada.com/event/trancend-band-5": {
+    "min": 0,
+    "max": 0,
+    "source_url": "https://sierranevada.com/event/trancend-band-5",
+    "source": "Sierra Mills River calendar free-admission label",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:24:29.131142+00:00"
+  },
+  "sierranevada.com/event/asheville-mountain-boys": {
+    "min": 0,
+    "max": 0,
+    "source_url": "https://sierranevada.com/event/asheville-mountain-boys",
+    "source": "Sierra Mills River calendar free-admission label",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:24:29.133856+00:00"
+  },
+  "sierranevada.com/event/marsh": {
+    "min": 0,
+    "max": 0,
+    "source_url": "https://sierranevada.com/event/marsh",
+    "source": "Sierra Mills River calendar free-admission label",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:24:29.138240+00:00"
+  },
+  "sierranevada.com/event/quack-shack": {
+    "min": 0,
+    "max": 0,
+    "source_url": "https://sierranevada.com/event/quack-shack",
+    "source": "Sierra Mills River calendar free-admission label",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:24:29.141141+00:00"
+  },
+  "sierranevada.com/event/aubrey-eisenman-the-clydes-5": {
+    "min": 0,
+    "max": 0,
+    "source_url": "https://sierranevada.com/event/aubrey-eisenman-the-clydes-5",
+    "source": "Sierra Mills River calendar free-admission label",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:24:29.144139+00:00"
+  },
+  "jambase.com/show/coyote-rodeo-new-belgium-brewing-company-20261023": {
+    "min": 0,
+    "max": 0,
+    "source_url": "https://www.jambase.com/show/coyote-rodeo-new-belgium-brewing-company-20261023",
+    "source": "JamBase current-show free label",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T00:24:29.147509+00:00"
+  },
+  "etix.com/ticket/p/35274642/cannons-asheville-the-orange-peel": {
+    "min": 51.55,
+    "max": 51.55,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/35274642/cannons-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Bright Data Web Unlocker ticket page",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:29:46.188045+00:00"
+  },
+  "tixr.com/groups/revivalavl/events/bayonne-the-filters-tour-186056": {
+    "min": 20.0,
+    "max": 20.0,
+    "from_price": false,
+    "source_url": "https://www.tixr.com/groups/revivalavl/events/bayonne-the-filters-tour-186056?utm_campaign=jambase&utm_source=jambase",
+    "source": "Bright Data Web Unlocker ticket page",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:30:17.789739+00:00"
+  },
+  "etix.com/ticket/p/95247543/patio-showthe-402010s-asheville-grey-eagle-patio-stage": {
+    "min": 12.05,
+    "max": 12.05,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/95247543/patio-showthe-402010s-asheville-grey-eagle-patio-stage?partner_id=100",
+    "source": "Bright Data ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:33:51.434751+00:00"
+  },
+  "etix.com/ticket/p/31925685/luke-deuce-the-wildcards-asheville-the-one-stop": {
+    "min": 7.65,
+    "max": 24.15,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/31925685/luke-deuce-the-wildcards-asheville-the-one-stop?partner_id=100",
+    "source": "Bright Data ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:34:37.746883+00:00"
+  },
+  "etix.com/ticket/p/46110869/patio-showjuca-camera-asheville-grey-eagle-patio-stage": {
+    "min": 12.05,
+    "max": 12.05,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/46110869/patio-showjuca-camera-asheville-grey-eagle-patio-stage?partner_id=100",
+    "source": "Bright Data ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:35:14.373237+00:00"
+  },
+  "etix.com/ticket/p/86556727/patio-showtom-fenton-the-rhythmic-revolution-asheville-grey-eagle-patio-stage": {
+    "min": 12.05,
+    "max": 12.05,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/86556727/patio-showtom-fenton-the-rhythmic-revolution-asheville-grey-eagle-patio-stage?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:46:32+00:00"
+  },
+  "etix.com/ticket/p/70445740/photon-asheville-the-one-stop": {
+    "min": 7.65,
+    "max": 24.15,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/70445740/photon-asheville-the-one-stop?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:46:32+00:00"
+  },
+  "etix.com/ticket/p/50188909/candler-rice-debut-ep-release-show-asheville-grey-eagle-music-hall-special-events": {
+    "min": 22.1,
+    "max": 22.1,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/50188909/candler-rice-debut-ep-release-show-asheville-grey-eagle-music-hall-special-events?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:47:14+00:00"
+  },
+  "etix.com/ticket/p/45954045/hans-williams-asheville-grey-eagle-music-hall": {
+    "min": 31.75,
+    "max": 31.75,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/45954045/hans-williams-asheville-grey-eagle-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:48:00+00:00"
+  },
+  "etix.com/ticket/p/88737066/vacations-asheville-the-orange-peel": {
+    "min": 51.55,
+    "max": 51.55,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/88737066/vacations-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:48:04+00:00"
+  },
+  "harrahscherokeecenterasheville.com/events/2026-craft-fair-of-the-southern-highlands-oct-15": {
+    "min": 12.0,
+    "max": 12.0,
+    "from_price": false,
+    "source_url": "https://www.harrahscherokeecenterasheville.com/events/2026-craft-fair-of-the-southern-highlands-oct-15/",
+    "source": "Structured event data",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-07",
+    "observed_at": "2026-10-07T17:28:54+00:00"
+  },
+  "harrahscherokeecenterasheville.com/events/2026-craft-fair-of-the-southern-highlands-oct-16": {
+    "min": 12.0,
+    "max": 12.0,
+    "from_price": false,
+    "source_url": "https://www.harrahscherokeecenterasheville.com/events/2026-craft-fair-of-the-southern-highlands-oct-16/",
+    "source": "Structured event data",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-07",
+    "observed_at": "2026-10-07T17:28:54+00:00"
+  },
+  "harrahscherokeecenterasheville.com/events/2026-craft-fair-of-the-southern-highlands-oct-17": {
+    "min": 12.0,
+    "max": 12.0,
+    "from_price": false,
+    "source_url": "https://www.harrahscherokeecenterasheville.com/events/2026-craft-fair-of-the-southern-highlands-oct-17/",
+    "source": "Structured event data",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-07",
+    "observed_at": "2026-10-07T17:28:55+00:00"
+  },
+  "harrahscherokeecenterasheville.com/events/2026-craft-fair-of-the-southern-highlands-oct-18": {
+    "min": 12.0,
+    "max": 12.0,
+    "from_price": false,
+    "source_url": "https://www.harrahscherokeecenterasheville.com/events/2026-craft-fair-of-the-southern-highlands-oct-18/",
+    "source": "Structured event data",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-07",
+    "observed_at": "2026-10-07T17:28:55+00:00"
+  },
+  "harrahscherokeecenterasheville.com/events/indoor-volleyball-oct22": {
+    "min": 5.0,
+    "max": 5.0,
+    "from_price": false,
+    "source_url": "https://www.harrahscherokeecenterasheville.com/events/indoor-volleyball-oct22/",
+    "source": "Structured event data",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-07",
+    "observed_at": "2026-10-07T17:28:56+00:00"
+  },
+  "harrahscherokeecenterasheville.com/events/indoor-volleyball-open-play": {
+    "min": 5.0,
+    "max": 5.0,
+    "from_price": false,
+    "source_url": "https://www.harrahscherokeecenterasheville.com/events/indoor-volleyball-open-play/",
+    "source": "Structured event data",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-07",
+    "observed_at": "2026-10-07T17:28:57+00:00"
+  },
+  "harrahscherokeecenterasheville.com/events/indoor-volleyball-open-play-2": {
+    "min": 5.0,
+    "max": 5.0,
+    "from_price": false,
+    "source_url": "https://www.harrahscherokeecenterasheville.com/events/indoor-volleyball-open-play-2/",
+    "source": "Structured event data",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-07",
+    "observed_at": "2026-10-07T17:28:58+00:00"
+  },
+  "harrahscherokeecenterasheville.com/events/2027-the-gala-1": {
+    "min": 10.0,
+    "max": 40.0,
+    "from_price": false,
+    "source_url": "https://www.harrahscherokeecenterasheville.com/events/2027-the-gala-1/",
+    "source": "Structured event data",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-12",
+    "observed_at": "2026-10-12T19:50:46+00:00"
+  },
+  "harrahscherokeecenterasheville.com/events/2027-the-gala-2": {
+    "min": 10.0,
+    "max": 40.0,
+    "from_price": false,
+    "source_url": "https://www.harrahscherokeecenterasheville.com/events/2027-the-gala-2/",
+    "source": "Structured event data",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-12",
+    "observed_at": "2026-10-12T19:50:47+00:00"
+  },
+  "harrahscherokeecenterasheville.com/events/2027-the-gala-3": {
+    "min": 10.0,
+    "max": 40.0,
+    "from_price": false,
+    "source_url": "https://www.harrahscherokeecenterasheville.com/events/2027-the-gala-3/",
+    "source": "Structured event data",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-12",
+    "observed_at": "2026-10-12T19:50:47+00:00"
+  },
+  "etix.com/ticket/p/49207036/maria-bamford-asheville-the-orange-peel": {
+    "min": 45.85,
+    "max": 56.7,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/49207036/maria-bamford-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:48:42+00:00"
+  },
+  "sierranevada.com/event/terraoke-free-karaoke-night-5": {
+    "min": 0,
+    "max": 0,
+    "source_url": "https://sierranevada.com/event/terraoke-free-karaoke-night-5",
+    "source": "SierraOfficial",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:48:42.915639+00:00"
+  },
+  "sierranevada.com/event/celebration-artisan-market-mills-river": {
+    "min": 0,
+    "max": 0,
+    "source_url": "https://sierranevada.com/event/celebration-artisan-market-mills-river",
+    "source": "SierraOfficial",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:48:43.010982+00:00"
+  },
+  "etix.com/ticket/p/52718104/jacoozy-asheville-the-one-stop": {
+    "min": 13.15,
+    "max": 24.15,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/52718104/jacoozy-asheville-the-one-stop?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:49:07+00:00"
+  },
+  "etix.com/ticket/p/51858432/allison-russell-asheville-the-orange-peel": {
+    "min": 35.48,
+    "max": 35.48,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/51858432/allison-russell-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:49:43+00:00"
+  },
+  "etix.com/ticket/p/40065345/the-moth-presentsasheville-storyslam-magic-asheville-grey-eagle-music-hall": {
+    "min": 22.21,
+    "max": 22.21,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/40065345/the-moth-presentsasheville-storyslam-magic-asheville-grey-eagle-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:49:43+00:00"
+  },
+  "etix.com/ticket/p/91365600/high-june-wcadalay-asheville-asheville-music-hall": {
+    "min": 24.15,
+    "max": 24.15,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/91365600/high-june-wcadalay-asheville-asheville-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:49:59+00:00"
+  },
+  "tixr.com/groups/revivalavl/events/monster-wave-s-third-annual-frankenbash--205921": {
+    "min": 20.0,
+    "max": 20.0,
+    "from_price": false,
+    "source_url": "https://www.tixr.com/groups/revivalavl/events/monster-wave-s-third-annual-frankenbash--205921?utm_campaign=jambase&utm_source=jambase",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:50:27+00:00"
+  },
+  "etix.com/ticket/p/67530588/hot-in-herre2000s-dance-party-asheville-the-orange-peel": {
+    "min": 23.25,
+    "max": 34.45,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/67530588/hot-in-herre2000s-dance-party-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:47:21+00:00"
+  },
+  "etix.com/ticket/p/31050870/knocked-loose-denzel-curry-asheville-hellbender-by-the-orange-peel": {
+    "min": 59.01,
+    "max": 69.32,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/31050870/knocked-loose-denzel-curry-asheville-hellbender-by-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:49:07+00:00"
+  },
+  "etix.com/ticket/p/70967110/the-tallest-man-on-earth-asheville-the-orange-peel": {
+    "min": 51.55,
+    "max": 51.55,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/70967110/the-tallest-man-on-earth-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:51:00+00:00"
+  },
+  "tixr.com/groups/revivalavl/events/lamp-ft-russ-lawton-scott-metzger-ray-paczkowski--194989": {
+    "min": 25.0,
+    "max": 25.0,
+    "from_price": false,
+    "source_url": "https://www.tixr.com/groups/revivalavl/events/lamp-ft-russ-lawton-scott-metzger-ray-paczkowski--194989?utm_campaign=jambase&utm_source=jambase",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:51:29+00:00"
+  },
+  "etix.com/ticket/p/95208436/the-infamous-stringdusters-black-mountain-outdoor-stage-pisgah-brewing-company": {
+    "min": 36.3,
+    "max": 36.3,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/95208436/the-infamous-stringdusters-black-mountain-outdoor-stage-pisgah-brewing-company?partner_id=100&_gl=1*gzgosm*_ga*MTMxNzI4ODg2My4xNzY4OTQ1Njk3*_ga_HJ0ZQ92ESC*czE3ODc4NDUwMzckbzk4JGcxJHQxNzg3ODQ1NTc2JGoxMCRsMCRoMTc3NzM3MDY2NQ..",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:51:55+00:00"
+  },
+  "etix.com/ticket/p/99614261/luna-asheville-asheville-music-hall": {
+    "min": 46.9,
+    "max": 46.9,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/99614261/luna-asheville-asheville-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:52:29+00:00"
+  },
+  "etix.com/ticket/p/40596416/empire-strikes-brass-benefit-concert-for-homeward-bound-wnc-black-mountain-outdoor-stage-pisgah-brewing-company": {
+    "min": 27.15,
+    "max": 27.15,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/40596416/empire-strikes-brass-benefit-concert-for-homeward-bound-wnc-black-mountain-outdoor-stage-pisgah-brewing-company?partner_id=100&_gl=1*1l0tdpv*_ga*MTMxNzI4ODg2My4xNzY4OTQ1Njk3*_ga_HJ0ZQ92ESC*czE3ODc4NDUwMzckbzk4JGcxJHQxNzg3ODQ1NTI2JGo2MCRsMCRoMTc3NzM3MDY2NQ..",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:52:29+00:00"
+  },
+  "etix.com/ticket/p/69665889/avery-anna-asheville-the-orange-peel": {
+    "min": 39.09,
+    "max": 39.09,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/69665889/avery-anna-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:52:29+00:00"
+  },
+  "tixr.com/groups/revivalavl/events/bombargo-193559": {
+    "min": 38.33,
+    "max": 120.72,
+    "includes_fees": true,
+    "source_url": "https://www.tixr.com/groups/revivalavl/events/bombargo-193559?utm_campaign=jambase&utm_source=jambase",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:52:53+00:00"
+  },
+  "etix.com/ticket/p/37116996/the-residents-eskimo-live-asheville-the-orange-peel": {
+    "min": 45.85,
+    "max": 56.7,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/37116996/the-residents-eskimo-live-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:53:20+00:00"
+  },
+  "tixr.com/groups/revivalavl/events/wishy-nature-s-pill-tour-192317": {
+    "min": 20.0,
+    "max": 20.0,
+    "from_price": false,
+    "source_url": "https://www.tixr.com/groups/revivalavl/events/wishy-nature-s-pill-tour-192317?utm_campaign=jambase&utm_source=jambase",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:53:46+00:00"
+  },
+  "etix.com/ticket/p/45607682/phillip-phillips-asheville-the-orange-peel": {
+    "min": 39.09,
+    "max": 45.85,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/45607682/phillip-phillips-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:54:05+00:00"
+  },
+  "etix.com/ticket/p/66455978/dj-boomtown-friends-asheville-the-one-stop": {
+    "min": 10.0,
+    "max": 20.0,
+    "from_price": false,
+    "source_url": "https://www.etix.com/ticket/p/66455978/dj-boomtown-friends-asheville-the-one-stop?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:46:32+00:00"
+  },
+  "etix.com/ticket/p/62007139/bronwyn-brevard-185-king-street": {
+    "min": 16.5,
+    "max": 16.5,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/62007139/bronwyn-brevard-185-king-street",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:47:02+00:00"
+  },
+  "etix.com/ticket/p/35388046/bass-magik-asheville-the-one-stop": {
+    "min": 5.0,
+    "max": 20.0,
+    "from_price": false,
+    "source_url": "https://www.etix.com/ticket/p/35388046/bass-magik-asheville-the-one-stop?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:51:55+00:00"
+  },
+  "etix.com/ticket/p/35520044/karina-rykman-asheville-asheville-music-hall": {
+    "min": 29.65,
+    "max": 29.65,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/35520044/karina-rykman-asheville-asheville-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:54:37+00:00"
+  },
+  "etix.com/ticket/p/88307323/dallas-wax-asheville-the-one-stop": {
+    "min": 7.65,
+    "max": 24.15,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/88307323/dallas-wax-asheville-the-one-stop?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:54:40+00:00"
+  },
+  "etix.com/ticket/p/41923257/david-bryan-asheville-the-one-stop": {
+    "min": 7.65,
+    "max": 24.15,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/41923257/david-bryan-asheville-the-one-stop?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:54:41+00:00"
+  },
+  "etix.com/ticket/p/85208341/benjamin-tod-and-the-inline-six-2026-tour-asheville-the-orange-peel": {
+    "min": 34.45,
+    "max": 40.42,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/85208341/benjamin-tod-and-the-inline-six-2026-tour-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:55:18+00:00"
+  },
+  "etix.com/ticket/p/54218378/the-steppers-asheville-the-one-stop": {
+    "min": 13.15,
+    "max": 24.15,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/54218378/the-steppers-asheville-the-one-stop?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:55:28+00:00"
+  },
+  "etix.com/ticket/p/46568966/cosmic-charlie-asheville-asheville-music-hall": {
+    "min": 20.85,
+    "max": 35.15,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/46568966/cosmic-charlie-asheville-asheville-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:55:28+00:00"
+  },
+  "etix.com/ticket/p/65474867/benjamin-tod-and-the-inline-six-2026-tour-asheville-the-orange-peel": {
+    "min": 40.42,
+    "max": 40.42,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/65474867/benjamin-tod-and-the-inline-six-2026-tour-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:56:09+00:00"
+  },
+  "etix.com/ticket/p/86608202/cosmic-charlie-asheville-asheville-music-hall": {
+    "min": 20.85,
+    "max": 35.15,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/86608202/cosmic-charlie-asheville-asheville-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:56:17+00:00"
+  },
+  "etix.com/ticket/p/83864001/nurse-blake-asheville-the-orange-peel": {
+    "min": 76.35,
+    "max": 105.95,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/83864001/nurse-blake-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:57:04+00:00"
+  },
+  "etix.com/ticket/p/65624045/boy-harsher-asheville-the-orange-peel": {
+    "min": 40.42,
+    "max": 40.42,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/65624045/boy-harsher-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:57:04+00:00"
+  },
+  "etix.com/ticket/p/85572281/bitch-cabal-featwednesday-mannequin-pussy-asheville-hellbender-by-the-orange-peel": {
+    "min": 54.38,
+    "max": 107.49,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/85572281/bitch-cabal-featwednesday-mannequin-pussy-asheville-hellbender-by-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:57:42+00:00"
+  },
+  "etix.com/ticket/p/74168219/glaive-asheville-the-orange-peel": {
+    "min": 43.0,
+    "max": 43.0,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/74168219/glaive-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:58:01+00:00"
+  },
+  "etix.com/ticket/p/56839760/an-evening-with-full-cord-black-mountain-taproom-stage-pisgah-brewing-company": {
+    "min": 13.76,
+    "max": 13.76,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/56839760/an-evening-with-full-cord-black-mountain-taproom-stage-pisgah-brewing-company?partner_id=100&_gl=1*8p370e*_ga*MTQ2NzI5NTE2MS4xNzc0Mjk0OTMx*_ga_HJ0ZQ92ESC*czE3NzY4MDIxMjMkbzEkZzEkdDE3NzY4MDIyMDkkajM2JGwwJGg1MDUzMzY4MzI.",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:58:34+00:00"
+  },
+  "etix.com/ticket/p/71843010/sneezy-asheville-asheville-music-hall": {
+    "min": 24.15,
+    "max": 29.65,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/71843010/sneezy-asheville-asheville-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:59:10+00:00"
+  },
+  "etix.com/ticket/p/44556789/gordon-sterling-and-the-people-asheville-the-one-stop": {
+    "min": 7.65,
+    "max": 24.15,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/44556789/gordon-sterling-and-the-people-asheville-the-one-stop?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:00:03+00:00"
+  },
+  "etix.com/ticket/p/56527626/scoochie-boochie-asheville-pulp": {
+    "min": 34.45,
+    "max": 73.52,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/56527626/scoochie-boochie-asheville-pulp?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:00:03+00:00"
+  },
+  "wl.eventim.us/event/freaks-of-nature-saturna-w-tunic/705378": {
+    "min": 42.59,
+    "max": 42.59,
+    "includes_fees": true,
+    "source_url": "https://wl.eventim.us/event/freaks-of-nature-saturna-w-tunic/705378?afflky=ThirdRoom",
+    "source": "See Tickets current-event total",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:00:21.023414+00:00"
+  },
+  "etix.com/ticket/p/83234502/yung-gravythe-joyrider-tour-asheville-the-orange-peel": {
+    "min": 45.35,
+    "max": 156.32,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/83234502/yung-gravythe-joyrider-tour-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:00:33+00:00"
+  },
+  "etix.com/ticket/p/38811393/hawthorne-heights-asheville-the-orange-peel": {
+    "min": 45.85,
+    "max": 45.85,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/38811393/hawthorne-heights-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:00:43+00:00"
+  },
+  "tixr.com/groups/revivalavl/events/ajj-201862": {
+    "min": 27.0,
+    "max": 27.0,
+    "from_price": false,
+    "source_url": "https://www.tixr.com/groups/revivalavl/events/ajj-201862?utm_campaign=jambase&utm_source=jambase",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:00:43+00:00"
+  },
+  "etix.com/ticket/p/59423794/sunsquabi-asheville-asheville-music-hall": {
+    "min": 29.65,
+    "max": 29.65,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/59423794/sunsquabi-asheville-asheville-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:02:13+00:00"
+  },
+  "tixr.com/groups/revivalavl/events/sweet-pill-us-tour-2026-190429": {
+    "min": 26.0,
+    "max": 26.0,
+    "from_price": false,
+    "source_url": "https://www.tixr.com/groups/revivalavl/events/sweet-pill-us-tour-2026-190429?utm_campaign=jambase&utm_source=jambase",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:02:13+00:00"
+  },
+  "etix.com/ticket/p/42987136/weird-phishes-asheville-the-one-stop": {
+    "min": 7.65,
+    "max": 24.15,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/42987136/weird-phishes-asheville-the-one-stop?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:03:55+00:00"
+  },
+  "tixr.com/groups/revivalavl/events/joe-jordan-the-heart-sessions-tour-195081": {
+    "min": 26.29,
+    "max": 26.29,
+    "includes_fees": true,
+    "source_url": "https://www.tixr.com/groups/revivalavl/events/joe-jordan-the-heart-sessions-tour-195081?utm_campaign=jambase&utm_source=jambase",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:04:19+00:00"
+  },
+  "tixr.com/groups/revivalavl/events/the-kilans-201268": {
+    "min": 20.0,
+    "max": 20.0,
+    "from_price": false,
+    "source_url": "https://www.tixr.com/groups/revivalavl/events/the-kilans-201268?utm_campaign=jambase&utm_source=jambase",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:04:24+00:00"
+  },
+  "etix.com/ticket/p/47700099/the-band-memo-asheville-the-one-stop": {
+    "min": 7.65,
+    "max": 24.15,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/47700099/the-band-memo-asheville-the-one-stop?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:06:07+00:00"
+  },
+  "tixr.com/groups/revivalavl/events/colby-acuff-195918": {
+    "min": 20.0,
+    "max": 20.0,
+    "from_price": false,
+    "source_url": "https://www.tixr.com/groups/revivalavl/events/colby-acuff-195918?utm_campaign=jambase&utm_source=jambase",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:06:07+00:00"
+  },
+  "etix.com/ticket/p/68711054/blind-date-live-asheville-the-orange-peel": {
+    "min": 29.98,
+    "max": 29.98,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/68711054/blind-date-live-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:06:58+00:00"
+  },
+  "tixr.com/groups/revivalavl/events/hot-freaks-soft-body-tour-198589": {
+    "min": 20.0,
+    "max": 20.0,
+    "from_price": false,
+    "source_url": "https://www.tixr.com/groups/revivalavl/events/hot-freaks-soft-body-tour-198589?utm_campaign=jambase&utm_source=jambase",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:06:58+00:00"
+  },
+  "tixr.com/groups/revivalavl/events/same-as-it-ever-was-a-tribute-to-talking-heads-206547": {
+    "min": 24.19,
+    "max": 24.19,
+    "includes_fees": true,
+    "source_url": "https://www.tixr.com/groups/revivalavl/events/same-as-it-ever-was-a-tribute-to-talking-heads-206547?utm_campaign=jambase&utm_source=jambase",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:08:11+00:00"
+  },
+  "etix.com/ticket/p/77708613/katie-pruitt-asheville-asheville-music-hall": {
+    "min": 29.65,
+    "max": 29.65,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/77708613/katie-pruitt-asheville-asheville-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:08:26+00:00"
+  },
+  "etix.com/ticket/p/78799659/certainly-so-asheville-the-one-stop": {
+    "min": 7.65,
+    "max": 24.15,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/78799659/certainly-so-asheville-the-one-stop?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:09:06+00:00"
+  },
+  "etix.com/ticket/p/79474624/randy-feltfacegimmick-asheville-the-orange-peel": {
+    "min": 46.38,
+    "max": 46.38,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/79474624/randy-feltfacegimmick-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:09:13+00:00"
+  },
+  "tixr.com/groups/revivalavl/events/ho99o9-n8noface-sincerely-the-void-195440": {
+    "min": 35.71,
+    "max": 35.71,
+    "includes_fees": true,
+    "source_url": "https://www.tixr.com/groups/revivalavl/events/ho99o9-n8noface-sincerely-the-void-195440?utm_campaign=jambase&utm_source=jambase",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:09:13+00:00"
+  },
+  "tixr.com/groups/revivalavl/events/prince-daddy-the-hyena-201732": {
+    "min": 25.0,
+    "max": 25.0,
+    "from_price": false,
+    "source_url": "https://www.tixr.com/groups/revivalavl/events/prince-daddy-the-hyena-201732?utm_campaign=jambase&utm_source=jambase",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:09:48+00:00"
+  },
+  "etix.com/ticket/p/58776099/hiss-golden-messenger-asheville-the-orange-peel": {
+    "min": 40.42,
+    "max": 126.99,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/58776099/hiss-golden-messenger-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:10:00+00:00"
+  },
+  "tixr.com/groups/revivalavl/events/nicholas-jamerson-190461": {
+    "min": 20.0,
+    "max": 20.0,
+    "from_price": false,
+    "source_url": "https://www.tixr.com/groups/revivalavl/events/nicholas-jamerson-190461?utm_campaign=jambase&utm_source=jambase",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:10:44+00:00"
+  },
+  "tixr.com/groups/revivalavl/events/belles-197725": {
+    "min": 20.0,
+    "max": 20.0,
+    "from_price": false,
+    "source_url": "https://www.tixr.com/groups/revivalavl/events/belles-197725?utm_campaign=jambase&utm_source=jambase",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:11:27+00:00"
+  },
+  "etix.com/ticket/p/92566794/kristin-key-asheville-the-orange-peel": {
+    "min": 34.45,
+    "max": 34.45,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/92566794/kristin-key-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:11:35+00:00"
+  },
+  "etix.com/ticket/p/31697563/the-saint-cecilia-asheville-the-one-stop": {
+    "min": 7.65,
+    "max": 24.15,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/31697563/the-saint-cecilia-asheville-the-one-stop?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:12:21+00:00"
+  },
+  "etix.com/ticket/p/78200291/fireside-collectives-family-jamboree-asheville-the-orange-peel": {
+    "min": 34.45,
+    "max": 34.45,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/78200291/fireside-collectives-family-jamboree-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:12:47+00:00"
+  },
+  "tixr.com/groups/revivalavl/events/nicole-atkins-drama-2026-tour-195441": {
+    "min": 22.0,
+    "max": 22.0,
+    "from_price": false,
+    "source_url": "https://www.tixr.com/groups/revivalavl/events/nicole-atkins-drama-2026-tour-195441?utm_campaign=jambase&utm_source=jambase",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:13:19+00:00"
+  },
+  "etix.com/ticket/p/75732118/featherpocket-stringband-asheville-the-one-stop": {
+    "min": 7.65,
+    "max": 24.15,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/75732118/featherpocket-stringband-asheville-the-one-stop?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:13:27+00:00"
+  },
+  "tixr.com/groups/revivalavl/events/tyler-nance-midwest-memoir-tour-197677": {
+    "min": 26.29,
+    "max": 26.29,
+    "includes_fees": true,
+    "source_url": "https://www.tixr.com/groups/revivalavl/events/tyler-nance-midwest-memoir-tour-197677?utm_campaign=jambase&utm_source=jambase",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:14:06+00:00"
+  },
+  "etix.com/ticket/p/51623330/daniel-donatos-cosmic-countrydown-one-horse-unplugged-acousticwsg-aron-magner-disco-biscuits-asheville-asheville-music-hall": {
+    "min": 55.9,
+    "max": 55.9,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/51623330/daniel-donatos-cosmic-countrydown-one-horse-unplugged-acousticwsg-aron-magner-disco-biscuits-asheville-asheville-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:14:27+00:00"
+  },
+  "etix.com/ticket/p/35621797/turnover-asheville-the-orange-peel": {
+    "min": 49.47,
+    "max": 49.47,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/35621797/turnover-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:14:27+00:00"
+  },
+  "etix.com/ticket/p/70890538/daniel-donatos-cosmic-countrydown-one-horse-unplugged-acousticwsg-jeff-sipe-aru-asheville-asheville-music-hall": {
+    "min": 55.9,
+    "max": 55.9,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/70890538/daniel-donatos-cosmic-countrydown-one-horse-unplugged-acousticwsg-jeff-sipe-aru-asheville-asheville-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:15:08+00:00"
+  },
+  "etix.com/ticket/p/35986879/daniel-donatos-cosmic-countrydown-one-horse-unplugged-acousticwsg-kyser-george-shadowgrass-asheville-asheville-music-hall": {
+    "min": 55.9,
+    "max": 55.9,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/35986879/daniel-donatos-cosmic-countrydown-one-horse-unplugged-acousticwsg-kyser-george-shadowgrass-asheville-asheville-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:15:23+00:00"
+  },
+  "etix.com/ticket/p/39247867/atsuko-okatsukathe-big-bowl-tour-asheville-the-orange-peel": {
+    "min": 61.33,
+    "max": 83.31,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/39247867/atsuko-okatsukathe-big-bowl-tour-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:16:12+00:00"
+  },
+  "etix.com/ticket/p/67177553/thievery-corporation-asheville-the-orange-peel": {
+    "min": 56.7,
+    "max": 56.7,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/67177553/thievery-corporation-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:16:12+00:00"
+  },
+  "tixr.com/groups/revivalavl/events/iluka-the-wings-tour-206544": {
+    "min": 17.0,
+    "max": 17.0,
+    "from_price": false,
+    "source_url": "https://www.tixr.com/groups/revivalavl/events/iluka-the-wings-tour-206544?utm_campaign=jambase&utm_source=jambase",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:16:36+00:00"
+  },
+  "etix.com/ticket/p/68164947/daily-bread-asheville-the-orange-peel": {
+    "min": 41.45,
+    "max": 120.35,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/68164947/daily-bread-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:17:11+00:00"
+  },
+  "etix.com/ticket/p/78333867/grahame-lesh-friends-asheville-the-orange-peel": {
+    "min": 45.85,
+    "max": 45.85,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/78333867/grahame-lesh-friends-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:18:06+00:00"
+  },
+  "etix.com/ticket/p/88887466/seven-teller-asheville-the-one-stop": {
+    "min": 7.65,
+    "max": 24.15,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/88887466/seven-teller-asheville-the-one-stop?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:18:47+00:00"
+  },
+  "tixr.com/groups/revivalavl/events/angela-autumn-197525": {
+    "min": 20.0,
+    "max": 20.0,
+    "from_price": false,
+    "source_url": "https://www.tixr.com/groups/revivalavl/events/angela-autumn-197525?utm_campaign=jambase&utm_source=jambase",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:18:47+00:00"
+  },
+  "etix.com/ticket/p/77511027/mountain-grass-unit-asheville-the-orange-peel": {
+    "min": 34.45,
+    "max": 34.45,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/77511027/mountain-grass-unit-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:18:47+00:00"
+  },
+  "etix.com/ticket/p/55339695/sons-of-cream-asheville-the-orange-peel": {
+    "min": 38.57,
+    "max": 38.57,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/55339695/sons-of-cream-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:19:24+00:00"
+  },
+  "etix.com/ticket/p/38723137/marc-maron-asheville-the-orange-peel": {
+    "min": 61.33,
+    "max": 61.33,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/38723137/marc-maron-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:19:24+00:00"
+  },
+  "tixr.com/groups/revivalavl/events/boy-golden-good-goddamn-another-tour-205289": {
+    "min": 20.0,
+    "max": 20.0,
+    "from_price": false,
+    "source_url": "https://www.tixr.com/groups/revivalavl/events/boy-golden-good-goddamn-another-tour-205289?utm_campaign=jambase&utm_source=jambase",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:19:24+00:00"
+  },
+  "etix.com/ticket/p/75510304/glove-special-sauce-asheville-the-orange-peel": {
+    "min": 48.12,
+    "max": 161.8,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/75510304/glove-special-sauce-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:20:13+00:00"
+  },
+  "etix.com/ticket/p/41451874/braxton-keith-asheville-the-orange-peel": {
+    "min": 43.52,
+    "max": 200.18,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/41451874/braxton-keith-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:20:13+00:00"
+  },
+  "etix.com/ticket/p/89064349/zoso-the-ultimate-led-zeppelin-experience-asheville-the-orange-peel": {
+    "min": 27.92,
+    "max": 40.42,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/89064349/zoso-the-ultimate-led-zeppelin-experience-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:20:54+00:00"
+  },
+  "etix.com/ticket/p/70600519/the-broken-hearts-asheville-the-orange-peel": {
+    "min": 27.92,
+    "max": 27.92,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/70600519/the-broken-hearts-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:20:54+00:00"
+  },
+  "etix.com/ticket/p/33409218/dan-and-peggy-reeder-asheville-the-orange-peel": {
+    "min": 45.85,
+    "max": 61.33,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/33409218/dan-and-peggy-reeder-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:22:25+00:00"
+  },
+  "etix.com/ticket/p/83961261/twin-temple-asheville-the-orange-peel": {
+    "min": 40.42,
+    "max": 40.42,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/83961261/twin-temple-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:22:25+00:00"
+  },
+  "etix.com/ticket/p/36361560/sammy-rae-the-friends-the-get-down-asheville-the-orange-peel": {
+    "min": 45.85,
+    "max": 45.85,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/36361560/sammy-rae-the-friends-the-get-down-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:22:27+00:00"
+  },
+  "etix.com/ticket/p/32619116/brandy-clark-asheville-the-orange-peel": {
+    "min": 45.85,
+    "max": 45.85,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/32619116/brandy-clark-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:23:08+00:00"
+  },
+  "etix.com/ticket/p/66200858/jaboukie-youngwhite-asheville-the-orange-peel": {
+    "min": 34.45,
+    "max": 45.85,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/66200858/jaboukie-youngwhite-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:23:08+00:00"
+  },
+  "etix.com/ticket/p/68747539/michael-shannon-jason-narducy-and-friends-play-rems-document-asheville-the-orange-peel": {
+    "min": 51.55,
+    "max": 51.55,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/68747539/michael-shannon-jason-narducy-and-friends-play-rems-document-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:23:49+00:00"
+  },
+  "etix.com/ticket/p/44225920/fontaines-dc-asheville-hellbender-by-the-orange-peel": {
+    "min": 79.62,
+    "max": 79.62,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/44225920/fontaines-dc-asheville-hellbender-by-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:23:55+00:00"
+  },
+  "etix.com/ticket/p/79778923/carsie-blanton-wthe-burning-hell-asheville-grey-eagle-music-hall": {
+    "min": 35.9,
+    "max": 35.9,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/79778923/carsie-blanton-wthe-burning-hell-asheville-grey-eagle-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:25:39+00:00"
+  },
+  "etix.com/ticket/p/61084008/chatham-rabbits-asheville-grey-eagle-music-hall": {
+    "min": 28.17,
+    "max": 35.9,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/61084008/chatham-rabbits-asheville-grey-eagle-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:33:37+00:00"
+  },
+  "etix.com/ticket/p/44225954/meryljane-asheville-the-one-stop": {
+    "min": 5.0,
+    "max": 20.0,
+    "from_price": false,
+    "source_url": "https://www.etix.com/ticket/p/44225954/meryljane-asheville-the-one-stop?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T01:57:41+00:00"
+  },
+  "etix.com/ticket/p/67879863/rumours-atla-fleetwood-mac-tribute-asheville-the-orange-peel": {
+    "min": 25.0,
+    "max": 25.0,
+    "from_price": false,
+    "source_url": "https://www.etix.com/ticket/p/67879863/rumours-atla-fleetwood-mac-tribute-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:02:56+00:00"
+  },
+  "etix.com/ticket/p/79326593/tyler-ballgame-asheville-asheville-music-hall": {
+    "min": 20.0,
+    "max": 20.0,
+    "from_price": false,
+    "source_url": "https://www.etix.com/ticket/p/79326593/tyler-ballgame-asheville-asheville-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:03:09+00:00"
+  },
+  "etix.com/ticket/p/48249679/the-record-company-asheville-the-orange-peel": {
+    "min": 27.5,
+    "max": 27.5,
+    "from_price": false,
+    "source_url": "https://www.etix.com/ticket/p/48249679/the-record-company-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:03:55+00:00"
+  },
+  "etix.com/ticket/p/35143100/grateful-shred-asheville-the-orange-peel": {
+    "min": 27.5,
+    "max": 27.5,
+    "from_price": false,
+    "source_url": "https://www.etix.com/ticket/p/35143100/grateful-shred-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:06:22+00:00"
+  },
+  "etix.com/ticket/p/40470050/yo-mamas-big-fat-booty-band-whustle-souls-asheville-asheville-music-hall": {
+    "min": 20.0,
+    "max": 20.0,
+    "from_price": false,
+    "source_url": "https://www.etix.com/ticket/p/40470050/yo-mamas-big-fat-booty-band-whustle-souls-asheville-asheville-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:07:48+00:00"
+  },
+  "etix.com/ticket/p/79032536/zack-fox-dj-set-asheville-the-orange-peel": {
+    "min": 43.02,
+    "max": 54.14,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/79032536/zack-fox-dj-set-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:08:26+00:00"
+  },
+  "etix.com/ticket/p/46220128/the-moth-presentsasheville-storyslam-home-for-the-holidays-asheville-grey-eagle-music-hall": {
+    "min": 22.21,
+    "max": 22.21,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/46220128/the-moth-presentsasheville-storyslam-home-for-the-holidays-asheville-grey-eagle-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:09:49+00:00"
+  },
+  "etix.com/ticket/p/38164914/fungkshui-asheville-the-one-stop": {
+    "min": 5.0,
+    "max": 20.0,
+    "from_price": false,
+    "source_url": "https://www.etix.com/ticket/p/38164914/fungkshui-asheville-the-one-stop?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:10:44+00:00"
+  },
+  "etix.com/ticket/p/57523152/george-porter-jrrunninpardners-with-special-guestdeadtronica-feataron-magner-of-the-disco-biscuits-cloudchord-asheville-asheville-music-hall": {
+    "min": 40.0,
+    "max": 40.0,
+    "from_price": false,
+    "source_url": "https://www.etix.com/ticket/p/57523152/george-porter-jrrunninpardners-with-special-guestdeadtronica-feataron-magner-of-the-disco-biscuits-cloudchord-asheville-asheville-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:11:35+00:00"
+  },
+  "etix.com/ticket/p/84709756/rock-n-roll-rewind-asheville-the-orange-peel": {
+    "min": 15.0,
+    "max": 15.0,
+    "from_price": false,
+    "source_url": "https://www.etix.com/ticket/p/84709756/rock-n-roll-rewind-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:12:47+00:00"
+  },
+  "etix.com/ticket/p/30268907/big-shrimp-asheville-the-one-stop": {
+    "min": 10.0,
+    "max": 10.0,
+    "from_price": false,
+    "source_url": "https://www.etix.com/ticket/p/30268907/big-shrimp-asheville-the-one-stop?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:15:23+00:00"
+  },
+  "etix.com/ticket/p/76276709/the-moth-presentsasheville-storyslam-anything-goes-asheville-grey-eagle-music-hall": {
+    "min": 22.21,
+    "max": 22.21,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/76276709/the-moth-presentsasheville-storyslam-anything-goes-asheville-grey-eagle-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T02:17:48+00:00"
+  },
+  "secured.brevardmusic.org/1947/1954": {
+    "min": 62.98,
+    "max": 62.98,
+    "from_price": true,
+    "source_url": "https://secured.brevardmusic.org/1947/1954",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:55:01+00:00"
+  },
+  "wl.eventim.us/event/an-evening-with-jerrys-middle-finger/699090": {
+    "min": 36.88,
+    "max": 36.88,
+    "includes_fees": true,
+    "source_url": "https://wl.eventim.us/event/an-evening-with-jerrys-middle-finger/699090?afflky=ThirdRoom",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:53:40+00:00"
+  },
+  "wl.eventim.us/event/Boogie-T-ASHEVILLE/694768": {
+    "min": 44.09,
+    "max": 49.29,
+    "includes_fees": true,
+    "source_url": "https://wl.eventim.us/event/Boogie-T-ASHEVILLE/694768?afflky=DiscoDonnie",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:53:40+00:00"
+  },
+  "wl.eventim.us/event/dantes-inferno/704125": {
+    "min": 26.49,
+    "max": 26.49,
+    "includes_fees": true,
+    "source_url": "https://wl.eventim.us/event/dantes-inferno/704125?afflky=ThirdRoom",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:53:40+00:00"
+  },
+  "wl.eventim.us/event/tophouse/696642": {
+    "min": 35.28,
+    "max": 35.28,
+    "includes_fees": true,
+    "source_url": "https://wl.eventim.us/event/tophouse/696642?afflky=ThirdRoom",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:53:40+00:00"
+  },
+  "wl.eventim.us/event/ashez-w-jordnmoody/701346": {
+    "min": 26.49,
+    "max": 26.49,
+    "includes_fees": true,
+    "source_url": "https://wl.eventim.us/event/ashez-w-jordnmoody/701346?afflky=ThirdRoom",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:53:40+00:00"
+  },
+  "wl.eventim.us/event/sicard-hollows-eve-wspecial-guest-airshow/695221": {
+    "min": 19.74,
+    "max": 19.74,
+    "includes_fees": true,
+    "source_url": "https://wl.eventim.us/event/sicard-hollows-eve-wspecial-guest-airshow/695221?afflky=ThirdRoom",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:53:41+00:00"
+  },
+  "wl.eventim.us/event/nikita-the-wicked-wspecial-guests/701102": {
+    "min": 36.88,
+    "max": 36.88,
+    "includes_fees": true,
+    "source_url": "https://wl.eventim.us/event/nikita-the-wicked-wspecial-guests/701102?afflky=ThirdRoom",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:53:41+00:00"
+  },
+  "wl.eventim.us/event/coyote-rodeo/706307": {
+    "min": 14.54,
+    "max": 14.54,
+    "includes_fees": true,
+    "source_url": "https://wl.eventim.us/event/coyote-rodeo/706307?afflky=ThirdRoom",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:53:41+00:00"
+  },
+  "wl.eventim.us/event/mono-means-one-w-muscle-tough/700510": {
+    "min": 16.62,
+    "max": 16.62,
+    "includes_fees": true,
+    "source_url": "https://wl.eventim.us/event/mono-means-one-w-muscle-tough/700510?afflky=ThirdRoom",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:53:41+00:00"
+  },
+  "wl.eventim.us/event/christian-loffler-live-fall-2026-tour-w-paris/702755": {
+    "min": 33.76,
+    "max": 33.76,
+    "includes_fees": true,
+    "source_url": "https://wl.eventim.us/event/christian-loffler-live-fall-2026-tour-w-paris/702755?afflky=ThirdRoom",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:53:41+00:00"
+  },
+  "wl.eventim.us/event/mindex-w-ooga-and-smigonaut/706062": {
+    "min": 31.68,
+    "max": 31.68,
+    "includes_fees": true,
+    "source_url": "https://wl.eventim.us/event/mindex-w-ooga-and-smigonaut/706062?afflky=ThirdRoom",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:53:41+00:00"
+  },
+  "wl.eventim.us/event/nate-smith-all-ages-show/699627": {
+    "min": 36.88,
+    "max": 48.83,
+    "includes_fees": true,
+    "source_url": "https://wl.eventim.us/event/nate-smith-all-ages-show/699627?afflky=ThirdRoom",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:53:41+00:00"
+  },
+  "wl.eventim.us/event/mstic-w-grimmjoi/704466": {
+    "min": 26.49,
+    "max": 26.49,
+    "includes_fees": true,
+    "source_url": "https://wl.eventim.us/event/mstic-w-grimmjoi/704466?afflky=ThirdRoom",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:53:41+00:00"
+  },
+  "secured.brevardmusic.org/1945": {
+    "min": 62.98,
+    "max": 62.98,
+    "from_price": true,
+    "source_url": "https://secured.brevardmusic.org/1945",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:55:01+00:00"
+  },
+  "secured.brevardmusic.org/1948/1955": {
+    "min": 62.98,
+    "max": 62.98,
+    "from_price": true,
+    "source_url": "https://secured.brevardmusic.org/1948/1955",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:55:01+00:00"
+  },
+  "secured.brevardmusic.org/1949/1956": {
+    "min": 62.98,
+    "max": 62.98,
+    "from_price": true,
+    "source_url": "https://secured.brevardmusic.org/1949/1956",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:55:01+00:00"
+  },
+  "secured.brevardmusic.org/1951/1957": {
+    "min": 62.98,
+    "max": 62.98,
+    "from_price": true,
+    "source_url": "https://secured.brevardmusic.org/1951/1957",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:55:01+00:00"
+  },
+  "secured.brevardmusic.org/1952/1959": {
+    "min": 62.98,
+    "max": 62.98,
+    "from_price": true,
+    "source_url": "https://secured.brevardmusic.org/1952/1959",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:55:01+00:00"
+  },
+  "secured.brevardmusic.org/1953/1958": {
+    "min": 62.98,
+    "max": 62.98,
+    "from_price": true,
+    "source_url": "https://secured.brevardmusic.org/1953/1958",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:55:01+00:00"
+  },
+  "etix.com/ticket/p/57022380/honey-marmalade-asheville-the-one-stop": {
+    "min": 7.65,
+    "max": 24.15,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/57022380/honey-marmalade-asheville-the-one-stop?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:57:15+00:00"
+  },
+  "etix.com/ticket/p/35616253/puptour-2026-asheville-the-orange-peel": {
+    "min": 42.49,
+    "max": 42.49,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/35616253/puptour-2026-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:57:15+00:00"
+  },
+  "etix.com/ticket/p/34547652/asheville-vaudeville-brunch-asheville-grey-eagle-music-hall-special-events": {
+    "min": 25.6,
+    "max": 25.6,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/34547652/asheville-vaudeville-brunch-asheville-grey-eagle-music-hall-special-events?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:57:15+00:00"
+  },
+  "etix.com/ticket/p/37451721/grieves-wmouse-powell-asheville-asheville-music-hall": {
+    "min": 24.15,
+    "max": 55.9,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/37451721/grieves-wmouse-powell-asheville-asheville-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:57:15+00:00"
+  },
+  "etix.com/ticket/p/72069980/honestav-asheville-the-orange-peel": {
+    "min": 39.92,
+    "max": 39.92,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/72069980/honestav-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:57:15+00:00"
+  },
+  "etix.com/ticket/p/43119265/larry-keel-jon-stickley-asheville-asheville-music-hall": {
+    "min": 24.15,
+    "max": 24.15,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/43119265/larry-keel-jon-stickley-asheville-asheville-music-hall?partner_id=100",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:57:15+00:00"
+  },
+  "tixr.com/groups/revivalavl/events/friendship-and-charlotte-cornfield-198784": {
+    "min": 32.57,
+    "max": 32.57,
+    "includes_fees": true,
+    "source_url": "https://www.tixr.com/groups/revivalavl/events/friendship-and-charlotte-cornfield-198784?utm_campaign=jambase&utm_source=jambase",
+    "source": "Cached ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T04:57:15+00:00"
+  },
+  "wl.eventim.us/event/cut-chemist-disco-is-dead/703776": {
+    "min": 36.88,
+    "max": 36.88,
+    "includes_fees": true,
+    "source_url": "https://wl.eventim.us/event/cut-chemist-disco-is-dead/703776?afflky=ThirdRoom",
+    "source": "Verified fee-inclusive ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T05:26:33.826031+00:00"
+  },
+  "spafford-sierranevada.eventbrite.com": {
+    "min": 31.39,
+    "max": 31.39,
+    "from_price": true,
+    "includes_fees": true,
+    "source_url": "https://spafford-sierranevada.eventbrite.com/",
+    "source": "Eventbrite fee-inclusive ticket price",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T05:25:00.585935+00:00"
+  },
+  "etix.com/ticket/p/54321160/the-fretliners-when-the-kettle-sings-tour-brevard-185-king-street": {
+    "min": 17.5,
+    "max": 17.5,
+    "includes_fees": true,
+    "source_url": "https://www.etix.com/ticket/p/54321160/the-fretliners-when-the-kettle-sings-tour-brevard-185-king-street",
+    "source": "Verified fee-inclusive ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-14",
+    "observed_at": "2026-10-14T05:26:33.814922+00:00"
+  },
+  "dice.fm/event/mxydkw-project-pat-night-2-17th-oct-eulogy-asheville-tickets": {
+    "min": 58.41,
+    "max": 58.41,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://dice.fm/event/mxydkw-project-pat-night-2-17th-oct-eulogy-asheville-tickets",
+    "source": "Cached fee-inclusive ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-04",
+    "observed_at": "2026-10-04T02:22:47+00:00"
+  },
+  "dice.fm/event/53699k-a-place-to-bury-strangers-adult-w-cold-choir-13th-nov-eulogy-asheville-tickets": {
+    "min": 32.0,
+    "max": 32.0,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://dice.fm/event/53699k-a-place-to-bury-strangers-adult-w-cold-choir-13th-nov-eulogy-asheville-tickets",
+    "source": "Cached fee-inclusive ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-04",
+    "observed_at": "2026-10-04T02:26:43+00:00"
+  },
+  "dice.fm/event/l8xv8b-robert-lester-folsom-w-liz-cooper-6th-oct-eulogy-asheville-tickets": {
+    "min": 32.0,
+    "max": 32.0,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://dice.fm/event/l8xv8b-robert-lester-folsom-w-liz-cooper-6th-oct-eulogy-asheville-tickets",
+    "source": "Cached fee-inclusive ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-04",
+    "observed_at": "2026-10-04T02:27:43+00:00"
+  },
+  "dice.fm/event/eo687o-lespecial-tauk-both-nights-20th-nov-eulogy-asheville-tickets": {
+    "min": 70.53,
+    "max": 70.53,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://dice.fm/event/eo687o-lespecial-tauk-both-nights-20th-nov-eulogy-asheville-tickets",
+    "source": "Cached fee-inclusive ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-05",
+    "observed_at": "2026-10-05T16:30:59+00:00"
+  },
+  "dice.fm/event/6doae3-tauk-lespecial-night-1-20th-nov-eulogy-asheville-tickets": {
+    "min": 38.57,
+    "max": 38.57,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://dice.fm/event/6doae3-tauk-lespecial-night-1-20th-nov-eulogy-asheville-tickets?_branch_match_id=1635693152108933914&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1S9NTDRLtkwzTzQyMwYAkshhOSEAAAA%3D",
+    "source": "Cached fee-inclusive ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-05",
+    "observed_at": "2026-10-05T16:31:04+00:00"
+  },
+  "dice.fm/event/avx562-lespecial-tauk-night-2-21st-nov-eulogy-asheville-tickets": {
+    "min": 38.57,
+    "max": 38.57,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://dice.fm/event/avx562-lespecial-tauk-night-2-21st-nov-eulogy-asheville-tickets?_branch_match_id=1635693168043251515&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1c83TzJOSTMxTExLMgEAoGO91CEAAAA%3D",
+    "source": "Cached fee-inclusive ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-05",
+    "observed_at": "2026-10-05T16:31:08+00:00"
+  },
+  "dice.fm/event/2wav77-sheer-mag-king-tuff-5th-dec-eulogy-asheville-tickets": {
+    "min": 30.86,
+    "max": 30.86,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://dice.fm/event/2wav77-sheer-mag-king-tuff-5th-dec-eulogy-asheville-tickets?_branch_match_id=1635693192651111448&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1c8wNTMzMbEwSbEwMAMAsrkQayEAAAA%3D",
+    "source": "Cached fee-inclusive ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-05",
+    "observed_at": "2026-10-05T16:31:14+00:00"
+  },
+  "dice.fm/event/6do9w7-emma-ruth-rundle-these-killing-times-6th-dec-eulogy-asheville-tickets": {
+    "min": 30.86,
+    "max": 30.86,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://dice.fm/event/6do9w7-emma-ruth-rundle-these-killing-times-6th-dec-eulogy-asheville-tickets?_branch_match_id=1635693200337604822&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1XdJNDUySjRPtjRNMwIAHH9DHiEAAAA%3D",
+    "source": "Cached fee-inclusive ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-05",
+    "observed_at": "2026-10-05T16:31:16+00:00"
+  },
+  "dice.fm/event/v3l3ov-goth-prom-old-gods-of-appalachia-takes-over-eulogy-31st-oct-eulogy-asheville-tickets": {
+    "min": 36.66,
+    "max": 36.66,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://dice.fm/event/v3l3ov-goth-prom-old-gods-of-appalachia-takes-over-eulogy-31st-oct-eulogy-asheville-tickets?_branch_match_id=1638280273245836405&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1S82TjE1TEtKTUw1MgQAU9Fn0SEAAAA%3D",
+    "source": "Cached fee-inclusive ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-12",
+    "observed_at": "2026-10-12T19:51:21+00:00"
+  },
+  "dice.fm/event/k62879-emo-night-brooklyn-28th-nov-eulogy-asheville-tickets": {
+    "min": 22.82,
+    "max": 22.82,
+    "from_price": true,
+    "includes_fees": true,
+    "source_url": "https://dice.fm/event/k62879-emo-night-brooklyn-28th-nov-eulogy-asheville-tickets?_branch_match_id=1635769403429914616&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1fexSDUwtzAzMLA0NQMAU%2Fz1JCEAAAA%3D",
+    "source": "Cached fee-inclusive ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-05",
+    "observed_at": "2026-10-05T21:34:04+00:00"
+  },
+  "dice.fm/event/ww95pg-the-stews-7th-nov-eulogy-asheville-tickets": {
+    "min": 30.86,
+    "max": 30.86,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://dice.fm/event/ww95pg-the-stews-7th-nov-eulogy-asheville-tickets?_branch_match_id=1635769688731526077&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1S9LM041Mk4zsjQ1NwMAR%2FNhBiEAAAA%3D",
+    "source": "Cached fee-inclusive ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-05",
+    "observed_at": "2026-10-05T21:35:12+00:00"
+  },
+  "dice.fm/event/l8mbdp-faust-with-live-metal-score-8th-oct-eulogy-asheville-tickets": {
+    "min": 18.73,
+    "max": 18.73,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://dice.fm/event/l8mbdp-faust-with-live-metal-score-8th-oct-eulogy-asheville-tickets?_branch_match_id=1635829084820887440&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1Xe1SEuzNEo2SUo2NQcAHGsyPCEAAAA%3D",
+    "source": "Cached fee-inclusive ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-06",
+    "observed_at": "2026-10-06T01:31:13+00:00"
+  },
+  "dice.fm/event/avxqqx-claudio-simonettis-goblin-tenebre-23rd-nov-eulogy-asheville-tickets": {
+    "min": 64.25,
+    "max": 64.25,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://dice.fm/event/avxqqx-claudio-simonettis-goblin-tenebre-23rd-nov-eulogy-asheville-tickets?_branch_match_id=1638280121545730189&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1XcxM7GwMDdOMzBPTQEA3mc3YCEAAAA%3D",
+    "source": "Cached fee-inclusive ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-12",
+    "observed_at": "2026-10-12T19:50:45+00:00"
+  },
+  "dice.fm/event/rydpxy-on-company-time-the-pto-tour-10th-oct-eulogy-asheville-tickets": {
+    "min": 32.0,
+    "max": 32.0,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://dice.fm/event/rydpxy-on-company-time-the-pto-tour-10th-oct-eulogy-asheville-tickets",
+    "source": "Cached fee-inclusive ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-10",
+    "observed_at": "2026-10-10T16:17:50+00:00"
+  },
+  "dice.fm/event/v3n2y7-balthvs-w-delafunk-11th-oct-eulogy-asheville-tickets": {
+    "min": 31.96,
+    "max": 31.96,
+    "from_price": false,
+    "includes_fees": true,
+    "source_url": "https://dice.fm/event/v3n2y7-balthvs-w-delafunk-11th-oct-eulogy-asheville-tickets?_branch_match_id=1637865208899968944&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1S9LSTGyNDeySDZNMQQA%2F%2BU%2BzCEAAAA%3D",
+    "source": "Cached fee-inclusive ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-10-11",
+    "observed_at": "2026-10-11T16:22:02+00:00"
   }
 }

@@ -169,6 +169,21 @@ _seed_lock = threading.Lock()
 
 def ensure_catalog_seed():
     """Upgrade the pre-history catalog once; preserve later scheduled refreshes."""
+    parts=sorted(PROJECT_DIR.glob('catalog_pricing_seed.part*'))
+    if parts:
+        with _seed_lock:
+            if DATABASE_PATH.exists():
+                with sqlite3.connect(str(DATABASE_PATH)) as current:
+                    if current.execute("SELECT 1 FROM sqlite_master WHERE name='pricing_seed_v1'").fetchone():return
+            payload=gzip.decompress(b''.join(p.read_bytes() for p in parts))
+            if not payload.startswith(b'SQLite format 3\x00'):raise ValueError('Invalid packaged catalog')
+            temporary=DATABASE_PATH.with_suffix('.seed-tmp')
+            temporary.write_bytes(payload)
+            with sqlite3.connect(str(temporary)) as seeded:
+                seeded.execute('CREATE TABLE IF NOT EXISTS pricing_seed_v1(version INTEGER)')
+                seeded.execute('INSERT INTO pricing_seed_v1 VALUES(1)')
+            temporary.replace(DATABASE_PATH)
+        return
     seed = PROJECT_DIR / 'catalog_seed.sqlite3.gz'
     if not seed.exists():return
     with _seed_lock:
@@ -182,7 +197,7 @@ def ensure_catalog_seed():
         temporary.replace(DATABASE_PATH)
 
 def connect(db_path: Optional[Path] = None) -> sqlite3.Connection:
-    if db_path is None:ensure_catalog_seed()
+    if db_path is None or Path(db_path)==DATABASE_PATH:ensure_catalog_seed()
     connection = sqlite3.connect(str(db_path or DATABASE_PATH), timeout=30)
     connection.row_factory = sqlite3.Row
     connection.execute("PRAGMA foreign_keys = ON")
@@ -212,6 +227,11 @@ def stable_artist_id(name: str) -> str:
 def upsert_show(connection: sqlite3.Connection, event: Dict[str, object]) -> int:
     ticket_url = str(event.get("ticket_url") or "").strip()
     ticket_identity = ticket_url.split("?", 1)[0].rstrip("/").casefold()
+    from concert_discovery.ticket_destinations import resolve as resolve_ticket
+    resolved_ticket=resolve_ticket(connection,ticket_url)
+    if resolved_ticket!=ticket_url:
+        event=dict(event,ticket_url=resolved_ticket)
+        ticket_url=resolved_ticket
     show_date = str(event["performance_start"])[:10]
     if ticket_identity:
         dedupe_key = "ticket:{}:{}:{}".format(event["venue_id"],ticket_identity, str(event["performance_start"]))
@@ -230,6 +250,11 @@ def upsert_show(connection: sqlite3.Connection, event: Dict[str, object]) -> int
         sid=canonical(connection,source_existing['show_id'])
         dedupe_key=connection.execute('SELECT dedupe_key FROM shows WHERE show_id=?',(sid,)).fetchone()[0]
     existing=connection.execute('SELECT * FROM shows WHERE dedupe_key=?',(dedupe_key,)).fetchone()
+    if existing:
+        from concert_discovery.ticket_destinations import retain_verified_link
+        retained=retain_verified_link(connection,existing['show_id'],ticket_url)
+        if retained!=ticket_url:
+            ticket_url=retained;event=dict(event,ticket_url=retained)
     if existing and str(event['title']).casefold()==existing['title'].casefold():
         event=dict(event);event['title']=existing['title']
     if existing and not str(event['performance_start'])[11:] and str(existing['performance_start'])[11:]:

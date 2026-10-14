@@ -8,6 +8,21 @@ from concert_discovery.compact_catalog import compact
 
 
 class CompactionTests(unittest.TestCase):
+    def test_pricing_seed_loads_once_preserving_later_updates(self):
+        import gzip
+        from concert_discovery import storage
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); seed=root/'source.sqlite3'; live=root/'live.sqlite3'
+            with sqlite3.connect(seed) as c:
+                c.execute('CREATE TABLE evidence(value TEXT)');c.execute("INSERT INTO evidence VALUES('collected')")
+            packed=gzip.compress(seed.read_bytes());middle=len(packed)//2
+            (root/'catalog_pricing_seed.part00').write_bytes(packed[:middle])
+            (root/'catalog_pricing_seed.part01').write_bytes(packed[middle:])
+            with patch.object(storage,'PROJECT_DIR',root),patch.object(storage,'DATABASE_PATH',live):
+                storage.ensure_catalog_seed()
+                with sqlite3.connect(live) as c:c.execute("UPDATE evidence SET value='scheduled update'")
+                storage.ensure_catalog_seed()
+            with sqlite3.connect(live) as c:self.assertEqual(c.execute('SELECT value FROM evidence').fetchone()[0],'scheduled update')
     def test_migration_preserves_cached_html_and_catalog(self):
         with tempfile.TemporaryDirectory() as directory:
             db = Path(directory) / 'catalog.sqlite3'

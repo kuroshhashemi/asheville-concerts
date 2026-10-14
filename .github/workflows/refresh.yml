@@ -24,6 +24,8 @@ jobs:
           JAMBASE_API_KEY: ${{ secrets.JAMBASE_API_KEY }}
           TICKETMASTER_API_KEY: ${{ secrets.TICKETMASTER_API_KEY }}
           JAMBASE_CALL_LIMIT: '900'
+          BRIGHTDATA_API_KEY: ${{ secrets.BRIGHTDATA_API_KEY }}
+          BRIGHTDATA_UNLOCKER_ZONE: ${{ secrets.BRIGHTDATA_UNLOCKER_ZONE }}
         run: python -m concert_discovery.refresh --browser --metrics
       - name: Preserve request ledger even when collection fails
         if: always()

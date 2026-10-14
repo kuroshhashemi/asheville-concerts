@@ -119,9 +119,9 @@ def refresh(browser=False,metrics=False,db_path=None):
     except requests.RequestException:errors.append('Spotify concert feed connection failed; cached catalog retained.')
     except RuntimeError:errors.append('Spotify concert feed request budget reached; cached catalog retained.')
     from concert_discovery.collection_health import CORE
-    return apply_refresh(events,snapshots,errors,metrics=metrics,db_path=db_path,expected_venues=set(CORE))
+    return apply_refresh(events,snapshots,errors,metrics=metrics,db_path=db_path,expected_venues=set(CORE),browser_prices=browser)
 
-def apply_refresh(events,snapshots,errors=(),metrics=False,db_path=DATABASE_PATH,matching_limit=25,expected_venues=None):
+def apply_refresh(events,snapshots,errors=(),metrics=False,db_path=DATABASE_PATH,matching_limit=25,expected_venues=None,browser_prices=False):
     """The same bounded follow-through runs for every refresh, including staged audits."""
     from concert_discovery.collection_health import start,observation,finish
     from concert_discovery.calendar_presence import record_snapshot
@@ -131,6 +131,8 @@ def apply_refresh(events,snapshots,errors=(),metrics=False,db_path=DATABASE_PATH
         from concert_discovery.bill_evidence import enrich_events
         enrich_events(events,db_path)
         save_events(events,db_path)
+        from concert_discovery.sierra_calendar import reconcile_urls
+        reconcile_urls(events,db_path)
         merges=cleanup_duplicates(db_path)
         # HTTP and browser copies are one venue check per refresh, not two absences.
         checked=set()
@@ -155,6 +157,17 @@ def apply_refresh(events,snapshots,errors=(),metrics=False,db_path=DATABASE_PATH
         result.update(enrich(db_path=db_path))
         from concert_discovery.pastspot import refresh_history
         result.update(refresh_history(db_path))
+    from concert_discovery.price_refresh import refresh as refresh_prices
+    try:result.update(refresh_prices(db_path=db_path))
+    except Exception as error:
+        errors.append('Price checks unavailable; saved prices retained ('+type(error).__name__+')')
+    from concert_discovery.brightdata_prices import refresh as bright_prices
+    try:result.update(bright_prices(db_path=db_path))
+    except Exception as error:errors.append('Bright Data prices unavailable; saved prices retained ('+type(error).__name__+')')
+    if browser_prices:
+        from concert_discovery.browser_prices import refresh as render_prices
+        try:result.update(render_prices(db_path=db_path))
+        except Exception as error:errors.append('Rendered prices unavailable; saved prices retained ('+type(error).__name__+')')
     finish(rid,errors,db_path)
     Path(db_path).with_name('freshness.json').write_text(json.dumps({'refreshed_at':utc_now(),**result},indent=2))
     return result

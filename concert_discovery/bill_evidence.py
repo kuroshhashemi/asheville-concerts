@@ -79,6 +79,7 @@ def enrich_events(events,db_path=DATABASE_PATH,budget=None):
  """
  from concurrent.futures import ThreadPoolExecutor,as_completed
  from urllib.parse import urlparse
+ from concert_discovery.source_links import decode_markup,encode_markup
  with connect(db_path) as c:
   schema(c)
   cache={r['source_key']:dict(r) for r in c.execute('SELECT * FROM bill_evidence')}
@@ -95,7 +96,7 @@ def enrich_events(events,db_path=DATABASE_PATH,budget=None):
   page=pages.get(url)
   if page and page['checked_at']>=(retry_after if page['state']=='failed' else cutoff):
    if page['state']=='success':
-    with connect(db_path) as c:save(c,e,inspect(page['markup']))
+    with connect(db_path) as c:save(c,e,inspect(decode_markup(page['markup'])))
    continue
   grouped.setdefault(url,[]).append(e)
  urls=list(grouped)
@@ -110,7 +111,7 @@ def enrich_events(events,db_path=DATABASE_PATH,budget=None):
   for future in as_completed(futures):
    url,markup,error=future.result()
    with connect(db_path) as c:
-    c.execute('INSERT OR REPLACE INTO event_page_cache VALUES(?,?,?,?)',(url,markup,utc_now(),'failed' if error else 'success'))
+    c.execute('INSERT OR REPLACE INTO event_page_cache VALUES(?,?,?,?)',(url,encode_markup(markup) if markup else markup,utc_now(),'failed' if error else 'success'))
     for event in grouped[url]:
      if not error:save(c,event,inspect(markup))
      else:c.execute('INSERT INTO bill_evidence VALUES(?,?,?,?,?,?,?,?) ON CONFLICT(source_key) DO UPDATE SET checked_at=excluded.checked_at,state=excluded.state',(event['source_key'],url,'unknown',None,'[]','Description unavailable; category remains unverified',utc_now(),'failed'))

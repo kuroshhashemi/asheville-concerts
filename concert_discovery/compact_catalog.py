@@ -18,6 +18,11 @@ def compact(db_path=DATABASE_PATH):
                 if markup and not markup.startswith('zlib64:'):
                     connection.execute("UPDATE identity_page_cache SET markup=? WHERE url=?", (encode_markup(markup), url))
         connection.commit()
+        if connection.execute("SELECT 1 FROM sqlite_master WHERE name='event_page_cache'").fetchone():
+            for url, markup in connection.execute('SELECT source_url,markup FROM event_page_cache').fetchall():
+                if markup and not markup.startswith('zlib64:'):
+                    connection.execute('UPDATE event_page_cache SET markup=? WHERE source_url=?',(encode_markup(markup),url))
+            connection.commit()
         connection.execute('VACUUM')
     after = path.stat().st_size
     print(f'Catalog compacted: {before:,} -> {after:,} bytes')

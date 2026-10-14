@@ -30,6 +30,23 @@ def parse_cards(cards,today=None,days=None):
 
 API_URL='https://webadmin.sierranevada.com/wp-json/tribe/events/v1/events'
 
+def reconcile_urls(events,db_path=None):
+ """An unambiguous artist/date/venue link can share official admission evidence.
+
+ Keeps records, dates and titles intact; never spreads a price across different
+ nights or venues, and does not guess when multiple official events match.
+ """
+ from concert_discovery.storage import connect
+ from concert_discovery.prices import load,url_key
+ official=[e for e in events if e.get('source_name')=='SierraOfficial'];prices=load()
+ with connect(db_path) as c:
+  for s in c.execute("SELECT show_id,title,performance_start,official_event_url FROM shows WHERE venue_id='sierra-nevada'").fetchall():
+   if s['official_event_url']:continue
+   names=[r[0] for r in c.execute('SELECT a.display_name FROM artists a JOIN show_artists sa USING(artist_id) WHERE sa.show_id=? AND sa.billing_role LIKE ?', (s['show_id'],'%headliner%'))]
+   candidates=[e for e in official if e['performance_start'][:10]==s['performance_start'][:10] and any(n.casefold() in e['title'].casefold() for n in names if len(n)>=5)]
+   if len(candidates)==1 and url_key(candidates[0]['official_event_url']) in prices:
+    c.execute('UPDATE shows SET official_event_url=? WHERE show_id=?',(candidates[0]['official_event_url'],s['show_id']))
+
 def parse_api(data,today=None):
  import html
  from concert_discovery.prices import structured,advertised
@@ -45,7 +62,7 @@ def parse_api(data,today=None):
   row=event('SierraOfficial',url,title,start,'sierra-nevada',parse_performers(title),item.get('website') or url)
   description=re.sub('<[^>]+>',' ',html.unescape(item.get('description','')))
   row.update(official_event_url=url,date_status='venue_confirmed',category_text=description,
-             advertised_price=structured(item) or advertised(description),event_status='cancelled' if item.get('event_status') in ('cancelled','canceled') else 'scheduled')
+             advertised_price=structured(item) or advertised(title+'\n'+description),event_status='cancelled' if item.get('event_status') in ('cancelled','canceled') else 'scheduled')
   rows.append(row)
  return rows
 

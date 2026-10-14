@@ -28,10 +28,23 @@ def login_prompt(arrival=False):
   st.write('Sign in to bookmark/hide shows, get emails about new shows, or save filters')
   with st.container(key='google_signin_popup'):
    st.button('Sign In',on_click=st.login,key='popup_google_signin',use_container_width=True)
+  import streamlit.components.v1 as dialog_components
+  dialog_components.html('''<script>
+  const doc=parent.document;
+  if(!parent.soundcheckBrowseDismiss){
+   parent.soundcheckBrowseDismiss=true;
+   doc.addEventListener('click',e=>{
+    const b=e.target.closest('button');
+    if(!b||b.textContent.trim()!=='Browse without sign in')return;
+    const dialog=b.closest('[data-testid="stDialog"]')||b.closest('[data-baseweb="modal"]');
+    if(dialog)dialog.style.visibility='hidden';
+   },true);
+  }
+  </script>''',height=0)
   if st.button('Browse without sign in',key='browse_without_signin',use_container_width=True):
    dismiss_login();st.rerun()
  show_prompt()
-st.markdown('<style>[data-testid="stDialog"] [role="dialog"]{position:fixed!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important;margin:0!important;border-radius:24px!important}.st-key-banner_auth button,.st-key-google_signin_popup button,.st-key-weekly_email_control button{border-radius:999px!important}.st-key-google_signin_popup button::before,.st-key-banner_google_signin button::before{content:"";width:18px;height:18px;background:url(https://www.google.com/favicon.ico) center/contain no-repeat}.st-key-google_signin_popup button{background:#102c43;color:white;height:42px}</style>',unsafe_allow_html=True)
+st.markdown('<style>[data-stale=true]:has(iframe[title*="concert_table"]){opacity:1!important}[data-testid="stDialog"] [role="dialog"]{position:fixed!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important;margin:0!important;border-radius:24px!important}.st-key-banner_auth button,.st-key-google_signin_popup button,.st-key-weekly_email_control button{border-radius:999px!important}.st-key-google_signin_popup button::before{content:"";width:18px;height:18px;background:url(https://www.google.com/favicon.ico) center/contain no-repeat}.st-key-google_signin_popup button{background:#102c43;color:white;height:42px}</style>',unsafe_allow_html=True)
 with st.container(key='brand_header'):
  logo_data=base64.b64encode((Path(__file__).parent/'assets/soundcheck-logo.png').read_bytes()).decode()
  header_data=base64.b64encode((Path(__file__).parent/'assets/concert-header.jpg').read_bytes()).decode()
@@ -80,6 +93,9 @@ revival_icon='data:image/webp;base64,'+base64.b64encode((Path(__file__).parent/'
 for show in shows:
  if show['venue_id']=='revival':show['venue_icon']=revival_icon
  show['venue_name']=venue_labels.get(show['venue_id'],show['venue_name'])
+ if show['venue_id']=='pulp':
+  show['venue_name']='The Orange Peel'
+  show['venue_icon']=next((s.get('venue_icon') for s in shows if s['venue_id']=='orange-peel'),show.get('venue_icon'))
 from concert_discovery.reconciliation import key_aliases
 if account_id:
  aliases=key_aliases()
@@ -274,7 +290,7 @@ for s in selected:
               'Buy':s['ticket_url'] or s['official_event_url'] or s['venue_calendar_url']})
 if data:
  import streamlit.components.v1 as components
- table=components.declare_component('concert_table_v18',path=str(Path(__file__).parent/'show_table'))
+ table=components.declare_component('concert_table_v21',path=str(Path(__file__).parent/'show_table'))
  from concert_discovery.prices import load as load_prices, for_show, label as price_label
  prices=load_prices()
  rows=[]
@@ -282,7 +298,7 @@ if data:
   price=for_show(show,prices)
   rows.append(dict(id=show['dedupe_key'] if account_id else item['show_id'],date_sort=show['performance_start'],date=item['Date'].strftime('%a %b %d')+(item['Date'].strftime(" '%y") if item['Date'].year!=datetime.now().year else ''),name=item['Name'],artist_image=item['Artist image'],artists=[dict(name=a['display_name'],image=a.get('image_url'),url=a.get('spotify_profile_url')) for a in show['headliners']] if show['event_classification']['category'] in ('live_music','cover_band') else [],
       venue=item['Venue'],venue_icon=item['Venue icon'],show_type=((show.get('event_classification') or {}).get('category') or 'unknown').replace('_',' ').title(),type_evidence=(show.get('event_classification') or {}).get('evidence',''),genre=item['Genre'],listeners=show['audience'],listeners_label=item['Monthly listeners'],
-      price=price['min'] if price else None,price_label=price_label(price),price_detail=(f"Advertised price · {price.get('source','Structured event data')} · checked {price.get('checked_at',price.get('observed_at',''))}. Fees may vary by source." if price else ''),
+      price=price['min'] if price else None,price_label=price_label(price),price_detail=(f"Advertised price · {price.get('source','Structured event data')} · checked {price.get('checked_at',price.get('observed_at',''))}. {'Includes provider-stated fees.' if price.get('includes_fees') else 'Fee inclusion not confirmed.'}" if price else ''),
       growth=show['listener_growth_6m'],growth_artist=(show['growth_artist'] or {}).get('display_name'),growth_detail=(show['growth_artist'] or {}).get('growth_detail'),
       just_announced=show.get('just_announced'),sold_out=show.get('sold_out'),status=item['Status'],listen=item['Listen'],buy=item['Buy'],calendar=google_calendar_link(show,item['Name'],item['Buy'],calendar_id),calendar_label='Add to Family Google Calendar' if calendar_id else 'Add to Google Calendar',listener_artist=(show['audience_artist'] or {}).get('display_name'),
       sources=[dict(label=x['source_name'],url=x['source_url']) for x in show['sources']],

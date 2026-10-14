@@ -27,7 +27,7 @@ ZONE = ZoneInfo('America/New_York')
 FIRST_SEND = date(2026, 10, 19)
 SUBJECT = 'Asheville Soundcheck - New Announced Shows'
 VENUE_NAMES = {'sierra-nevada': 'Sierra Nevada', 'thomas-wolfe': "Harrah's", 'harrahs-arena': "Harrah's",
-               'ayurprana': 'AyurPrana', 'oskar-blues-brevard': 'Oskar Blues', 'revival': 'Revival'}
+               'ayurprana': 'AyurPrana', 'oskar-blues-brevard': 'Oskar Blues', 'revival': 'Revival', 'pulp':'The Orange Peel'}
 
 
 def instant(value):
@@ -66,6 +66,23 @@ def safe_url(value):
     return value if urlsplit(value).scheme in ('http', 'https') else ''
 
 
+def spotify_email_link(profile):
+    """Spotify's universal link: app when supported, same artist on web otherwise.
+
+    Email cannot run our app-detection JavaScript. Mail clients can still prevent
+    app handoff; retain the original artist URL as the explicit fallback.
+    """
+    import re
+    parsed = urlsplit(safe_url(profile))
+    if parsed.hostname != 'open.spotify.com' or not re.fullmatch(r'/artist/[A-Za-z0-9]{22}', parsed.path):
+        return safe_url(profile)
+    web = 'https://open.spotify.com' + parsed.path
+    return 'https://spotify.link/content_linking?' + urlencode({
+        '$canonical_url': web, '$fallback_url': web,
+        '$desktop_url': web, '$ios_url': web, '$android_url': web,
+    })
+
+
 def render(shows, unsubscribe_url, end, prices=None, start=None):
     prices = load_prices() if prices is None else prices
     start = start or end - timedelta(days=7)
@@ -99,7 +116,7 @@ def render(shows, unsubscribe_url, end, prices=None, start=None):
             links.append(f'<a href="{esc(buy)}" style="color:#102c43">Tickets{(" · " + esc(price)) if price != "—" else ""}</a>')
             calendar = google_calendar_link({**show, 'venue_name': venue}, name, buy)
             links.append(f'<a href="{esc(calendar)}" style="color:#102c43">Add to calendar</a>')
-        play = f'<a href="{esc(listen)}" title="Listen on Spotify" aria-label="Listen on Spotify"><img src="{EMAIL_ASSETS}play.png" width="29" height="29" alt="Play on Spotify" style="display:block;border:0"></a>' if listen else ''
+        play = f'<a href="{esc(spotify_email_link(listen))}" title="Listen on Spotify" aria-label="Listen on Spotify"><img src="{EMAIL_ASSETS}play.png" width="29" height="29" alt="Play on Spotify" style="display:block;border:0"></a>' if listen else ''
         ticket = f'<a href="{esc(buy)}" style="display:inline-block;background:#eef2f4;color:#102c43;border-radius:8px;padding:7px;text-decoration:none">{esc(price) if price != "—" else "Tickets"}</a>' if buy else ''
         calendar_link = f'<a href="{esc(calendar)}" title="Add to calendar" style="color:#102c43;margin-left:6px">▦</a>' if buy else ''
         badges = ''.join(f'<span style="font-size:10px;background:#eef7f5;padding:3px 5px;border-radius:6px;margin-left:5px">{esc(t)}</span>' for t in ['New'] + tags)
@@ -172,6 +189,8 @@ def run(store, sender, password, current=None, db_path=DATABASE_PATH):
         if start >= end:
             continue
         shows = new_shows(start, end, db_path, store.sent_keys(sid))
+        from concert_discovery.digest_readiness import require_ready
+        require_ready(shows,db_path)
         if not store.claim(sid, end.isoformat(), [s['dedupe_key'] for s in shows]):
             result['already_processed'] += 1
             continue
@@ -207,6 +226,8 @@ def main():
         shows = new_shows(current - timedelta(days=7), current, args.db) or get_shows(args.db, user_id='email-view')[:5]
         unsubscribe_url = APP_URL
         if args.mode == 'test':
+            from concert_discovery.digest_readiness import require_ready
+            require_ready(shows,args.db)
             store = EmailStore(os.environ['SUPABASE_URL'], os.environ['SUPABASE_SECRET_KEY'])
             subscription = store.get(os.environ['EMAIL_SENDER'])
             if not subscription:
