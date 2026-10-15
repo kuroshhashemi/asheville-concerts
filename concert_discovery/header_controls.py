@@ -30,7 +30,8 @@ def request_dialog():
                 st.info('Please wait a minute before sending another request.')
                 return
             try:
-                submit(dict(st.user),text,secret('EMAIL_SENDER'),secret('EMAIL_APP_PASSWORD'))
+                settings=st.secrets.get('feature_requests',{})
+                submit(dict(st.user),text,settings.get('EMAIL_SENDER') or secret('EMAIL_SENDER'),settings.get('EMAIL_APP_PASSWORD') or secret('EMAIL_APP_PASSWORD'))
             except ValueError as error:
                 st.warning(str(error))
             except Exception:

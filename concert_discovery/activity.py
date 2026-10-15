@@ -25,10 +25,14 @@ class ActivityStore:
             return response.json()
         users = read('app_user_activity', 'user_id,email,display_name,first_seen_at,last_active_at')
         statuses = read('user_show_statuses', 'user_id,status')
+        try:
+            subscriptions={r['email'].strip().casefold():bool(r['enabled']) for r in read('email_subscriptions','email,enabled')}
+        except requests.RequestException:
+            subscriptions=None
         counts = {}
         for status in statuses:
             counts.setdefault(status['user_id'], Counter())[status['status']] += 1
-        return [{**u, 'hidden': counts.get(u['user_id'], {}).get('Pass', 0),
+        return [{**u, 'emails':('Unknown' if subscriptions is None else ('On' if subscriptions.get(u['email'].strip().casefold(),False) else 'Off')), 'hidden': counts.get(u['user_id'], {}).get('Pass', 0),
                 'interested': counts.get(u['user_id'], {}).get('Interested', 0),
                 'going': counts.get(u['user_id'], {}).get('Going', 0)} for u in users]
 
@@ -52,6 +56,6 @@ def admin_view(st, store, identity, owner_email):
             def local(value):
                 return datetime.fromisoformat(value.replace('Z', '+00:00')).astimezone(ZoneInfo('America/New_York')).strftime('%b %d, %Y %I:%M %p')
             st.dataframe([{'Name': r['display_name'], 'Email': r['email'], 'First recorded visit (ET)': local(r['first_seen_at']),
-                           'Last active (ET)': local(r['last_active_at']), 'Hidden': r['hidden'], 'Interested': r['interested'], 'Going': r['going']} for r in rows], hide_index=True, use_container_width=True)
+                           'Last active (ET)': local(r['last_active_at']), 'Emails': r['emails'], 'Hidden': r['hidden'], 'Interested': r['interested'], 'Going': r['going']} for r in rows], hide_index=True, width='stretch')
         except Exception:
             st.warning('Activity data is temporarily unavailable.')
