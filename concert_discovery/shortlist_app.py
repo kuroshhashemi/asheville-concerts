@@ -30,7 +30,7 @@ def login_prompt(arrival=False):
   st.markdown('<style>[data-testid=stDialog] .st-key-google_signin_popup button{background:#102c43!important;color:white!important;border:0!important;border-radius:999px!important;gap:8px!important}[data-testid=stDialog] .st-key-google_signin_popup button p{color:white!important}[data-testid=stDialog] button{border-radius:999px!important}[data-testid=stDialog] h2{width:100%;text-align:center}[role=dialog] [style*="font-size: 1.5rem"]>div{width:100%}[role=dialog] [style*="font-size: 1.5rem"] p{text-align:center}</style>',unsafe_allow_html=True)
   st.write('Sign in to bookmark/hide shows, get emails about new shows, or save filters')
   with st.container(key='google_signin_popup'):
-   st.button('Sign In',on_click=st.login,key='popup_google_signin',use_container_width=True)
+   st.button('Sign In',on_click=st.login,key='popup_google_signin',width='stretch')
   import streamlit.components.v1 as dialog_components
   dialog_components.html('''<script>
   const doc=parent.document;
@@ -44,7 +44,7 @@ def login_prompt(arrival=False):
    },true);
   }
   </script>''',height=0)
-  if st.button('Browse without sign in',key='browse_without_signin',use_container_width=True):
+  if st.button('Browse without sign in',key='browse_without_signin',width='stretch'):
    dismiss_login();st.rerun()
  show_prompt()
 st.markdown('<style>[data-stale=true]:has(iframe[title*="concert_table"]){opacity:1!important}[data-testid="stDialog"] [role="dialog"]{position:fixed!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important;margin:0!important;border-radius:24px!important}.st-key-banner_auth button,.st-key-google_signin_popup button,.st-key-weekly_email_control button{border-radius:999px!important}.st-key-google_signin_popup button::before{content:"";width:18px;height:18px;background:url(https://www.google.com/favicon.ico) center/contain no-repeat}.st-key-google_signin_popup button{background:#102c43;color:white;height:42px}</style>',unsafe_allow_html=True)
@@ -61,8 +61,6 @@ with st.container(key='brand_header'):
  if auth_configured:
   if st.user.is_logged_in:
    account_id=user_key(dict(st.user))
-   with st.container(key='banner_auth'):
-    st.button('Sign out',on_click=st.logout)
    status_store=StatusStore(st.secrets['supabase']['url'],st.secrets['supabase']['secret'])
    from concert_discovery.activity import ActivityStore
    import time
@@ -80,9 +78,8 @@ with st.container(key='brand_header'):
      st.error('Account status storage is not ready. Your choices have not been changed.')
      st.stop()
     st.session_state['status_account']=account_id
-  else:
-   with st.container(key='banner_auth'):
-    st.button('Sign In',on_click=request_login,key='banner_google_signin')
+ from concert_discovery.header_controls import render as render_header_controls
+ render_header_controls(auth_configured,request_login)
 @st.cache_resource
 def prepare_catalog():
  initialize()
@@ -285,7 +282,7 @@ with st.expander('Excluded events'):
  from concert_discovery.discovery import excluded_events
  exclusions=excluded_events()
  st.caption('Upcoming stored listings hidden by catalog rules, independent of your filters. Includes duplicates, cancellations and disappeared listings. Events rejected before import are not recorded here.')
- if exclusions:st.dataframe(exclusions,hide_index=True,use_container_width=True,column_config={'Source':st.column_config.LinkColumn('Source')})
+ if exclusions:st.dataframe(exclusions,hide_index=True,width='stretch',column_config={'Source':st.column_config.LinkColumn('Source')})
  else:st.caption('No stored upcoming exclusions.')
 
 if account_id:

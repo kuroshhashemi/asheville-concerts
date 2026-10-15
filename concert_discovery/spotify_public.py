@@ -61,6 +61,17 @@ def _decode_state(markup: str) -> dict:
             raise ValueError("Spotify initialState payload format changed.") from error
 
 
+def top_track(payload, spotify_artist_id):
+    entity=payload.get('entities',{}).get('items',{}).get('spotify:artist:'+spotify_artist_id,{})
+    for item in (entity.get('discography',{}).get('topTracks',{}).get('items') or []):
+        track=item.get('track') or {}
+        ids={a.get('uri') for a in (track.get('artists',{}).get('items') or [])}
+        uri=track.get('uri','')
+        if 'spotify:artist:'+spotify_artist_id in ids and re.fullmatch(r'spotify:track:[A-Za-z0-9]{22}',uri):
+            return {'uri':uri,'name':track.get('name',''),'artist_id':spotify_artist_id}
+    return None
+
+
 def fetch_public_artist_profile(
     spotify_artist_id: str, expected_name: Optional[str] = None
 ) -> Dict[str, object]:
@@ -98,6 +109,7 @@ def fetch_public_artist_profile(
 
     return {
         "spotify_artist_id": spotify_artist_id,
+        "top_track": top_track(payload,spotify_artist_id),
         "name": found_name,
         "followers": followers,
         "monthly_listeners": monthly_listeners,
