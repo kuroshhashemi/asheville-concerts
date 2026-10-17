@@ -10,6 +10,7 @@ from concert_discovery.prices import load, for_show, from_ticket_markup, save, u
 from concert_discovery.source_links import PageReader, schema as page_schema, decode_markup
 
 PROVIDERS={'etix.com','tixr.com','dice.fm','link.dice.fm','eventbrite.com','sierranevada.com',
+           '185kingst.com','brevardmusic.org','highlandbrewing.com',
            'secured.brevardmusic.org','prod-nts-api.seeticketsusa.us','wl.eventim.us','harrahscherokeecenterasheville.com'}
 
 def schema(c):
@@ -30,6 +31,7 @@ def refresh(db_path=DATABASE_PATH,limit=12,shows=None):
     # Unknown prices first, then oldest known ones; shared URLs checked once.
     shows=sorted(shows,key=lambda s:(for_show(s,prices) is not None,not bool(s.get('just_announced')),s.get('performance_start','')))
     for show in shows:
+        if show.get('on_sale_label'):continue
         url=show.get('ticket_url') or ''
         host=(urlsplit(url).hostname or '').removeprefix('www.')
         if host.endswith('.eventbrite.com'):host='eventbrite.com'
@@ -42,8 +44,8 @@ def refresh(db_path=DATABASE_PATH,limit=12,shows=None):
         seen.add(key)
         with connect(db_path) as c:
             schema(c);page_schema(c)
-            checked=c.execute('SELECT checked_at FROM ticket_price_checks WHERE url_key=?',(key,)).fetchone()
-            if checked and checked['checked_at']>=cutoff:continue
+            checked=c.execute('SELECT checked_at,status FROM ticket_price_checks WHERE url_key=?',(key,)).fetchone()
+            if checked and checked['checked_at']>=cutoff and (checked['status']!='priced' or for_show(show,prices) is not None):continue
             cached=c.execute('SELECT * FROM identity_page_cache WHERE url=? AND checked_at>=?',(url,cutoff)).fetchone()
         if cached:
             markup=decode_markup(cached['markup']) if cached['status']==200 else None
@@ -67,6 +69,8 @@ def refresh(db_path=DATABASE_PATH,limit=12,shows=None):
                     price=from_ticket_markup(target,ticket_markup)
                     if price:save({'source_url':target,'source_name':'Eventbrite fee-inclusive ticket price'},price)
         if markup:
+            from concert_discovery.ticket_destinations import event_page
+            event_page(markup,url,db_path)
             from concert_discovery.availability import record_ticket_page
             record_ticket_page(url,markup,db_path,checked_at)
         price=from_ticket_markup(url,markup) if markup else None

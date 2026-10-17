@@ -94,6 +94,17 @@ def event_page(markup,url,db_path=DATABASE_PATH):
     if urlsplit(url).hostname not in ('www.harrahscherokeecenterasheville.com','www.brevardmusic.org','sierranevada.com','www.sierranevada.com'):return
     from concert_discovery.official_calendar import Tree
     tree=Tree();tree.feed(markup)
+    # Public onsale only: donor/subscriber presales are separate offers.
+    if (urlsplit(url).hostname or '').endswith('brevardmusic.org'):
+        m=re.search(r'Public Onsale:\s*([A-Za-z]+)\s+(\d{1,2})(?:,?\s+(20\d\d))?',tree.root.text(),re.I)
+        if m:
+            from datetime import datetime
+            from concert_discovery.availability import save_sale
+            try:day=datetime.strptime(str(m[3] or datetime.now().year)+' '+m[1]+' '+m[2],'%Y %B %d').date().isoformat()
+            except ValueError:day=None
+            if day:
+                with connect(db_path) as c:
+                    for r in c.execute('SELECT show_id FROM shows WHERE official_event_url=?',(url,)).fetchall():save_sale(c,r['show_id'],day,url)
     candidates={n.attrs.get('href') for n in tree.root.walk() if n.tag=='a' and n.text().strip().casefold() in ('buy tickets','get tickets','purchase tickets') and n.attrs.get('href','').startswith('https://')}
     # Site-wide navigation is not a ticket destination for this event.
     candidates={u for u in candidates if urlsplit(u).path.rstrip('/') not in ('/events','/events-tickets')}
@@ -102,3 +113,69 @@ def event_page(markup,url,db_path=DATABASE_PATH):
         with connect(db_path) as c:
             for r in c.execute('SELECT show_id FROM shows WHERE official_event_url=?',(url,)).fetchall():
                 verified_show_link(c,r['show_id'],dest,url)
+
+
+def collect_venue_schedule(markup, source_url, venue_id, venue_name, db_path=DATABASE_PATH):
+    """Resolve existing supplemental shows by venue, calendar day and performer.
+
+    Never adds shows or copies one date's ticket link onto another date.
+    """
+    from concert_discovery.official_calendar import parse_calendar
+    from concert_discovery.event_sources import normalize
+    from concert_discovery.prices import save
+    events=parse_calendar(markup,source_name='SupplementalOfficial',venue_default=venue_name)
+    changed=0
+    with connect(db_path) as c:
+        shows=[dict(r) for r in c.execute('SELECT * FROM shows WHERE venue_id=?',(venue_id,))]
+        for event in events:
+            ticket=event.get('ticket_url')
+            if not ticket:continue
+            day=event['performance_start'][:10];title=normalize(event['title'])
+            candidates=[]
+            for show in shows:
+                if show['performance_start'][:10]!=day:continue
+                names=[normalize(r[0]) for r in c.execute("SELECT a.display_name FROM artists a JOIN show_artists sa USING(artist_id) WHERE sa.show_id=? AND sa.billing_role LIKE '%headliner%'",(show['show_id'],))]
+                if any(len(n)>=4 and re.search(r'(?<!\w)'+re.escape(n)+r'(?!\w)',title) for n in names):candidates.append(show)
+            if len(candidates)!=1:continue
+            show=candidates[0];verified_show_link(c,show['show_id'],ticket,source_url);changed+=1
+            if event.get('advertised_price'):save({'source_url':ticket,'source_name':'Official venue calendar'},event['advertised_price'])
+    return changed
+
+
+def reconcile_ticketmaster(events, db_path=DATABASE_PATH):
+    """Repair artist-page links from exact attraction identity + day + venue.
+
+    Uses an existing Discovery response, never another API request. Multi-day
+    passes and different dates cannot replace a single show's destination.
+    """
+    from concert_discovery.event_sources import venue_id_for
+    from concert_discovery.ticketmaster_prices import event_id
+    from concert_discovery.availability import save_sale
+    changed=0
+    with connect(db_path) as c:
+        if not c.execute("SELECT 1 FROM sqlite_master WHERE name='shows'").fetchone():return 0
+        shows=[dict(r) for r in c.execute('SELECT * FROM shows')]
+        for event in events:
+            url=event.get('url','');eid=event_id(url)
+            if not eid:continue
+            day=event.get('dates',{}).get('start',{}).get('localDate')
+            venues=event.get('_embedded',{}).get('venues',[])
+            if not day or not venues:continue
+            v=venues[0];name=v.get('name','');vid=venue_id_for(name)
+            attractions={urlsplit(a.get('url','')).path for a in event.get('_embedded',{}).get('attractions',[]) if a.get('url')}
+            candidates=[]
+            for show in shows:
+                if show['performance_start'][:10]!=day:continue
+                same_venue=show['venue_id']==vid or ('harrah' in name.lower() and 'asheville' in name.lower() and show['venue_id'] in ('harrahs-arena','thomas-wolfe'))
+                if not same_venue:continue
+                sources=[r[0] for r in c.execute('SELECT source_url FROM show_sources WHERE show_id=?',(show['show_id'],))]
+                links=[show.get('ticket_url') or '']+sources
+                if any(event_id(u)==eid for u in links) or urlsplit(show.get('ticket_url') or '').path in attractions:
+                    candidates.append(show)
+            if len(candidates)!=1:continue
+            show=candidates[0]
+            c.execute('INSERT OR REPLACE INTO show_sources VALUES(?,?,?,?,?,?,?)',('Ticketmaster:'+event['id'],show['show_id'],'Ticketmaster',event['id'],url,name,utc_now()))
+            if event_id(show.get('ticket_url')) is None:
+                verified_show_link(c,show['show_id'],url,url);changed+=1
+            save_sale(c,show['show_id'],event.get('sales',{}).get('public',{}).get('startDateTime'),url)
+    return changed

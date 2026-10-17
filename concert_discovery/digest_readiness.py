@@ -26,7 +26,7 @@ def audit(shows,db_path=DATABASE_PATH):
                     gaps.append('listeners/photo: '+a['display_name'])
                 if not exists('history_checks','SELECT 1 FROM history_checks WHERE spotify_id=? AND checked_at>=?',(sid,cutoff[:10])):
                     gaps.append('growth: '+a['display_name'])
-            if for_show(show,prices) is None:
+            if for_show(show,prices) is None and not show.get('on_sale_label'):
                 urls=[show.get('ticket_url'),show.get('official_event_url')]+[s.get('source_url') for s in show.get('sources',[])]
                 attempted=False
                 for url in filter(None,urls):
@@ -41,6 +41,13 @@ def audit(shows,db_path=DATABASE_PATH):
                     # reuses a failed provider check instead of repeating it per show.
                     blocked=c.execute("SELECT url FROM ticket_price_checks WHERE status IN ('blocked','error') AND checked_at>=?",(cutoff,)).fetchall()
                     attempted=bool(provider) and any((urlsplit(r[0]).hostname or '').removeprefix('www.')==provider for r in blocked)
+                # A venue page lookup is not a Ticketmaster inventory check.
+                from concert_discovery.ticketmaster_prices import event_id
+                tm_ids={event_id(u) for u in urls if event_id(u)}
+                if tm_ids:
+                    attempted=all(exists('ticketmaster_price_checks',
+                        'SELECT 1 FROM ticketmaster_price_checks WHERE event_id=? AND checked_at>=?',
+                        (eid,cutoff)) for eid in tm_ids)
                 if not attempted:gaps.append('ticket price')
             # Genres come only from structured JamBase import fields. An imported
             # source with no genre is unavailable, not a pending prose lookup.

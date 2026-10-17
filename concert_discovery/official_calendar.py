@@ -35,7 +35,7 @@ class Tree(HTMLParser):
     def handle_data(self, data):
         self.stack[-1].children.append(data)
 
-def parse_calendar(html, today=None, days=None,source_name='OrangePeelOfficial'):
+def parse_calendar(html, today=None, days=None,source_name='OrangePeelOfficial',venue_default=None):
     today = today or date.today(); end = (today + timedelta(days=days)) if days is not None else date.max
     p = Tree(); p.feed(html); events = {}
     def scoped_nodes(node, year=None):
@@ -54,7 +54,7 @@ def parse_calendar(html, today=None, days=None,source_name='OrangePeelOfficial')
         title_node = next((x for x in nodes if x.attrs.get('id') == 'eventTitle'), None)
         date_node = next((x for x in nodes if x.attrs.get('id') == 'eventDate'), None)
         venue_node = next((x for x in nodes if x.has('venueLink')), None)
-        if not all((title_node, date_node, venue_node)):
+        if not title_node or not date_node or (not venue_node and not venue_default):
             continue
         raw_date = re.search(r'([A-Za-z]{3})\s+(\d{1,2})', date_node.text())
         if not raw_date: continue
@@ -65,7 +65,7 @@ def parse_calendar(html, today=None, days=None,source_name='OrangePeelOfficial')
         weekday = re.search(r'\b(Mon|Tue|Wed|Thu|Fri|Sat|Sun)\b', date_node.text(), re.I)
         if weekday and show_date.strftime('%a').lower() != weekday[1].lower(): continue
         if not today <= show_date <= end: continue
-        venue = venue_node.text()
+        venue = venue_node.text() if venue_node else venue_default
         vid = venue_id_for(venue)
         if vid is None: continue
         title = ' '.join(title_node.text().split()); url = title_node.attrs['href']

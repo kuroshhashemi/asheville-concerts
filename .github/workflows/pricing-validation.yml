@@ -1,0 +1,43 @@
+name: Validate unattended ticket pricing
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/pricing-validation.yml'
+      - 'concert_discovery/pricing_validation.py'
+permissions:
+  contents: write
+concurrency:
+  group: concert-catalog
+  cancel-in-progress: false
+jobs:
+  pricing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - name: Test one Etix and one Ticketmaster event
+        env:
+          BRIGHTDATA_API_KEY: ${{ secrets.BRIGHTDATA_API_KEY }}
+          BRIGHTDATA_UNLOCKER_ZONE: ${{ secrets.BRIGHTDATA_UNLOCKER_ZONE }}
+        run: python -m concert_discovery.pricing_validation
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pricing-validation
+          path: pricing-validation.json
+          if-no-files-found: ignore
+      - name: Preserve service request budget
+        if: always()
+        run: |
+          git config user.name 'Concert refresh'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add concert_discovery/api_budget.sqlite3
+          if ! git diff --cached --quiet; then
+            git commit -m 'Preserve bounded ticket validation request budget'
+            git push
+          fi

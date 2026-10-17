@@ -16,10 +16,11 @@ def secret(name):
         if value:return value
     except Exception:pass
     # Development-only files outside the deployable project.
-    path=Path(__file__).resolve().parents[2]/'work'/'research'/(name.split('_')[0].lower()+'.env')
-    if path.exists():
-        for line in path.read_text().splitlines():
-            if line.startswith(name+'='):return line.split('=',1)[1].strip().strip('\"\'')
+    for root in (Path(__file__).resolve().parents[2],Path(__file__).resolve().parents[3]):
+        path=root/'work'/'research'/(name.split('_')[0].lower()+'.env')
+        if path.exists():
+            for line in path.read_text().splitlines():
+                if line.startswith(name+'='):return line.split('=',1)[1].strip().strip('\"\'')
     return None
 
 def reserve_jambase(db_path=None,ledger_name='api_budget.sqlite3'):
@@ -78,6 +79,8 @@ def fetch_ticketmaster(days=None,official=()):
     for page in range(5):
         data=get_json('https://app.ticketmaster.com/discovery/v2/events.json',dict(apikey=key,latlong='35.5951,-82.5515',radius=30,unit='miles',size=200,page=page,
             startDateTime=date.today().isoformat()+'T04:00:00Z',**({'endDateTime':(date.today()+timedelta(days=days+1)).isoformat()+'T04:59:59Z'} if days is not None else {})),'Ticketmaster')
+        from concert_discovery.ticket_destinations import reconcile_ticketmaster
+        reconcile_ticketmaster(data.get('_embedded',{}).get('events',[]))
         for e in data.get('_embedded',{}).get('events',[]):
             start=e['dates']['start'];day=start.get('localDate')
             if not day:continue
@@ -92,6 +95,7 @@ def fetch_ticketmaster(days=None,official=()):
             from concert_discovery.prices import structured
             row['advertised_price']=structured(e)
             row['classifications']=e.get('classifications',[])
+            row['public_on_sale_at']=e.get('sales',{}).get('public',{}).get('startDateTime')
             row['event_status']='cancelled' if e.get('dates',{}).get('status',{}).get('code') in ('cancelled','canceled') else 'scheduled'
             rows.append(row)
         if page+1>=data.get('page',{}).get('totalPages',1):break

@@ -61,5 +61,51 @@ def fetch_browser_calendars(days=None,snapshots=None):
             from concert_discovery.ticket_destinations import collect
             collect(page.content(),'https://thirdroom.art/')
         except Exception:errors.append('Third Room ticket links unavailable; saved destinations retained.')
+        try:
+            page.goto('https://185kingst.com/events/',wait_until='domcontentloaded',timeout=30000)
+            page.locator('#eventTitle').first.wait_for(timeout=15000)
+            from concert_discovery.ticket_destinations import collect_venue_schedule
+            collect_venue_schedule(page.content(),'https://185kingst.com/events/','185-king-street','185 King Street')
+        except Exception:errors.append('185 King Street ticket links unavailable; saved destinations retained.')
+        try:
+            from concert_discovery.discovery import get_shows
+            from concert_discovery.prices import load as load_prices,for_show,from_ticket_markup,save
+            from concert_discovery.ticketmaster_prices import event_id
+            from concert_discovery.storage import connect,utc_now
+            prices=load_prices();seen=set();checked=0
+            with connect() as c:
+                c.execute('CREATE TABLE IF NOT EXISTS ticketmaster_browser_checks(event_id TEXT PRIMARY KEY,checked_at TEXT,status TEXT)')
+                recent={r[0] for r in c.execute("SELECT event_id FROM ticketmaster_browser_checks WHERE checked_at>=datetime('now','-7 days')")}
+            for show in get_shows():
+                if for_show(show,prices) or show.get('on_sale_label'):continue
+                urls=[show.get('ticket_url')]+[s['source_url'] for s in show.get('sources',[])]
+                ids={event_id(u) for u in urls if event_id(u)}
+                if len(ids)!=1:continue
+                eid=ids.pop()
+                if eid in seen or eid in recent:continue
+                if checked>=4:break
+                seen.add(eid);checked+=1;outcome='unavailable'
+                try:
+                    url='https://www.ticketmaster.com/event/'+eid
+                    page.goto(url,wait_until='domcontentloaded',timeout=30000)
+                    notice=page.get_by_role('button',name='Accept & Continue',exact=True)
+                    if notice.count():notice.click(timeout=3000)
+                    quantity=page.get_by_role('button',name=re.compile('Open quantity filters'))
+                    quantity.click(timeout=15000)
+                    page.get_by_role('radio',name='Set quantity to: 1 Ticket',exact=True).check(timeout=5000)
+                    page.get_by_role('menuitem').first.wait_for(timeout=10000)
+                    price=from_ticket_markup(url,page.content(),selected_quantity=1)
+                    if price:
+                        for alias in [url]+[u for u in urls if event_id(u)==eid]:save({'source_url':alias,'source_name':'Ticketmaster rendered public inventory including resale'},price)
+                        outcome='priced'
+                except Exception:pass
+                finally:
+                    # A sold-out page has no quantity selector; save its explicit notice anyway.
+                    try:
+                        from concert_discovery.availability import record_ticket_page
+                        record_ticket_page(url,page.content())
+                    except Exception:pass
+                with connect() as c:c.execute('INSERT OR REPLACE INTO ticketmaster_browser_checks VALUES(?,?,?)',(eid,utc_now(),outcome))
+        except Exception:errors.append('Ticketmaster rendered prices unavailable; saved prices retained.')
         browser.close()
     return rows,errors

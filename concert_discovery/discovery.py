@@ -39,6 +39,7 @@ def get_shows(db_path=None, user_id=OWNER, include_recurring=False):
         for r in c.execute("SELECT * FROM ticket_availability ORDER BY observed_at DESC"):
             availability.setdefault(r['show_id'],dict(r))
         availability={sid:r for sid,r in availability.items() if r['status']=='sold_out'}
+        sale_windows={r['show_id']:r['on_sale_at'] for r in c.execute('SELECT * FROM ticket_sale_windows')} if c.execute("SELECT 1 FROM sqlite_master WHERE name='ticket_sale_windows'").fetchone() else {}
         genres = {}; genre_sources={};image_sources={};sources={}
         icons={};images={}
         for r in c.execute('SELECT * FROM show_sources ORDER BY source_name'):
@@ -74,6 +75,9 @@ def get_shows(db_path=None, user_id=OWNER, include_recurring=False):
         headliners[s['show_id']]=list(unique.values())
         s['event_classification']=categories.get(s['show_id'])
         s['sold_out']=availability.get(s['show_id'])
+        from concert_discovery.availability import future_sale_label
+        s['on_sale_at']=sale_windows.get(s['show_id'])
+        s['on_sale_label']=future_sale_label(s['on_sale_at'])
         s['sources']=sources.get(s['show_id'],[])
         s['headliners']=headliners.get(s['show_id'],[])
         # Keep the bill's written order; audience size never rearranges performers.

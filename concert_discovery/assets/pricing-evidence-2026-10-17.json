@@ -1,0 +1,2002 @@
+{
+  "ticket_availability": {
+    "schema": "CREATE TABLE IF NOT EXISTS ticket_availability (\n    source_key TEXT PRIMARY KEY, show_id INTEGER NOT NULL REFERENCES shows(show_id),\n    status TEXT NOT NULL CHECK(status IN ('sold_out','available')),\n    source_url TEXT NOT NULL, observed_at TEXT NOT NULL\n)",
+    "rows": [
+      {
+        "source_key": "OrangePeelOfficial:https://theorangepeel.net/event/osees-2/the-orange-peel/asheville-north-carolina/",
+        "status": "sold_out",
+        "source_url": "https://theorangepeel.net/event/osees-2/the-orange-peel/asheville-north-carolina/",
+        "observed_at": "2026-10-17T13:46:13+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/34701175/osees-asheville-the-orange-peel:2026-10-27"
+      },
+      {
+        "source_key": "OrangePeelOfficial:https://theorangepeel.net/event/wednesday-5/the-orange-peel/asheville-north-carolina/",
+        "status": "sold_out",
+        "source_url": "https://theorangepeel.net/event/wednesday-5/the-orange-peel/asheville-north-carolina/",
+        "observed_at": "2026-10-17T13:46:13+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/43899887/wednesday-asheville-the-orange-peel:2026-10-31"
+      },
+      {
+        "source_key": "OrangePeelOfficial:https://theorangepeel.net/event/die-spitz/the-orange-peel/asheville-north-carolina/",
+        "status": "sold_out",
+        "source_url": "https://theorangepeel.net/event/die-spitz/the-orange-peel/asheville-north-carolina/",
+        "observed_at": "2026-10-17T13:46:13+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/99777289/die-spitz-asheville-the-orange-peel:2026-11-20"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/Za4e687b281b",
+        "status": "available",
+        "source_url": "https://link.dice.fm/Za4e687b281b",
+        "observed_at": "2026-10-15T15:04:39+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6a1087bae9025d0001a5a13a:2026-10-15"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/he5d75d26b99",
+        "status": "sold_out",
+        "source_url": "https://link.dice.fm/he5d75d26b99",
+        "observed_at": "2026-10-16T14:53:59+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6a847ced7e451500016553ef:2026-10-16"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/l4da5208ec64",
+        "status": "available",
+        "source_url": "https://link.dice.fm/l4da5208ec64",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6aabf5f209f55f00013f4f7e:2026-10-17"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/p733cb901b4f",
+        "status": "available",
+        "source_url": "https://link.dice.fm/p733cb901b4f",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6a46e907e01722000140b0fc:2026-10-22"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/S5f21eb0ec97",
+        "status": "available",
+        "source_url": "https://link.dice.fm/S5f21eb0ec97",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6aaab90ed2cb5400013a031d:2026-10-23"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/Ae4e8b72dd91",
+        "status": "available",
+        "source_url": "https://link.dice.fm/Ae4e8b72dd91",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6ab4149d3ce243000156574a:2026-10-24"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/x35a1b3bc640",
+        "status": "available",
+        "source_url": "https://link.dice.fm/x35a1b3bc640",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6a85cb44c0e75600010479be:2026-10-29"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/q75106f2a4dd",
+        "status": "available",
+        "source_url": "https://link.dice.fm/q75106f2a4dd",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6a1c8d22b5ca140001d5c042:2026-10-30"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/s3d51fbeae21",
+        "status": "available",
+        "source_url": "https://link.dice.fm/s3d51fbeae21",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6a8e12880829bc0001c3759c:2026-10-31"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/l5f70309ebfa",
+        "status": "available",
+        "source_url": "https://link.dice.fm/l5f70309ebfa",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:https://dice.fm/event/69a7201615bb1e0001f8a74f:2026-11-06"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/vf3e23f29576",
+        "status": "available",
+        "source_url": "https://link.dice.fm/vf3e23f29576",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6a750b073a926d00015520fa:2026-11-07"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/qfe9ed526a43",
+        "status": "available",
+        "source_url": "https://link.dice.fm/qfe9ed526a43",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6a837b6fb132fb00016ee284:2026-11-08"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/q083b4294cdf",
+        "status": "available",
+        "source_url": "https://link.dice.fm/q083b4294cdf",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6a63a638dd1e370001d2ee80:2026-11-11"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/O377b0c75415",
+        "status": "available",
+        "source_url": "https://link.dice.fm/O377b0c75415",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6a063f8e6a8b6300017fed2f:2026-11-13"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/Gbed72b44520",
+        "status": "available",
+        "source_url": "https://link.dice.fm/Gbed72b44520",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6a429e34e94beb0001bea8f5:2026-11-14"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/P49eaaf331a2",
+        "status": "available",
+        "source_url": "https://link.dice.fm/P49eaaf331a2",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6a4591465672d200019dc2df:2026-11-15"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/C065e5e9c661",
+        "status": "available",
+        "source_url": "https://link.dice.fm/C065e5e9c661",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6a456ff1a8180c0001e31253:2026-11-18"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/l179ed057dfc",
+        "status": "available",
+        "source_url": "https://link.dice.fm/l179ed057dfc",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6a886ef8138c560001fd72ab:2026-11-19"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/uaa6c9f7a263",
+        "status": "available",
+        "source_url": "https://link.dice.fm/uaa6c9f7a263",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6a7f3adb374f850001d07185:2026-11-20"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/o7b3df41afb4",
+        "status": "available",
+        "source_url": "https://link.dice.fm/o7b3df41afb4",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6a7f36b4dc003400015fe398:2026-11-21"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/l1c4cf9a16a0",
+        "status": "available",
+        "source_url": "https://link.dice.fm/l1c4cf9a16a0",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6a56764d9b7bc30001328a14:2026-11-22"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/D648873f07ed",
+        "status": "sold_out",
+        "source_url": "https://link.dice.fm/D648873f07ed",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6a7c7a91c8387b000112ba8d:2026-11-23"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/L8e078600956",
+        "status": "available",
+        "source_url": "https://link.dice.fm/L8e078600956",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:eulogy:https://burialbeer.com/pages/eulogy:2026-11-28"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/p3aa4a26b04c",
+        "status": "available",
+        "source_url": "https://link.dice.fm/p3aa4a26b04c",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "event:eulogy:2026-11-29:planet ruti the wizard - album release party"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/h5664484d806",
+        "status": "available",
+        "source_url": "https://link.dice.fm/h5664484d806",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:https://www.songkick.com/concerts/43406981-sheer-mag-at-eulogy:2026-12-05"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/Da522a7c95f2",
+        "status": "available",
+        "source_url": "https://link.dice.fm/Da522a7c95f2",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:eulogy:https://link.dice.fm/da522a7c95f2:2026-12-06"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/d254c00370eb",
+        "status": "available",
+        "source_url": "https://link.dice.fm/d254c00370eb",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:https://www.songkick.com/concerts/43427482-mainliners-at-eulogy:2026-12-08"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/w6912dbb17d6",
+        "status": "available",
+        "source_url": "https://link.dice.fm/w6912dbb17d6",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:https://www.songkick.com/concerts/43425748-rickshaw-billies-burger-patrol-at-eulogy:2026-12-12"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/ydc0b1d87f12",
+        "status": "available",
+        "source_url": "https://link.dice.fm/ydc0b1d87f12",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:https://www.songkick.com/concerts/43363436-thee-sinseers-at-eulogy:2026-12-15"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/Z5810b9f7dc4",
+        "status": "available",
+        "source_url": "https://link.dice.fm/Z5810b9f7dc4",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:https://www.songkick.com/concerts/43435003-casualties-at-eulogy:2026-12-16"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/Wce2ba41ee1a",
+        "status": "available",
+        "source_url": "https://link.dice.fm/Wce2ba41ee1a",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:eulogy:https://link.dice.fm/wce2ba41ee1a:2027-01-29 19:00:00"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/R69db4489f15",
+        "status": "available",
+        "source_url": "https://link.dice.fm/R69db4489f15",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:eulogy:https://link.dice.fm/r69db4489f15:2026-11-12 20:00:00"
+      },
+      {
+        "source_key": "MusicHallOfficial:https://ashevillemusichall.com/event/magoo-w-suns-of-stars/asheville-music-hall-live-music/",
+        "status": "sold_out",
+        "source_url": "https://ashevillemusichall.com/event/magoo-w-suns-of-stars/asheville-music-hall-live-music/",
+        "observed_at": "2026-10-17T13:46:12+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/90475867/magoo-wsuns-of-stars-asheville-asheville-music-hall:2026-10-31"
+      },
+      {
+        "source_key": "OrangePeelOfficial:https://theorangepeel.net/event/dope-lemon/the-orange-peel/asheville-north-carolina/",
+        "status": "sold_out",
+        "source_url": "https://theorangepeel.net/event/dope-lemon/the-orange-peel/asheville-north-carolina/",
+        "observed_at": "2026-10-17T13:46:13+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/82923336/dope-lemon-asheville-the-orange-peel:2026-10-20"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/M9816db6d404",
+        "status": "available",
+        "source_url": "https://link.dice.fm/M9816db6d404",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:eulogy:https://link.dice.fm/m9816db6d404:2026-10-30 22:30:00"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/C4e581c2f910",
+        "status": "available",
+        "source_url": "https://link.dice.fm/C4e581c2f910",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:eulogy:https://link.dice.fm/c4e581c2f910:2026-10-28 20:00:00"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/h96136a4a4bc",
+        "status": "available",
+        "source_url": "https://link.dice.fm/h96136a4a4bc",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:eulogy:https://link.dice.fm/m9816db6d404:2026-10-30 22:30:00"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/g525825ffddd",
+        "status": "available",
+        "source_url": "https://link.dice.fm/g525825ffddd",
+        "observed_at": "2026-10-17T13:46:10+00:00",
+        "_show_key": "ticket:eulogy:https://link.dice.fm/g525825ffddd:2026-12-03 20:00:00"
+      },
+      {
+        "source_key": "OrangePeelOfficial:https://theorangepeel.net/event/boy-harsher/the-orange-peel/asheville-north-carolina/",
+        "status": "sold_out",
+        "source_url": "https://theorangepeel.net/event/boy-harsher/the-orange-peel/asheville-north-carolina/",
+        "observed_at": "2026-10-17T13:46:13+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/65624045/boy-harsher-asheville-the-orange-peel:2026-10-28"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/f6ca451a744a",
+        "status": "available",
+        "source_url": "https://link.dice.fm/f6ca451a744a",
+        "observed_at": "2026-10-05T21:35:00+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6a0b3de817f83700017d5d04:2026-10-06"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/f54d7b7fd181",
+        "status": "available",
+        "source_url": "https://link.dice.fm/f54d7b7fd181",
+        "observed_at": "2026-10-07T17:28:48+00:00",
+        "_show_key": "event:eulogy:2026-10-07:revocation w/ defeated sanity, fuming mouth & weeping"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/E8ff92c4bc57",
+        "status": "available",
+        "source_url": "https://link.dice.fm/E8ff92c4bc57",
+        "observed_at": "2026-10-07T17:28:48+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6aa888a2ff46e9000100db1d:2026-10-08"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/G7d136572a9e",
+        "status": "available",
+        "source_url": "https://link.dice.fm/G7d136572a9e",
+        "observed_at": "2026-10-07T17:28:48+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6aa9e5d50e140c0001973946:2026-10-09"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/e97e59c0d784",
+        "status": "available",
+        "source_url": "https://link.dice.fm/e97e59c0d784",
+        "observed_at": "2026-10-10T16:17:05+00:00",
+        "_show_key": "ticket:https://dice.fm/event/69e25d19a3c4800001dc39bf:2026-10-10"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/vdd29728c5d1",
+        "status": "available",
+        "source_url": "https://link.dice.fm/vdd29728c5d1",
+        "observed_at": "2026-10-11T16:21:23+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6a22d8dc76ac4f0001170dee:2026-10-11"
+      },
+      {
+        "source_key": "EulogyOfficial:https://link.dice.fm/c5cc6b763ee7",
+        "status": "available",
+        "source_url": "https://link.dice.fm/c5cc6b763ee7",
+        "observed_at": "2026-10-14T15:12:31+00:00",
+        "_show_key": "ticket:https://dice.fm/event/6a303b826b4937000197c04f:2026-10-14"
+      },
+      {
+        "source_key": "GreyEagleOfficial:https://www.thegreyeagle.com/event/josiah-and-the-bonnevilles-2/grey-eagle-music-hall/asheville-north-carolina/",
+        "status": "sold_out",
+        "source_url": "https://www.thegreyeagle.com/event/josiah-and-the-bonnevilles-2/grey-eagle-music-hall/asheville-north-carolina/",
+        "observed_at": "2026-10-14T15:12:30+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/98209737/josiah-and-the-bonnevilles-asheville-grey-eagle-music-hall:2026-10-14"
+      },
+      {
+        "source_key": "ticket-page:2549:etix.com/ticket/p/86556727/patio-showtom-fenton-the-rhythmic-revolution-asheville-grey-eagle-patio-stage",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/86556727/patio-showtom-fenton-the-rhythmic-revolution-asheville-grey-eagle-patio-stage?partner_id=100",
+        "observed_at": "2026-10-14T01:46:32+00:00",
+        "_show_key": "ticket:grey-eagle:https://www.etix.com/ticket/p/86556727/patio-showtom-fenton-the-rhythmic-revolution-asheville-grey-eagle-patio-stage:2026-10-27 17:30:00"
+      },
+      {
+        "source_key": "ticket-page:3975:etix.com/ticket/p/70445740/photon-asheville-the-one-stop",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/70445740/photon-asheville-the-one-stop?partner_id=100",
+        "observed_at": "2026-10-14T01:46:32+00:00",
+        "_show_key": "ticket:one-stop:https://www.etix.com/ticket/p/70445740/photon-asheville-the-one-stop:2026-11-05 22:00:00"
+      },
+      {
+        "source_key": "ticket-page:4054:etix.com/ticket/p/50188909/candler-rice-debut-ep-release-show-asheville-grey-eagle-music-hall-special-events",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/50188909/candler-rice-debut-ep-release-show-asheville-grey-eagle-music-hall-special-events?partner_id=100",
+        "observed_at": "2026-10-14T01:47:14+00:00",
+        "_show_key": "ticket:grey-eagle:https://www.etix.com/ticket/p/50188909/candler-rice-debut-ep-release-show-asheville-grey-eagle-music-hall-special-events:2026-12-23 20:00:00"
+      },
+      {
+        "source_key": "ticket-page:2451:etix.com/ticket/p/67530588/hot-in-herre2000s-dance-party-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/67530588/hot-in-herre2000s-dance-party-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T01:47:21+00:00",
+        "_show_key": "ticket:orange-peel:https://www.etix.com/ticket/p/67530588/hot-in-herre2000s-dance-party-asheville-the-orange-peel:2026-12-31 22:00:00"
+      },
+      {
+        "source_key": "ticket-page:2581:etix.com/ticket/p/45954045/hans-williams-asheville-grey-eagle-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/45954045/hans-williams-asheville-grey-eagle-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T01:48:00+00:00",
+        "_show_key": "ticket:grey-eagle:https://www.etix.com/ticket/p/45954045/hans-williams-asheville-grey-eagle-music-hall:2027-01-22 20:00:00"
+      },
+      {
+        "source_key": "ticket-page:2458:etix.com/ticket/p/88737066/vacations-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/88737066/vacations-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T01:48:04+00:00",
+        "_show_key": "ticket:orange-peel:https://www.etix.com/ticket/p/88737066/vacations-asheville-the-orange-peel:2027-02-22 20:00:00"
+      },
+      {
+        "source_key": "ticket-page:2466:etix.com/ticket/p/49207036/maria-bamford-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/49207036/maria-bamford-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T01:48:42+00:00",
+        "_show_key": "ticket:orange-peel:https://www.etix.com/ticket/p/49207036/maria-bamford-asheville-the-orange-peel:2027-05-14 20:00:00"
+      },
+      {
+        "source_key": "ticket-page:61:etix.com/ticket/p/31050870/knocked-loose-denzel-curry-asheville-hellbender-by-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/31050870/knocked-loose-denzel-curry-asheville-hellbender-by-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T01:49:07+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/31050870/knocked-loose-denzel-curry-asheville-hellbender-by-the-orange-peel:2026-10-14"
+      },
+      {
+        "source_key": "ticket-page:156:etix.com/ticket/p/52718104/jacoozy-asheville-the-one-stop",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/52718104/jacoozy-asheville-the-one-stop?partner_id=100",
+        "observed_at": "2026-10-14T01:49:07+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/52718104/jacoozy-asheville-the-one-stop:2026-10-14"
+      },
+      {
+        "source_key": "ticket-page:62:etix.com/ticket/p/51858432/allison-russell-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/51858432/allison-russell-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T01:49:43+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/51858432/allison-russell-asheville-the-orange-peel:2026-10-15"
+      },
+      {
+        "source_key": "ticket-page:210:etix.com/ticket/p/40065345/the-moth-presentsasheville-storyslam-magic-asheville-grey-eagle-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/40065345/the-moth-presentsasheville-storyslam-magic-asheville-grey-eagle-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T01:49:43+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/40065345/the-moth-presentsasheville-storyslam-magic-asheville-grey-eagle-music-hall:2026-10-15"
+      },
+      {
+        "source_key": "ticket-page:157:etix.com/ticket/p/91365600/high-june-wcadalay-asheville-asheville-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/91365600/high-june-wcadalay-asheville-asheville-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T01:49:59+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/91365600/high-june-wcadalay-asheville-asheville-music-hall:2026-10-15"
+      },
+      {
+        "source_key": "ticket-page:63:etix.com/ticket/p/70967110/the-tallest-man-on-earth-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/70967110/the-tallest-man-on-earth-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T01:51:00+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/70967110/the-tallest-man-on-earth-asheville-the-orange-peel:2026-10-16"
+      },
+      {
+        "source_key": "ticket-page:2377:etix.com/ticket/p/95208436/the-infamous-stringdusters-black-mountain-outdoor-stage-pisgah-brewing-company",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/95208436/the-infamous-stringdusters-black-mountain-outdoor-stage-pisgah-brewing-company?partner_id=100&_gl=1*gzgosm*_ga*MTMxNzI4ODg2My4xNzY4OTQ1Njk3*_ga_HJ0ZQ92ESC*czE3ODc4NDUwMzckbzk4JGcxJHQxNzg3ODQ1NTc2JGoxMCRsMCRoMTc3NzM3MDY2NQ..",
+        "observed_at": "2026-10-14T01:51:55+00:00",
+        "_show_key": "ticket:pisgah:https://www.etix.com/ticket/p/95208436/the-infamous-stringdusters-black-mountain-outdoor-stage-pisgah-brewing-company:2026-10-17 19:00:00"
+      },
+      {
+        "source_key": "ticket-page:160:etix.com/ticket/p/99614261/luna-asheville-asheville-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/99614261/luna-asheville-asheville-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T01:52:29+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/99614261/luna-asheville-asheville-music-hall:2026-10-17"
+      },
+      {
+        "source_key": "ticket-page:2378:etix.com/ticket/p/40596416/empire-strikes-brass-benefit-concert-for-homeward-bound-wnc-black-mountain-outdoor-stage-pisgah-brewing-company",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/40596416/empire-strikes-brass-benefit-concert-for-homeward-bound-wnc-black-mountain-outdoor-stage-pisgah-brewing-company?partner_id=100&_gl=1*1l0tdpv*_ga*MTMxNzI4ODg2My4xNzY4OTQ1Njk3*_ga_HJ0ZQ92ESC*czE3ODc4NDUwMzckbzk4JGcxJHQxNzg3ODQ1NTI2JGo2MCRsMCRoMTc3NzM3MDY2NQ..",
+        "observed_at": "2026-10-14T01:52:29+00:00",
+        "_show_key": "ticket:pisgah:https://www.etix.com/ticket/p/40596416/empire-strikes-brass-benefit-concert-for-homeward-bound-wnc-black-mountain-outdoor-stage-pisgah-brewing-company:2026-10-18 17:15:00"
+      },
+      {
+        "source_key": "ticket-page:65:etix.com/ticket/p/69665889/avery-anna-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/69665889/avery-anna-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T01:52:29+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/69665889/avery-anna-asheville-the-orange-peel:2026-10-18"
+      },
+      {
+        "source_key": "ticket-page:66:etix.com/ticket/p/37116996/the-residents-eskimo-live-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/37116996/the-residents-eskimo-live-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T01:53:20+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/37116996/the-residents-eskimo-live-asheville-the-orange-peel:2026-10-19"
+      },
+      {
+        "source_key": "ticket-page:69:etix.com/ticket/p/45607682/phillip-phillips-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/45607682/phillip-phillips-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T01:54:05+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/45607682/phillip-phillips-asheville-the-orange-peel:2026-10-22"
+      },
+      {
+        "source_key": "ticket-page:162:etix.com/ticket/p/35520044/karina-rykman-asheville-asheville-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/35520044/karina-rykman-asheville-asheville-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T01:54:37+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/35520044/karina-rykman-asheville-asheville-music-hall:2026-10-22"
+      },
+      {
+        "source_key": "ticket-page:163:etix.com/ticket/p/88307323/dallas-wax-asheville-the-one-stop",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/88307323/dallas-wax-asheville-the-one-stop?partner_id=100",
+        "observed_at": "2026-10-14T01:54:40+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/88307323/dallas-wax-asheville-the-one-stop:2026-10-22"
+      },
+      {
+        "source_key": "ticket-page:164:etix.com/ticket/p/41923257/david-bryan-asheville-the-one-stop",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/41923257/david-bryan-asheville-the-one-stop?partner_id=100",
+        "observed_at": "2026-10-14T01:54:41+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/41923257/david-bryan-asheville-the-one-stop:2026-10-23"
+      },
+      {
+        "source_key": "ticket-page:70:etix.com/ticket/p/85208341/benjamin-tod-and-the-inline-six-2026-tour-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/85208341/benjamin-tod-and-the-inline-six-2026-tour-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T01:55:18+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/85208341/benjamin-tod-and-the-inline-six-2026-tour-asheville-the-orange-peel:2026-10-23"
+      },
+      {
+        "source_key": "ticket-page:165:etix.com/ticket/p/54218378/the-steppers-asheville-the-one-stop",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/54218378/the-steppers-asheville-the-one-stop?partner_id=100",
+        "observed_at": "2026-10-14T01:55:28+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/54218378/the-steppers-asheville-the-one-stop:2026-10-23"
+      },
+      {
+        "source_key": "ticket-page:166:etix.com/ticket/p/46568966/cosmic-charlie-asheville-asheville-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/46568966/cosmic-charlie-asheville-asheville-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T01:55:28+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/46568966/cosmic-charlie-asheville-asheville-music-hall:2026-10-23"
+      },
+      {
+        "source_key": "ticket-page:71:etix.com/ticket/p/65474867/benjamin-tod-and-the-inline-six-2026-tour-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/65474867/benjamin-tod-and-the-inline-six-2026-tour-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T01:56:09+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/65474867/benjamin-tod-and-the-inline-six-2026-tour-asheville-the-orange-peel:2026-10-24"
+      },
+      {
+        "source_key": "ticket-page:167:etix.com/ticket/p/86608202/cosmic-charlie-asheville-asheville-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/86608202/cosmic-charlie-asheville-asheville-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T01:56:17+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/86608202/cosmic-charlie-asheville-asheville-music-hall:2026-10-24"
+      },
+      {
+        "source_key": "ticket-page:643:etix.com/ticket/p/83864001/nurse-blake-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/83864001/nurse-blake-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T01:57:04+00:00",
+        "_show_key": "ticket:orange-peel:https://www.etix.com/ticket/p/83864001/nurse-blake-asheville-the-orange-peel:2027-10-26"
+      },
+      {
+        "source_key": "ticket-page:73:etix.com/ticket/p/65624045/boy-harsher-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/65624045/boy-harsher-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T01:57:04+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/65624045/boy-harsher-asheville-the-orange-peel:2026-10-28"
+      },
+      {
+        "source_key": "ticket-page:74:etix.com/ticket/p/85572281/bitch-cabal-featwednesday-mannequin-pussy-asheville-hellbender-by-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/85572281/bitch-cabal-featwednesday-mannequin-pussy-asheville-hellbender-by-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T01:57:42+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/85572281/bitch-cabal-featwednesday-mannequin-pussy-asheville-hellbender-by-the-orange-peel:2026-10-30"
+      },
+      {
+        "source_key": "ticket-page:2900:etix.com/ticket/p/85572281/bitch-cabal-featwednesday-mannequin-pussy-asheville-hellbender-by-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/85572281/bitch-cabal-featwednesday-mannequin-pussy-asheville-hellbender-by-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T01:57:42+00:00",
+        "_show_key": "ticket:hellbender:https://etix.prf.hn/click/camref:1101lgkcg/destination:https://www.etix.com/ticket/p/85572281/bitch-cabal-featwednesday-mannequin-pussy-asheville-hellbender-by-the-orange-peel:2026-10-30 19:00:00"
+      },
+      {
+        "source_key": "ticket-page:75:etix.com/ticket/p/74168219/glaive-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/74168219/glaive-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T01:58:01+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/74168219/glaive-asheville-the-orange-peel:2026-10-30"
+      },
+      {
+        "source_key": "ticket-page:2379:etix.com/ticket/p/56839760/an-evening-with-full-cord-black-mountain-taproom-stage-pisgah-brewing-company",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/56839760/an-evening-with-full-cord-black-mountain-taproom-stage-pisgah-brewing-company?partner_id=100&_gl=1*8p370e*_ga*MTQ2NzI5NTE2MS4xNzc0Mjk0OTMx*_ga_HJ0ZQ92ESC*czE3NzY4MDIxMjMkbzEkZzEkdDE3NzY4MDIyMDkkajM2JGwwJGg1MDUzMzY4MzI.",
+        "observed_at": "2026-10-14T01:58:34+00:00",
+        "_show_key": "ticket:pisgah:https://www.etix.com/ticket/p/56839760/an-evening-with-full-cord-black-mountain-taproom-stage-pisgah-brewing-company:2026-10-30 20:00:00"
+      },
+      {
+        "source_key": "ticket-page:170:etix.com/ticket/p/71843010/sneezy-asheville-asheville-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/71843010/sneezy-asheville-asheville-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T01:59:10+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/71843010/sneezy-asheville-asheville-music-hall:2026-10-30"
+      },
+      {
+        "source_key": "ticket-page:172:etix.com/ticket/p/44556789/gordon-sterling-and-the-people-asheville-the-one-stop",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/44556789/gordon-sterling-and-the-people-asheville-the-one-stop?partner_id=100",
+        "observed_at": "2026-10-14T02:00:03+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/44556789/gordon-sterling-and-the-people-asheville-the-one-stop:2026-10-31"
+      },
+      {
+        "source_key": "ticket-page:1383:etix.com/ticket/p/56527626/scoochie-boochie-asheville-pulp",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/56527626/scoochie-boochie-asheville-pulp?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:00:03+00:00",
+        "_show_key": "ticket:pulp:https://www.etix.com/ticket/p/56527626/scoochie-boochie-asheville-pulp:2026-11-01"
+      },
+      {
+        "source_key": "ticket-page:77:etix.com/ticket/p/83234502/yung-gravythe-joyrider-tour-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/83234502/yung-gravythe-joyrider-tour-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:00:33+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/83234502/yung-gravythe-joyrider-tour-asheville-the-orange-peel:2026-11-02"
+      },
+      {
+        "source_key": "ticket-page:78:etix.com/ticket/p/38811393/hawthorne-heights-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/38811393/hawthorne-heights-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:00:43+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/38811393/hawthorne-heights-asheville-the-orange-peel:2026-11-03"
+      },
+      {
+        "source_key": "ticket-page:173:etix.com/ticket/p/59423794/sunsquabi-asheville-asheville-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/59423794/sunsquabi-asheville-asheville-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T02:02:13+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/59423794/sunsquabi-asheville-asheville-music-hall:2026-11-05"
+      },
+      {
+        "source_key": "ticket-page:175:etix.com/ticket/p/42987136/weird-phishes-asheville-the-one-stop",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/42987136/weird-phishes-asheville-the-one-stop?partner_id=100",
+        "observed_at": "2026-10-14T02:03:55+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/42987136/weird-phishes-asheville-the-one-stop:2026-11-06"
+      },
+      {
+        "source_key": "ticket-page:177:etix.com/ticket/p/47700099/the-band-memo-asheville-the-one-stop",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/47700099/the-band-memo-asheville-the-one-stop?partner_id=100",
+        "observed_at": "2026-10-14T02:06:07+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/47700099/the-band-memo-asheville-the-one-stop:2026-11-11"
+      },
+      {
+        "source_key": "ticket-page:84:etix.com/ticket/p/68711054/blind-date-live-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/68711054/blind-date-live-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:06:58+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/68711054/blind-date-live-asheville-the-orange-peel:2026-11-13"
+      },
+      {
+        "source_key": "ticket-page:85:etix.com/ticket/p/79032536/zack-fox-dj-set-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/79032536/zack-fox-dj-set-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:08:26+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/79032536/zack-fox-dj-set-asheville-the-orange-peel:2026-11-14"
+      },
+      {
+        "source_key": "ticket-page:179:etix.com/ticket/p/77708613/katie-pruitt-asheville-asheville-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/77708613/katie-pruitt-asheville-asheville-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T02:08:26+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/77708613/katie-pruitt-asheville-asheville-music-hall:2026-11-14"
+      },
+      {
+        "source_key": "ticket-page:180:etix.com/ticket/p/78799659/certainly-so-asheville-the-one-stop",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/78799659/certainly-so-asheville-the-one-stop?partner_id=100",
+        "observed_at": "2026-10-14T02:09:06+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/78799659/certainly-so-asheville-the-one-stop:2026-11-14"
+      },
+      {
+        "source_key": "ticket-page:86:etix.com/ticket/p/79474624/randy-feltfacegimmick-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/79474624/randy-feltfacegimmick-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:09:13+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/79474624/randy-feltfacegimmick-asheville-the-orange-peel:2026-11-15"
+      },
+      {
+        "source_key": "ticket-page:87:etix.com/ticket/p/58776099/hiss-golden-messenger-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/58776099/hiss-golden-messenger-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:10:00+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/58776099/hiss-golden-messenger-asheville-the-orange-peel:2026-11-19"
+      },
+      {
+        "source_key": "ticket-page:89:etix.com/ticket/p/92566794/kristin-key-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/92566794/kristin-key-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:11:35+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/92566794/kristin-key-asheville-the-orange-peel:2026-11-22"
+      },
+      {
+        "source_key": "ticket-page:182:etix.com/ticket/p/31697563/the-saint-cecilia-asheville-the-one-stop",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/31697563/the-saint-cecilia-asheville-the-one-stop?partner_id=100",
+        "observed_at": "2026-10-14T02:12:21+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/31697563/the-saint-cecilia-asheville-the-one-stop:2026-11-25"
+      },
+      {
+        "source_key": "ticket-page:91:etix.com/ticket/p/78200291/fireside-collectives-family-jamboree-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/78200291/fireside-collectives-family-jamboree-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:12:47+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/78200291/fireside-collectives-family-jamboree-asheville-the-orange-peel:2026-11-28"
+      },
+      {
+        "source_key": "ticket-page:183:etix.com/ticket/p/75732118/featherpocket-stringband-asheville-the-one-stop",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/75732118/featherpocket-stringband-asheville-the-one-stop?partner_id=100",
+        "observed_at": "2026-10-14T02:13:27+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/75732118/featherpocket-stringband-asheville-the-one-stop:2026-12-04"
+      },
+      {
+        "source_key": "ticket-page:185:etix.com/ticket/p/51623330/daniel-donatos-cosmic-countrydown-one-horse-unplugged-acousticwsg-aron-magner-disco-biscuits-asheville-asheville-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/51623330/daniel-donatos-cosmic-countrydown-one-horse-unplugged-acousticwsg-aron-magner-disco-biscuits-asheville-asheville-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T02:14:27+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/51623330/daniel-donatos-cosmic-countrydown-one-horse-unplugged-acousticwsg-aron-magner-disco-biscuits-asheville-asheville-music-hall:2026-12-09"
+      },
+      {
+        "source_key": "ticket-page:92:etix.com/ticket/p/35621797/turnover-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/35621797/turnover-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:14:27+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/35621797/turnover-asheville-the-orange-peel:2026-12-10"
+      },
+      {
+        "source_key": "ticket-page:186:etix.com/ticket/p/70890538/daniel-donatos-cosmic-countrydown-one-horse-unplugged-acousticwsg-jeff-sipe-aru-asheville-asheville-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/70890538/daniel-donatos-cosmic-countrydown-one-horse-unplugged-acousticwsg-jeff-sipe-aru-asheville-asheville-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T02:15:08+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/70890538/daniel-donatos-cosmic-countrydown-one-horse-unplugged-acousticwsg-jeff-sipe-aru-asheville-asheville-music-hall:2026-12-10"
+      },
+      {
+        "source_key": "ticket-page:187:etix.com/ticket/p/35986879/daniel-donatos-cosmic-countrydown-one-horse-unplugged-acousticwsg-kyser-george-shadowgrass-asheville-asheville-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/35986879/daniel-donatos-cosmic-countrydown-one-horse-unplugged-acousticwsg-kyser-george-shadowgrass-asheville-asheville-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T02:15:23+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/35986879/daniel-donatos-cosmic-countrydown-one-horse-unplugged-acousticwsg-kyser-george-shadowgrass-asheville-asheville-music-hall:2026-12-11"
+      },
+      {
+        "source_key": "ticket-page:93:etix.com/ticket/p/39247867/atsuko-okatsukathe-big-bowl-tour-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/39247867/atsuko-okatsukathe-big-bowl-tour-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:16:12+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/39247867/atsuko-okatsukathe-big-bowl-tour-asheville-the-orange-peel:2026-12-12"
+      },
+      {
+        "source_key": "ticket-page:94:etix.com/ticket/p/67177553/thievery-corporation-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/67177553/thievery-corporation-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:16:12+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/67177553/thievery-corporation-asheville-the-orange-peel:2026-12-13"
+      },
+      {
+        "source_key": "ticket-page:350:etix.com/ticket/p/68164947/daily-bread-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/68164947/daily-bread-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:17:11+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/68164947/daily-bread-asheville-the-orange-peel:2026-12-16"
+      },
+      {
+        "source_key": "ticket-page:3015:etix.com/ticket/p/78333867/grahame-lesh-friends-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/78333867/grahame-lesh-friends-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:18:06+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/78333867/grahame-lesh-friends-asheville-the-orange-peel:2026-12-18"
+      },
+      {
+        "source_key": "ticket-page:351:etix.com/ticket/p/78333867/grahame-lesh-friends-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/78333867/grahame-lesh-friends-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:18:06+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/78333867/grahame-lesh-friends-asheville-the-orange-peel:2026-12-18"
+      },
+      {
+        "source_key": "ticket-page:399:etix.com/ticket/p/88887466/seven-teller-asheville-the-one-stop",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/88887466/seven-teller-asheville-the-one-stop?partner_id=100",
+        "observed_at": "2026-10-14T02:18:47+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/88887466/seven-teller-asheville-the-one-stop:2026-12-19"
+      },
+      {
+        "source_key": "ticket-page:353:etix.com/ticket/p/77511027/mountain-grass-unit-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/77511027/mountain-grass-unit-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:18:47+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/77511027/mountain-grass-unit-asheville-the-orange-peel:2026-12-30"
+      },
+      {
+        "source_key": "ticket-page:610:etix.com/ticket/p/55339695/sons-of-cream-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/55339695/sons-of-cream-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:19:24+00:00",
+        "_show_key": "ticket:orange-peel:https://www.etix.com/ticket/p/55339695/sons-of-cream-asheville-the-orange-peel:2027-01-15"
+      },
+      {
+        "source_key": "ticket-page:611:etix.com/ticket/p/38723137/marc-maron-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/38723137/marc-maron-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:19:24+00:00",
+        "_show_key": "ticket:orange-peel:https://www.etix.com/ticket/p/38723137/marc-maron-asheville-the-orange-peel:2027-01-21"
+      },
+      {
+        "source_key": "ticket-page:612:etix.com/ticket/p/75510304/glove-special-sauce-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/75510304/glove-special-sauce-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:20:13+00:00",
+        "_show_key": "ticket:orange-peel:https://www.etix.com/ticket/p/75510304/glove-special-sauce-asheville-the-orange-peel:2027-01-29"
+      },
+      {
+        "source_key": "ticket-page:613:etix.com/ticket/p/41451874/braxton-keith-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/41451874/braxton-keith-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:20:13+00:00",
+        "_show_key": "ticket:orange-peel:https://www.etix.com/ticket/p/41451874/braxton-keith-asheville-the-orange-peel:2027-01-30"
+      },
+      {
+        "source_key": "ticket-page:614:etix.com/ticket/p/89064349/zoso-the-ultimate-led-zeppelin-experience-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/89064349/zoso-the-ultimate-led-zeppelin-experience-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:20:54+00:00",
+        "_show_key": "ticket:orange-peel:https://www.etix.com/ticket/p/89064349/zoso-the-ultimate-led-zeppelin-experience-asheville-the-orange-peel:2027-02-07"
+      },
+      {
+        "source_key": "ticket-page:1850:etix.com/ticket/p/70600519/the-broken-hearts-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/70600519/the-broken-hearts-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:20:54+00:00",
+        "_show_key": "ticket:orange-peel:https://www.songkick.com/concerts/43446126-broken-hearts-at-orange-peel:2027-02-20 20:00:00"
+      },
+      {
+        "source_key": "ticket-page:616:etix.com/ticket/p/33409218/dan-and-peggy-reeder-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/33409218/dan-and-peggy-reeder-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:22:25+00:00",
+        "_show_key": "ticket:orange-peel:https://www.etix.com/ticket/p/33409218/dan-and-peggy-reeder-asheville-the-orange-peel:2027-02-27"
+      },
+      {
+        "source_key": "ticket-page:3039:etix.com/ticket/p/33409218/dan-and-peggy-reeder-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/33409218/dan-and-peggy-reeder-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:22:25+00:00",
+        "_show_key": "ticket:orange-peel:https://www.etix.com/ticket/p/33409218/dan-and-peggy-reeder-asheville-the-orange-peel:2027-02-27"
+      },
+      {
+        "source_key": "ticket-page:617:etix.com/ticket/p/83961261/twin-temple-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/83961261/twin-temple-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:22:25+00:00",
+        "_show_key": "ticket:orange-peel:https://www.etix.com/ticket/p/83961261/twin-temple-asheville-the-orange-peel:2027-03-10"
+      },
+      {
+        "source_key": "ticket-page:618:etix.com/ticket/p/36361560/sammy-rae-the-friends-the-get-down-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/36361560/sammy-rae-the-friends-the-get-down-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:22:27+00:00",
+        "_show_key": "ticket:orange-peel:https://www.etix.com/ticket/p/36361560/sammy-rae-the-friends-the-get-down-asheville-the-orange-peel:2027-03-12"
+      },
+      {
+        "source_key": "ticket-page:3043:etix.com/ticket/p/36361560/sammy-rae-the-friends-the-get-down-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/36361560/sammy-rae-the-friends-the-get-down-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:22:27+00:00",
+        "_show_key": "ticket:orange-peel:https://etix.prf.hn/click/camref:1101lgkcg/destination:https://www.etix.com/ticket/p/36361560/sammy-rae-the-friends-the-get-down-asheville-the-orange-peel:2027-03-12 20:00:00"
+      },
+      {
+        "source_key": "ticket-page:619:etix.com/ticket/p/32619116/brandy-clark-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/32619116/brandy-clark-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:23:08+00:00",
+        "_show_key": "ticket:orange-peel:https://www.etix.com/ticket/p/32619116/brandy-clark-asheville-the-orange-peel:2027-04-02"
+      },
+      {
+        "source_key": "ticket-page:642:etix.com/ticket/p/66200858/jaboukie-youngwhite-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/66200858/jaboukie-youngwhite-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:23:08+00:00",
+        "_show_key": "ticket:orange-peel:https://www.etix.com/ticket/p/66200858/jaboukie-youngwhite-asheville-the-orange-peel:2027-10-25"
+      },
+      {
+        "source_key": "ticket-page:620:etix.com/ticket/p/68747539/michael-shannon-jason-narducy-and-friends-play-rems-document-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/68747539/michael-shannon-jason-narducy-and-friends-play-rems-document-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:23:49+00:00",
+        "_show_key": "ticket:orange-peel:https://www.etix.com/ticket/p/68747539/michael-shannon-jason-narducy-and-friends-play-rems-document-asheville-the-orange-peel:2027-05-13"
+      },
+      {
+        "source_key": "ticket-page:625:etix.com/ticket/p/44225920/fontaines-dc-asheville-hellbender-by-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/44225920/fontaines-dc-asheville-hellbender-by-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T02:23:55+00:00",
+        "_show_key": "ticket:hellbender:https://www.etix.com/ticket/p/44225920/fontaines-dc-asheville-hellbender-by-the-orange-peel:2027-10-07"
+      },
+      {
+        "source_key": "ticket-page:206:etix.com/ticket/p/77623422/patio-shownate-hadley-asheville-grey-eagle-patio-stage",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/77623422/patio-shownate-hadley-asheville-grey-eagle-patio-stage?partner_id=100",
+        "observed_at": "2026-10-14T02:23:55+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/77623422/patio-shownate-hadley-asheville-grey-eagle-patio-stage:2026-10-13"
+      },
+      {
+        "source_key": "ticket-page:207:etix.com/ticket/p/74366038/jeff-coffinjordan-perlsonviktor-krauss-with-bob-lanzetti-asheville-grey-eagle-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/74366038/jeff-coffinjordan-perlsonviktor-krauss-with-bob-lanzetti-asheville-grey-eagle-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T02:24:29+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/74366038/jeff-coffinjordan-perlsonviktor-krauss-with-bob-lanzetti-asheville-grey-eagle-music-hall:2026-10-13"
+      },
+      {
+        "source_key": "ticket-page:208:etix.com/ticket/p/54625267/patio-showcha-trio-asheville-grey-eagle-patio-stage",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/54625267/patio-showcha-trio-asheville-grey-eagle-patio-stage?partner_id=100",
+        "observed_at": "2026-10-14T02:24:47+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/54625267/patio-showcha-trio-asheville-grey-eagle-patio-stage:2026-10-14"
+      },
+      {
+        "source_key": "ticket-page:211:etix.com/ticket/p/59228107/joshua-ray-walker-wcecilia-castleman-asheville-grey-eagle-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/59228107/joshua-ray-walker-wcecilia-castleman-asheville-grey-eagle-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T02:25:39+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/59228107/joshua-ray-walker-wcecilia-castleman-asheville-grey-eagle-music-hall:2026-10-16"
+      },
+      {
+        "source_key": "ticket-page:212:etix.com/ticket/p/90384649/patio-showthe-scribblers-killer-skillet-asheville-grey-eagle-patio-stage",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/90384649/patio-showthe-scribblers-killer-skillet-asheville-grey-eagle-patio-stage?partner_id=100",
+        "observed_at": "2026-10-14T02:25:39+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/90384649/patio-showthe-scribblers-killer-skillet-asheville-grey-eagle-patio-stage:2026-10-17"
+      },
+      {
+        "source_key": "ticket-page:213:etix.com/ticket/p/79778923/carsie-blanton-wthe-burning-hell-asheville-grey-eagle-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/79778923/carsie-blanton-wthe-burning-hell-asheville-grey-eagle-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T02:25:39+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/79778923/carsie-blanton-asheville-grey-eagle-music-hall:2026-10-17"
+      },
+      {
+        "source_key": "ticket-page:215:etix.com/ticket/p/79338298/free-patio-showeast-coast-dirt-asheville-grey-eagle-patio-stage",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/79338298/free-patio-showeast-coast-dirt-asheville-grey-eagle-patio-stage?partner_id=100",
+        "observed_at": "2026-10-14T02:26:30+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/79338298/free-patio-showeast-coast-dirt-asheville-grey-eagle-patio-stage:2026-10-18"
+      },
+      {
+        "source_key": "ticket-page:216:etix.com/ticket/p/94229898/david-nihilltaking-tangents-tour-asheville-grey-eagle-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/94229898/david-nihilltaking-tangents-tour-asheville-grey-eagle-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T02:26:30+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/94229898/david-nihilltaking-tangents-tour-asheville-grey-eagle-music-hall:2026-10-18"
+      },
+      {
+        "source_key": "ticket-page:217:etix.com/ticket/p/34635908/patio-showemily-woodhull-wlaney-barnett-asheville-grey-eagle-patio-stage",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/34635908/patio-showemily-woodhull-wlaney-barnett-asheville-grey-eagle-patio-stage?partner_id=100",
+        "observed_at": "2026-10-14T02:26:30+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/34635908/patio-showemily-woodhull-wlaney-barnett-asheville-grey-eagle-patio-stage:2026-10-20"
+      },
+      {
+        "source_key": "ticket-page:219:etix.com/ticket/p/91679228/patio-showsean-tobin-asheville-grey-eagle-patio-stage",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/91679228/patio-showsean-tobin-asheville-grey-eagle-patio-stage?partner_id=100",
+        "observed_at": "2026-10-14T02:27:06+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/91679228/patio-showsean-tobin-asheville-grey-eagle-patio-stage:2026-10-22"
+      },
+      {
+        "source_key": "ticket-page:220:etix.com/ticket/p/40668186/nick-shoulders-asheville-grey-eagle-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/40668186/nick-shoulders-asheville-grey-eagle-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T02:27:06+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/40668186/nick-shoulders-asheville-grey-eagle-music-hall:2026-10-22"
+      },
+      {
+        "source_key": "ticket-page:221:etix.com/ticket/p/36444696/patio-showtall-boys-avl-duo-asheville-grey-eagle-patio-stage",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/36444696/patio-showtall-boys-avl-duo-asheville-grey-eagle-patio-stage?partner_id=100",
+        "observed_at": "2026-10-14T02:27:06+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/36444696/patio-showtall-boys-avl-duo-asheville-grey-eagle-patio-stage:2026-10-23"
+      },
+      {
+        "source_key": "ticket-page:223:etix.com/ticket/p/50693931/patio-showdoss-church-the-unholy-noise-asheville-grey-eagle-patio-stage",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/50693931/patio-showdoss-church-the-unholy-noise-asheville-grey-eagle-patio-stage?partner_id=100",
+        "observed_at": "2026-10-14T02:28:01+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/50693931/patio-showdoss-church-the-unholy-noise-asheville-grey-eagle-patio-stage:2026-10-24"
+      },
+      {
+        "source_key": "ticket-page:224:etix.com/ticket/p/75128463/boot-scootinboogie-nights-asheville-grey-eagle-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/75128463/boot-scootinboogie-nights-asheville-grey-eagle-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T02:28:01+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/75128463/boot-scootinboogie-nights-asheville-grey-eagle-music-hall:2026-10-24"
+      },
+      {
+        "source_key": "ticket-page:225:etix.com/ticket/p/85977457/25th-annual-newsong-music-competition-asheville-grey-eagle-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/85977457/25th-annual-newsong-music-competition-asheville-grey-eagle-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T02:28:46+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/85977457/25th-annual-newsong-music-competition-asheville-grey-eagle-music-hall:2026-10-25"
+      },
+      {
+        "source_key": "ticket-page:228:etix.com/ticket/p/87047887/ethan-reganyoung-regan-tour-asheville-grey-eagle-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/87047887/ethan-reganyoung-regan-tour-asheville-grey-eagle-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T02:30:02+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/87047887/ethan-reganyoung-regan-tour-asheville-grey-eagle-music-hall:2026-10-28"
+      },
+      {
+        "source_key": "ticket-page:230:etix.com/ticket/p/84980606/neal-francis-asheville-grey-eagle-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/84980606/neal-francis-asheville-grey-eagle-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T02:30:02+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/84980606/neal-francis-asheville-grey-eagle-music-hall:2026-10-29"
+      },
+      {
+        "source_key": "ticket-page:231:etix.com/ticket/p/93975532/patio-showashley-heath-asheville-grey-eagle-patio-stage",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/93975532/patio-showashley-heath-asheville-grey-eagle-patio-stage?partner_id=100",
+        "observed_at": "2026-10-14T02:30:34+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/93975532/patio-showashley-heath-asheville-grey-eagle-patio-stage:2026-10-30"
+      },
+      {
+        "source_key": "ticket-page:232:etix.com/ticket/p/69182590/the-arcadian-wild-make-it-out-alive-tour-asheville-grey-eagle-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/69182590/the-arcadian-wild-make-it-out-alive-tour-asheville-grey-eagle-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T02:31:15+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/69182590/the-arcadian-wild-make-it-out-alive-tour-asheville-grey-eagle-music-hall:2026-10-30"
+      },
+      {
+        "source_key": "ticket-page:233:etix.com/ticket/p/60000482/patio-showreed-turchi-album-release-asheville-grey-eagle-patio-stage",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/60000482/patio-showreed-turchi-album-release-asheville-grey-eagle-patio-stage?partner_id=100",
+        "observed_at": "2026-10-14T02:31:15+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/60000482/patio-showreed-turchi-album-release-asheville-grey-eagle-patio-stage:2026-10-31"
+      },
+      {
+        "source_key": "ticket-page:236:etix.com/ticket/p/89000145/hayes-carll-wjoelton-mayfield-asheville-grey-eagle-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/89000145/hayes-carll-wjoelton-mayfield-asheville-grey-eagle-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T02:32:07+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/89000145/hayes-carll-wjoelton-mayfield-asheville-grey-eagle-music-hall:2026-11-04"
+      },
+      {
+        "source_key": "ticket-page:237:etix.com/ticket/p/47901972/aaron-lee-tasjan-asheville-grey-eagle-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/47901972/aaron-lee-tasjan-asheville-grey-eagle-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T02:32:57+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/47901972/aaron-lee-tasjan-asheville-grey-eagle-music-hall:2026-11-05"
+      },
+      {
+        "source_key": "ticket-page:239:etix.com/ticket/p/61084008/chatham-rabbits-asheville-grey-eagle-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/61084008/chatham-rabbits-asheville-grey-eagle-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T02:33:37+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/61084008/chatham-rabbits-wmurphy-campbell-asheville-grey-eagle-music-hall:2026-11-07"
+      },
+      {
+        "source_key": "ticket-page:992:wl.eventim.us/event/an-evening-with-jerrys-middle-finger/699090",
+        "status": "available",
+        "source_url": "https://wl.eventim.us/event/an-evening-with-jerrys-middle-finger/699090?afflky=ThirdRoom",
+        "observed_at": "2026-10-14T04:53:40+00:00",
+        "_show_key": "ticket:third-room:https://prod-nts-api.seeticketsusa.us/v1.0.0/promote/ywzmolnuvvmtnjk5mdkwoje4/clickthru:2026-10-21"
+      },
+      {
+        "source_key": "ticket-page:995:wl.eventim.us/event/Boogie-T-ASHEVILLE/694768",
+        "status": "available",
+        "source_url": "https://wl.eventim.us/event/Boogie-T-ASHEVILLE/694768?afflky=DiscoDonnie",
+        "observed_at": "2026-10-14T04:53:40+00:00",
+        "_show_key": "ticket:sly-grog:https://prod-nts-api.seeticketsusa.us/v1.0.0/promote/ywzmolnuvvmtnjk0nzy4oje4/clickthru:2026-10-23"
+      },
+      {
+        "source_key": "ticket-page:998:wl.eventim.us/event/dantes-inferno/704125",
+        "status": "available",
+        "source_url": "https://wl.eventim.us/event/dantes-inferno/704125?afflky=ThirdRoom",
+        "observed_at": "2026-10-14T04:53:40+00:00",
+        "_show_key": "ticket:third-room:https://prod-nts-api.seeticketsusa.us/v1.0.0/promote/ywzmolnuvvmtnza0mti1oje4/clickthru:2026-10-24"
+      },
+      {
+        "source_key": "ticket-page:1000:wl.eventim.us/event/tophouse/696642",
+        "status": "available",
+        "source_url": "https://wl.eventim.us/event/tophouse/696642?afflky=ThirdRoom",
+        "observed_at": "2026-10-14T04:53:40+00:00",
+        "_show_key": "ticket:third-room:https://prod-nts-api.seeticketsusa.us/v1.0.0/promote/ywzmolnuvvmtnjk2njqyoje4/clickthru:2026-10-25"
+      },
+      {
+        "source_key": "ticket-page:1003:wl.eventim.us/event/ashez-w-jordnmoody/701346",
+        "status": "available",
+        "source_url": "https://wl.eventim.us/event/ashez-w-jordnmoody/701346?afflky=ThirdRoom",
+        "observed_at": "2026-10-14T04:53:40+00:00",
+        "_show_key": "ticket:third-room:https://prod-nts-api.seeticketsusa.us/v1.0.0/promote/ywzmolnuvvmtnzaxmzq2oje4/clickthru:2026-10-29"
+      },
+      {
+        "source_key": "ticket-page:1004:wl.eventim.us/event/sicard-hollows-eve-wspecial-guest-airshow/695221",
+        "status": "available",
+        "source_url": "https://wl.eventim.us/event/sicard-hollows-eve-wspecial-guest-airshow/695221?afflky=ThirdRoom",
+        "observed_at": "2026-10-14T04:53:41+00:00",
+        "_show_key": "ticket:third-room:https://prod-nts-api.seeticketsusa.us/v1.0.0/promote/ywzmolnuvvmtnjk1mjixoje4/clickthru:2026-10-30"
+      },
+      {
+        "source_key": "ticket-page:1013:wl.eventim.us/event/nikita-the-wicked-wspecial-guests/701102",
+        "status": "available",
+        "source_url": "https://wl.eventim.us/event/nikita-the-wicked-wspecial-guests/701102?afflky=ThirdRoom",
+        "observed_at": "2026-10-14T04:53:41+00:00",
+        "_show_key": "ticket:third-room:https://prod-nts-api.seeticketsusa.us/v1.0.0/promote/ywzmolnuvvmtnzaxmtayoje4/clickthru:2026-11-06"
+      },
+      {
+        "source_key": "ticket-page:1017:wl.eventim.us/event/coyote-rodeo/706307",
+        "status": "available",
+        "source_url": "https://wl.eventim.us/event/coyote-rodeo/706307?afflky=ThirdRoom",
+        "observed_at": "2026-10-14T04:53:41+00:00",
+        "_show_key": "ticket:third-room:https://wl.eventim.us/event/coyote-rodeo/706307:2026-11-08"
+      },
+      {
+        "source_key": "ticket-page:1021:wl.eventim.us/event/mono-means-one-w-muscle-tough/700510",
+        "status": "available",
+        "source_url": "https://wl.eventim.us/event/mono-means-one-w-muscle-tough/700510?afflky=ThirdRoom",
+        "observed_at": "2026-10-14T04:53:41+00:00",
+        "_show_key": "ticket:third-room:https://prod-nts-api.seeticketsusa.us/v1.0.0/promote/ywzmolnuvvmtnzawntewoje4/clickthru:2026-11-12"
+      },
+      {
+        "source_key": "ticket-page:1026:wl.eventim.us/event/christian-loffler-live-fall-2026-tour-w-paris/702755",
+        "status": "available",
+        "source_url": "https://wl.eventim.us/event/christian-loffler-live-fall-2026-tour-w-paris/702755?afflky=ThirdRoom",
+        "observed_at": "2026-10-14T04:53:41+00:00",
+        "_show_key": "ticket:third-room:https://prod-nts-api.seeticketsusa.us/v1.0.0/promote/ywzmolnuvvmtnzaynzu1oje4/clickthru:2026-11-15"
+      },
+      {
+        "source_key": "ticket-page:1032:wl.eventim.us/event/mindex-w-ooga-and-smigonaut/706062",
+        "status": "available",
+        "source_url": "https://wl.eventim.us/event/mindex-w-ooga-and-smigonaut/706062?afflky=ThirdRoom",
+        "observed_at": "2026-10-14T04:53:41+00:00",
+        "_show_key": "ticket:third-room:https://prod-nts-api.seeticketsusa.us/v1.0.0/promote/ywzmolnuvvmtnza2mdyyoje4/clickthru:2026-11-20"
+      },
+      {
+        "source_key": "ticket-page:977:wl.eventim.us/event/nate-smith-all-ages-show/699627",
+        "status": "available",
+        "source_url": "https://wl.eventim.us/event/nate-smith-all-ages-show/699627?afflky=ThirdRoom",
+        "observed_at": "2026-10-14T04:53:41+00:00",
+        "_show_key": "ticket:third-room:https://prod-nts-api.seeticketsusa.us/v1.0.0/promote/ywzmolnuvvmtnjk5nji3oje4/clickthru:2026-12-09"
+      },
+      {
+        "source_key": "ticket-page:982:wl.eventim.us/event/mstic-w-grimmjoi/704466",
+        "status": "available",
+        "source_url": "https://wl.eventim.us/event/mstic-w-grimmjoi/704466?afflky=ThirdRoom",
+        "observed_at": "2026-10-14T04:53:41+00:00",
+        "_show_key": "ticket:third-room:https://prod-nts-api.seeticketsusa.us/v1.0.0/promote/ywzmolnuvvmtnza0ndy2oje4/clickthru:2026-12-19"
+      },
+      {
+        "source_key": "ticket-page:158:etix.com/ticket/p/57022380/honey-marmalade-asheville-the-one-stop",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/57022380/honey-marmalade-asheville-the-one-stop?partner_id=100",
+        "observed_at": "2026-10-14T04:57:15+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/57022380/honey-marmalade-asheville-the-one-stop:2026-10-15"
+      },
+      {
+        "source_key": "ticket-page:68:etix.com/ticket/p/35616253/puptour-2026-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/35616253/puptour-2026-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T04:57:15+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/35616253/puptour-2026-asheville-the-orange-peel:2026-10-21"
+      },
+      {
+        "source_key": "ticket-page:4729:etix.com/ticket/p/34547652/asheville-vaudeville-brunch-asheville-grey-eagle-music-hall-special-events",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/34547652/asheville-vaudeville-brunch-asheville-grey-eagle-music-hall-special-events?partner_id=100",
+        "observed_at": "2026-10-14T04:57:15+00:00",
+        "_show_key": "ticket:grey-eagle:https://www.etix.com/ticket/p/34547652/asheville-vaudeville-brunch-asheville-grey-eagle-music-hall-special-events:2026-10-25 12:00:00"
+      },
+      {
+        "source_key": "ticket-page:168:etix.com/ticket/p/37451721/grieves-wmouse-powell-asheville-asheville-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/37451721/grieves-wmouse-powell-asheville-asheville-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T04:57:15+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/37451721/grieves-wmouse-powell-asheville-asheville-music-hall:2026-10-25"
+      },
+      {
+        "source_key": "ticket-page:79:etix.com/ticket/p/72069980/honestav-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/72069980/honestav-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T04:57:15+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/72069980/honestav-asheville-the-orange-peel:2026-11-05"
+      },
+      {
+        "source_key": "ticket-page:176:etix.com/ticket/p/43119265/larry-keel-jon-stickley-asheville-asheville-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/43119265/larry-keel-jon-stickley-asheville-asheville-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T04:57:15+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/43119265/larry-keel-jon-stickley-asheville-asheville-music-hall:2026-11-07"
+      },
+      {
+        "source_key": "ticket-page:209:etix.com/ticket/p/98209737/josiah-and-the-bonnevilles-asheville-grey-eagle-music-hall",
+        "status": "sold_out",
+        "source_url": "https://www.etix.com/ticket/p/98209737/josiah-and-the-bonnevilles-asheville-grey-eagle-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T02:24:47+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/98209737/josiah-and-the-bonnevilles-asheville-grey-eagle-music-hall:2026-10-14"
+      },
+      {
+        "source_key": "ticket-page:67:etix.com/ticket/p/82923336/dope-lemon-asheville-the-orange-peel",
+        "status": "sold_out",
+        "source_url": "https://www.etix.com/ticket/p/82923336/dope-lemon-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T04:57:15+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/82923336/dope-lemon-asheville-the-orange-peel:2026-10-20"
+      },
+      {
+        "source_key": "ticket-page:72:etix.com/ticket/p/34701175/osees-asheville-the-orange-peel",
+        "status": "sold_out",
+        "source_url": "https://www.etix.com/ticket/p/34701175/osees-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T04:57:15+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/34701175/osees-asheville-the-orange-peel:2026-10-27"
+      },
+      {
+        "source_key": "ticket-page:76:etix.com/ticket/p/43899887/wednesday-asheville-the-orange-peel",
+        "status": "sold_out",
+        "source_url": "https://www.etix.com/ticket/p/43899887/wednesday-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T04:57:15+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/43899887/wednesday-asheville-the-orange-peel:2026-10-31"
+      },
+      {
+        "source_key": "ticket-page:171:etix.com/ticket/p/90475867/magoo-wsuns-of-stars-asheville-asheville-music-hall",
+        "status": "sold_out",
+        "source_url": "https://www.etix.com/ticket/p/90475867/magoo-wsuns-of-stars-asheville-asheville-music-hall?partner_id=100",
+        "observed_at": "2026-10-14T04:57:15+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/90475867/magoo-wsuns-of-stars-asheville-asheville-music-hall:2026-10-31"
+      },
+      {
+        "source_key": "ticket-page:88:etix.com/ticket/p/99777289/die-spitz-asheville-the-orange-peel",
+        "status": "sold_out",
+        "source_url": "https://www.etix.com/ticket/p/99777289/die-spitz-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T04:57:15+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/99777289/die-spitz-asheville-the-orange-peel:2026-11-20"
+      },
+      {
+        "source_key": "ticket-page:2782:etix.com/ticket/p/99777289/die-spitz-asheville-the-orange-peel",
+        "status": "sold_out",
+        "source_url": "https://www.etix.com/ticket/p/99777289/die-spitz-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-14T04:57:15+00:00",
+        "_show_key": "ticket:orange-peel:https://www.etix.com/ticket/p/99777289/die-spitz-asheville-the-orange-peel:2026-11-30 20:00:00"
+      },
+      {
+        "source_key": "owner-confirmed:798",
+        "status": "sold_out",
+        "source_url": "https://www.ticketmaster.com/billy-strings-asheville-north-carolina-02-04-2027/event/2D00651BB2ACC498",
+        "observed_at": "2026-10-16T02:04:11Z",
+        "_show_key": "ticket:harrahs-arena:https://www.harrahscherokeecenterasheville.com/events/2027-billy-strings-1:2027-02-04"
+      },
+      {
+        "source_key": "owner-confirmed:799",
+        "status": "sold_out",
+        "source_url": "https://www.ticketmaster.com/billy-strings-asheville-north-carolina-02-05-2027/event/2D00651BB2AFC4A1",
+        "observed_at": "2026-10-16T02:04:11Z",
+        "_show_key": "ticket:harrahs-arena:https://www.harrahscherokeecenterasheville.com/events/2027-billy-strings-2:2027-02-05"
+      },
+      {
+        "source_key": "owner-confirmed:800",
+        "status": "sold_out",
+        "source_url": "https://www.ticketmaster.com/billy-strings-asheville-north-carolina-02-06-2027/event/2D00651BB2B0C4A7",
+        "observed_at": "2026-10-16T02:04:11Z",
+        "_show_key": "ticket:harrahs-arena:https://www.harrahscherokeecenterasheville.com/events/2027-billy-strings-3:2027-02-06"
+      },
+      {
+        "source_key": "owner-confirmed:801",
+        "status": "sold_out",
+        "source_url": "https://www.ticketmaster.com/billy-strings-asheville-north-carolina-02-08-2027/event/2D00651BB2B2C4B4",
+        "observed_at": "2026-10-16T02:04:11Z",
+        "_show_key": "ticket:harrahs-arena:https://www.harrahscherokeecenterasheville.com/events/2027-billy-strings-4:2027-02-08"
+      },
+      {
+        "source_key": "owner-confirmed:802",
+        "status": "sold_out",
+        "source_url": "https://www.ticketmaster.com/billy-strings-asheville-north-carolina-02-09-2027/event/2D00651BB2B4C4BA",
+        "observed_at": "2026-10-16T02:04:11Z",
+        "_show_key": "ticket:harrahs-arena:https://www.harrahscherokeecenterasheville.com/events/2027-billy-strings-5:2027-02-09"
+      },
+      {
+        "source_key": "ticket-page:5375:etix.com/ticket/p/83668574/open-decks-asheville-asheville-music-hall",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/83668574/open-decks-asheville-asheville-music-hall?partner_id=100",
+        "observed_at": "2026-10-16T02:45:53+00:00",
+        "_show_key": "ticket:asheville-music-hall:https://www.etix.com/ticket/p/83668574/open-decks-asheville-asheville-music-hall:2026-10-16 21:00:00"
+      },
+      {
+        "source_key": "ticket-page:5389:etix.com/ticket/p/67040742/samurai-test-drive-asheville-the-one-stop",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/67040742/samurai-test-drive-asheville-the-one-stop?partner_id=100",
+        "observed_at": "2026-10-16T02:45:53+00:00",
+        "_show_key": "ticket:one-stop:https://www.etix.com/ticket/p/67040742/samurai-test-drive-asheville-the-one-stop:2026-10-29 22:00:00"
+      },
+      {
+        "source_key": "ticket-page:82:etix.com/ticket/p/33976729/stephen-lynchthe-me-tour-asheville-the-orange-peel",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/33976729/stephen-lynchthe-me-tour-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+        "observed_at": "2026-10-16T02:45:53+00:00",
+        "_show_key": "ticket:https://www.etix.com/ticket/p/33976729/stephen-lynchthe-me-tour-asheville-the-orange-peel:2026-11-11"
+      },
+      {
+        "source_key": "ticket-page:2381:etix.com/ticket/p/71106858/magnolia-boulevard-brevard-185-king-street",
+        "status": "available",
+        "source_url": "https://www.etix.com/ticket/p/71106858/magnolia-boulevard-brevard-185-king-street?partner_id=100",
+        "observed_at": "2026-10-16T02:45:53+00:00",
+        "_show_key": "ticket:185-king-street:http://www.185kingst.com:2026-11-20 20:00:00"
+      },
+      {
+        "source_key": "ticket-page:1012:tixr.com/groups/revivalavl/events/post-animal-maybe-you-have-to-tour-200983",
+        "status": "sold_out",
+        "source_url": "https://www.tixr.com/groups/revivalavl/events/post-animal-maybe-you-have-to-tour-200983?utm_campaign=jambase&utm_source=jambase",
+        "observed_at": "2026-10-16T02:45:53+00:00",
+        "_show_key": "ticket:revival:https://www.tixr.com/groups/revivalavl/events/post-animal-maybe-you-have-to-tour-200983:2026-11-06"
+      }
+    ]
+  },
+  "ticket_sale_windows": {
+    "schema": "CREATE TABLE IF NOT EXISTS ticket_sale_windows(show_id INTEGER PRIMARY KEY,on_sale_at TEXT,source_url TEXT,observed_at TEXT)",
+    "rows": [
+      {
+        "on_sale_at": "2026-04-24T14:00:00Z",
+        "source_url": "https://www.ticketmaster.com/beck-ride-lonesome-tour-asheville-north-carolina-10-28-2026/event/2D00648FDC34CEFB",
+        "observed_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:https://www.harrahscherokeecenterasheville.com/events/2026-beck:2026-10-28"
+      },
+      {
+        "on_sale_at": "2026-07-17T14:00:00Z",
+        "source_url": "https://www.ticketmaster.com/hudson-westbrook-the-hits-me-tour-asheville-north-carolina-11-13-2026/event/2D0064E84ED9333F",
+        "observed_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:https://www.harrahscherokeecenterasheville.com/events/2026-hudson-westbrook:2026-11-13"
+      },
+      {
+        "on_sale_at": "2026-07-24T14:00:00Z",
+        "source_url": "https://www.ticketmaster.com/a-magical-cirque-christmas-asheville-north-carolina-11-15-2026/event/2D0064F18226A7E9",
+        "observed_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:https://www.harrahscherokeecenterasheville.com/events/2026-a-magical-cirque-christmas:2026-11-15"
+      },
+      {
+        "on_sale_at": "2026-09-29T16:00:00Z",
+        "source_url": "https://www.ticketmaster.com/southern-conference-volleyball-tournament-asheville-north-carolina-11-19-2026/event/2D006537C59225A3",
+        "observed_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:https://www.harrahscherokeecenterasheville.com/events/2026-ingles-southern-conference-womens-volleyball-championships-1:2026-11-19"
+      },
+      {
+        "on_sale_at": "2026-09-29T16:00:00Z",
+        "source_url": "https://www.ticketmaster.com/southern-conference-volleyball-tournament-asheville-north-carolina-11-20-2026/event/2D006537C59425A7",
+        "observed_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:https://www.harrahscherokeecenterasheville.com/events/2026-ingles-southern-conference-womens-volleyball-championships-2:2026-11-20"
+      },
+      {
+        "on_sale_at": "2026-09-29T16:00:00Z",
+        "source_url": "https://www.ticketmaster.com/southern-conference-volleyball-tournament-asheville-north-carolina-11-21-2026/event/2D006537C59525AF",
+        "observed_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:https://www.harrahscherokeecenterasheville.com/events/ingles-southern-conference-womens-volleyball-championships:2026-11-21"
+      },
+      {
+        "on_sale_at": "2026-09-29T16:00:00Z",
+        "source_url": "https://www.ticketmaster.com/southern-conference-volleyball-tournament-asheville-north-carolina-11-22-2026/event/2D006537C59725BE",
+        "observed_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:https://www.harrahscherokeecenterasheville.com/events/2026-ingles-southern-conference-womens-volleyball-championships-4:2026-11-22"
+      },
+      {
+        "on_sale_at": "2026-10-02T14:00:00Z",
+        "source_url": "https://www.ticketmaster.com/get-the-led-out-asheville-north-carolina-12-03-2026/event/2D006539DA2A5A37",
+        "observed_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:https://www.harrahscherokeecenterasheville.com/events/get-the-led-out:2026-12-03"
+      },
+      {
+        "on_sale_at": "2026-09-28T19:56:00Z",
+        "source_url": "https://www.ticketmaster.com/the-big-crafty-asheville-north-carolina-12-05-2026/event/2D00653CC453DE54",
+        "observed_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:https://www.harrahscherokeecenterasheville.com/events/2026-the-big-crafty-3:2026-12-05"
+      },
+      {
+        "on_sale_at": "2026-09-03T14:00:00Z",
+        "source_url": "https://www.ticketmaster.com/matthew-west-come-home-for-christmas-asheville-north-carolina-12-10-2026/event/2D00651CB828149E",
+        "observed_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:https://www.harrahscherokeecenterasheville.com/events/matthew-west-come-home-for-christmas-live-on-tour:2026-12-10"
+      },
+      {
+        "on_sale_at": "2026-09-18T14:00:00Z",
+        "source_url": "https://www.ticketmaster.com/the-avett-brothers-asheville-north-carolina-12-31-2026/event/2D00652425E3F382",
+        "observed_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:https://www.harrahscherokeecenterasheville.com/events/2026-the-avett-brothers:2026-12-31"
+      },
+      {
+        "on_sale_at": "2025-11-21T15:00:00Z",
+        "source_url": "https://www.ticketmaster.com/daniel-tosh-my-first-farewell-tour-asheville-north-carolina-10-16-2026/event/2D00636AE033EB7F",
+        "observed_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:thomas-wolfe:https://www.harrahscherokeecenterasheville.com/events/2026-daniel-tosh:2026-10-16"
+      },
+      {
+        "on_sale_at": "2026-09-11T14:00:00Z",
+        "source_url": "https://www.ticketmaster.com/billy-strings-asheville-north-carolina-02-04-2027/event/2D00651BB2ACC498",
+        "observed_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:harrahs-arena:https://www.harrahscherokeecenterasheville.com/events/2027-billy-strings-1:2027-02-04"
+      },
+      {
+        "on_sale_at": "2026-09-11T14:00:00Z",
+        "source_url": "https://www.ticketmaster.com/billy-strings-asheville-north-carolina-02-05-2027/event/2D00651BB2AFC4A1",
+        "observed_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:harrahs-arena:https://www.harrahscherokeecenterasheville.com/events/2027-billy-strings-2:2027-02-05"
+      },
+      {
+        "on_sale_at": "2026-09-11T14:00:00Z",
+        "source_url": "https://www.ticketmaster.com/billy-strings-asheville-north-carolina-02-06-2027/event/2D00651BB2B0C4A7",
+        "observed_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:harrahs-arena:https://www.harrahscherokeecenterasheville.com/events/2027-billy-strings-3:2027-02-06"
+      },
+      {
+        "on_sale_at": "2026-09-11T14:00:00Z",
+        "source_url": "https://www.ticketmaster.com/billy-strings-asheville-north-carolina-02-08-2027/event/2D00651BB2B2C4B4",
+        "observed_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:harrahs-arena:https://www.harrahscherokeecenterasheville.com/events/2027-billy-strings-4:2027-02-08"
+      },
+      {
+        "on_sale_at": "2026-09-11T14:00:00Z",
+        "source_url": "https://www.ticketmaster.com/billy-strings-asheville-north-carolina-02-09-2027/event/2D00651BB2B4C4BA",
+        "observed_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:harrahs-arena:https://www.harrahscherokeecenterasheville.com/events/2027-billy-strings-5:2027-02-09"
+      },
+      {
+        "on_sale_at": "2026-09-18T14:00:00Z",
+        "source_url": "https://www.ticketmaster.com/taylor-tomlinson-nobody-asked-you-to-asheville-north-carolina-02-19-2027/event/2D00652AD62EDB7B",
+        "observed_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:harrahs-arena:https://www.harrahscherokeecenterasheville.com/events/2027-taylor-tomlinson-nobody-asked-you-to-do-that:2027-02-19"
+      },
+      {
+        "on_sale_at": "2026-10-02T14:00:00Z",
+        "source_url": "https://www.ticketmaster.com/needtobreathe-the-long-surrender-tour-asheville-north-carolina-03-11-2027/event/2D006530D7C5AF57",
+        "observed_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:thomas-wolfe:https://www.harrahscherokeecenterasheville.com/events/needtobreathe-the-long-surrender-tour:2027-03-11"
+      },
+      {
+        "on_sale_at": "2026-09-25T14:00:00Z",
+        "source_url": "https://www.ticketmaster.com/death-cab-for-cutie-i-built-asheville-north-carolina-04-16-2027/event/2D00652B2043D4EE",
+        "observed_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:harrahs-arena:https://www.harrahscherokeecenterasheville.com/events/2027-death-cab-for-cutie-i-built-you-a-tower-tour:2027-04-16"
+      },
+      {
+        "on_sale_at": "2026-09-18T14:00:00Z",
+        "source_url": "https://www.ticketmaster.com/the-psychedelic-furs-with-special-guests-asheville-north-carolina-04-17-2027/event/2D006522DCF260CC",
+        "observed_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:thomas-wolfe:https://www.harrahscherokeecenterasheville.com/events/2027-the-psychedelic-furs-with-special-guests-living-colour:2027-04-17"
+      },
+      {
+        "on_sale_at": "2026-08-11T12:00:00Z",
+        "source_url": "https://www.ticketmaster.com/an-evening-with-kelli-ohara-and-asheville-north-carolina-04-22-2027/event/2D0064AFE6214ADC",
+        "observed_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:thomas-wolfe:https://www.harrahscherokeecenterasheville.com/events/2027-an-evening-with-kelli-ohara-and-the-asheville-symphony:2027-04-22"
+      },
+      {
+        "on_sale_at": "2026-04-01T14:00:00Z",
+        "source_url": "https://www.ticketmaster.com/nutcracker-magical-christmas-ballet-asheville-north-carolina-12-07-2026/event/2D00647ADEC0B4C7",
+        "observed_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:thomas-wolfe:https://www.harrahscherokeecenterasheville.com/events/2026-nutcracker-magical-christmas-ballet:2026-12-07"
+      },
+      {
+        "on_sale_at": "2026-10-19",
+        "source_url": "https://www.brevardmusic.org/event/a-valentine-cabaret-with-ann-hampton-callaway-trio/",
+        "observed_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:brevard-music-center:https://www.brevardmusic.org/event/a-valentine-cabaret-with-ann-hampton-callaway-trio:2027-02-11 19:30:00"
+      },
+      {
+        "on_sale_at": "2026-10-01T14:00:00Z",
+        "source_url": "https://www.ticketmaster.com/wizard-of-oz-on-ice-asheville-north-carolina-02-28-2027/event/2D006539D2934654",
+        "observed_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:thomas-wolfe:https://www.harrahscherokeecenterasheville.com/events/2027-wizard-of-oz-on-ice:2027-02-28"
+      }
+    ]
+  },
+  "official_ticket_links": {
+    "schema": "CREATE TABLE IF NOT EXISTS official_ticket_links(show_id INTEGER PRIMARY KEY,url TEXT,source_url TEXT,checked_at TEXT)",
+    "rows": [
+      {
+        "url": "https://www.ticketmaster.com/beck-ride-lonesome-tour-asheville-north-carolina-10-28-2026/event/2D00648FDC34CEFB",
+        "source_url": "https://www.ticketmaster.com/beck-ride-lonesome-tour-asheville-north-carolina-10-28-2026/event/2D00648FDC34CEFB",
+        "checked_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:https://www.harrahscherokeecenterasheville.com/events/2026-beck:2026-10-28"
+      },
+      {
+        "url": "https://www.ticketmaster.com/hudson-westbrook-the-hits-me-tour-asheville-north-carolina-11-13-2026/event/2D0064E84ED9333F",
+        "source_url": "https://www.ticketmaster.com/hudson-westbrook-the-hits-me-tour-asheville-north-carolina-11-13-2026/event/2D0064E84ED9333F",
+        "checked_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:https://www.harrahscherokeecenterasheville.com/events/2026-hudson-westbrook:2026-11-13"
+      },
+      {
+        "url": "https://www.ticketmaster.com/event/2D0064F18226A7E9",
+        "source_url": "https://www.harrahscherokeecenterasheville.com/events/2026-a-magical-cirque-christmas/",
+        "checked_at": "2026-10-17T13:46:43+00:00",
+        "_show_key": "ticket:https://www.harrahscherokeecenterasheville.com/events/2026-a-magical-cirque-christmas:2026-11-15"
+      },
+      {
+        "url": "https://www.ticketmaster.com/southern-conference-volleyball-tournament-tickets/artist/3172401",
+        "source_url": "https://www.harrahscherokeecenterasheville.com/events/2026-ingles-southern-conference-womens-volleyball-championships-1/",
+        "checked_at": "2026-10-17T13:46:43+00:00",
+        "_show_key": "ticket:https://www.harrahscherokeecenterasheville.com/events/2026-ingles-southern-conference-womens-volleyball-championships-1:2026-11-19"
+      },
+      {
+        "url": "https://www.ticketmaster.com/southern-conference-volleyball-tournament-tickets/artist/3172401",
+        "source_url": "https://www.harrahscherokeecenterasheville.com/events/2026-ingles-southern-conference-womens-volleyball-championships-2/",
+        "checked_at": "2026-10-17T13:46:43+00:00",
+        "_show_key": "ticket:https://www.harrahscherokeecenterasheville.com/events/2026-ingles-southern-conference-womens-volleyball-championships-2:2026-11-20"
+      },
+      {
+        "url": "https://www.ticketmaster.com/southern-conference-volleyball-tournament-tickets/artist/3172401",
+        "source_url": "https://www.harrahscherokeecenterasheville.com/events/ingles-southern-conference-womens-volleyball-championships/",
+        "checked_at": "2026-10-17T13:46:43+00:00",
+        "_show_key": "ticket:https://www.harrahscherokeecenterasheville.com/events/ingles-southern-conference-womens-volleyball-championships:2026-11-21"
+      },
+      {
+        "url": "https://www.ticketmaster.com/southern-conference-volleyball-tournament-tickets/artist/3172401",
+        "source_url": "https://www.harrahscherokeecenterasheville.com/events/2026-ingles-southern-conference-womens-volleyball-championships-4/",
+        "checked_at": "2026-10-17T13:46:43+00:00",
+        "_show_key": "ticket:https://www.harrahscherokeecenterasheville.com/events/2026-ingles-southern-conference-womens-volleyball-championships-4:2026-11-22"
+      },
+      {
+        "url": "https://www.ticketmaster.com/event/2D006539DA2A5A37",
+        "source_url": "https://www.harrahscherokeecenterasheville.com/events/get-the-led-out/",
+        "checked_at": "2026-10-17T13:46:45+00:00",
+        "_show_key": "ticket:https://www.harrahscherokeecenterasheville.com/events/get-the-led-out:2026-12-03"
+      },
+      {
+        "url": "https://www.ticketmaster.com/search?q=the+big+crafty+asheville",
+        "source_url": "https://www.harrahscherokeecenterasheville.com/events/2026-the-big-crafty-3/",
+        "checked_at": "2026-10-17T13:46:46+00:00",
+        "_show_key": "ticket:https://www.harrahscherokeecenterasheville.com/events/2026-the-big-crafty-3:2026-12-05"
+      },
+      {
+        "url": "https://www.ticketmaster.com/search?q=the+big+crafty+asheville",
+        "source_url": "https://www.harrahscherokeecenterasheville.com/events/2026-the-big-crafty-4/",
+        "checked_at": "2026-10-17T13:46:46+00:00",
+        "_show_key": "ticket:https://www.harrahscherokeecenterasheville.com/events/2026-the-big-crafty-4:2026-12-06"
+      },
+      {
+        "url": "https://www.ticketmaster.com/matthew-west-come-home-for-christmas-asheville-north-carolina-12-10-2026/event/2D00651CB828149E",
+        "source_url": "https://www.ticketmaster.com/matthew-west-come-home-for-christmas-asheville-north-carolina-12-10-2026/event/2D00651CB828149E",
+        "checked_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:https://www.harrahscherokeecenterasheville.com/events/matthew-west-come-home-for-christmas-live-on-tour:2026-12-10"
+      },
+      {
+        "url": "https://www.ticketmaster.com/the-avett-brothers-asheville-north-carolina-12-31-2026/event/2D00652425E3F382",
+        "source_url": "https://www.ticketmaster.com/the-avett-brothers-asheville-north-carolina-12-31-2026/event/2D00652425E3F382",
+        "checked_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:https://www.harrahscherokeecenterasheville.com/events/2026-the-avett-brothers:2026-12-31"
+      },
+      {
+        "url": "https://www.ticketmaster.com/event/2D00636AE033EB7F",
+        "source_url": "https://www.harrahscherokeecenterasheville.com/events/2026-daniel-tosh/",
+        "checked_at": "2026-10-16T14:54:49+00:00",
+        "_show_key": "ticket:thomas-wolfe:https://www.harrahscherokeecenterasheville.com/events/2026-daniel-tosh:2026-10-16"
+      },
+      {
+        "url": "https://www.ticketmaster.com/billy-strings-asheville-north-carolina-02-04-2027/event/2D00651BB2ACC498",
+        "source_url": "https://www.ticketmaster.com/billy-strings-asheville-north-carolina-02-04-2027/event/2D00651BB2ACC498",
+        "checked_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:harrahs-arena:https://www.harrahscherokeecenterasheville.com/events/2027-billy-strings-1:2027-02-04"
+      },
+      {
+        "url": "https://www.ticketmaster.com/billy-strings-asheville-north-carolina-02-05-2027/event/2D00651BB2AFC4A1",
+        "source_url": "https://www.ticketmaster.com/billy-strings-asheville-north-carolina-02-05-2027/event/2D00651BB2AFC4A1",
+        "checked_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:harrahs-arena:https://www.harrahscherokeecenterasheville.com/events/2027-billy-strings-2:2027-02-05"
+      },
+      {
+        "url": "https://www.ticketmaster.com/billy-strings-asheville-north-carolina-02-06-2027/event/2D00651BB2B0C4A7",
+        "source_url": "https://www.ticketmaster.com/billy-strings-asheville-north-carolina-02-06-2027/event/2D00651BB2B0C4A7",
+        "checked_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:harrahs-arena:https://www.harrahscherokeecenterasheville.com/events/2027-billy-strings-3:2027-02-06"
+      },
+      {
+        "url": "https://www.ticketmaster.com/billy-strings-asheville-north-carolina-02-08-2027/event/2D00651BB2B2C4B4",
+        "source_url": "https://www.ticketmaster.com/billy-strings-asheville-north-carolina-02-08-2027/event/2D00651BB2B2C4B4",
+        "checked_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:harrahs-arena:https://www.harrahscherokeecenterasheville.com/events/2027-billy-strings-4:2027-02-08"
+      },
+      {
+        "url": "https://www.ticketmaster.com/billy-strings-asheville-north-carolina-02-09-2027/event/2D00651BB2B4C4BA",
+        "source_url": "https://www.ticketmaster.com/billy-strings-asheville-north-carolina-02-09-2027/event/2D00651BB2B4C4BA",
+        "checked_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:harrahs-arena:https://www.harrahscherokeecenterasheville.com/events/2027-billy-strings-5:2027-02-09"
+      },
+      {
+        "url": "https://www.ticketmaster.com/taylor-tomlinson-nobody-asked-you-to-asheville-north-carolina-02-19-2027/event/2D00652AD62EDB7B",
+        "source_url": "https://www.ticketmaster.com/taylor-tomlinson-nobody-asked-you-to-asheville-north-carolina-02-19-2027/event/2D00652AD62EDB7B",
+        "checked_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:harrahs-arena:https://www.harrahscherokeecenterasheville.com/events/2027-taylor-tomlinson-nobody-asked-you-to-do-that:2027-02-19"
+      },
+      {
+        "url": "https://www.ticketmaster.com/needtobreathe-the-long-surrender-tour-asheville-north-carolina-03-11-2027/event/2D006530D7C5AF57",
+        "source_url": "https://www.ticketmaster.com/needtobreathe-the-long-surrender-tour-asheville-north-carolina-03-11-2027/event/2D006530D7C5AF57",
+        "checked_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:thomas-wolfe:https://www.harrahscherokeecenterasheville.com/events/needtobreathe-the-long-surrender-tour:2027-03-11"
+      },
+      {
+        "url": "https://www.ticketmaster.com/death-cab-for-cutie-i-built-asheville-north-carolina-04-16-2027/event/2D00652B2043D4EE",
+        "source_url": "https://www.ticketmaster.com/death-cab-for-cutie-i-built-asheville-north-carolina-04-16-2027/event/2D00652B2043D4EE",
+        "checked_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:harrahs-arena:https://www.harrahscherokeecenterasheville.com/events/2027-death-cab-for-cutie-i-built-you-a-tower-tour:2027-04-16"
+      },
+      {
+        "url": "https://www.ticketmaster.com/the-psychedelic-furs-with-special-guests-asheville-north-carolina-04-17-2027/event/2D006522DCF260CC",
+        "source_url": "https://www.ticketmaster.com/the-psychedelic-furs-with-special-guests-asheville-north-carolina-04-17-2027/event/2D006522DCF260CC",
+        "checked_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:thomas-wolfe:https://www.harrahscherokeecenterasheville.com/events/2027-the-psychedelic-furs-with-special-guests-living-colour:2027-04-17"
+      },
+      {
+        "url": "https://www.ticketmaster.com/an-evening-with-kelli-ohara-and-asheville-north-carolina-04-22-2027/event/2D0064AFE6214ADC",
+        "source_url": "https://www.ticketmaster.com/an-evening-with-kelli-ohara-and-asheville-north-carolina-04-22-2027/event/2D0064AFE6214ADC",
+        "checked_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:thomas-wolfe:https://www.harrahscherokeecenterasheville.com/events/2027-an-evening-with-kelli-ohara-and-the-asheville-symphony:2027-04-22"
+      },
+      {
+        "url": "https://wl.eventim.us/event/cut-chemist-disco-is-dead/703776?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:59:46+00:00",
+        "_show_key": "ticket:third-room:https://www.thirdroom.art:2026-10-31"
+      },
+      {
+        "url": "https://Spafford-Sierranevada.eventbrite.com ",
+        "source_url": "https://sierranevada.com/event/spafford-2",
+        "checked_at": "2026-10-14T05:25:00+00:00",
+        "_show_key": "ticket:sierra-nevada:https://sierranevada.com/event/spafford-2:2026-11-12"
+      },
+      {
+        "url": "https://somewhatpetty-sierranevada.eventbrite.com",
+        "source_url": "https://sierranevada.com/event/somewhat-petty",
+        "checked_at": "2026-10-17T13:46:47+00:00",
+        "_show_key": "ticket:sierra-nevada:https://sierranevada.com/event/somewhat-petty:2027-01-29"
+      },
+      {
+        "url": "https://www.ticketmaster.com/nutcracker-magical-christmas-ballet-asheville-north-carolina-12-07-2026/event/2D00647ADEC0B4C7",
+        "source_url": "https://www.ticketmaster.com/nutcracker-magical-christmas-ballet-asheville-north-carolina-12-07-2026/event/2D00647ADEC0B4C7",
+        "checked_at": "2026-10-16T02:00:38+00:00",
+        "_show_key": "ticket:thomas-wolfe:https://www.harrahscherokeecenterasheville.com/events/2026-nutcracker-magical-christmas-ballet:2026-12-07"
+      },
+      {
+        "url": "https://www.etix.com/ticket/p/54321160/the-fretliners-when-the-kettle-sings-tour-brevard-185-king-street?partner_id=100",
+        "source_url": "https://185kingst.com/events/",
+        "checked_at": "2026-10-16T01:58:18+00:00",
+        "_show_key": "ticket:185-king-street:https://etix.prf.hn/click/camref:1101lgkcg/destination:https://www.etix.com/ticket/p/54321160/the-fretliners-when-the-kettle-sings-tour-brevard-185-king-street:2026-11-13 20:00:00"
+      },
+      {
+        "url": "https://www.etix.com/ticket/p/71106858/magnolia-boulevard-brevard-185-king-street?partner_id=100",
+        "source_url": "https://185kingst.com/events/",
+        "checked_at": "2026-10-16T01:58:18+00:00",
+        "_show_key": "ticket:185-king-street:http://www.185kingst.com:2026-11-20 20:00:00"
+      },
+      {
+        "url": "https://www.etix.com/ticket/p/61271182/an-evening-with-jacoozyfeaturing-preshow-with-dj-rhuckas-brevard-185-king-street?partner_id=100",
+        "source_url": "https://185kingst.com/events/",
+        "checked_at": "2026-10-16T01:58:18+00:00",
+        "_show_key": "ticket:185-king-street:http://www.185kingst.com:2026-12-31"
+      },
+      {
+        "url": "https://secured.brevardmusic.org/1945",
+        "source_url": "https://www.brevardmusic.org/event/season-opener-with-stile-antico/",
+        "checked_at": "2026-10-14T04:59:46+00:00",
+        "_show_key": "ticket:brevard-music-center:https://secured.brevardmusic.org/1945:2026-10-18 15:00:00"
+      },
+      {
+        "url": "https://secured.brevardmusic.org/1947/1954",
+        "source_url": "https://www.brevardmusic.org/event/django-festival-allstars/",
+        "checked_at": "2026-10-14T04:59:46+00:00",
+        "_show_key": "ticket:brevard-music-center:https://secured.brevardmusic.org/1947/1954:2026-11-10 19:30:00"
+      },
+      {
+        "url": "https://secured.brevardmusic.org/1948/1955",
+        "source_url": "https://www.brevardmusic.org/event/handels-messiah/",
+        "checked_at": "2026-10-14T04:59:46+00:00",
+        "_show_key": "ticket:brevard-music-center:https://secured.brevardmusic.org/1948/1955:2026-12-03 19:30:00"
+      },
+      {
+        "url": "https://secured.brevardmusic.org/1949/1956",
+        "source_url": "https://www.brevardmusic.org/event/an-appalachian-christmas-with-depue-brothers-band/",
+        "checked_at": "2026-10-14T04:59:46+00:00",
+        "_show_key": "ticket:brevard-music-center:https://secured.brevardmusic.org/1949/1956:2026-12-15 19:30:00"
+      },
+      {
+        "url": "https://secured.brevardmusic.org/1951/1957",
+        "source_url": "https://www.brevardmusic.org/event/a-st-patricks-day-celebration-with-teada/",
+        "checked_at": "2026-10-14T04:59:46+00:00",
+        "_show_key": "ticket:brevard-music-center:https://secured.brevardmusic.org/1951/1957:2027-03-16 19:30:00"
+      },
+      {
+        "url": "https://secured.brevardmusic.org/1952/1959",
+        "source_url": "https://www.brevardmusic.org/event/aaron-diehl-in-recital/",
+        "checked_at": "2026-10-14T04:59:46+00:00",
+        "_show_key": "ticket:brevard-music-center:https://secured.brevardmusic.org/1952/1959:2027-04-19 19:30:00"
+      },
+      {
+        "url": "https://secured.brevardmusic.org/1953/1958",
+        "source_url": "https://www.brevardmusic.org/event/season-finale-with-poiesis-quartet/",
+        "checked_at": "2026-10-14T04:59:46+00:00",
+        "_show_key": "ticket:brevard-music-center:https://secured.brevardmusic.org/1953/1958:2027-05-13 19:30:00"
+      },
+      {
+        "url": "https://www.ticketmaster.com/event/2D006539D2934654",
+        "source_url": "https://www.harrahscherokeecenterasheville.com/events/2027-wizard-of-oz-on-ice/",
+        "checked_at": "2026-10-17T13:46:47+00:00",
+        "_show_key": "ticket:thomas-wolfe:https://www.harrahscherokeecenterasheville.com/events/2027-wizard-of-oz-on-ice:2027-02-28"
+      },
+      {
+        "url": "https://www.ticketmaster.com/event/2D00654D15459984",
+        "source_url": "https://www.harrahscherokeecenterasheville.com/events/warren-haynes-presents-christmas-jam-2026/",
+        "checked_at": "2026-10-17T13:46:46+00:00",
+        "_show_key": "ticket:harrahs-arena:https://www.harrahscherokeecenterasheville.com/events/warren-haynes-presents-christmas-jam-2026:2026-12-12"
+      }
+    ]
+  },
+  "provider_ticket_links": {
+    "schema": "CREATE TABLE IF NOT EXISTS provider_ticket_links(event_id TEXT PRIMARY KEY,url TEXT,source_url TEXT,checked_at TEXT)",
+    "rows": [
+      {
+        "event_id": "694768",
+        "url": "https://wl.eventim.us/event/Boogie-T-ASHEVILLE/694768?afflky=DiscoDonnie",
+        "source_url": "https://discopresents.com/event/2026-1023-asheville-slygroglounge",
+        "checked_at": "2026-10-14T01:52:53+00:00"
+      },
+      {
+        "event_id": "705074",
+        "url": "https://wl.eventim.us/event/OPEN-DECKS-EVERY-TUESDAY-THIRD-ROOM-FREE/705074?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "705058",
+        "url": "https://wl.eventim.us/event/The-Disclaimer-Stand-Up-Lounge-Comedy-Open-Mic-FREE/705058?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "702148",
+        "url": "https://wl.eventim.us/event/yemanjo-w-castanea-and-sagradose-all-ages/702148?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "705378",
+        "url": "https://wl.eventim.us/event/freaks-of-nature-saturna-w-tunic/705378?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "707810",
+        "url": "https://wl.eventim.us/event/tardeada-sonidera/707810?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "705075",
+        "url": "https://wl.eventim.us/event/OPEN-DECKS-EVERY-TUESDAY-THIRD-ROOM-FREE/705075?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "699090",
+        "url": "https://wl.eventim.us/event/an-evening-with-jerrys-middle-finger/699090?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "707484",
+        "url": "https://wl.eventim.us/event/goodgoat-and-beekeepers-band/707484?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "706177",
+        "url": "https://wl.eventim.us/event/monty-w-echo-brown-les-or-low-end-syndicate-and-irenarch/706177?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "704125",
+        "url": "https://wl.eventim.us/event/dantes-inferno/704125?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "707170",
+        "url": "https://wl.eventim.us/event/halloween-cumbia-dance-party/707170?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "696642",
+        "url": "https://wl.eventim.us/event/tophouse/696642?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "705076",
+        "url": "https://wl.eventim.us/event/OPEN-DECKS-EVERY-TUESDAY-THIRD-ROOM-FREE/705076?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "705060",
+        "url": "https://wl.eventim.us/event/The-Disclaimer-Stand-Up-Lounge-Comedy-Open-Mic-FREE/705060?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "701346",
+        "url": "https://wl.eventim.us/event/ashez-w-jordnmoody/701346?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "695221",
+        "url": "https://wl.eventim.us/event/sicard-hollows-eve-wspecial-guest-airshow/695221?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "703776",
+        "url": "https://wl.eventim.us/event/cut-chemist-disco-is-dead/703776?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "705077",
+        "url": "https://wl.eventim.us/event/OPEN-DECKS-EVERY-TUESDAY-THIRD-ROOM-FREE/705077?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "705061",
+        "url": "https://wl.eventim.us/event/The-Disclaimer-Stand-Up-Lounge-Comedy-Open-Mic-FREE/705061?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "705714",
+        "url": "https://wl.eventim.us/event/kabaka-pyramid/705714?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "701102",
+        "url": "https://wl.eventim.us/event/nikita-the-wicked-wspecial-guests/701102?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "706307",
+        "url": "https://wl.eventim.us/event/coyote-rodeo/706307?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "704354",
+        "url": "https://wl.eventim.us/event/crobot-w-dark-chapel/704354?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "705078",
+        "url": "https://wl.eventim.us/event/OPEN-DECKS-EVERY-TUESDAY-THIRD-ROOM-FREE/705078?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "705062",
+        "url": "https://wl.eventim.us/event/The-Disclaimer-Stand-Up-Lounge-Comedy-Open-Mic-FREE/705062?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "700510",
+        "url": "https://wl.eventim.us/event/mono-means-one-w-muscle-tough/700510?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "703321",
+        "url": "https://wl.eventim.us/event/supertask-and-mr-bill-wspecial-guests/703321?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "702755",
+        "url": "https://wl.eventim.us/event/christian-loffler-live-fall-2026-tour-w-paris/702755?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "705079",
+        "url": "https://wl.eventim.us/event/OPEN-DECKS-EVERY-TUESDAY-THIRD-ROOM-FREE/705079?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "705063",
+        "url": "https://wl.eventim.us/event/The-Disclaimer-Stand-Up-Lounge-Comedy-Open-Mic-FREE/705063?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "707018",
+        "url": "https://wl.eventim.us/event/beloved-asheville-fundraiser-cry-for-justice-album-release/707018?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "706062",
+        "url": "https://wl.eventim.us/event/mindex-w-ooga-and-smigonaut/706062?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "705080",
+        "url": "https://wl.eventim.us/event/OPEN-DECKS-EVERY-TUESDAY-THIRD-ROOM-FREE/705080?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "705064",
+        "url": "https://wl.eventim.us/event/The-Disclaimer-Stand-Up-Lounge-Comedy-Open-Mic-FREE/705064?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "705081",
+        "url": "https://wl.eventim.us/event/OPEN-DECKS-EVERY-TUESDAY-THIRD-ROOM-FREE/705081?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "705065",
+        "url": "https://wl.eventim.us/event/The-Disclaimer-Stand-Up-Lounge-Comedy-Open-Mic-FREE/705065?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "704442",
+        "url": "https://wl.eventim.us/event/machinedrum-and-sam-binga/704442?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "705082",
+        "url": "https://wl.eventim.us/event/OPEN-DECKS-EVERY-TUESDAY-THIRD-ROOM-FREE/705082?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "699627",
+        "url": "https://wl.eventim.us/event/nate-smith-all-ages-show/699627?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "705083",
+        "url": "https://wl.eventim.us/event/OPEN-DECKS-EVERY-TUESDAY-THIRD-ROOM-FREE/705083?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "705067",
+        "url": "https://wl.eventim.us/event/The-Disclaimer-Stand-Up-Lounge-Comedy-Open-Mic-FREE/705067?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "704466",
+        "url": "https://wl.eventim.us/event/mstic-w-grimmjoi/704466?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "705084",
+        "url": "https://wl.eventim.us/event/OPEN-DECKS-EVERY-TUESDAY-THIRD-ROOM-FREE/705084?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "705068",
+        "url": "https://wl.eventim.us/event/The-Disclaimer-Stand-Up-Lounge-Comedy-Open-Mic-FREE/705068?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "705085",
+        "url": "https://wl.eventim.us/event/OPEN-DECKS-EVERY-TUESDAY-THIRD-ROOM-FREE/705085?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "705069",
+        "url": "https://wl.eventim.us/event/The-Disclaimer-Stand-Up-Lounge-Comedy-Open-Mic-FREE/705069?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "708118",
+        "url": "https://wl.eventim.us/event/saxsquatch-the-conspiracy-theory-tour/708118?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      },
+      {
+        "event_id": "695503",
+        "url": "https://wl.eventim.us/event/henge/695503?afflky=ThirdRoom",
+        "source_url": "https://thirdroom.art/",
+        "checked_at": "2026-10-14T04:58:40+00:00"
+      }
+    ]
+  }
+}

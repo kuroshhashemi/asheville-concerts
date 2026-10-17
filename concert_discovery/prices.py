@@ -111,7 +111,7 @@ def from_markup(markup):
             except (ValueError,TypeError):pass
     return prices[0] if len(prices)==1 else None
 
-def from_ticket_markup(url, markup):
+def from_ticket_markup(url, markup, *, selected_quantity=None):
     """Provider-scoped ticket prices, preferring displayed totals including fees.
 
     Never scrape dollar amounts from descriptions, merchandise or upsells.
@@ -123,10 +123,11 @@ def from_ticket_markup(url, markup):
     host=(urlsplit(url).hostname or '').removeprefix('www.')
     tree=Tree();tree.feed(markup);values=[]
     if host=='etix.com':
+        if any(re.fullmatch(r'Free\s*(?:&|and)\s*Family Friendly[.!]?',n.text().strip(),re.I) for n in tree.root.walk()):return {'min':0,'max':0,'includes_fees':True}
         for node in tree.root.walk():
             if node.attrs.get('role')=='combobox':
                 text=node.attrs.get('aria-label','')
-                if re.search(r'\b(student|child|children|youth)\b',text,re.I):continue
+                if re.search(r'\b(student|child|children|youth|two pack|2 pack|four pack|4 pack)\b',text,re.I):continue
                 if 'Price:' in text:
                     values.extend(float(v.replace(',','')) for v in re.findall(r'\$([\d,]+(?:\.\d{1,2})?)',text.split('Price:',1)[1]))
         if not values:
@@ -138,6 +139,18 @@ def from_ticket_markup(url, markup):
             match=re.search(r'TICKET PRICES CURRENTLY AVAILABLE(.*?)TICKET SALE DATES',tree.root.text(),re.S)
             if match and not re.search(r'\b(student|child|children|youth)\b',match[1],re.I):
                 values.extend(float(v.replace(',','')) for v in re.findall(r'\$([\d,]+(?:\.\d{1,2})?)',match[1]))
+    elif host=='ticketmaster.com':
+        region=next((n for n in tree.root.walk() if n.attrs.get('role')=='menu' and n.attrs.get('aria-label','').startswith('Ticket listings sorted by lowest price')),None)
+        if region and 'Prices include fees (before taxes)' in tree.root.text() and (selected_quantity==1 or any(re.search(r'current quantity:\s*1 Ticket$',n.attrs.get('aria-label','') or n.text()) for n in tree.root.walk() if n.tag=='button')):
+            resale=False
+            for node in region.walk():
+                if node.tag!='button':continue
+                label=node.attrs.get('aria-label','') or node.text()
+                if re.search(r'\b(student|child|youth|cardmember|companion)\b',label,re.I):continue
+                if not re.search(r'Standard Admission|Verified Resale Ticket|Official Platinum',label):continue
+                match=re.search(r'\$([\d,]+(?:\.\d{1,2})?)',label)
+                if match:values.append(float(match[1].replace(',','')));resale=resale or 'Resale' in label
+            if values:return {'min':min(values),'max':max(values),'from_price':True,'includes_fees':True,'before_tax':True,'resale_included':resale,'resale_only':resale and not any('Standard Admission' in (n.attrs.get('aria-label','') or n.text()) or 'Official Platinum' in (n.attrs.get('aria-label','') or n.text()) for n in region.walk() if n.tag=='button'),'quantity':1}
     elif host=='tixr.com':
         for node in tree.root.walk():
             if not node.has('ticket') or node.attrs.get('data-row-type')!='primary':continue
@@ -172,6 +185,13 @@ def from_ticket_markup(url, markup):
         if any(n.tag=='h1' and re.search(r'\bFREE SHOW\b',n.text(),re.I) for n in tree.root.walk()):
             return {'min':0,'max':0}
     elif host=='harrahscherokeecenterasheville.com':
+        # Multi-day events may charge on one day and be free on another.
+        days=[re.search(r'^DATE\s+(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday),',n.text().strip(),re.I) for n in tree.root.walk() if n.tag=='p']
+        day=next((m[1] for m in days if m),None)
+        if day:
+            for n in tree.root.walk():
+                if n.tag!='p' or not re.match(r'^(?:AVAILABILITY|TICKET PRICES)\s',n.text().strip()):continue
+                if re.search(r'\b'+day+r'\s+(?:is\s+)?free\b|\bfree\s+on\s+'+day+r'\b',n.text(),re.I):return {'min':0,'max':0,'includes_fees':True}
         for node in tree.root.walk():
             if node.tag=='p' and (node.has('event-subtitle') or node.text().strip().startswith('KNOW BEFORE YOU GO')):
                 price=advertised(node.text())

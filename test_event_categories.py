@@ -2,11 +2,11 @@ import unittest
 from concert_discovery.event_classification import classify,CATEGORY_LABELS,EXCLUDED
 class CategoryTests(unittest.TestCase):
  def test_categories(self):
-  for title,expected in [('Goth Prom','events'),('Blue Country Line Dance’s Giddy Up Brunch','events'),('TERRAOKE | Free Karaoke Night!','events'),('DARK FREAKQUENCIES - A Gothic Dance Night - HALLOWEEN EDITION','events'),('25th Annual NewSong Music Competition','events'),('Burlesque','events'),('Golden Folk Sessions','events'),('Shakedown Sunday’s','events'),('A Magical Cirque Christmas','events'),('Rumours ATL: A Fleetwood Mac Tribute','cover_band'),('Zoso – The Ultimate Led Zeppelin Experience','cover_band'),('Michael Shannon & Jason Narducy and Friends play R.E.M.’s Document','cover_band'),('Stand-up comedy','comedy'),('Volleyball Championships','sports'),('Dance Competition','dance'),('Ballet','dance'),('Theatre performance','theatre')]:
+  for title,expected in [('Goth Prom','events'),('Blue Country Line Dance’s Giddy Up Brunch','events'),('TERRAOKE | Free Karaoke Night!','events'),('DARK FREAKQUENCIES - A Gothic Dance Night - HALLOWEEN EDITION','events'),('25th Annual NewSong Music Competition','events'),('Burlesque','events'),('Golden Folk Sessions','events'),('Shakedown Sunday’s','events'),('A Magical Cirque Christmas','events'),('Rumours ATL: A Fleetwood Mac Tribute','cover_band'),('Zoso – The Ultimate Led Zeppelin Experience','cover_band'),('Michael Shannon & Jason Narducy and Friends play R.E.M.’s Document','cover_band'),('Stand-up comedy','comedy'),('Volleyball Championships','sports'),('Dance Competition','participant_competition'),('Ballet','dance'),('Theatre performance','theatre')]:
    self.assertEqual(classify(title)[0],expected,title)
  def test_default_and_retained_events(self):
   self.assertEqual(CATEGORY_LABELS[classify('An unfamiliar performer')[0]],'live_music')
-  self.assertEqual(EXCLUDED,set())
+  self.assertEqual(EXCLUDED,{'participant_competition'})
 
 class DetailEvidenceTests(unittest.TestCase):
  def test_event_types_and_footer_isolation(self):

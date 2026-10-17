@@ -1,7 +1,8 @@
 """Evidence-based event classification, independent of Spotify identity."""
 import re,json
 from concert_discovery.storage import utc_now
-EXCLUDED=set()
+EXCLUDED={'participant_competition'}
+PARTICIPANT_PATTERN=r'\bdance competition\b|\bindoor volleyball\s*:'
 CATEGORY_LABELS={'music':'live_music','theater':'theatre','market':'events','trivia':'events','wellness':'events','open_mic':'events','storytelling':'events','civic':'events','expo':'events','unknown':'live_music'}
 TYPES=['Live Music','Cover Band','Comedy','Sports','Dance','Theatre','Events']
 TITLE_RULES=[
@@ -13,6 +14,7 @@ TITLE_RULES=[
  ('theatre',r'nutcracker|\btheatre performance\b|\btheater performance\b'),
  ('events',r'\bgala\b')]
 def classify(text='',classifications=()):
+    if re.search(PARTICIPANT_PATTERN,text,re.I):return 'participant_competition','Participant competition'
     # Explicit non-performance format wins over a provider's generic Music segment.
     for category,pattern in TITLE_RULES:
         match=re.search(pattern,text,re.I)
@@ -65,6 +67,7 @@ def category_for(c,sid,title):
   from concert_discovery.spotify_matching import name_key
   entity=c.execute("SELECT evidence FROM artist_entity_types WHERE name_key=? AND kind='series'",(name_key(title),)).fetchone()
   if entity:result.update(category='events',evidence=entity['evidence'],recurring_series=True)
+ if re.search(PARTICIPANT_PATTERN,title,re.I):result.update(category='participant_competition',evidence='Participant competition')
  result['assumed']=result['category']=='unknown'
  result['category']=CATEGORY_LABELS.get(result['category'],result['category'])
  result['validation_state']='needs_review' if result['assumed'] else 'evidence_backed'

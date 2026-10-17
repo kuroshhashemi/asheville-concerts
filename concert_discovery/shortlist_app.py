@@ -214,9 +214,9 @@ for item,show in zip(data,shows):
  price=for_show(show,prices)
  rows.append(dict(show_key=show['dedupe_key'],id=show['dedupe_key'] if account_id else item['show_id'],date_sort=show['performance_start'],date=item['Date'].strftime('%a %b %d')+(item['Date'].strftime(" '%y") if item['Date'].year!=datetime.now().year else ''),name=item['Name'],artist_image=item['Artist image'],artists=[dict(name=a['display_name'],image=a.get('image_url'),url=a.get('spotify_profile_url')) for a in show['headliners']] if show['event_classification']['category'] in ('live_music','cover_band') else [],
      genre_options=sorted(show_genres(show)),search_text=' '.join([show['title']]+[a['display_name'] for a in show['headliners']]),venue=item['Venue'],venue_icon=item['Venue icon'],show_type=((show.get('event_classification') or {}).get('category') or 'unknown').replace('_',' ').title(),type_evidence=(show.get('event_classification') or {}).get('evidence',''),genre=item['Genre'],listeners=show['audience'],listeners_label=item['Monthly listeners'],
-     price=price['min'] if price else None,price_label=price_label(price),price_detail=(f"Advertised price · {price.get('source','Structured event data')} · checked {price.get('checked_at',price.get('observed_at',''))}. {'Includes provider-stated fees.' if price.get('includes_fees') else 'Fee inclusion not confirmed.'}" if price else ''),
+     resale_only=bool(price and price.get('resale_only')),price=price['min'] if price else None,price_label=price_label(price),price_detail=(f"Advertised price · {price.get('source','Structured event data')} · checked {price.get('checked_at',price.get('observed_at',''))}. {'Includes provider-stated fees.' if price.get('includes_fees') else 'Fee inclusion not confirmed.'}" if price else ''),
      growth=show['listener_growth_6m'],growth_artist=(show['growth_artist'] or {}).get('display_name'),growth_detail=(show['growth_artist'] or {}).get('growth_detail'),
-     just_announced=show.get('just_announced'),sold_out=show.get('sold_out'),status=item['Status'],listen=item['Listen'],buy=item['Buy'],calendar=google_calendar_link(show,item['Name'],item['Buy'],calendar_id),calendar_label='Add to Family Google Calendar' if calendar_id else 'Add to Google Calendar',listener_artist=(show['audience_artist'] or {}).get('display_name'),
+     just_announced=show.get('just_announced'),sold_out=show.get('sold_out'),on_sale_label=show.get('on_sale_label'),status=item['Status'],listen=item['Listen'],buy=item['Buy'],calendar=google_calendar_link(show,item['Name'],item['Buy'],calendar_id),calendar_label='Add to Family Google Calendar' if calendar_id else 'Add to Google Calendar',listener_artist=(show['audience_artist'] or {}).get('display_name'),
      sources=[dict(label=x['source_name'],url=x['source_url']) for x in show['sources']],
      photo_source=(show['audience_artist'] or next(iter(show['headliners']),{})).get('image_source'),
      genre_source=next((h.get('genre_source') for h in ([show['audience_artist']] if show['audience_artist'] and show['audience_artist'].get('genre') else show['headliners']) if h.get('genre')),None),
@@ -288,6 +288,8 @@ with st.expander('Excluded events'):
 if account_id:
  from concert_discovery.activity import admin_view
  admin_view(st,activity_store,dict(st.user),st.secrets.get('calendar_defaults',{}).get('owner_email'))
+ from concert_discovery.pricing_health import admin_view as pricing_admin_view
+ pricing_admin_view(st,dict(st.user),st.secrets.get('calendar_defaults',{}).get('owner_email'),shows)
 
 if not account_id and auth_configured and not st.session_state.get('login_intro_seen'):
  st.session_state['login_intro_seen']=True

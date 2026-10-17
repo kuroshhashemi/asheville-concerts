@@ -27,9 +27,10 @@ def refresh(db_path=DATABASE_PATH,limit=6,shows=None,workers=1):
     prices=load();seen=set();cutoff=(datetime.now(timezone.utc)-timedelta(days=7)).isoformat()
     with connect(db_path) as c:
         c.execute('CREATE TABLE IF NOT EXISTS brightdata_price_checks(url_key TEXT PRIMARY KEY,checked_at TEXT,status TEXT)')
-        recent={r[0] for r in c.execute('SELECT url_key FROM brightdata_price_checks WHERE checked_at>=?',(cutoff,))}
+        recent={r[0] for r in c.execute("SELECT url_key FROM brightdata_price_checks WHERE (status='priced' AND checked_at>=?) OR checked_at>=?",(cutoff,(datetime.now(timezone.utc)-timedelta(days=1)).isoformat()))}
     jobs=[]
     for show in sorted(shows,key=lambda s:(for_show(s,prices) is not None,not bool(s.get('just_announced')),s.get('performance_start',''))):
+        if show.get('sold_out') or show.get('on_sale_label'):continue
         url=show.get('ticket_url') or '';parsed=urlsplit(url);host=(parsed.hostname or '').removeprefix('www.');identity=url_key(url)
         if parsed.scheme!='https' or host not in HOSTS or identity in seen or identity in recent:continue
         existing=for_show(show,prices)

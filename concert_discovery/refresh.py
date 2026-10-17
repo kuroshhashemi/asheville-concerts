@@ -161,6 +161,9 @@ def apply_refresh(events,snapshots,errors=(),metrics=False,db_path=DATABASE_PATH
     try:result.update(refresh_prices(db_path=db_path))
     except Exception as error:
         errors.append('Price checks unavailable; saved prices retained ('+type(error).__name__+')')
+    from concert_discovery.ticketmaster_prices import refresh as ticketmaster_prices
+    try:result.update(ticketmaster_prices(db_path=db_path))
+    except Exception as error:errors.append('Ticketmaster prices unavailable; saved prices retained ('+type(error).__name__+')')
     from concert_discovery.brightdata_prices import refresh as bright_prices
     try:result.update(bright_prices(db_path=db_path))
     except Exception as error:errors.append('Bright Data prices unavailable; saved prices retained ('+type(error).__name__+')')

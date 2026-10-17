@@ -120,7 +120,13 @@ def render(shows, unsubscribe_url, end, prices=None, start=None):
         ticket = f'<a href="{esc(buy)}" style="display:inline-block;background:#eef2f4;color:#102c43;border-radius:8px;padding:7px;text-decoration:none">{esc(price) if price != "—" else "Tickets"}</a>' if buy else ''
         calendar_link = f'<a href="{esc(calendar)}" title="Add to calendar" style="color:#102c43;margin-left:6px">▦</a>' if buy else ''
         badges = ''.join(f'<span style="font-size:10px;background:#eef7f5;padding:3px 5px;border-radius:6px;margin-left:5px">{esc(t)}</span>' for t in ['New'] + tags)
-        if price == '—' and buy:
+        if show.get('sold_out') and buy:
+            ticket = f'<a href="{esc(buy)}" style="display:inline-block;background:#eef2f4;color:#102c43;border-radius:8px;padding:7px;text-decoration:none">Sold Out</a>'
+        if buy and (for_show(show, prices) or {}).get('resale_only'):
+            ticket = f'<a href="{esc(buy)}" style="display:inline-block;background:#eef2f4;color:#102c43;border-radius:8px;padding:7px;text-decoration:none">Resale</a>'
+        elif buy and show.get('on_sale_label') and not show.get('sold_out'):
+            ticket = f'<a href="{esc(buy)}" style="display:inline-block;background:#eef2f4;color:#102c43;border-radius:8px;padding:7px;text-decoration:none">{esc(show["on_sale_label"])}</a>'
+        if price == '—' and buy and not show.get('sold_out'):
             ticket = ticket.replace('Tickets</a>', icon('ticket', 'Buy tickets') + '</a>')
         if buy:
             calendar_link = f'<a href="{esc(calendar)}" title="Add to calendar" style="display:inline-block;background:#edf0f3;border-radius:10px;padding:6px 7px;margin-left:7px">{icon("calendar-plus", "Add to calendar")}</a>'

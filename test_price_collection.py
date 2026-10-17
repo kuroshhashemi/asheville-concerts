@@ -56,3 +56,21 @@ class PriceCollectionTests(unittest.TestCase):
   base={'title':'Band &#038; Friends','url':'https://sierranevada.com/event/a','start_date':'2026-10-20 19:00:00','description':'THIS IS A FREE EVENT!'}
   rows=parse_api({'events':[{**base,'venue':{'city':'Chico'}},{**base,'venue':{'city':'Mills River'}}]},today=date(2026,10,13))
   self.assertEqual(len(rows),1);self.assertEqual(rows[0]['title'],'Band & Friends');self.assertEqual(rows[0]['advertised_price']['min'],0)
+
+ def test_ticketmaster_resale_requires_single_ticket_evidence(self):
+  markup='<p>Prices include fees (before taxes).</p><ul role="menu" aria-label="Ticket listings sorted by lowest price"><li><button>Select Verified Resale Ticket $158.70</button></li></ul>'
+  url='https://www.ticketmaster.com/event/2D00648FDC34CEFB'
+  self.assertIsNone(from_ticket_markup(url,markup))
+  price=from_ticket_markup(url,markup,selected_quantity=1)
+  self.assertEqual(price['min'],158.70);self.assertTrue(price['resale_only'])
+  mixed=markup.replace('</ul>','<li><button>Select Standard Admission $175.00</button></li></ul>')
+  self.assertFalse(from_ticket_markup(url,mixed,selected_quantity=1)['resale_only'])
+ def test_etix_single_ticket_excludes_bundle_discount(self):
+  h='<div role="combobox" aria-label="ADVANCED, Price: $45.85"></div><div role="combobox" aria-label="$60 Two Pack, Price: $30.00"></div>'
+  self.assertEqual(from_ticket_markup('https://www.etix.com/ticket/p/1',h)['min'],45.85)
+
+ def test_day_specific_free_admission_not_copied_to_paid_day(self):
+  body='<p>DATE Sunday, December 6, 2026</p><p>AVAILABILITY Saturday is $10 | Sunday is free to the public.</p>'
+  url='https://www.harrahscherokeecenterasheville.com/events/example/'
+  self.assertEqual(from_ticket_markup(url,body)['min'],0)
+  self.assertIsNone(from_ticket_markup(url,body.replace('DATE Sunday','DATE Saturday')))

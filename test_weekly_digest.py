@@ -78,7 +78,7 @@ class DigestTests(unittest.TestCase):
                 'event_classification': {'category': 'cover_band'}, 'sold_out': {'status': 'sold_out'}}
         prices = {'tickets.example.com/show': {'min': 45.4, 'max': 50}}
         content, plain = render([show], 'https://example.com/unsubscribe', END, prices)
-        for value in ('550k', '-12%', '$45+', 'Sold out', 'Cover Band', 'Sierra Nevada', 'Add to calendar', 'Listen on Spotify', 'Unsubscribe'):
+        for value in ('550k', '-12%', 'Sold Out', 'Sold out', 'Cover Band', 'Sierra Nevada', 'Add to calendar', 'Listen on Spotify', 'Unsubscribe'):
             self.assertIn(value, content)
         self.assertIn('Band &lt;script&gt;', content)
         self.assertNotIn('<script>', content)

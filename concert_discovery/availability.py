@@ -22,6 +22,15 @@ def ticket_page_status(url,markup):
     if host=='etix.com':
         if any(n.tag in ('p','span','div') and re.fullmatch(r'This performance is sold[ -]out\.?',n.text().strip(),re.I) for n in t.root.walk()):return 'sold_out'
         if any(n.attrs.get('role')=='combobox' and 'Price:' in n.attrs.get('aria-label','') and n.attrs.get('aria-disabled')!='true' and 'disabled' not in n.attrs for n in t.root.walk()):return 'available'
+    elif host=='ticketmaster.com':
+        # Only actual ticket-list offers or explicit current-event notices.
+        menus=[n for n in t.root.walk() if n.attrs.get('role')=='menu' and n.attrs.get('aria-label','').startswith('Ticket listings')]
+        if any(n.tag=='button' and re.search(r'Select (?:Verified Resale Ticket|Standard Admission|Official Platinum)',n.text()) for root in menus for n in root.walk()):return 'available'
+        if any(n.tag in ('p','h1','h2','h3') and re.fullmatch(r'(?:This event is |This show is |All tickets (?:are )?)?sold[ -]out[.!]?',n.text().strip(),re.I) for n in t.root.walk()):return 'sold_out'
+    elif host=='tixr.com':
+        tickets=[n for n in t.root.walk() if n.has('ticket') and n.attrs.get('data-row-type')=='primary']
+        if any(n.attrs.get('data-product-state')=='OPEN' for n in tickets):return 'available'
+        if tickets and all(n.attrs.get('data-product-state') in ('QUEUED','SOLD_OUT') for n in tickets) and any(re.search(r'\bwaitlist\b|\bsold out\b',n.text(),re.I) for n in tickets):return 'sold_out'
     elif host in ('wl.eventim.us','wl.seetickets.us'):
         root=next((n for n in t.root.walk() if n.attrs.get('id')=='eventview'),None)
         if root:
@@ -54,3 +63,30 @@ def record_ticket_page(url,markup,db_path=None,observed_at=None):
                 WHERE excluded.observed_at>=ticket_availability.observed_at''',
                 ('ticket-page:'+str(sid)+':'+key,sid,status,url,observed_at or utc_now()));count+=1
     return count
+
+
+def sale_schema(c):
+    c.execute('CREATE TABLE IF NOT EXISTS ticket_sale_windows(show_id INTEGER PRIMARY KEY,on_sale_at TEXT,source_url TEXT,observed_at TEXT)')
+
+
+def save_sale(c, show_id, on_sale_at, source_url):
+    if not on_sale_at:return
+    from datetime import datetime
+    try:datetime.fromisoformat(on_sale_at.replace('Z','+00:00'))
+    except ValueError:return
+    from concert_discovery.storage import utc_now
+    sale_schema(c)
+    c.execute('INSERT OR REPLACE INTO ticket_sale_windows VALUES(?,?,?,?)',(show_id,on_sale_at,source_url,utc_now()))
+
+
+def future_sale_label(value):
+    from datetime import datetime,timezone
+    if not value:return None
+    try:
+        date=datetime.fromisoformat(value.replace('Z','+00:00'))
+        if date.tzinfo is None:
+            from zoneinfo import ZoneInfo
+            date=date.replace(tzinfo=ZoneInfo('America/New_York'))
+        if date<=datetime.now(timezone.utc):return None
+        return f'On Sale {date.month}/{date.day}'
+    except ValueError:return None

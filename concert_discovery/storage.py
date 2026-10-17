@@ -216,6 +216,8 @@ def initialize(db_path: Optional[Path] = None) -> None:
         )
         from concert_discovery.additional_venues import VENUE_ICONS
         connection.executemany("INSERT OR IGNORE INTO venue_icons(venue_id,icon_url) VALUES (?,?)", VENUE_ICONS.items())
+        from concert_discovery.pricing_catalog_patch import apply as apply_public_ticket_evidence
+        if db_path is None or Path(db_path)==DATABASE_PATH:apply_public_ticket_evidence(connection)
 
 
 def stable_artist_id(name: str) -> str:
@@ -313,6 +315,8 @@ def upsert_show(connection: sqlite3.Connection, event: Dict[str, object]) -> int
             ON CONFLICT(source_key) DO UPDATE SET show_id=excluded.show_id,status=excluded.status,
             source_url=excluded.source_url,observed_at=excluded.observed_at''',
             (event['source_key'],show_id,event['ticket_availability'],event['source_url'],utc_now()))
+    from concert_discovery.availability import save_sale
+    save_sale(connection,show_id,event.get('public_on_sale_at'),event['source_url'])
     from concert_discovery.event_classification import save as save_classification
     save_classification(connection,show_id,event)
     spotify_links = {
