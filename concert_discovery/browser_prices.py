@@ -9,7 +9,7 @@ def refresh(db_path=DATABASE_PATH,limit=6,shows=None,backend="auto"):
     from concert_discovery.discovery import get_shows
     from playwright.sync_api import sync_playwright
     shows=get_shows(db_path) if shows is None else shows;prices=load();cutoff=(datetime.now(timezone.utc)-timedelta(days=7)).isoformat()
-    hosts={'etix.com','tixr.com','secured.brevardmusic.org','jambase.com','wl.seetickets.us','wl.eventim.us','prod-nts-api.seeticketsusa.us'}
+    hosts={'etix.com','tixr.com','secured.brevardmusic.org','jambase.com','wl.seetickets.us','wl.eventim.us','prod-nts-api.seeticketsusa.us','ticketmaster.com'}
     from pathlib import Path
     import os
     config={}
@@ -58,6 +58,13 @@ def refresh(db_path=DATABASE_PATH,limit=6,shows=None,backend="auto"):
                         with connect(db_path) as c:verified_show_link(c,show['show_id'],final_url,url)
                     if host=='etix.com':page.locator('[role="combobox"][aria-label*="Price:"]').first.wait_for(timeout=10000)
                     elif host=='tixr.com':page.locator('.ticket[data-row-type="primary"] .info').first.wait_for(timeout=10000)
+                    elif host=='ticketmaster.com':
+                        page.locator('[role="menu"][aria-label^="Ticket listings"]').first.wait_for(state='attached',timeout=20000)
+                        notice=page.get_by_role('button',name='Accept & Continue',exact=True)
+                        if notice.count():notice.click(timeout=5000)
+                        page.get_by_role('button',name=re.compile('Open quantity filters')).click(timeout=10000)
+                        page.get_by_role('radio',name='Set quantity to: 1 Ticket',exact=True).check(timeout=10000)
+                        page.get_by_role('menuitem').first.wait_for(timeout=15000)
                     elif host=='secured.brevardmusic.org':
                         page.get_by_role('button',name=re.compile(r'^Back(?:,|$)')).click(timeout=30000)
                         page.get_by_role('button',name='Pricing Legend',exact=True).click(timeout=10000)
@@ -72,7 +79,7 @@ def refresh(db_path=DATABASE_PATH,limit=6,shows=None,backend="auto"):
                     with connect(db_path) as c:
                         schema(c)
                         c.execute('INSERT OR REPLACE INTO identity_page_cache VALUES(?,?,?,?)',(url,encode_markup(markup),200,utc_now()))
-                    price=from_ticket_markup(final_url,markup)
+                    price=from_ticket_markup(final_url,markup,selected_quantity=1 if host=='ticketmaster.com' else None)
                     if price:
                         save({'source_url':url,'source_name':'Rendered ticket provider'},price)
                         if final_url!=url:save({'source_url':final_url,'source_name':'Rendered ticket provider'},price)

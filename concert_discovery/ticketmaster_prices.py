@@ -205,7 +205,10 @@ def refresh(db_path=DATABASE_PATH, limit=12, shows=None):
             try:
                 price = fetch(eid)
                 status = 'priced' if price else 'no_supported_adult_offer'
-            except Exception:
+            except Exception as error:
+                kind=type(error).__name__
+                http=getattr(error,'status_code',None) or getattr(getattr(error,'response',None),'status_code',None)
+                result.setdefault('ticketmaster_error_types',[]).append(kind+(f' HTTP {http}' if http else ''))
                 price = None
                 status = 'unavailable'
                 result['ticketmaster_price_failures'] += 1
