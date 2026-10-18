@@ -40,15 +40,17 @@ def save_events(events,db_path=DATABASE_PATH):
     from concert_discovery.matching_queue import enqueue
     enqueue(db_path)
 
-def enrich(limit=40,db_path=DATABASE_PATH):
+def enrich(limit=40,db_path=DATABASE_PATH,artist_ids=None):
     with connect(db_path) as c:
         c.execute('CREATE TABLE IF NOT EXISTS identity_attempts(artist_id TEXT PRIMARY KEY,checked_at TEXT)')
         artists=[dict(r) for r in c.execute("""SELECT DISTINCT a.* FROM artists a JOIN show_artists sa USING(artist_id) JOIN shows s USING(show_id)
             WHERE sa.billing_role LIKE '%headliner%' AND substr(s.performance_start,1,10)>=date('now')
             ORDER BY a.spotify_artist_id IS NULL,s.performance_start""")]
+    if artist_ids is not None:artists=[a for a in artists if a["artist_id"] in artist_ids]
     from concert_discovery.spotify_matching import SpotifySearch,SpotifyUnavailable,match_artist,match_bandsintown_link
     try:search=SpotifySearch()
-    except (SpotifyUnavailable,requests.RequestException):search=None
+    except (SpotifyUnavailable,requests.RequestException) as error:search=None;artwork_error=type(error).__name__
+    else:artwork_error=None
     attempted=0;good=0
     for a in artists:
         # Unresolved identities are exclusively handled by the durable queue.
@@ -60,10 +62,16 @@ def enrich(limit=40,db_path=DATABASE_PATH):
         image_present=c.execute('SELECT 1 FROM artist_images WHERE artist_id=? AND source_url=?',(a['artist_id'],a['spotify_profile_url'])).fetchone()
         if (fresh and image_present) or (not a['spotify_artist_id'] and recent):continue
         attempted+=1
-        if a['spotify_artist_id'] and not image_present and search:
-            try:search.artwork(a,db_path)
-            except SpotifyUnavailable:break
-            except (requests.RequestException,ValueError,TypeError):pass
+        if not image_present:
+            art_status='blocked';art_detail=artwork_error or 'Spotify artwork request unavailable'
+            if search:
+                try:
+                    found=search.artwork(a,db_path);art_status='complete' if found else 'unresolved';art_detail='Verified artwork saved' if found else 'No verified image returned'
+                except (SpotifyUnavailable,requests.RequestException,ValueError,TypeError) as error:
+                    art_detail=type(error).__name__;search=None;artwork_error=art_detail
+            with connect(db_path) as c:
+                c.execute('CREATE TABLE IF NOT EXISTS artwork_checks(artist_id TEXT PRIMARY KEY,checked_at TEXT,status TEXT,detail TEXT)')
+                c.execute('INSERT OR REPLACE INTO artwork_checks VALUES(?,?,?,?)',(a['artist_id'],utc_now(),art_status,art_detail))
         if not a['spotify_artist_id']:
             with connect(db_path) as c:c.execute('INSERT OR REPLACE INTO identity_attempts VALUES(?,?)',(a['artist_id'],utc_now()))
             from concert_discovery.source_links import apply_candidates
@@ -149,6 +157,8 @@ def apply_refresh(events,snapshots,errors=(),metrics=False,db_path=DATABASE_PATH
     from concert_discovery.collection_health import missing_checks
     missing_checks(rid,checked,errors,db_path,expected_venues=expected_venues)
     result={'source_records':len(events),'warnings':errors,'duplicates_consolidated':merges,'run_id':rid}
+    from concert_discovery.metadata_outcomes import synchronize
+    synchronize(db_path)
     from concert_discovery.matching_queue import run
     result.update(run(limit=matching_limit,db_path=db_path))
     if metrics:
@@ -171,6 +181,11 @@ def apply_refresh(events,snapshots,errors=(),metrics=False,db_path=DATABASE_PATH
         from concert_discovery.browser_prices import refresh as render_prices
         try:result.update(render_prices(db_path=db_path))
         except Exception as error:errors.append('Rendered prices unavailable; saved prices retained ('+type(error).__name__+')')
+    try:
+        result.update(synchronize(db_path))
+        from concert_discovery.operations_alerts import check as check_operations
+        result.update(check_operations(db_path))
+    except Exception as error:errors.append('Metadata health unavailable ('+type(error).__name__+')')
     finish(rid,errors,db_path)
     Path(db_path).with_name('freshness.json').write_text(json.dumps({'refreshed_at':utc_now(),**result},indent=2))
     return result

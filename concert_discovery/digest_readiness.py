@@ -49,6 +49,17 @@ def audit(shows,db_path=DATABASE_PATH):
                         'SELECT 1 FROM ticketmaster_price_checks WHERE event_id=? AND checked_at>=?',
                         (eid,cutoff)) for eid in tm_ids)
                 if not attempted:gaps.append('ticket price')
+            # Durable outcomes distinguish unavailable observations from failed fetches.
+            if 'metadata_outcomes' in tables:
+                for a in show.get('headliners',[]):
+                    outcomes={r['field']:r['status'] for r in c.execute("SELECT field,status FROM metadata_outcomes WHERE entity_type='artist' AND entity_key=? AND active=1",(a['artist_id'],))}
+                    if outcomes.get('growth') in ('complete','unavailable','not_applicable'):gaps=[g for g in gaps if g!='growth: '+a['display_name']]
+                    if all(outcomes.get(f) in ('complete','unavailable','not_applicable') for f in ('listeners','photo')):gaps=[g for g in gaps if g!='listeners/photo: '+a['display_name']]
+                    for r in c.execute("SELECT field,status FROM metadata_outcomes WHERE entity_type='artist' AND entity_key=? AND active=1",(a['artist_id'],)):
+                        if r['status'] in ('blocked','pending'):
+                            gaps.append(r['field']+': '+a['display_name'])
+                for r in c.execute("SELECT field,status FROM metadata_outcomes WHERE entity_type='show' AND entity_key=? AND active=1",(show.get('dedupe_key',''),)):
+                    if r['status'] in ('blocked','pending','unresolved'):gaps.append(r['field'])
             # Genres come only from structured JamBase import fields. An imported
             # source with no genre is unavailable, not a pending prose lookup.
             if gaps:pending.append({'show_id':show['show_id'],'title':show['title'],'pending':sorted(set(gaps))})

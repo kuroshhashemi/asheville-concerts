@@ -52,21 +52,24 @@ def refresh_history(db_path=None, limit=40, spotify_ids=None):
     for a in artists:
         if a['checked_at']:
             age=(datetime.now().date()-datetime.fromisoformat(a['checked_at'].replace('Z','+00:00')).date()).days
-            if age<(30 if a['status']=='not_found' else 7):continue
+            if age<(30 if a['status']=='not_found' else 1 if a['status'] in ('blocked','rate_limited','request_error','parse_error') else 7):continue
         if attempted>=limit:break
         sid=a['spotify_artist_id'];url='https://pastspot.com/artists/'+sid
         attempted+=1
         try:
             response=requests.get(url,timeout=15)
-            if response.status_code in (403,429):break
+            if response.status_code in (403,429):
+                save(sid,[],url,'blocked' if response.status_code==403 else 'rate_limited',db_path);break
             response.raise_for_status()
             html=response.text.replace('\\"','"')
             pairs=set((d,int(n)) for d,n in re.findall(r'"periodStartDate":"(\d{4}-\d{2}-\d{2})"[^}]*?"monthlyListeners":(\d+)',html))
             by_day={}
             for day,n in pairs:by_day.setdefault(day,set()).add(n)
-            if any(len(n)>1 for n in by_day.values()):continue
+            if any(len(n)>1 for n in by_day.values()):
+                save(sid,[],url,'parse_error',db_path);continue
             save(sid,[dict(date=d,listeners=n) for d,n in sorted(pairs)],url,
                  'not_found' if 'Artist Not Found' in html else 'history' if pairs else 'no_history',db_path)
-        except requests.RequestException:continue
+        except requests.RequestException:
+            save(sid,[],url,'request_error',db_path);continue
         time.sleep(.3)
     return {'history_requests':attempted}

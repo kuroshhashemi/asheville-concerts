@@ -187,6 +187,11 @@ def run(store, sender, password, current=None, db_path=DATABASE_PATH):
         raise RuntimeError('Catalog needs a successful refresh before sending a digest')
     result = {'sent': 0, 'empty': 0, 'already_processed': 0, 'failed': 0, 'uncertain': 0}
     subscriptions = store.enabled()
+    # October 19 is an owner-only rollout. Do not claim or advance anyone
+    # else's delivery history; normal subscriber delivery resumes next week.
+    if end.astimezone(ZONE).date() == date(2026, 10, 19):
+        subscriptions = [s for s in subscriptions
+                         if s['email'].strip().casefold() == sender.strip().casefold()]
     if len(subscriptions) > 200:
         raise RuntimeError('Digest exceeds the configured free-sending safeguard (200 recipients)')
     for subscription in subscriptions:
@@ -196,6 +201,11 @@ def run(store, sender, password, current=None, db_path=DATABASE_PATH):
             continue
         shows = new_shows(start, end, db_path, store.sent_keys(sid))
         from concert_discovery.digest_readiness import require_ready
+        if os.environ.get('DIGEST_PREFLIGHT') == '1' and shows:
+            from concert_discovery.digest_preflight import prepare
+            prepare(shows,db_path)
+            # Matching may have populated identities and metrics since selection.
+            shows = new_shows(start, end, db_path, store.sent_keys(sid))
         require_ready(shows,db_path)
         if not store.claim(sid, end.isoformat(), [s['dedupe_key'] for s in shows]):
             result['already_processed'] += 1
@@ -258,4 +268,9 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    try:main()
+    except RuntimeError as error:
+        if str(error).startswith(('Digest held:','Catalog needs a successful refresh')):
+            from concert_discovery.operations_alerts import notify
+            notify('digest-held',str(error))
+        raise

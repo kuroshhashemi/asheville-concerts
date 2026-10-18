@@ -99,13 +99,21 @@ class DigestTests(unittest.TestCase):
              patch('concert_discovery.digest_readiness.require_ready'), \
              patch('concert_discovery.weekly_digest.render', return_value=('html', 'plain')), \
              patch('concert_discovery.weekly_digest.send_email', return_value='message-id', side_effect=error) as send:
-            result = run(store, 'sender@example.com', 'secret', END + timedelta(hours=1), self.db)
+            result = run(store, 'person@example.com', 'secret', END + timedelta(hours=1), self.db)
             return result, send.call_count
+
+    def test_october_19_skips_other_subscribers_without_claiming(self):
+        store = FakeStore()
+        store.subscription['email'] = 'other@example.com'
+        result, calls = self.execute(store)
+        self.assertEqual((result['sent'], calls), (0, 0))
+        self.assertEqual(store.claimed, {})
+        self.assertEqual(store.finished, [])
 
     def test_pending_enrichment_blocks_before_claim_or_email(self):
         store=FakeStore()
         with patch('concert_discovery.weekly_digest.new_shows',return_value=[{'dedupe_key':'new'}]),patch('concert_discovery.digest_readiness.require_ready',side_effect=RuntimeError('Digest held')),patch('concert_discovery.weekly_digest.send_email') as send:
-            with self.assertRaisesRegex(RuntimeError,'Digest held'):run(store,'sender@example.com','secret',END+timedelta(hours=1),self.db)
+            with self.assertRaisesRegex(RuntimeError,'Digest held'):run(store,'person@example.com','secret',END+timedelta(hours=1),self.db)
             send.assert_not_called()
         self.assertEqual(store.claimed,{})
 

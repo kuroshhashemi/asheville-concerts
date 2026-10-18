@@ -12,14 +12,14 @@ on:
         options: [preview, test, send]
         default: preview
 permissions:
-  contents: read
+  contents: write
 concurrency:
-  group: weekly-soundcheck-email
+  group: concert-catalog
   cancel-in-progress: false
 jobs:
   digest:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -33,5 +33,19 @@ jobs:
           EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          DIGEST_PREFLIGHT: '1'
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
           DIGEST_MODE: ${{ github.event_name == 'schedule' && 'send' || inputs.mode }}
         run: python -m concert_discovery.weekly_digest --mode "$DIGEST_MODE"
+      - name: Preserve bounded metadata retry evidence
+        if: always()
+        run: |
+          python -m concert_discovery.compact_catalog
+          git config user.name 'Concert refresh'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add concert_discovery/concert_data.sqlite3 concert_discovery/assets/ticket-prices.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Preserve digest metadata checks'
+            git push
+          fi

@@ -290,6 +290,8 @@ if account_id:
  admin_view(st,activity_store,dict(st.user),st.secrets.get('calendar_defaults',{}).get('owner_email'))
  from concert_discovery.pricing_health import admin_view as pricing_admin_view
  pricing_admin_view(st,dict(st.user),st.secrets.get('calendar_defaults',{}).get('owner_email'),shows)
+ from concert_discovery.metadata_outcomes import admin_view as metadata_admin_view
+ metadata_admin_view(st,dict(st.user),st.secrets.get('calendar_defaults',{}).get('owner_email'))
 
 if not account_id and auth_configured and not st.session_state.get('login_intro_seen'):
  st.session_state['login_intro_seen']=True

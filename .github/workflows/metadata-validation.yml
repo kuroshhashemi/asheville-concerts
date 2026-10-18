@@ -1,0 +1,39 @@
+name: Validate metadata deployment
+on:
+  push:
+    paths:
+      - '.github/workflows/metadata-validation.yml'
+      - 'concert_discovery/metadata_outcomes.py'
+      - 'concert_discovery/digest_preflight.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - run: python -m unittest discover -q
+      - name: Verify hosted Spotify and owner alert authentication
+        env:
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+          EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
+        run: |
+          python - <<'PY'
+          import os,smtplib,ssl
+          from concert_discovery.spotify_matching import SpotifySearch
+          client=SpotifySearch()
+          artists=client.search('Sylvan Esso')
+          assert any(a.get('name')=='Sylvan Esso' for a in artists)
+          print('Hosted Spotify token and artist search verified (bounded sample).')
+          with smtplib.SMTP_SSL('smtp.gmail.com',465,context=ssl.create_default_context(),timeout=20) as smtp:
+              smtp.login(os.environ['EMAIL_SENDER'],os.environ['EMAIL_APP_PASSWORD'].replace(' ',''))
+          print('Owner alert sender authentication verified; no email sent.')
+          PY
