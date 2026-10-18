@@ -51,3 +51,15 @@ class DestinationTests(unittest.TestCase):
    collect('<a href="https://wl.seetickets.us/event/saturna/705378">Tickets</a>','https://thirdroom.art/',db)
    with connect(db) as c:
     self.assertEqual(resolve(c,'https://prod-nts-api.seeticketsusa.us/v1.0.0/promote/YWZmOlNUVVMtNzA1Mzc4OjE4/clickthru'),'https://wl.eventim.us/event/saturna/705378')
+
+ def test_ticketmaster_artist_page_cannot_regress_verified_event(self):
+  from concert_discovery.ticket_destinations import verified_show_link,retain_verified_link
+  with tempfile.TemporaryDirectory() as d:
+   db=Path(d)/'catalog.sqlite3';initialize(db)
+   with connect(db) as c:
+    direct='https://www.ticketmaster.com/event/2D006537C59525AF'
+    artist='https://www.ticketmaster.com/southern-conference-tickets/artist/3172401'
+    verified_show_link(c,1,direct,direct)
+    verified_show_link(c,1,artist,artist)
+    self.assertEqual(c.execute('SELECT url FROM official_ticket_links WHERE show_id=1').fetchone()[0],direct)
+    self.assertEqual(retain_verified_link(c,1,artist),direct)

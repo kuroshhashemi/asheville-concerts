@@ -20,8 +20,15 @@ def schema(c):
     c.execute('CREATE TABLE IF NOT EXISTS provider_ticket_links(event_id TEXT PRIMARY KEY,url TEXT,source_url TEXT,checked_at TEXT)')
     c.execute('CREATE TABLE IF NOT EXISTS official_ticket_links(show_id INTEGER PRIMARY KEY,url TEXT,source_url TEXT,checked_at TEXT)')
 
+def generic_destination(url):
+    p=urlsplit(url or '');host=(p.hostname or '').removeprefix('www.');path=p.path.rstrip('/')
+    return path in ('','/events','/events-tickets','/calendar') or (host=='ticketmaster.com' and ('/artist/' in path or path=='/search')) or (host=='etix.com' and path.startswith('/ticket/v/'))
+
 def verified_show_link(c,show_id,url,source_url):
     schema(c)
+    old=c.execute('SELECT url FROM official_ticket_links WHERE show_id=?',(show_id,)).fetchone()
+    if old and generic_destination(url) and not generic_destination(old[0]):
+        c.execute('UPDATE shows SET ticket_url=? WHERE show_id=?',(old[0],show_id));return
     c.execute('INSERT OR REPLACE INTO official_ticket_links VALUES(?,?,?,?)',(show_id,url,source_url,utc_now()))
     c.execute('UPDATE shows SET ticket_url=? WHERE show_id=?',(url,show_id))
 
@@ -29,7 +36,7 @@ def retain_verified_link(c,show_id,incoming):
     schema(c)
     p=urlsplit(incoming or '')
     row=c.execute('SELECT url,source_url FROM official_ticket_links WHERE show_id=?',(show_id,)).fetchone()
-    if row and (p.path.rstrip('/') in ('','/events','/events-tickets','/calendar') or incoming==row[1]):return row[0]
+    if row and (generic_destination(incoming) or incoming==row[1]):return row[0]
     return incoming
 
 def resolve(c,url):
