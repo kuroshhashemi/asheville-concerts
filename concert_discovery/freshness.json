@@ -1,6 +1,6 @@
 {
-  "refreshed_at": "2026-10-18T14:07:05+00:00",
-  "source_records": 684,
+  "refreshed_at": "2026-10-19T17:08:16+00:00",
+  "source_records": 673,
   "warnings": [
     "SongkickPublic: 406 Client Error: Not Acceptable for url: https://www.songkick.com/metro-areas/86726-us-mills-river",
     "SongkickOrange: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/289-orange-peel/calendar",
@@ -8,25 +8,25 @@
     "SongkickAMH: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/107138-asheville-music-hall/calendar",
     "SongkickEulogy: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/4519500-eulogy/calendar",
     "Sierra admission labels unavailable; existing prices retained.",
-    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" title=\"Burlesque Brunch\" data-cya11y-org-font-size=\"16\" href=\"https://www.thegreyeagle.com/event/burlesque-brunch-47/special-events-at-the-grey-eagle-music-hall/asheville-north-carolina/\">\u2026</a>\n",
+    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"Patio Show: Juca Camera\" href=\"https://www.thegreyeagle.com/event/patio-show-juca-camera/the-patio/asheville-north-carolina/\">\u2026</a>\n",
     "Third Room ticket links unavailable; saved destinations retained.",
     "Spotify concert feed not enabled: separate CheckLeaked provider key missing."
   ],
   "duplicates_consolidated": [],
-  "run_id": "6209b3d7-07fe-4807-aef9-d96d58e77f11",
+  "run_id": "60bb1df6-9f6b-46a3-bfee-684d1b6357e9",
   "matching_attempted": 25,
-  "matching_matched": 1,
-  "matching_ambiguous": 0,
-  "matching_blocked": 24,
+  "matching_matched": 3,
+  "matching_ambiguous": 22,
+  "matching_blocked": 0,
   "matching_pending": 0,
-  "source_candidates_found": 0,
+  "source_candidates_found": 1,
   "page_requests": 40,
-  "attempted": 7,
-  "metrics_saved": 6,
+  "attempted": 5,
+  "metrics_saved": 4,
   "history_requests": 1,
   "price_page_requests": 12,
-  "price_pages_checked": 6,
-  "price_pages_priced": 5,
+  "price_pages_checked": 5,
+  "price_pages_priced": 3,
   "price_providers_blocked": [
     "etix.com",
     "prod-nts-api.seeticketsusa.us",
@@ -36,10 +36,23 @@
   "ticketmaster_price_events_checked": 3,
   "ticketmaster_prices_saved": 0,
   "ticketmaster_price_failures": 3,
-  "brightdata_requests": 0,
-  "brightdata_prices_saved": 0,
-  "brightdata_failed": 0,
-  "brightdata_state": "not_configured",
+  "ticketmaster_error_types": [
+    "HTTPError HTTP 403",
+    "HTTPError HTTP 403",
+    "HTTPError HTTP 403"
+  ],
+  "brightdata_requests": 6,
+  "brightdata_prices_saved": 5,
+  "brightdata_failed": 1,
   "rendered_price_pages": 6,
-  "rendered_prices_saved": 0
+  "rendered_prices_saved": 0,
+  "metadata_outcomes": {
+    "blocked": 60,
+    "waiting_for_identity": 213,
+    "unavailable": 331,
+    "complete": 2694,
+    "unresolved": 25,
+    "pending": 56
+  },
+  "operations_alert": "no_persistent_failures"
 }
