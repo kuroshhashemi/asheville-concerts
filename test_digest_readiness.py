@@ -20,3 +20,18 @@ class ReadinessTests(unittest.TestCase):
     c.execute('CREATE TABLE ticket_price_checks(url_key TEXT PRIMARY KEY)');c.execute("INSERT INTO ticket_price_checks VALUES('example.org/ticket')")
    s={'show_id':1,'title':'Example','sources':[{'source_url':'https://example.org/show'}],'headliners':[{'artist_id':'example','display_name':'Example'}],'ticket_url':'https://example.org/ticket'}
    with patch('concert_discovery.digest_readiness.load',return_value={}):self.assertEqual(audit([s],db),[])
+ def test_explicit_sold_out_does_not_require_price_attempt(self):
+  with tempfile.TemporaryDirectory() as d:
+   db=Path(d)/'catalog.sqlite3';initialize(db)
+   s={'show_id':1,'title':'Example','sources':[{'source_url':'https://venue.org/event'}],'headliners':[],'ticket_url':'https://tickets.org/event','sold_out':{'status':'sold_out'}}
+   with patch('concert_discovery.digest_readiness.load',return_value={}):self.assertEqual(audit([s],db),[])
+ def test_optional_metadata_gaps_can_send_after_final_attempt(self):
+  with tempfile.TemporaryDirectory() as d:
+   db=Path(d)/'catalog.sqlite3';initialize(db)
+   s={'show_id':1,'title':'Example','sources':[{'source_url':'https://venue.org/event'}],'headliners':[{'artist_id':'a','display_name':'A'}],'ticket_url':'https://tickets.org/event'}
+   with patch('concert_discovery.digest_readiness.load',return_value={}):require_ready([s],db,allow_metadata_gaps=True)
+ def test_conflicts_still_hold_when_optional_metadata_is_allowed(self):
+  with tempfile.TemporaryDirectory() as d:
+   db=Path(d)/'catalog.sqlite3';initialize(db)
+   with patch('concert_discovery.digest_validation.conflicts',return_value=[{'title':'Example'}]):
+    with self.assertRaisesRegex(RuntimeError,'conflicts'):require_ready([],db,allow_metadata_gaps=True)

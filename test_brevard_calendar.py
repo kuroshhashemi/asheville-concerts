@@ -11,6 +11,8 @@ class BrevardTests(unittest.TestCase):
   with self.assertRaises(ValueError):parse(card()+card(day='Unknown'))
  def test_pagination_and_distinct_dates(self):
   pages={'https://www.brevardmusic.org/events/':card()+'<a class="next page-numbers" href="/events/page/2/">Next</a>', 'https://www.brevardmusic.org/events/page/2/':card('Django Festival Allstars','Tuesday, November 10, 2026, 7:30 pm','b')}
-  rows,snap=fetch_brevard(pages.__getitem__);self.assertEqual(len(rows),2);self.assertEqual(snap[0]['pages'],2)
+  from unittest.mock import patch
+  with patch('concert_discovery.brevard_calendar.parse',side_effect=lambda markup:parse(markup,date(2026,10,5))):rows,snap=fetch_brevard(pages.__getitem__)
+  self.assertEqual(len(rows),2);self.assertEqual(snap[0]['pages'],2)
  def test_composition_is_not_an_artist(self):
   rows,_=parse(card('Handel’s Messiah'),date(2026,10,5));self.assertEqual(rows[0]['performers'],[])

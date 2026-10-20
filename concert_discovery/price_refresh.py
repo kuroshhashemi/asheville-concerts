@@ -1,7 +1,7 @@
 """Bounded ticket-page price checks, shared across scheduled refreshes.
 
 No browser challenge workarounds or paid endpoints. Existing calendar/API prices
-remain usable when a ticket provider blocks access. Failed checks retry weekly.
+remain usable when a ticket provider blocks access. Failed checks retry daily.
 """
 from datetime import datetime, timezone, timedelta
 from urllib.parse import urlsplit
@@ -18,10 +18,10 @@ def schema(c):
       url_key TEXT PRIMARY KEY,url TEXT NOT NULL,checked_at TEXT NOT NULL,
       status TEXT NOT NULL,http_status INTEGER,detail TEXT NOT NULL)''')
 
-def refresh(db_path=DATABASE_PATH,limit=12,shows=None):
+def refresh(db_path=DATABASE_PATH,limit=12,shows=None,force=False,priority_ids=None):
     from concert_discovery.discovery import get_shows
     shows=get_shows(db_path) if shows is None else shows
-    prices=load();reader=PageReader(db_path,budget=limit);cutoff=(datetime.now(timezone.utc)-timedelta(days=7)).isoformat()
+    prices=load();reader=PageReader(db_path,budget=limit);cutoff=(datetime.now(timezone.utc)-timedelta(days=0 if force else 1)).isoformat()
     result={'price_page_requests':0,'price_pages_checked':0,'price_pages_priced':0,'price_providers_blocked':[]}
     blocked=set();seen=set()
     with connect(db_path) as c:
@@ -29,7 +29,7 @@ def refresh(db_path=DATABASE_PATH,limit=12,shows=None):
         blocked.update((urlsplit(r['url']).hostname or '').removeprefix('www.') for r in c.execute(
           "SELECT url FROM ticket_price_checks WHERE status IN ('blocked','error') AND checked_at>=?",(cutoff,)))
     # Unknown prices first, then oldest known ones; shared URLs checked once.
-    shows=sorted(shows,key=lambda s:(for_show(s,prices) is not None,not bool(s.get('just_announced')),s.get('performance_start','')))
+    shows=sorted(shows,key=lambda s:(s['show_id'] not in priority_ids if priority_ids else False,for_show(s,prices) is not None,not bool(s.get('just_announced')),s.get('performance_start','')))
     for show in shows:
         if show.get('on_sale_label'):continue
         url=show.get('ticket_url') or ''

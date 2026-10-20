@@ -2,9 +2,10 @@
 from concert_discovery.storage import connect,DATABASE_PATH,utc_now
 from concert_discovery.reconciliation import catalog_rows,duplicate,is_official,schema
 
-def cleanup_duplicates(db_path=DATABASE_PATH):
+def cleanup_duplicates(db_path=DATABASE_PATH,show_ids=None):
  with connect(db_path) as c:
   schema(c);rows=catalog_rows(c);kept=[];log=[]
+  if show_ids is not None:rows=[r for r in rows if r['show_id'] in show_ids]
   for drop in sorted(rows,key=lambda s:(not is_official(s),s['show_id'])):
    keep=next((k for k in kept if duplicate(k,drop,rows)),None)
    if keep is None:kept.append(drop);continue

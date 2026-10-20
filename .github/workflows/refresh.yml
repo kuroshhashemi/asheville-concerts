@@ -1,7 +1,8 @@
 name: Refresh concerts
 on:
   schedule:
-    - cron: '17 10 * * *'
+    - cron: '17 10 * * 0,2-6'
+    - cron: '17 13,14 * * 1'
   workflow_dispatch:
 permissions:
   contents: write
@@ -11,15 +12,37 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Select local Monday delivery window
+        id: window
+        env:
+          EVENT: ${{ github.event_name }}
+          SCHEDULE: ${{ github.event.schedule }}
+        run: |
+          python - <<'PYCODE'
+          import os
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          local=datetime.now(ZoneInfo('America/New_York'))
+          monday_schedule=os.environ['EVENT']=='schedule' and os.environ['SCHEDULE']=='17 13,14 * * 1'
+          run=not monday_schedule or local.hour>=9
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+              f.write('run='+str(run).lower()+'\n')
+              f.write('digest='+str(run and monday_schedule).lower()+'\n')
+          PYCODE
+      - if: steps.window.outputs.run == 'true'
+        uses: actions/checkout@v4
+      - if: steps.window.outputs.run == 'true'
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: pip install -r requirements.txt playwright
-      - run: playwright install --with-deps chromium
-      - name: Refresh calendar and weekly metrics
+      - if: steps.window.outputs.run == 'true'
+        run: pip install -r requirements.txt playwright
+      - if: steps.window.outputs.run == 'true'
+        run: playwright install --with-deps chromium
+      - name: Collect, deduplicate, and enrich
+        if: steps.window.outputs.run == 'true'
         env:
           JAMBASE_API_KEY: ${{ secrets.JAMBASE_API_KEY }}
           TICKETMASTER_API_KEY: ${{ secrets.TICKETMASTER_API_KEY }}
@@ -33,8 +56,20 @@ jobs:
           BRIGHTDATA_BROWSER_USERNAME: ${{ secrets.BRIGHTDATA_BROWSER_USERNAME }}
           BRIGHTDATA_BROWSER_PASSWORD: ${{ secrets.BRIGHTDATA_BROWSER_PASSWORD }}
         run: python -m concert_discovery.refresh --browser --metrics
+      - name: Monday email after completed collection and enrichment
+        if: steps.window.outputs.digest == 'true'
+        env:
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+          EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+          DIGEST_PREFLIGHT: '1'
+          DIGEST_REQUIRE_PIPELINE: '1'
+        run: python -m concert_discovery.weekly_digest --mode send
       - name: Preserve request ledger even when collection fails
-        if: always()
+        if: always() && steps.window.outputs.run == 'true'
         run: |
           git config user.name 'Concert refresh'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'

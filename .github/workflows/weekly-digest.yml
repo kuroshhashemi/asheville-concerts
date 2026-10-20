@@ -1,9 +1,5 @@
 name: Weekly new-show email
 on:
-  schedule:
-    # Both UTC hours keep the local send time at 9 a.m. through daylight saving.
-    # The code skips the early winter run; delivery claims prevent duplicate sends.
-    - cron: '17 13,14 * * 1'
   workflow_dispatch:
     inputs:
       mode:
@@ -19,14 +15,31 @@ concurrency:
 jobs:
   digest:
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: pip install -r requirements.txt
+      - run: pip install -r requirements.txt playwright
+      - if: inputs.mode == 'send'
+        run: playwright install --with-deps chromium
       - run: python -m unittest test_weekly_digest -q
+      - name: Collect, deduplicate, and enrich
+        if: inputs.mode == 'send'
+        env:
+          JAMBASE_API_KEY: ${{ secrets.JAMBASE_API_KEY }}
+          TICKETMASTER_API_KEY: ${{ secrets.TICKETMASTER_API_KEY }}
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+          EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
+          JAMBASE_CALL_LIMIT: '900'
+          BRIGHTDATA_API_KEY: ${{ secrets.BRIGHTDATA_API_KEY }}
+          BRIGHTDATA_UNLOCKER_ZONE: ${{ secrets.BRIGHTDATA_UNLOCKER_ZONE }}
+          BRIGHTDATA_BROWSER_USERNAME: ${{ secrets.BRIGHTDATA_BROWSER_USERNAME }}
+          BRIGHTDATA_BROWSER_PASSWORD: ${{ secrets.BRIGHTDATA_BROWSER_PASSWORD }}
+        run: python -m concert_discovery.refresh --browser --metrics
       - name: Build and send new-show digest
         env:
           EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
@@ -34,6 +47,7 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
           DIGEST_PREFLIGHT: '1'
+          DIGEST_REQUIRE_PIPELINE: ${{ inputs.mode == 'send' && '1' || '0' }}
           SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
           SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
           DIGEST_MODE: ${{ github.event_name == 'schedule' && 'send' || inputs.mode }}
@@ -44,7 +58,8 @@ jobs:
           python -m concert_discovery.compact_catalog
           git config user.name 'Concert refresh'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add concert_discovery/concert_data.sqlite3 concert_discovery/assets/ticket-prices.json
+          git add concert_discovery/concert_data.sqlite3 concert_discovery/assets/ticket-prices.json concert_discovery/api_budget.sqlite3
+          if test -f concert_discovery/freshness.json; then git add concert_discovery/freshness.json; fi
           if ! git diff --cached --quiet; then
             git commit -m 'Preserve digest metadata checks'
             git push

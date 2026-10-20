@@ -31,13 +31,17 @@ def duplicate(a,b,all_shows):
  oa,ob=is_official(a),is_official(b)
  if oa and ob and ta and tb and ta!=tb:return False
  ticket=lambda x:(x.get('ticket_url') or '').split('?')[0].rstrip('/')
- exact_ticket=bool(ticket(a) and ticket(a)==ticket(b))
+ from concert_discovery.ticket_destinations import generic_destination
+ exact_ticket=bool(ticket(a) and not generic_destination(ticket(a)) and ticket(a)==ticket(b))
  bill=same_bill(a['title'],b['title'])
  # Full headline sets must agree; one overlapping performer is insufficient.
  names=lambda x:{re.sub(r'[^a-z0-9]','',h['display_name'].casefold()) for h in x.get('headliners',[])}
  na,nb=names(a),names(b)
  bill=bill or bool(na and na==nb)
  if not (bill or exact_ticket):return False
+ # Same dated provider event beats conflicting aggregator times. Explicitly
+ # distinct official performances were protected above.
+ if exact_ticket:return True
  if not ta or not tb or ta==tb:return True
  if oa==ob:return False
  official,other=(a,b) if oa else (b,a)

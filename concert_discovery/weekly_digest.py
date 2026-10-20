@@ -185,6 +185,10 @@ def run(store, sender, password, current=None, db_path=DATABASE_PATH):
     freshness = Path(db_path).with_name('freshness.json')
     if not freshness.exists() or current - instant(json.loads(freshness.read_text())['refreshed_at']) > timedelta(hours=48):
         raise RuntimeError('Catalog needs a successful refresh before sending a digest')
+    if os.environ.get('DIGEST_REQUIRE_PIPELINE') == '1':
+        state=json.loads(freshness.read_text())
+        if not state.get('pipeline_completed') or not state.get('enrichment_completed') or not state.get('collection_usable'):
+            raise RuntimeError('Catalog needs a successful refresh and enrichment pipeline before sending a digest')
     result = {'sent': 0, 'empty': 0, 'already_processed': 0, 'failed': 0, 'uncertain': 0}
     subscriptions = store.enabled()
     # October 19 is an owner-only rollout. Do not claim or advance anyone
@@ -194,6 +198,9 @@ def run(store, sender, password, current=None, db_path=DATABASE_PATH):
                          if s['email'].strip().casefold() == sender.strip().casefold()]
     if len(subscriptions) > 200:
         raise RuntimeError('Digest exceeds the configured free-sending safeguard (200 recipients)')
+    withheld_report={}
+    prepared_keys=set()
+    prepared_artists=set()
     for subscription in subscriptions:
         sid = subscription['subscription_id']
         start = max(instant(subscription['subscribed_at']), instant(subscription['last_processed_at']) if subscription.get('last_processed_at') else end - timedelta(days=7))
@@ -203,31 +210,52 @@ def run(store, sender, password, current=None, db_path=DATABASE_PATH):
         from concert_discovery.digest_readiness import require_ready
         if os.environ.get('DIGEST_PREFLIGHT') == '1' and shows:
             from concert_discovery.digest_preflight import prepare
-            prepare(shows,db_path)
+            retry_rows=[s for s in shows if s['dedupe_key'] not in prepared_keys]
+            if retry_rows:prepare(retry_rows,db_path,attempted_artists=prepared_artists)
+            prepared_keys.update(s['dedupe_key'] for s in retry_rows)
             # Matching may have populated identities and metrics since selection.
             shows = new_shows(start, end, db_path, store.sent_keys(sid))
-        require_ready(shows,db_path)
+        from concert_discovery.show_validation import partition
+        shows,withheld=partition(shows,get_shows(db_path),db_path)
+        for row in withheld:withheld_report[row['dedupe_key']]=row
+        result['withheld_rows']=result.get('withheld_rows',0)+len(withheld)
+        def finish(status,message_id=None):
+            if withheld:store.finish(sid,end.isoformat(),status,message_id,advance=False)
+            else:store.finish(sid,end.isoformat(),status,message_id)
+        require_ready(shows,db_path,allow_metadata_gaps=True)
+        from concert_discovery.digest_readiness import audit
+        remaining=audit(shows,db_path)
+        result['shows_with_metadata_gaps']=result.get('shows_with_metadata_gaps',0)+len(remaining)
+        if not shows and withheld:
+            result['empty']+=1
+            continue
         if not store.claim(sid, end.isoformat(), [s['dedupe_key'] for s in shows]):
             result['already_processed'] += 1
             continue
         if not shows:
-            store.finish(sid, end.isoformat(), 'empty'); result['empty'] += 1
+            finish('empty'); result['empty'] += 1
             continue
         # Honor opt-out even if it happened after the initial subscriber listing.
         if not store.is_enabled(sid):
-            store.finish(sid, end.isoformat(), 'empty'); result['empty'] += 1
+            finish('empty'); result['empty'] += 1
             continue
         unsubscribe_url = APP_URL + '?' + urlencode({'unsubscribe': subscription['unsubscribe_token']})
         content, plain = render(shows, unsubscribe_url, end, start=start)
         try:
             mid = send_email(sender, password, subscription['email'], SUBJECT, content, plain, unsubscribe_url)
         except (smtplib.SMTPAuthenticationError, smtplib.SMTPSenderRefused, smtplib.SMTPRecipientsRefused, smtplib.SMTPDataError):
-            store.finish(sid, end.isoformat(), 'failed'); result['failed'] += 1
+            finish('failed'); result['failed'] += 1
         except Exception:
             # A disconnect during DATA may mean Gmail accepted the message; never blindly resend.
-            store.finish(sid, end.isoformat(), 'uncertain'); result['uncertain'] += 1
+            finish('uncertain'); result['uncertain'] += 1
         else:
-            store.finish(sid, end.isoformat(), 'sent', mid); result['sent'] += 1
+            finish('sent',mid); result['sent'] += 1
+    if withheld_report:
+        from concert_discovery.operations_alerts import notify
+        lines=['These rows were withheld; valid rows remain eligible for delivery. Withheld rows will be reconsidered on later runs.','']
+        for row in sorted(withheld_report.values(),key=lambda r:(r['date'],r['title'])):
+            lines.append(row['date']+' | '+row['title']+' | '+row['venue']+'\nReason: '+'; '.join(row['reasons'])+'\n')
+        result['withheld_alert']=notify('digest-withheld:'+end.date().isoformat(),'\n'.join(lines),db_path)
     return result
 
 

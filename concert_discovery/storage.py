@@ -217,7 +217,10 @@ def initialize(db_path: Optional[Path] = None) -> None:
         from concert_discovery.additional_venues import VENUE_ICONS
         connection.executemany("INSERT OR IGNORE INTO venue_icons(venue_id,icon_url) VALUES (?,?)", VENUE_ICONS.items())
         from concert_discovery.pricing_catalog_patch import apply as apply_public_ticket_evidence
-        if db_path is None or Path(db_path)==DATABASE_PATH:apply_public_ticket_evidence(connection)
+        if db_path is None or Path(db_path)==DATABASE_PATH:
+            apply_public_ticket_evidence(connection)
+            from concert_discovery.metadata_catalog_patch import apply as apply_metadata_evidence
+            apply_metadata_evidence(connection)
 
 
 def stable_artist_id(name: str) -> str:

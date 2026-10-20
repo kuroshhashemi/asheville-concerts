@@ -57,7 +57,7 @@ def synchronize(db_path=DATABASE_PATH):
     hs='blocked' if h.get('status') in ('blocked','rate_limited','request_error','parse_error') else 'complete' if a.get('growth_detail') else 'unavailable' if h.get('status') in ('not_found','no_history','history') else 'pending'
     retry=None
     if h.get('checked_at'):
-     days=30 if h['status']=='not_found' else 1 if hs=='blocked' else 7
+     days=1
      retry=(datetime.fromisoformat(h['checked_at'].replace('Z','+00:00'))+timedelta(days=days)).isoformat()
     put('artist',aid,'growth',hs,h.get('checked_at'),retry,'Six-month comparison available' if hs=='complete' else 'No usable six-month comparison in saved history' if hs=='unavailable' else h.get('status','Not checked'))
    put('artist',aid,'genre','complete' if a.get('genre') else 'unavailable',detail='Structured JamBase genre' if a.get('genre') else 'Chosen genre source supplied no genre; other sources intentionally unused')

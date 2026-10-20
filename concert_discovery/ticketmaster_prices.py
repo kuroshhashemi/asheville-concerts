@@ -170,12 +170,12 @@ def fetch(eid):
     return decode(response.content, availability, eid)
 
 
-def refresh(db_path=DATABASE_PATH, limit=12, shows=None):
+def refresh(db_path=DATABASE_PATH, limit=12, shows=None, force=False, priority_ids=None):
     from concert_discovery.discovery import get_shows
     from concert_discovery.prices import load, for_show
     shows = get_shows(db_path) if shows is None else shows
     prices = load()
-    shows = sorted(shows, key=lambda s: (for_show(s, prices) is not None, s.get('performance_start', '')))
+    shows = sorted(shows, key=lambda s: (s['show_id'] not in priority_ids if priority_ids else False,for_show(s, prices) is not None, s.get('performance_start', '')))
     groups = {}
     for show in shows:
         if show.get('on_sale_label'):continue
@@ -193,9 +193,9 @@ def refresh(db_path=DATABASE_PATH, limit=12, shows=None):
         cached = {r['event_id']: dict(r) for r in c.execute('SELECT * FROM ticketmaster_price_checks')}
     for eid, urls in groups.items():
         row = cached.get(eid)
-        ttl = 7 if row and row['status'] == 'priced' else 1
+        ttl = 1  # Refresh saved prices and unsuccessful checks daily.
         cutoff = (datetime.now(timezone.utc) - timedelta(days=ttl)).isoformat()
-        if row and row['checked_at'] >= cutoff and row['parser_revision']==2:
+        if not force and row and row['checked_at'] >= cutoff and row['parser_revision']==2:
             price = json.loads(row['price_json']) if row['price_json'] else None
             observed = row['checked_at']
         else:

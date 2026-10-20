@@ -35,7 +35,7 @@ class TicketmasterPricesTests(unittest.TestCase):
   self.assertEqual(event_id('https://ticketmaster.evyy.net/c/123?u=https%3A%2F%2Fwww.ticketmaster.com%2Fevent%2F2D006539DA2A5A37'),'2D006539DA2A5A37')
   for u in ['https://evil.org/event/2D006539DA2A5A37','https://ticketmaster.com.evil.org/event/2D006539DA2A5A37','https://www.ticketmaster.com/event/Z7r9jZ1AAZ-A-']:
    self.assertIsNone(event_id(u))
- def test_daily_failures_weekly_success_cache_and_aliases(self):
+ def test_daily_failure_and_success_cache_and_aliases(self):
   shows=[{'ticket_url':'https://venue.org/show','sources':[{'source_url':'https://www.ticketmaster.com/slug/event/2D006539DA2A5A37'}]}]*2
   with tempfile.TemporaryDirectory() as tmp,patch('concert_discovery.ticketmaster_prices.fetch',return_value={'min':51.55,'max':82.41,'includes_fees':True}) as fetch,patch('concert_discovery.ticketmaster_prices.save') as save:
    db=Path(tmp)/'test.sqlite3';refresh(db,shows=shows);refresh(db,shows=shows)
@@ -43,6 +43,14 @@ class TicketmasterPricesTests(unittest.TestCase):
   with tempfile.TemporaryDirectory() as tmp,patch('concert_discovery.ticketmaster_prices.fetch',side_effect=ValueError('blocked')) as fetch,patch('concert_discovery.ticketmaster_prices.save') as save:
    db=Path(tmp)/'test.sqlite3';refresh(db,shows=shows);refresh(db,shows=shows)
    self.assertEqual(fetch.call_count,1);save.assert_not_called()
+ def test_priced_event_is_rechecked_after_one_day(self):
+  from datetime import datetime,timezone,timedelta
+  from concert_discovery.storage import connect
+  shows=[{'ticket_url':'https://www.ticketmaster.com/event/2D006539DA2A5A37','sources':[]}]
+  with tempfile.TemporaryDirectory() as tmp,patch('concert_discovery.ticketmaster_prices.fetch',return_value={'min':20,'max':20}) as fetch,patch('concert_discovery.ticketmaster_prices.save'):
+   db=Path(tmp)/'test.sqlite3';refresh(db,shows=shows)
+   with connect(db) as c:c.execute('UPDATE ticketmaster_price_checks SET checked_at=?',((datetime.now(timezone.utc)-timedelta(days=2)).isoformat(),))
+   refresh(db,shows=shows);self.assertEqual(fetch.call_count,2)
  def test_limit_and_ambiguous_event_ids(self):
   shows=[{'ticket_url':f'https://www.ticketmaster.com/event/{i:016X}','sources':[]} for i in range(5)]
   with tempfile.TemporaryDirectory() as tmp,patch('concert_discovery.ticketmaster_prices.fetch',return_value=None) as fetch:

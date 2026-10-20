@@ -1,0 +1,1530 @@
+{
+  "official_ticket_links": [
+    {
+      "url": "https://wl.eventim.us/event/saxsquatch-the-conspiracy-theory-tour/708118?afflky=ThirdRoom",
+      "source_url": "https://thirdroom.art/seetickets-event/saxsquatch/",
+      "checked_at": "2026-10-19T19:28:47+00:00",
+      "_show_key": "ticket:third-room:https://prod-nts-api.seeticketsusa.us/v1.0.0/promote/ywzmolnuvvmtnza4mte4oje4/clickthru:2027-02-04"
+    },
+    {
+      "url": "https://wl.eventim.us/event/saxsquatch-the-conspiracy-theory-tour/708118?afflky=ThirdRoom",
+      "source_url": "https://thirdroom.art/seetickets-event/saxsquatch-2/",
+      "checked_at": "2026-10-19T19:28:47+00:00",
+      "_show_key": "ticket:third-room:https://www.ticketmaster.com/event/z7r9jz1aa73vo:2027-02-05 23:30:00"
+    },
+    {
+      "url": "https://wl.eventim.us/event/saxsquatch-the-conspiracy-theory-tour/708118?afflky=ThirdRoom",
+      "source_url": "https://thirdroom.art/seetickets-event/saxsquatch-2/",
+      "checked_at": "2026-10-19T19:28:47+00:00",
+      "_show_key": "ticket:third-room:https://www.thirdroom.art:2027-02-05 20:00:00"
+    }
+  ],
+  "ticket_availability": [
+    {
+      "source_key": "official-calendar:9271",
+      "status": "sold_out",
+      "source_url": "https://thirdroom.art/calendar/",
+      "observed_at": "2026-10-19T19:28:47+00:00",
+      "_show_key": "ticket:third-room:https://prod-nts-api.seeticketsusa.us/v1.0.0/promote/ywzmolnuvvmtnjk1ntazoje4/clickthru:2027-04-16 20:00:00"
+    }
+  ],
+  "history_checks": [
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "checked_at": "2026-10-19T14:23:18+00:00",
+      "status": "history"
+    },
+    {
+      "spotify_id": "0Y5jhKedYfIAWOE5KO3mJJ",
+      "checked_at": "2026-10-19T14:23:19+00:00",
+      "status": "not_found"
+    },
+    {
+      "spotify_id": "0rsyQklwpBiAvkeXbnFB1t",
+      "checked_at": "2026-10-19T14:23:21+00:00",
+      "status": "not_found"
+    },
+    {
+      "spotify_id": "3M2LPcqyD4PxbOFvtF05R7",
+      "checked_at": "2026-10-19T14:23:21+00:00",
+      "status": "history"
+    },
+    {
+      "spotify_id": "4vu9FavLWNrehgAwzUeIL2",
+      "checked_at": "2026-10-19T14:23:20+00:00",
+      "status": "history"
+    },
+    {
+      "spotify_id": "5R09pajxQjiwdUH6Fw4yM5",
+      "checked_at": "2026-10-19T14:23:22+00:00",
+      "status": "history"
+    },
+    {
+      "spotify_id": "6zbmVVtvsmXRGWGgfjlE35",
+      "checked_at": "2026-10-19T14:23:22+00:00",
+      "status": "not_found"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "checked_at": "2026-10-19T14:23:20+00:00",
+      "status": "history"
+    }
+  ],
+  "listener_history": [
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-04-09",
+      "listeners": 43965,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-04-18",
+      "listeners": 40570,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-04-26",
+      "listeners": 39393,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-04-27",
+      "listeners": 39544,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-04-28",
+      "listeners": 39343,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-05-02",
+      "listeners": 37977,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-05-10",
+      "listeners": 37578,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-05-12",
+      "listeners": 38170,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-05-13",
+      "listeners": 37882,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-05-16",
+      "listeners": 37933,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-05-24",
+      "listeners": 37107,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-05-25",
+      "listeners": 36992,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-05-26",
+      "listeners": 37073,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-06-07",
+      "listeners": 37741,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-06-13",
+      "listeners": 37997,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-06-20",
+      "listeners": 37334,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-06-27",
+      "listeners": 37741,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-07-05",
+      "listeners": 36628,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-07-12",
+      "listeners": 36466,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-07-18",
+      "listeners": 36914,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-07-25",
+      "listeners": 36590,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-08-01",
+      "listeners": 36992,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-08-09",
+      "listeners": 36888,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-08-15",
+      "listeners": 37110,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-08-22",
+      "listeners": 37115,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-08-29",
+      "listeners": 36917,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-09-05",
+      "listeners": 37608,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-09-19",
+      "listeners": 40174,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-09-27",
+      "listeners": 42241,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-10-03",
+      "listeners": 42013,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-10-10",
+      "listeners": 41567,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-10-17",
+      "listeners": 42032,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-10-25",
+      "listeners": 42078,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-10-26",
+      "listeners": 41960,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-10-31",
+      "listeners": 41593,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-11-08",
+      "listeners": 40939,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-11-14",
+      "listeners": 40309,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-11-21",
+      "listeners": 39282,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-11-29",
+      "listeners": 40216,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-12-05",
+      "listeners": 40312,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-12-12",
+      "listeners": 40756,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-12-19",
+      "listeners": 41772,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2025-12-26",
+      "listeners": 43833,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-01-02",
+      "listeners": 42050,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-01-09",
+      "listeners": 42677,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-01-16",
+      "listeners": 41106,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-01-23",
+      "listeners": 39321,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-01-30",
+      "listeners": 39278,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-02-06",
+      "listeners": 38616,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-02-13",
+      "listeners": 37412,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-02-20",
+      "listeners": 37246,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-02-27",
+      "listeners": 37412,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-03-06",
+      "listeners": 38248,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-03-13",
+      "listeners": 40476,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-03-20",
+      "listeners": 40654,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-03-27",
+      "listeners": 40456,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-04-03",
+      "listeners": 40322,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-04-10",
+      "listeners": 40024,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-04-17",
+      "listeners": 39353,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-04-24",
+      "listeners": 38601,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-05-01",
+      "listeners": 37165,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-05-08",
+      "listeners": 36249,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-05-15",
+      "listeners": 36985,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-05-22",
+      "listeners": 37954,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-05-29",
+      "listeners": 38707,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-06-05",
+      "listeners": 39776,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-06-12",
+      "listeners": 38906,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-06-19",
+      "listeners": 37488,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-06-26",
+      "listeners": 35860,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-07-03",
+      "listeners": 33886,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-07-10",
+      "listeners": 32730,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-07-17",
+      "listeners": 32005,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-07-24",
+      "listeners": 32964,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-07-31",
+      "listeners": 33798,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-08-07",
+      "listeners": 34305,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-08-21",
+      "listeners": 34147,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-08-28",
+      "listeners": 34389,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-09-11",
+      "listeners": 38126,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-09-18",
+      "listeners": 43950,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-09-25",
+      "listeners": 47097,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-10-02",
+      "listeners": 48279,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "0MHcaxRSYyXEIJWsB2VF6B",
+      "observed_date": "2026-10-09",
+      "listeners": 48428,
+      "source_url": "https://pastspot.com/artists/0MHcaxRSYyXEIJWsB2VF6B",
+      "imported_at": "2026-10-19T14:23:18+00:00"
+    },
+    {
+      "spotify_id": "3M2LPcqyD4PxbOFvtF05R7",
+      "observed_date": "2026-07-02",
+      "listeners": 35238,
+      "source_url": "https://pastspot.com/artists/3M2LPcqyD4PxbOFvtF05R7",
+      "imported_at": "2026-10-19T14:23:21+00:00"
+    },
+    {
+      "spotify_id": "3M2LPcqyD4PxbOFvtF05R7",
+      "observed_date": "2026-07-03",
+      "listeners": 35238,
+      "source_url": "https://pastspot.com/artists/3M2LPcqyD4PxbOFvtF05R7",
+      "imported_at": "2026-10-19T14:23:21+00:00"
+    },
+    {
+      "spotify_id": "3M2LPcqyD4PxbOFvtF05R7",
+      "observed_date": "2026-07-10",
+      "listeners": 34623,
+      "source_url": "https://pastspot.com/artists/3M2LPcqyD4PxbOFvtF05R7",
+      "imported_at": "2026-10-19T14:23:21+00:00"
+    },
+    {
+      "spotify_id": "3M2LPcqyD4PxbOFvtF05R7",
+      "observed_date": "2026-07-17",
+      "listeners": 33001,
+      "source_url": "https://pastspot.com/artists/3M2LPcqyD4PxbOFvtF05R7",
+      "imported_at": "2026-10-19T14:23:21+00:00"
+    },
+    {
+      "spotify_id": "3M2LPcqyD4PxbOFvtF05R7",
+      "observed_date": "2026-07-24",
+      "listeners": 33632,
+      "source_url": "https://pastspot.com/artists/3M2LPcqyD4PxbOFvtF05R7",
+      "imported_at": "2026-10-19T14:23:21+00:00"
+    },
+    {
+      "spotify_id": "3M2LPcqyD4PxbOFvtF05R7",
+      "observed_date": "2026-07-31",
+      "listeners": 33736,
+      "source_url": "https://pastspot.com/artists/3M2LPcqyD4PxbOFvtF05R7",
+      "imported_at": "2026-10-19T14:23:21+00:00"
+    },
+    {
+      "spotify_id": "3M2LPcqyD4PxbOFvtF05R7",
+      "observed_date": "2026-08-07",
+      "listeners": 33817,
+      "source_url": "https://pastspot.com/artists/3M2LPcqyD4PxbOFvtF05R7",
+      "imported_at": "2026-10-19T14:23:21+00:00"
+    },
+    {
+      "spotify_id": "3M2LPcqyD4PxbOFvtF05R7",
+      "observed_date": "2026-08-21",
+      "listeners": 36507,
+      "source_url": "https://pastspot.com/artists/3M2LPcqyD4PxbOFvtF05R7",
+      "imported_at": "2026-10-19T14:23:21+00:00"
+    },
+    {
+      "spotify_id": "3M2LPcqyD4PxbOFvtF05R7",
+      "observed_date": "2026-08-28",
+      "listeners": 35820,
+      "source_url": "https://pastspot.com/artists/3M2LPcqyD4PxbOFvtF05R7",
+      "imported_at": "2026-10-19T14:23:21+00:00"
+    },
+    {
+      "spotify_id": "3M2LPcqyD4PxbOFvtF05R7",
+      "observed_date": "2026-09-11",
+      "listeners": 36101,
+      "source_url": "https://pastspot.com/artists/3M2LPcqyD4PxbOFvtF05R7",
+      "imported_at": "2026-10-19T14:23:21+00:00"
+    },
+    {
+      "spotify_id": "3M2LPcqyD4PxbOFvtF05R7",
+      "observed_date": "2026-09-18",
+      "listeners": 36288,
+      "source_url": "https://pastspot.com/artists/3M2LPcqyD4PxbOFvtF05R7",
+      "imported_at": "2026-10-19T14:23:21+00:00"
+    },
+    {
+      "spotify_id": "3M2LPcqyD4PxbOFvtF05R7",
+      "observed_date": "2026-09-25",
+      "listeners": 36201,
+      "source_url": "https://pastspot.com/artists/3M2LPcqyD4PxbOFvtF05R7",
+      "imported_at": "2026-10-19T14:23:21+00:00"
+    },
+    {
+      "spotify_id": "3M2LPcqyD4PxbOFvtF05R7",
+      "observed_date": "2026-10-02",
+      "listeners": 36575,
+      "source_url": "https://pastspot.com/artists/3M2LPcqyD4PxbOFvtF05R7",
+      "imported_at": "2026-10-19T14:23:21+00:00"
+    },
+    {
+      "spotify_id": "3M2LPcqyD4PxbOFvtF05R7",
+      "observed_date": "2026-10-09",
+      "listeners": 36272,
+      "source_url": "https://pastspot.com/artists/3M2LPcqyD4PxbOFvtF05R7",
+      "imported_at": "2026-10-19T14:23:21+00:00"
+    },
+    {
+      "spotify_id": "4vu9FavLWNrehgAwzUeIL2",
+      "observed_date": "2026-07-02",
+      "listeners": 5684,
+      "source_url": "https://pastspot.com/artists/4vu9FavLWNrehgAwzUeIL2",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "4vu9FavLWNrehgAwzUeIL2",
+      "observed_date": "2026-07-03",
+      "listeners": 5684,
+      "source_url": "https://pastspot.com/artists/4vu9FavLWNrehgAwzUeIL2",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "4vu9FavLWNrehgAwzUeIL2",
+      "observed_date": "2026-07-10",
+      "listeners": 5723,
+      "source_url": "https://pastspot.com/artists/4vu9FavLWNrehgAwzUeIL2",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "4vu9FavLWNrehgAwzUeIL2",
+      "observed_date": "2026-07-17",
+      "listeners": 5339,
+      "source_url": "https://pastspot.com/artists/4vu9FavLWNrehgAwzUeIL2",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "4vu9FavLWNrehgAwzUeIL2",
+      "observed_date": "2026-07-24",
+      "listeners": 4631,
+      "source_url": "https://pastspot.com/artists/4vu9FavLWNrehgAwzUeIL2",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "4vu9FavLWNrehgAwzUeIL2",
+      "observed_date": "2026-07-31",
+      "listeners": 4531,
+      "source_url": "https://pastspot.com/artists/4vu9FavLWNrehgAwzUeIL2",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "4vu9FavLWNrehgAwzUeIL2",
+      "observed_date": "2026-08-07",
+      "listeners": 4557,
+      "source_url": "https://pastspot.com/artists/4vu9FavLWNrehgAwzUeIL2",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "4vu9FavLWNrehgAwzUeIL2",
+      "observed_date": "2026-08-21",
+      "listeners": 4792,
+      "source_url": "https://pastspot.com/artists/4vu9FavLWNrehgAwzUeIL2",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "4vu9FavLWNrehgAwzUeIL2",
+      "observed_date": "2026-08-28",
+      "listeners": 4959,
+      "source_url": "https://pastspot.com/artists/4vu9FavLWNrehgAwzUeIL2",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "4vu9FavLWNrehgAwzUeIL2",
+      "observed_date": "2026-09-11",
+      "listeners": 5695,
+      "source_url": "https://pastspot.com/artists/4vu9FavLWNrehgAwzUeIL2",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "4vu9FavLWNrehgAwzUeIL2",
+      "observed_date": "2026-09-18",
+      "listeners": 5704,
+      "source_url": "https://pastspot.com/artists/4vu9FavLWNrehgAwzUeIL2",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "4vu9FavLWNrehgAwzUeIL2",
+      "observed_date": "2026-09-25",
+      "listeners": 5750,
+      "source_url": "https://pastspot.com/artists/4vu9FavLWNrehgAwzUeIL2",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "4vu9FavLWNrehgAwzUeIL2",
+      "observed_date": "2026-10-02",
+      "listeners": 5541,
+      "source_url": "https://pastspot.com/artists/4vu9FavLWNrehgAwzUeIL2",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "4vu9FavLWNrehgAwzUeIL2",
+      "observed_date": "2026-10-09",
+      "listeners": 5377,
+      "source_url": "https://pastspot.com/artists/4vu9FavLWNrehgAwzUeIL2",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "5R09pajxQjiwdUH6Fw4yM5",
+      "observed_date": "2026-06-26",
+      "listeners": 156987,
+      "source_url": "https://pastspot.com/artists/5R09pajxQjiwdUH6Fw4yM5",
+      "imported_at": "2026-10-19T14:23:22+00:00"
+    },
+    {
+      "spotify_id": "5R09pajxQjiwdUH6Fw4yM5",
+      "observed_date": "2026-07-03",
+      "listeners": 153171,
+      "source_url": "https://pastspot.com/artists/5R09pajxQjiwdUH6Fw4yM5",
+      "imported_at": "2026-10-19T14:23:22+00:00"
+    },
+    {
+      "spotify_id": "5R09pajxQjiwdUH6Fw4yM5",
+      "observed_date": "2026-07-10",
+      "listeners": 154027,
+      "source_url": "https://pastspot.com/artists/5R09pajxQjiwdUH6Fw4yM5",
+      "imported_at": "2026-10-19T14:23:22+00:00"
+    },
+    {
+      "spotify_id": "5R09pajxQjiwdUH6Fw4yM5",
+      "observed_date": "2026-07-17",
+      "listeners": 149533,
+      "source_url": "https://pastspot.com/artists/5R09pajxQjiwdUH6Fw4yM5",
+      "imported_at": "2026-10-19T14:23:22+00:00"
+    },
+    {
+      "spotify_id": "5R09pajxQjiwdUH6Fw4yM5",
+      "observed_date": "2026-07-24",
+      "listeners": 145735,
+      "source_url": "https://pastspot.com/artists/5R09pajxQjiwdUH6Fw4yM5",
+      "imported_at": "2026-10-19T14:23:22+00:00"
+    },
+    {
+      "spotify_id": "5R09pajxQjiwdUH6Fw4yM5",
+      "observed_date": "2026-07-31",
+      "listeners": 142021,
+      "source_url": "https://pastspot.com/artists/5R09pajxQjiwdUH6Fw4yM5",
+      "imported_at": "2026-10-19T14:23:22+00:00"
+    },
+    {
+      "spotify_id": "5R09pajxQjiwdUH6Fw4yM5",
+      "observed_date": "2026-08-07",
+      "listeners": 150210,
+      "source_url": "https://pastspot.com/artists/5R09pajxQjiwdUH6Fw4yM5",
+      "imported_at": "2026-10-19T14:23:22+00:00"
+    },
+    {
+      "spotify_id": "5R09pajxQjiwdUH6Fw4yM5",
+      "observed_date": "2026-08-21",
+      "listeners": 169444,
+      "source_url": "https://pastspot.com/artists/5R09pajxQjiwdUH6Fw4yM5",
+      "imported_at": "2026-10-19T14:23:22+00:00"
+    },
+    {
+      "spotify_id": "5R09pajxQjiwdUH6Fw4yM5",
+      "observed_date": "2026-08-28",
+      "listeners": 175394,
+      "source_url": "https://pastspot.com/artists/5R09pajxQjiwdUH6Fw4yM5",
+      "imported_at": "2026-10-19T14:23:22+00:00"
+    },
+    {
+      "spotify_id": "5R09pajxQjiwdUH6Fw4yM5",
+      "observed_date": "2026-09-11",
+      "listeners": 160865,
+      "source_url": "https://pastspot.com/artists/5R09pajxQjiwdUH6Fw4yM5",
+      "imported_at": "2026-10-19T14:23:22+00:00"
+    },
+    {
+      "spotify_id": "5R09pajxQjiwdUH6Fw4yM5",
+      "observed_date": "2026-09-18",
+      "listeners": 148669,
+      "source_url": "https://pastspot.com/artists/5R09pajxQjiwdUH6Fw4yM5",
+      "imported_at": "2026-10-19T14:23:22+00:00"
+    },
+    {
+      "spotify_id": "5R09pajxQjiwdUH6Fw4yM5",
+      "observed_date": "2026-09-25",
+      "listeners": 145249,
+      "source_url": "https://pastspot.com/artists/5R09pajxQjiwdUH6Fw4yM5",
+      "imported_at": "2026-10-19T14:23:22+00:00"
+    },
+    {
+      "spotify_id": "5R09pajxQjiwdUH6Fw4yM5",
+      "observed_date": "2026-10-02",
+      "listeners": 144805,
+      "source_url": "https://pastspot.com/artists/5R09pajxQjiwdUH6Fw4yM5",
+      "imported_at": "2026-10-19T14:23:22+00:00"
+    },
+    {
+      "spotify_id": "5R09pajxQjiwdUH6Fw4yM5",
+      "observed_date": "2026-10-09",
+      "listeners": 148138,
+      "source_url": "https://pastspot.com/artists/5R09pajxQjiwdUH6Fw4yM5",
+      "imported_at": "2026-10-19T14:23:22+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-04-09",
+      "listeners": 3855,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-04-18",
+      "listeners": 3661,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-04-26",
+      "listeners": 3580,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-04-27",
+      "listeners": 3618,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-04-28",
+      "listeners": 3621,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-05-02",
+      "listeners": 3589,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-05-10",
+      "listeners": 3699,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-05-12",
+      "listeners": 3753,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-05-13",
+      "listeners": 3770,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-05-16",
+      "listeners": 3828,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-05-24",
+      "listeners": 3935,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-05-25",
+      "listeners": 3872,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-05-26",
+      "listeners": 3938,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-05-30",
+      "listeners": 4015,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-06-06",
+      "listeners": 5507,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-06-13",
+      "listeners": 10499,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-06-20",
+      "listeners": 13085,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-06-27",
+      "listeners": 13887,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-07-05",
+      "listeners": 13391,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-07-11",
+      "listeners": 9321,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-07-18",
+      "listeners": 6992,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-07-25",
+      "listeners": 5797,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-08-01",
+      "listeners": 5184,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-08-08",
+      "listeners": 4420,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-08-15",
+      "listeners": 4144,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-08-22",
+      "listeners": 6028,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-08-29",
+      "listeners": 7595,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-09-05",
+      "listeners": 8361,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-09-19",
+      "listeners": 14157,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-09-27",
+      "listeners": 13552,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-10-03",
+      "listeners": 19663,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-10-10",
+      "listeners": 18805,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-10-17",
+      "listeners": 17304,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-10-24",
+      "listeners": 16960,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-10-26",
+      "listeners": 17130,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-10-31",
+      "listeners": 14681,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-11-08",
+      "listeners": 16135,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-11-14",
+      "listeners": 19927,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-11-21",
+      "listeners": 21791,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-11-29",
+      "listeners": 20384,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-12-05",
+      "listeners": 19204,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-12-12",
+      "listeners": 15685,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-12-19",
+      "listeners": 14402,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2025-12-26",
+      "listeners": 12974,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-01-02",
+      "listeners": 11173,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-01-09",
+      "listeners": 10864,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-01-16",
+      "listeners": 10124,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-01-23",
+      "listeners": 9561,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-01-30",
+      "listeners": 9379,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-02-06",
+      "listeners": 8980,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-02-13",
+      "listeners": 8210,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-02-20",
+      "listeners": 7836,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-02-27",
+      "listeners": 7862,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-03-06",
+      "listeners": 7344,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-03-13",
+      "listeners": 6970,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-03-20",
+      "listeners": 6636,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-03-27",
+      "listeners": 6294,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-04-03",
+      "listeners": 6103,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-04-10",
+      "listeners": 6036,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-04-17",
+      "listeners": 5928,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-04-24",
+      "listeners": 5489,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-05-01",
+      "listeners": 5154,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-05-08",
+      "listeners": 4813,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-05-15",
+      "listeners": 4238,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-05-22",
+      "listeners": 4044,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-05-29",
+      "listeners": 3943,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-06-05",
+      "listeners": 3981,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-06-12",
+      "listeners": 4115,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-06-19",
+      "listeners": 4099,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-06-26",
+      "listeners": 4094,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-07-04",
+      "listeners": 3929,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-07-10",
+      "listeners": 3695,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-07-17",
+      "listeners": 3605,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-07-24",
+      "listeners": 3478,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-07-31",
+      "listeners": 3575,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-08-07",
+      "listeners": 3580,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-08-21",
+      "listeners": 3785,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-08-28",
+      "listeners": 4859,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-09-11",
+      "listeners": 8900,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-09-18",
+      "listeners": 8918,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-09-25",
+      "listeners": 8081,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-10-02",
+      "listeners": 5242,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    },
+    {
+      "spotify_id": "7hVRBYGVXutdWChnzb92Jb",
+      "observed_date": "2026-10-09",
+      "listeners": 3851,
+      "source_url": "https://pastspot.com/artists/7hVRBYGVXutdWChnzb92Jb",
+      "imported_at": "2026-10-19T14:23:20+00:00"
+    }
+  ],
+  "aliases": [
+    {
+      "alias": "ticket:third-room:https://www.thirdroom.art:2027-02-05 20:00:00",
+      "canonical": "ticket:third-room:https://www.ticketmaster.com/event/z7r9jz1aa73vo:2027-02-05 23:30:00"
+    }
+  ]
+}

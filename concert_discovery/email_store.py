@@ -86,10 +86,10 @@ class EmailStore:
             data={'status': 'sending', 'show_keys': keys, 'attempted_at': now()}, prefer='return=representation')
         return bool(rows)
 
-    def finish(self, subscription_id, end, status, message_id=None):
+    def finish(self, subscription_id, end, status, message_id=None, advance=True):
         self.request('PATCH', 'email_digest_deliveries', params={
             'subscription_id': 'eq.' + subscription_id, 'period_end': 'eq.' + end},
             data={'status': status, 'message_id': message_id, 'sent_at': now() if status == 'sent' else None})
-        if status in ('sent', 'empty'):
+        if advance and status in ('sent', 'empty'):
             self.request('PATCH', 'email_subscriptions', params={'subscription_id': 'eq.' + subscription_id},
                          data={'last_processed_at': end, 'updated_at': now()})

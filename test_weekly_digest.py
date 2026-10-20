@@ -26,9 +26,9 @@ class FakeStore:
         self.claimed[(sid, end)] = keys
         return True
     def is_enabled(self, sid): return self.active
-    def finish(self, sid, end, status, mid=None):
+    def finish(self, sid, end, status, mid=None, advance=True):
         self.finished.append(status)
-        if status in ('sent', 'empty'): self.subscription['last_processed_at'] = end
+        if advance and status in ('sent', 'empty'): self.subscription['last_processed_at'] = end
 
 
 class DigestTests(unittest.TestCase):
@@ -94,9 +94,13 @@ class DigestTests(unittest.TestCase):
         self.assertIn('&lt; 1k', content)
         self.assertIn('+0%', content)
 
-    def execute(self, store, shows=None, error=None):
+    def execute(self, store, shows=None, error=None, gaps=None, held=None):
         with patch('concert_discovery.weekly_digest.new_shows', return_value=shows if shows is not None else [{'dedupe_key': 'concert'}]), \
+             patch('concert_discovery.weekly_digest.get_shows',return_value=[]), \
+             patch('concert_discovery.show_validation.partition',side_effect=lambda rows,catalog,db:(rows,held or [])), \
+             patch('concert_discovery.operations_alerts.notify',return_value={'operations_alert':'sent_to_owner'}), \
              patch('concert_discovery.digest_readiness.require_ready'), \
+             patch('concert_discovery.digest_readiness.audit',return_value=gaps or []), \
              patch('concert_discovery.weekly_digest.render', return_value=('html', 'plain')), \
              patch('concert_discovery.weekly_digest.send_email', return_value='message-id', side_effect=error) as send:
             result = run(store, 'person@example.com', 'secret', END + timedelta(hours=1), self.db)
@@ -110,12 +114,33 @@ class DigestTests(unittest.TestCase):
         self.assertEqual(store.claimed, {})
         self.assertEqual(store.finished, [])
 
-    def test_pending_enrichment_blocks_before_claim_or_email(self):
+    def test_unexpected_validation_failure_blocks_before_claim_or_email(self):
         store=FakeStore()
-        with patch('concert_discovery.weekly_digest.new_shows',return_value=[{'dedupe_key':'new'}]),patch('concert_discovery.digest_readiness.require_ready',side_effect=RuntimeError('Digest held')),patch('concert_discovery.weekly_digest.send_email') as send:
+        with patch('concert_discovery.weekly_digest.new_shows',return_value=[{'dedupe_key':'new'}]),patch('concert_discovery.digest_readiness.require_ready',side_effect=RuntimeError('Digest held')),patch('concert_discovery.weekly_digest.get_shows',return_value=[]),patch('concert_discovery.show_validation.partition',side_effect=lambda rows,catalog,db:(rows,[])),patch('concert_discovery.weekly_digest.send_email') as send:
             with self.assertRaisesRegex(RuntimeError,'Digest held'):run(store,'person@example.com','secret',END+timedelta(hours=1),self.db)
             send.assert_not_called()
         self.assertEqual(store.claimed,{})
+
+    def test_missing_optional_metadata_does_not_block_delivery(self):
+        result,calls=self.execute(FakeStore(),gaps=[{'pending':['growth']}])
+        self.assertEqual((result['sent'],calls,result['shows_with_metadata_gaps']),(1,1,1))
+
+    def test_withheld_rows_do_not_block_valid_rows_or_advance_checkpoint(self):
+        store=FakeStore()
+        held=[{'dedupe_key':'held','title':'Conflicted show','date':'2027-01-01','venue':'Example','reasons':['Conflicting dates']}]
+        result,calls=self.execute(store,held=held)
+        self.assertEqual((result['sent'],calls,result['withheld_rows']),(1,1,1))
+        self.assertIsNone(store.subscription['last_processed_at'])
+        self.assertEqual(next(iter(store.claimed.values())),['concert'])
+
+    def test_all_withheld_sends_no_digest_and_keeps_rows_eligible(self):
+        store=FakeStore()
+        held=[{'dedupe_key':'held','title':'Conflicted show','date':'2027-01-01','venue':'Example','reasons':['Conflicting dates']}]
+        result,calls=self.execute(store,shows=[],held=held)
+        self.assertEqual(calls,0)
+        self.assertEqual(store.claimed,{})
+        self.assertIsNone(store.subscription['last_processed_at'])
+        self.assertEqual(result['withheld_alert']['operations_alert'],'sent_to_owner')
 
     def test_success_and_rerun_do_not_duplicate(self):
         store = FakeStore()

@@ -4,11 +4,11 @@ from urllib.parse import urlsplit
 from concert_discovery.storage import connect,DATABASE_PATH,utc_now
 from concert_discovery.prices import load,for_show,from_ticket_markup,save,url_key
 
-def refresh(db_path=DATABASE_PATH,limit=6,shows=None,backend="auto"):
+def refresh(db_path=DATABASE_PATH,limit=6,shows=None,backend="auto",priority_ids=None):
     import re
     from concert_discovery.discovery import get_shows
     from playwright.sync_api import sync_playwright
-    shows=get_shows(db_path) if shows is None else shows;prices=load();cutoff=(datetime.now(timezone.utc)-timedelta(days=7)).isoformat()
+    shows=get_shows(db_path) if shows is None else shows;prices=load();cutoff=(datetime.now(timezone.utc)-timedelta(days=1)).isoformat()
     hosts={'etix.com','tixr.com','secured.brevardmusic.org','jambase.com','wl.seetickets.us','wl.eventim.us','prod-nts-api.seeticketsusa.us','ticketmaster.com'}
     from pathlib import Path
     import os
@@ -43,7 +43,7 @@ def refresh(db_path=DATABASE_PATH,limit=6,shows=None,backend="auto"):
         page=browser.new_page()
         page.route('**/*',lambda route:route.abort() if route.request.resource_type in ('image','media','font') else route.continue_())
         try:
-            for show in sorted(shows,key=lambda s:(not bool(s.get('just_announced')),s['performance_start'])):
+            for show in sorted(shows,key=lambda s:(s['show_id'] not in priority_ids if priority_ids else False,not bool(s.get('just_announced')),s['performance_start'])):
                 url=show.get('ticket_url') or '';host=(urlsplit(url).hostname or '').removeprefix('www.');key=url_key(url)
                 if urlsplit(url).scheme!='https' or host not in hosts or key in seen or key in recent or for_show(show,prices) or show.get('sold_out') or show.get('on_sale_label'):continue
                 if result['rendered_price_pages']>=limit:break

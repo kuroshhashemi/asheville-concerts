@@ -26,7 +26,7 @@ def audit(shows,db_path=DATABASE_PATH):
                     gaps.append('listeners/photo: '+a['display_name'])
                 if not exists('history_checks','SELECT 1 FROM history_checks WHERE spotify_id=? AND checked_at>=?',(sid,cutoff[:10])):
                     gaps.append('growth: '+a['display_name'])
-            if for_show(show,prices) is None and not show.get('on_sale_label'):
+            if for_show(show,prices) is None and not show.get('on_sale_label') and not show.get('sold_out'):
                 urls=[show.get('ticket_url'),show.get('official_event_url')]+[s.get('source_url') for s in show.get('sources',[])]
                 attempted=False
                 for url in filter(None,urls):
@@ -37,9 +37,9 @@ def audit(shows,db_path=DATABASE_PATH):
                 if not attempted and 'ticket_price_checks' in tables:
                     from urllib.parse import urlsplit
                     provider=(urlsplit(show.get('ticket_url') or '').hostname or '').removeprefix('www.')
-                    # The collector's weekly provider circuit breaker deliberately
+                    # The collector's daily provider circuit breaker deliberately
                     # reuses a failed provider check instead of repeating it per show.
-                    blocked=c.execute("SELECT url FROM ticket_price_checks WHERE status IN ('blocked','error') AND checked_at>=?",(cutoff,)).fetchall()
+                    blocked=c.execute("SELECT url FROM ticket_price_checks WHERE status IN ('blocked','error') AND checked_at>=?",((datetime.now(timezone.utc)-timedelta(days=1)).isoformat(),)).fetchall()
                     attempted=bool(provider) and any((urlsplit(r[0]).hostname or '').removeprefix('www.')==provider for r in blocked)
                 # A venue page lookup is not a Ticketmaster inventory check.
                 from concert_discovery.ticketmaster_prices import event_id
@@ -65,8 +65,23 @@ def audit(shows,db_path=DATABASE_PATH):
             if gaps:pending.append({'show_id':show['show_id'],'title':show['title'],'pending':sorted(set(gaps))})
     return pending
 
-def require_ready(shows,db_path=DATABASE_PATH):
+def require_ready(shows,db_path=DATABASE_PATH,allow_metadata_gaps=False):
+    from concert_discovery.digest_validation import conflicts
+    from concert_discovery.discovery import get_shows
+    from concert_discovery.ticket_destinations import generic_destination
+    with connect(db_path) as c:
+        has_links=c.execute("SELECT 1 FROM sqlite_master WHERE name='official_ticket_links'").fetchone()
+        verified_pages={r['show_id']:r['source_url'] for r in c.execute('SELECT * FROM official_ticket_links') if not generic_destination(r['source_url'])} if has_links else {}
+    conflicts_found=conflicts(shows,get_shows(db_path),verified_pages)
+    if conflicts_found:
+        names=', '.join(sorted({r['title'] for r in conflicts_found}))
+        raise RuntimeError('Digest held: possible duplicate/date conflicts: '+names)
     pending=audit(shows,db_path)
-    if pending:
+    core={'show source','date','venue','title'}
+    structural=[r for r in pending if any(f.split(':')[0] in core for f in r['pending'])]
+    if structural:
+        raise RuntimeError('Digest held: '+str(len(structural))+' shows lack core show information')
+    if pending and not allow_metadata_gaps:
         fields=sorted({f.split(':')[0] for row in pending for f in row['pending']})
         raise RuntimeError('Digest held: '+str(len(pending))+' shows need enrichment checks ('+', '.join(fields)+')')
+

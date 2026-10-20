@@ -35,3 +35,12 @@ class PriceRefreshTests(unittest.TestCase):
    checks(c);c.execute('INSERT INTO ticket_price_checks VALUES(?,?,?,?,?,?)',(url_key(url),url,utc_now(),'priced',200,'Previously collected'))
   with patch('concert_discovery.price_refresh.load',return_value={}),patch('concert_discovery.price_refresh.save') as save,patch('concert_discovery.source_links.requests.get',return_value=Mock(status_code=200,is_redirect=False,text='<div role="combobox" aria-label="Adult, Price: $25"></div>')) as request:
    result=refresh(self.db,shows=self.shows()[:1]);self.assertEqual(request.call_count,1);self.assertEqual(result['price_pages_priced'],1);self.assertTrue(save.called)
+
+ def test_provider_block_expires_after_one_day(self):
+  from datetime import datetime,timezone,timedelta
+  from concert_discovery.price_refresh import schema as checks
+  old=(datetime.now(timezone.utc)-timedelta(days=2)).isoformat()
+  with connect(self.db) as c:
+   checks(c);c.execute('INSERT INTO ticket_price_checks VALUES(?,?,?,?,?,?)',('etix.com/ticket/p/old','https://www.etix.com/ticket/p/old',old,'blocked',403,'Blocked'))
+  with patch('concert_discovery.source_links.requests.get',return_value=Mock(status_code=200,is_redirect=False,text='<p>No tickets listed</p>')) as request:
+   refresh(self.db,limit=1,shows=self.shows()[:1]);self.assertEqual(request.call_count,1)

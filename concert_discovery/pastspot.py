@@ -34,8 +34,8 @@ def comparison(rows, today=None):
     if n==0:return None
     return dict(value=(count/n-1)*100,baseline_date=baseline.isoformat(),latest_date=latest.isoformat(),source_url=url)
 
-def refresh_history(db_path=None, limit=40, spotify_ids=None):
-    """Bounded weekly checks; missing artists retry after 30 days. No UI requests."""
+def refresh_history(db_path=None, limit=40, spotify_ids=None, force=False, priority_ids=None):
+    """Bounded daily checks, including unavailable artists. No UI requests."""
     with connect(db_path) as c:
         schema(c)
         artists=[dict(r) for r in c.execute('''SELECT DISTINCT a.spotify_artist_id,h.checked_at,h.status
@@ -48,11 +48,12 @@ def refresh_history(db_path=None, limit=40, spotify_ids=None):
           ORDER BY h.checked_at IS NOT NULL, MAX(d.first_seen_at) DESC, COALESCE(h.checked_at,'')''',(date.today().isoformat(),))]
     if spotify_ids is not None:
         artists=[a for a in artists if a['spotify_artist_id'] in spotify_ids]
+    if priority_ids:artists.sort(key=lambda a:a["spotify_artist_id"] not in priority_ids)
     attempted=0
     for a in artists:
-        if a['checked_at']:
+        if a['checked_at'] and not force:
             age=(datetime.now().date()-datetime.fromisoformat(a['checked_at'].replace('Z','+00:00')).date()).days
-            if age<(30 if a['status']=='not_found' else 1 if a['status'] in ('blocked','rate_limited','request_error','parse_error') else 7):continue
+            if age<1:continue
         if attempted>=limit:break
         sid=a['spotify_artist_id'];url='https://pastspot.com/artists/'+sid
         attempted+=1

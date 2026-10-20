@@ -79,7 +79,7 @@ class PageReader:
         # Only externally sourced HTTPS pages; never crawl local services or send API credentials.
         if parsed.scheme!='https' or not parsed.hostname or parsed.hostname in ('localhost','127.0.0.1') or parsed.hostname.replace('.','').isdigit():return None
         with connect(self.db_path) as c:
-            schema(c);row=c.execute("SELECT markup,status,checked_at FROM identity_page_cache WHERE url=? AND checked_at>=datetime('now','-7 days')",(url,)).fetchone()
+            schema(c);row=c.execute("SELECT markup,status,checked_at FROM identity_page_cache WHERE url=? AND checked_at>=datetime('now', '-1 day')",(url,)).fetchone()
         if row:
             markup=decode_markup(row[0]) if row[1]==200 else None
             if markup:

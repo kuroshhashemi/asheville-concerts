@@ -40,13 +40,16 @@ def save_events(events,db_path=DATABASE_PATH):
     from concert_discovery.matching_queue import enqueue
     enqueue(db_path)
 
-def enrich(limit=40,db_path=DATABASE_PATH,artist_ids=None):
+def enrich(limit=40,db_path=DATABASE_PATH,artist_ids=None,priority_ids=None):
     with connect(db_path) as c:
         c.execute('CREATE TABLE IF NOT EXISTS identity_attempts(artist_id TEXT PRIMARY KEY,checked_at TEXT)')
         artists=[dict(r) for r in c.execute("""SELECT DISTINCT a.* FROM artists a JOIN show_artists sa USING(artist_id) JOIN shows s USING(show_id)
             WHERE sa.billing_role LIKE '%headliner%' AND substr(s.performance_start,1,10)>=date('now')
             ORDER BY a.spotify_artist_id IS NULL,s.performance_start""")]
     if artist_ids is not None:artists=[a for a in artists if a["artist_id"] in artist_ids]
+    with connect(db_path) as c:
+        attempts={r[0]:r[1] for r in c.execute('SELECT artist_id,MAX(retrieved_at) FROM artist_metric_snapshots GROUP BY artist_id')}
+    artists.sort(key=lambda a:(a['artist_id'] not in (priority_ids or set()),attempts.get(a['artist_id'],'')))
     from concert_discovery.spotify_matching import SpotifySearch,SpotifyUnavailable,match_artist,match_bandsintown_link
     try:search=SpotifySearch()
     except (SpotifyUnavailable,requests.RequestException) as error:search=None;artwork_error=type(error).__name__
@@ -57,8 +60,8 @@ def enrich(limit=40,db_path=DATABASE_PATH,artist_ids=None):
         if not a['spotify_artist_id']:continue
         if attempted>=limit:break
         with connect(db_path) as c:
-            fresh=c.execute("SELECT 1 FROM artist_metric_snapshots WHERE artist_id=? AND status='success' AND source_url=? AND retrieved_at>=?",(a['artist_id'],a['spotify_profile_url'],(datetime.now(timezone.utc)-timedelta(days=7)).isoformat())).fetchone()
-            recent=c.execute("SELECT 1 FROM identity_attempts WHERE artist_id=? AND checked_at>=?",(a['artist_id'],(datetime.now(timezone.utc)-timedelta(days=7)).isoformat())).fetchone()
+            fresh=c.execute("SELECT 1 FROM artist_metric_snapshots WHERE artist_id=? AND status='success' AND source_url=? AND retrieved_at>=?",(a['artist_id'],a['spotify_profile_url'],(datetime.now(timezone.utc)-timedelta(days=1)).isoformat())).fetchone()
+            recent=c.execute("SELECT 1 FROM identity_attempts WHERE artist_id=? AND checked_at>=?",(a['artist_id'],(datetime.now(timezone.utc)-timedelta(days=1)).isoformat())).fetchone()
         image_present=c.execute('SELECT 1 FROM artist_images WHERE artist_id=? AND source_url=?',(a['artist_id'],a['spotify_profile_url'])).fetchone()
         if (fresh and image_present) or (not a['spotify_artist_id'] and recent):continue
         attempted+=1
@@ -134,6 +137,8 @@ def apply_refresh(events,snapshots,errors=(),metrics=False,db_path=DATABASE_PATH
     from concert_discovery.collection_health import start,observation,finish
     from concert_discovery.calendar_presence import record_snapshot
     from concert_discovery.dedupe import cleanup_duplicates
+    from concert_discovery.discovery import get_shows
+    before={s['dedupe_key'] for s in get_shows(db_path)}
     errors=list(errors);rid=start(db_path)
     try:
         from concert_discovery.bill_evidence import enrich_events
@@ -157,29 +162,40 @@ def apply_refresh(events,snapshots,errors=(),metrics=False,db_path=DATABASE_PATH
     from concert_discovery.collection_health import missing_checks
     missing_checks(rid,checked,errors,db_path,expected_venues=expected_venues)
     result={'source_records':len(events),'warnings':errors,'duplicates_consolidated':merges,'run_id':rid}
+    visible=get_shows(db_path)
+    from concert_discovery.show_validation import partition
+    _,conflicted=partition(visible,visible,db_path)
+    result['show_validation_issues']=conflicted
+    new_keys={s['dedupe_key'] for s in visible}-before
+    new_shows=[s for s in visible if s['dedupe_key'] in new_keys]
+    new_artist_ids={a['artist_id'] for s in new_shows for a in s['headliners']}
+    result['new_shows_for_enrichment']=len(new_shows)
     from concert_discovery.metadata_outcomes import synchronize
     synchronize(db_path)
     from concert_discovery.matching_queue import run
-    result.update(run(limit=matching_limit,db_path=db_path))
+    from concert_discovery.pipeline_steps import attempt
+    attempt(result,errors,'Spotify matching',lambda:run(limit=max(matching_limit,len(new_artist_ids)),db_path=db_path,priority_ids=new_artist_ids))
     if metrics:
         from concert_discovery.source_links import discover
-        result.update(discover(db_path))
-        result.update(enrich(db_path=db_path))
+        attempt(result,errors,'Source links',lambda:discover(db_path))
+        attempt(result,errors,'Listeners and artwork',lambda:enrich(limit=max(40,len(new_artist_ids)),db_path=db_path,priority_ids=new_artist_ids))
         from concert_discovery.pastspot import refresh_history
-        result.update(refresh_history(db_path))
+        updated=get_shows(db_path)
+        priority_spotify={a['spotify_artist_id'] for s in updated if s['dedupe_key'] in new_keys for a in s['headliners'] if a.get('spotify_artist_id')}
+        attempt(result,errors,'Growth',lambda:refresh_history(db_path,limit=max(40,len(priority_spotify)),priority_ids=priority_spotify))
     from concert_discovery.price_refresh import refresh as refresh_prices
-    try:result.update(refresh_prices(db_path=db_path))
+    try:result.update(refresh_prices(db_path=db_path,limit=max(12,len(new_shows)),priority_ids={s["show_id"] for s in new_shows}))
     except Exception as error:
         errors.append('Price checks unavailable; saved prices retained ('+type(error).__name__+')')
     from concert_discovery.ticketmaster_prices import refresh as ticketmaster_prices
-    try:result.update(ticketmaster_prices(db_path=db_path))
+    try:result.update(ticketmaster_prices(db_path=db_path,limit=max(12,len(new_shows)),priority_ids={s["show_id"] for s in new_shows}))
     except Exception as error:errors.append('Ticketmaster prices unavailable; saved prices retained ('+type(error).__name__+')')
     from concert_discovery.brightdata_prices import refresh as bright_prices
-    try:result.update(bright_prices(db_path=db_path))
+    try:result.update(bright_prices(db_path=db_path,priority_ids={s["show_id"] for s in new_shows}))
     except Exception as error:errors.append('Bright Data prices unavailable; saved prices retained ('+type(error).__name__+')')
     if browser_prices:
         from concert_discovery.browser_prices import refresh as render_prices
-        try:result.update(render_prices(db_path=db_path))
+        try:result.update(render_prices(db_path=db_path,priority_ids={s["show_id"] for s in new_shows}))
         except Exception as error:errors.append('Rendered prices unavailable; saved prices retained ('+type(error).__name__+')')
     try:
         result.update(synchronize(db_path))
@@ -187,7 +203,7 @@ def apply_refresh(events,snapshots,errors=(),metrics=False,db_path=DATABASE_PATH
         result.update(check_operations(db_path))
     except Exception as error:errors.append('Metadata health unavailable ('+type(error).__name__+')')
     finish(rid,errors,db_path)
-    Path(db_path).with_name('freshness.json').write_text(json.dumps({'refreshed_at':utc_now(),**result},indent=2))
+    Path(db_path).with_name('freshness.json').write_text(json.dumps({'refreshed_at':utc_now(),'pipeline_completed':True,'enrichment_completed':bool(metrics),'collection_usable':bool(events or checked),**result},indent=2))
     return result
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--browser',action='store_true');parser.add_argument('--metrics',action='store_true');args=parser.parse_args()

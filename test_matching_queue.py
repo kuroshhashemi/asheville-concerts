@@ -46,3 +46,11 @@ class QueueTests(unittest.TestCase):
   with patch.object(refresh_module,'initialize'),patch.object(refresh_module,'fetch_all_calendars',return_value=([],[])),patch.object(refresh_module,'fetch_ticketmaster',return_value=[]),patch.object(refresh_module,'fetch_jambase',return_value=[]),patch.object(refresh_module,'save_events'),patch('concert_discovery.spotify_concert_feed.fetch_feed',return_value=([],None)),patch('concert_discovery.dedupe.cleanup_duplicates',return_value=[]),patch('concert_discovery.matching_queue.run',return_value={'matching_attempted':0}) as worker,patch('pathlib.Path.write_text'):
    refresh_module.refresh(metrics=False,db_path=self.db)
    worker.assert_called_once()
+ def test_new_artist_priority_is_applied_before_batch_limit(self):
+  e=event('EulogyOfficial','https://example.com/new','New artist',(date.today()+timedelta(days=11)).isoformat(),'eulogy',[{'name':'New artist','role':'headliner','confidence':1}]);save_events([e],self.db)
+  with connect(self.db) as c:aid=c.execute("SELECT artist_id FROM artists WHERE display_name='New artist'").fetchone()[0]
+  with patch('concert_discovery.spotify_matching.SpotifySearch'),patch('concert_discovery.source_links.apply_candidates',return_value=None),patch('concert_discovery.spotify_matching.match_bandsintown_link',return_value=None),patch('concert_discovery.spotify_matching.match_artist',return_value='ambiguous_or_no_exact_match'):
+   run(limit=1,db_path=self.db,discover_sources=False,priority_ids={aid})
+  with connect(self.db) as c:
+   self.assertEqual(c.execute('SELECT attempts FROM artist_matching_jobs WHERE artist_id=?',(aid,)).fetchone()[0],1)
+   self.assertEqual(c.execute("SELECT attempts FROM artist_matching_jobs WHERE artist_id='example'").fetchone()[0],0)

@@ -30,13 +30,15 @@ def enqueue(db_path=DATABASE_PATH):
     return set(artists)
 
 
-def run(limit=25,db_path=DATABASE_PATH,artist_ids=None,discover_sources=True):
+def run(limit=25,db_path=DATABASE_PATH,artist_ids=None,discover_sources=True,priority_ids=None,force=False):
     from concert_discovery.spotify_matching import SpotifySearch, SpotifyUnavailable, match_artist, match_bandsintown_link
     from concert_discovery.source_links import apply_candidates, discover
     from concert_discovery.collector import collect_artist_metric
     visible=enqueue(db_path)
     with connect(db_path) as c:
-        jobs=[dict(r) for r in c.execute("SELECT a.* FROM artist_matching_jobs j JOIN artists a USING(artist_id) WHERE j.state!='matched' AND (j.next_attempt_at IS NULL OR j.next_attempt_at<=?) ORDER BY j.last_attempt_at IS NOT NULL,j.last_attempt_at,j.artist_id",(utc_now(),)) if r['artist_id'] in visible and (artist_ids is None or r['artist_id'] in artist_ids)][:limit]
+        jobs=[dict(r) for r in c.execute("SELECT a.* FROM artist_matching_jobs j JOIN artists a USING(artist_id) WHERE j.state!='matched' AND (? OR j.next_attempt_at IS NULL OR j.next_attempt_at<=? OR j.last_attempt_at<=?) ORDER BY j.last_attempt_at IS NOT NULL,j.last_attempt_at,j.artist_id",(bool(force),utc_now(),(datetime.now(timezone.utc)-timedelta(days=1)).isoformat())) if r['artist_id'] in visible and (artist_ids is None or r['artist_id'] in artist_ids)]
+    if priority_ids:jobs.sort(key=lambda a:a['artist_id'] not in priority_ids)
+    jobs=jobs[:limit]
     result={'matching_attempted':0,'matching_matched':0,'matching_ambiguous':0,'matching_blocked':0,'matching_pending':0}
     if not jobs:return result
     source_error=None
@@ -71,7 +73,7 @@ def run(limit=25,db_path=DATABASE_PATH,artist_ids=None,discover_sources=True):
                 state='blocked';detail+='; source lookup incomplete: '+artist_source_error
         except (SpotifyUnavailable,requests.RequestException,RuntimeError,ValueError,TypeError) as e:
             state='blocked';detail=type(e).__name__+': '+str(e)[:160]
-        retry=None if state=='matched' else (datetime.now(timezone.utc)+timedelta(days=1 if state=='blocked' else 7)).isoformat()
+        retry=None if state=='matched' else (datetime.now(timezone.utc)+timedelta(days=1)).isoformat()
         with connect(db_path) as c:
             c.execute('''UPDATE artist_matching_jobs SET state=?, attempts=attempts+1,
               last_attempt_at=?,next_attempt_at=?,detail=?,metric_status=? WHERE artist_id=?''',
