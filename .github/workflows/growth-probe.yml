@@ -1,0 +1,26 @@
+name: Probe growth provider access
+on:
+  push:
+    paths: ['.github/workflows/growth-probe.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Test two public history pages without secrets or paid services
+        shell: python
+        run: |
+          import urllib.request, urllib.error, json, re
+          for host in ('pastspot.com', 'www.pastspot.com'):
+              url='https://'+host+'/artists/08Ld63UgKrJ0nZnCkzHtzc'
+              try:
+                  with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0'}),timeout=20) as r:
+                      body=r.read(3000000).decode('utf-8','replace')
+                      print(json.dumps({'host':host,'status':r.status,'history_dates':len(re.findall('periodStartDate',body)),'bytes':len(body)}))
+              except urllib.error.HTTPError as e:
+                  print(json.dumps({'host':host,'status':e.code,'result':'access blocked' if e.code in (403,429) else 'HTTP error'}))
+              except Exception as e:
+                  print(json.dumps({'host':host,'error':type(e).__name__}))
