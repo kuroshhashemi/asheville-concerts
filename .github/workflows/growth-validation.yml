@@ -1,0 +1,62 @@
+name: Validate hosted growth fallback
+on:
+  push:
+    paths:
+      - '.github/workflows/growth-validation.yml'
+      - 'concert_discovery/brightdata_guard.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: concert-catalog
+  cancel-in-progress: false
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - run: python -m unittest discover -q
+      - name: Check one artist through the actual collector
+        env:
+          BRIGHTDATA_API_KEY: ${{ secrets.BRIGHTDATA_API_KEY }}
+          BRIGHTDATA_UNLOCKER_ZONE: ${{ secrets.BRIGHTDATA_UNLOCKER_ZONE }}
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from concert_discovery.storage import initialize,connect
+          from concert_discovery.api_sources import event
+          from concert_discovery.refresh import save_events
+          from concert_discovery.pastspot import refresh_history,comparison
+          p=Path('concert_discovery/growth_probe.sqlite3')
+          initialize(p)
+          save_events([event('EulogyOfficial','https://example.com/validation','Project Pat','2099-01-01','eulogy',[{'name':'Project Pat','role':'headliner','confidence':1}])],p)
+          sid='08Ld63UgKrJ0nZnCkzHtzc'
+          with connect(p) as c:c.execute('UPDATE artists SET spotify_artist_id=?,spotify_profile_url=?',(sid,'https://open.spotify.com/artist/'+sid))
+          result=refresh_history(p,limit=1)
+          with connect(p) as c:
+              check=dict(c.execute('SELECT * FROM history_checks WHERE spotify_id=?',(sid,)).fetchone())
+              rows=[dict(r) for r in c.execute('SELECT * FROM listener_history WHERE spotify_id=?',(sid,))]
+          print(result)
+          print('Saved history outcome:',check['status'],'dated observations:',len(rows))
+          assert check['status']=='history' and comparison(rows) is not None,'Hosted growth fallback did not return usable six-month history'
+          cached=refresh_history(p,limit=1,force=True)
+          assert cached['history_requests']==0,'Digest force bypassed successful 90-day cache'
+          print('Hosted collection and cache verified; no email sent.')
+          PY
+      - name: Preserve shared request ledger even on failure
+        if: always()
+        run: |
+          git config user.name 'Concert refresh'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if test -f concert_discovery/api_budget.sqlite3; then
+            git add concert_discovery/api_budget.sqlite3
+            if ! git diff --cached --quiet; then
+              git commit -m 'Preserve bounded growth validation request'
+              git push
+            fi
+          fi

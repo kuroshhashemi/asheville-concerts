@@ -75,6 +75,7 @@ def refresh_history(db_path=None, limit=40, spotify_ids=None, force=False, prior
         sid=a['spotify_artist_id'];url='https://pastspot.com/artists/'+sid
         attempted+=1
         try:
+            allowed=False;guard_reason=None
             response=requests.get(url,timeout=15)
             if response.status_code in (403,429) and allow_brightdata:
                 from concert_discovery.api_sources import secret
@@ -84,10 +85,10 @@ def refresh_history(db_path=None, limit=40, spotify_ids=None, force=False, prior
                 if not allowed:stop_reason=guard_reason
                 if allowed:
                     response=requests.post('https://api.brightdata.com/request',headers={'Authorization':'Bearer '+key},json={'zone':zone,'url':url,'format':'raw'},timeout=60)
-            if response.status_code in (403,429):
-                save(sid,[],url,'blocked' if response.status_code==403 else 'rate_limited',db_path)
-                provider_status='blocked' if response.status_code==403 else 'rate_limited'
-                if not (allow_brightdata and 'guard_reason' in locals() and not allowed):stop_reason='Provider blocked requests' if response.status_code==403 else 'Provider rate limit reached'
+            if response.status_code in (401,402,403,429):
+                save(sid,[],url,'rate_limited' if response.status_code==429 else 'blocked',db_path)
+                provider_status='rate_limited' if response.status_code==429 else 'blocked'
+                if not guard_reason or allowed:stop_reason='Provider access failed (HTTP '+str(response.status_code)+')'
                 break
             response.raise_for_status()
             html=response.text.replace('\\"','"')
