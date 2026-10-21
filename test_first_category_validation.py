@@ -8,7 +8,7 @@ class FirstValidationTests(unittest.TestCase):
   with tempfile.TemporaryDirectory() as directory:
    db=Path(directory)/'test.sqlite3'
    with sqlite3.connect(db) as c:c.execute('CREATE TABLE show_sources(show_id INTEGER,source_key TEXT)')
-   events=[dict(source_key=f'TestOfficial:{i}',source_url=f'https://example.com/event/{i}',source_name='TestOfficial',title=f'Act {i}') for i in range(12)]
+   events=[dict(performance_start='2099-01-01',source_key=f'TestOfficial:{i}',source_url=f'https://example.com/event/{i}',source_name='TestOfficial',title=f'Act {i}') for i in range(12)]
    events.append(dict(events[0],source_key='AnotherSource:0'))
    response=Mock(text='<h1>A live act</h1><p>An evening with musicians.</p>');response.raise_for_status.return_value=None
    with patch('concert_discovery.bill_evidence.requests.get',return_value=response) as get:
@@ -25,7 +25,7 @@ class FirstValidationTests(unittest.TestCase):
   with tempfile.TemporaryDirectory() as directory:
    db=Path(directory)/'test.sqlite3'
    with sqlite3.connect(db) as c:c.execute('CREATE TABLE show_sources(show_id INTEGER,source_key TEXT)')
-   e=dict(source_key='TestOfficial:1',source_url='https://example.com/event',source_name='TestOfficial',title='Unknown act')
+   e=dict(performance_start='2099-01-01',source_key='TestOfficial:1',source_url='https://example.com/event',source_name='TestOfficial',title='Unknown act')
    with patch('concert_discovery.bill_evidence.requests.get',side_effect=requests.Timeout) as get:
     self.assertEqual(enrich_events([e],db),1)
     self.assertEqual(enrich_events([e],db),0)

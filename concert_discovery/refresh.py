@@ -170,6 +170,9 @@ def apply_refresh(events,snapshots,errors=(),metrics=False,db_path=DATABASE_PATH
     new_shows=[s for s in visible if s['dedupe_key'] in new_keys]
     new_artist_ids={a['artist_id'] for s in new_shows for a in s['headliners']}
     result['new_shows_for_enrichment']=len(new_shows)
+    from concert_discovery.venue_artwork import refresh as refresh_icons
+    try:result.update(refresh_icons(db_path))
+    except Exception as error:errors.append('Venue icon checks unavailable ('+type(error).__name__+')')
     from concert_discovery.metadata_outcomes import synchronize
     synchronize(db_path)
     from concert_discovery.matching_queue import run

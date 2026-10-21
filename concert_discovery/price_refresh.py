@@ -20,7 +20,9 @@ def schema(c):
 
 def refresh(db_path=DATABASE_PATH,limit=12,shows=None,force=False,priority_ids=None):
     from concert_discovery.discovery import get_shows
+    from datetime import date
     shows=get_shows(db_path) if shows is None else shows
+    shows=[s for s in shows if str(s.get('performance_start',''))[:10]>=date.today().isoformat()]
     prices=load();reader=PageReader(db_path,budget=limit);cutoff=(datetime.now(timezone.utc)-timedelta(days=0 if force else 1)).isoformat()
     result={'price_page_requests':0,'price_pages_checked':0,'price_pages_priced':0,'price_providers_blocked':[]}
     blocked=set();seen=set()

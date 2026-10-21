@@ -172,9 +172,11 @@ def fetch(eid):
 
 def refresh(db_path=DATABASE_PATH, limit=12, shows=None, force=False, priority_ids=None):
     from concert_discovery.discovery import get_shows
+    from datetime import date
     from concert_discovery.prices import load, for_show
     shows = get_shows(db_path) if shows is None else shows
     prices = load()
+    shows = [s for s in shows if str(s.get('performance_start',''))[:10]>=date.today().isoformat()]
     shows = sorted(shows, key=lambda s: (s['show_id'] not in priority_ids if priority_ids else False,for_show(s, prices) is not None, s.get('performance_start', '')))
     groups = {}
     for show in shows:

@@ -23,7 +23,9 @@ def refresh(db_path=DATABASE_PATH,limit=6,shows=None,workers=1,priority_ids=None
     result={'brightdata_requests':0,'brightdata_prices_saved':0,'brightdata_failed':0}
     if not key or not zone:return {**result,'brightdata_state':'not_configured'}
     from concert_discovery.discovery import get_shows
+    from datetime import date
     shows=get_shows(db_path) if shows is None else shows
+    shows=[s for s in shows if str(s.get('performance_start',''))[:10]>=date.today().isoformat()]
     prices=load();seen=set();cutoff=(datetime.now(timezone.utc)-timedelta(days=1)).isoformat()
     with connect(db_path) as c:
         c.execute('CREATE TABLE IF NOT EXISTS brightdata_price_checks(url_key TEXT PRIMARY KEY,checked_at TEXT,status TEXT)')

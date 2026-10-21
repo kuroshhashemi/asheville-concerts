@@ -221,6 +221,8 @@ def initialize(db_path: Optional[Path] = None) -> None:
             apply_public_ticket_evidence(connection)
             from concert_discovery.metadata_catalog_patch import apply as apply_metadata_evidence
             apply_metadata_evidence(connection)
+            from concert_discovery.growth_catalog_patch import apply as apply_growth_evidence
+            apply_growth_evidence(connection)
 
 
 def stable_artist_id(name: str) -> str:

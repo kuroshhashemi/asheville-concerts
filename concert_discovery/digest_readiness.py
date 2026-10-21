@@ -24,7 +24,7 @@ def audit(shows,db_path=DATABASE_PATH):
                 if not sid:continue
                 if not exists('artist_metric_snapshots','SELECT 1 FROM artist_metric_snapshots WHERE artist_id=? AND source_url=? AND retrieved_at>=?',(aid,a.get('spotify_profile_url'),cutoff)):
                     gaps.append('listeners/photo: '+a['display_name'])
-                if not exists('history_checks','SELECT 1 FROM history_checks WHERE spotify_id=? AND checked_at>=?',(sid,cutoff[:10])):
+                if not exists('history_checks',"SELECT 1 FROM history_checks WHERE spotify_id=? AND (checked_at>=? OR (status IN ('history','not_found','no_history') AND checked_at>=?))",(sid,cutoff[:10],(datetime.now(timezone.utc)-timedelta(days=90)).isoformat())):
                     gaps.append('growth: '+a['display_name'])
             if for_show(show,prices) is None and not show.get('on_sale_label') and not show.get('sold_out'):
                 urls=[show.get('ticket_url'),show.get('official_event_url')]+[s.get('source_url') for s in show.get('sources',[])]

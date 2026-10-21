@@ -5,7 +5,7 @@ from concert_discovery.brightdata_prices import refresh,reserve
 class BrightPricesTests(unittest.TestCase):
  def setUp(self):
   self.t=tempfile.TemporaryDirectory();self.db=Path(self.t.name)/'catalog.sqlite3'
-  self.shows=[{'ticket_url':'https://www.etix.com/ticket/p/'+str(i),'sources':[]} for i in range(3)]
+  self.shows=[{'performance_start':'2099-01-01','ticket_url':'https://www.etix.com/ticket/p/'+str(i),'sources':[]} for i in range(3)]
  def tearDown(self):self.t.cleanup()
  def test_atomic_budget_stops(self):
   with patch('concert_discovery.brightdata_prices.MONTHLY_LIMIT',2):

@@ -31,10 +31,13 @@ def synchronize(db_path=DATABASE_PATH):
  with connect(db_path) as c:
   schema(c);c.execute('UPDATE metadata_outcomes SET active=0');tables={r[0] for r in c.execute("SELECT name FROM sqlite_master WHERE type='table'")}
   def rows(table):return [dict(r) for r in c.execute('SELECT * FROM '+table)] if table in tables else []
+  icon_checks={r['venue_id']:r for r in rows('venue_icon_checks')}
   artwork={r['artist_id']:r for r in rows('artwork_checks')}
   ticket_checks={}
   for table in ('ticket_price_checks','brightdata_price_checks','rendered_price_checks','cloud_rendered_price_checks','ticketmaster_price_checks'):
    for r in rows(table):ticket_checks.setdefault(r.get('url_key') or r.get('event_id'),[]).append(r)
+  provider_checks={r['provider']:r for r in rows('growth_provider_checks')}
+  growth_queue={r['spotify_id']:r for r in rows('growth_queue')}
   jobs={r['artist_id']:r for r in rows('artist_matching_jobs')};images={r['artist_id']:r for r in rows('artist_images')};hist={r['spotify_id']:r for r in rows('history_checks')};metrics={}
   for r in sorted(rows('artist_metric_snapshots'),key=lambda r:r['retrieved_at'],reverse=True):metrics.setdefault((r['artist_id'],r['source_url']),r)
   def put(kind,key,field,state,checked=None,retry=None,detail=''):
@@ -54,12 +57,15 @@ def synchronize(db_path=DATABASE_PATH):
     photo_state='complete' if a.get('image_url') else 'unavailable' if art.get('status')=='unresolved' else art.get('status','pending')
     put('artist',aid,'photo',photo_state,art.get('checked_at') or im.get('updated_at'),detail=art.get('detail','Saved Spotify artwork' if a.get('image_url') else 'No successful artwork observation yet'))
     h=hist.get(sid,{})
-    hs='blocked' if h.get('status') in ('blocked','rate_limited','request_error','parse_error') else 'complete' if a.get('growth_detail') else 'unavailable' if h.get('status') in ('not_found','no_history','history') else 'pending'
+    hs='blocked' if h.get('status') in ('blocked','rate_limited','request_error','parse_error') else 'complete' if a.get('growth_detail') else 'unavailable' if h.get('status') in ('not_found','no_history','history') else 'queued'
+    provider=provider_checks.get('pastspot',{})
+    queue_detail=growth_queue.get(sid,{}).get('reason','Queued for growth check')
+    if not h and provider.get('status') in ('blocked','rate_limited'):queue_detail='Queued: growth provider access unavailable; no artist request attempted'
     retry=None
     if h.get('checked_at'):
-     days=1
+     days=90 if h.get('status') in ('history','not_found','no_history') else 1
      retry=(datetime.fromisoformat(h['checked_at'].replace('Z','+00:00'))+timedelta(days=days)).isoformat()
-    put('artist',aid,'growth',hs,h.get('checked_at'),retry,'Six-month comparison available' if hs=='complete' else 'No usable six-month comparison in saved history' if hs=='unavailable' else h.get('status','Not checked'))
+    put('artist',aid,'growth',hs,h.get('checked_at'),retry,'Six-month comparison available' if hs=='complete' else 'No usable six-month comparison in saved history' if hs=='unavailable' else h.get('status',queue_detail))
    put('artist',aid,'genre','complete' if a.get('genre') else 'unavailable',detail='Structured JamBase genre' if a.get('genre') else 'Chosen genre source supplied no genre; other sources intentionally unused')
   for s in shows:
    key=s['dedupe_key'];p=for_show(s,prices);url=s.get('ticket_url') or s.get('official_event_url');g=gaps.get(url,{})
@@ -72,8 +78,11 @@ def synchronize(db_path=DATABASE_PATH):
    retry=s.get('on_sale_at')
    if checked and state=='blocked':retry=(datetime.fromisoformat(checked.replace('Z','+00:00'))+timedelta(days=1)).isoformat()
    put('show',key,'tickets',state,checked,retry,latest.get('status') if failed else g.get('Reason','Sold Out' if s.get('sold_out') else 'Saved price or resale'))
-   for f,good in (('date',s.get('performance_start')),('venue',s.get('venue_name')),('title',s.get('title')),('type',s.get('event_classification')),('venue_icon',s.get('venue_icon'))):
+   for f,good in (('date',s.get('performance_start')),('venue',s.get('venue_name')),('title',s.get('title')),('type',s.get('event_classification'))):
     put('show',key,f,'complete' if good else 'pending',detail='Saved source data or classification')
+  for vid in {s['venue_id'] for s in shows}:
+   good=next((s.get('venue_icon') for s in shows if s['venue_id']==vid),None);ic=icon_checks.get(vid,{})
+   put('venue',vid,'venue_icon','complete' if good else ic.get('status','queued'),ic.get('checked_at'),detail=ic.get('detail','Saved venue icon' if good else 'Queued for favicon discovery'))
  return {'metadata_outcomes':dict(stats)}
 
 
@@ -90,5 +99,5 @@ def admin_view(st,identity,owner_email,db_path=DATABASE_PATH):
   st.caption('Saved field outcomes; opening this view makes no collection requests. Unavailable data and unmatched identities are separate from failed fetches.')
   counts=Counter(r['status'] for r in rows);st.write(' · '.join(f'{k}: {v}' for k,v in sorted(counts.items())))
   all_states=st.checkbox('Include completed and unavailable fields',value=False,key='metadata_health_all')
-  visible=rows if all_states else [r for r in rows if r['status'] in ('blocked','pending','unresolved')]
+  visible=rows if all_states else [r for r in rows if r['status'] in ('blocked','pending','queued','unresolved')]
   st.dataframe([{'Artist / show':r['display_name'],'Field':r['field'],'State':r['status'],'Last check':r['checked_at'],'Retry eligible':r['next_attempt_at'],'Detail':r['detail']} for r in visible],hide_index=True,width='stretch')

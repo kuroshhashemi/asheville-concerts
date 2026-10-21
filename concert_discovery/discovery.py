@@ -49,6 +49,8 @@ def get_shows(db_path=None, user_id=OWNER, include_recurring=False):
         image_sources={r['artist_id']:r['source_url'] for r in c.execute('SELECT * FROM artist_images')}
         if c.execute("SELECT 1 FROM sqlite_master WHERE name='venue_icons'").fetchone():
             icons={r['venue_id']:r['icon_url'] for r in c.execute('SELECT * FROM venue_icons')}
+        from concert_discovery.venue_artwork import saved_icons
+        icons.update(saved_icons())
         from concert_discovery.pastspot import schema, comparison
         schema(c)
         provider_history={}

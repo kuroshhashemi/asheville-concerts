@@ -7,8 +7,11 @@ from concert_discovery.prices import load,for_show,from_ticket_markup,save,url_k
 def refresh(db_path=DATABASE_PATH,limit=6,shows=None,backend="auto",priority_ids=None):
     import re
     from concert_discovery.discovery import get_shows
+    from datetime import date
     from playwright.sync_api import sync_playwright
-    shows=get_shows(db_path) if shows is None else shows;prices=load();cutoff=(datetime.now(timezone.utc)-timedelta(days=1)).isoformat()
+    shows=get_shows(db_path) if shows is None else shows
+    shows=[s for s in shows if str(s.get('performance_start',''))[:10]>=date.today().isoformat()]
+    prices=load();cutoff=(datetime.now(timezone.utc)-timedelta(days=1)).isoformat()
     hosts={'etix.com','tixr.com','secured.brevardmusic.org','jambase.com','wl.seetickets.us','wl.eventim.us','prod-nts-api.seeticketsusa.us','ticketmaster.com'}
     from pathlib import Path
     import os

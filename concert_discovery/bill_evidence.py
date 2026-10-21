@@ -89,6 +89,7 @@ def enrich_events(events,db_path=DATABASE_PATH,budget=None):
  retry_after=(datetime.now(timezone.utc)-timedelta(days=1)).isoformat()
  grouped={}
  for e in events:
+  if str(e.get('performance_start',''))[:10]<datetime.now().date().isoformat():continue
   url=e.get('source_url','');parsed=urlparse(url)
   if parsed.scheme not in ('http','https') or parsed.hostname in ('open.spotify.com','api.spotify.com'):continue
   prior=cache.get(e['source_key'])

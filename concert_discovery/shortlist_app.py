@@ -89,9 +89,7 @@ def cached_catalog():
  return get_shows(user_id='browser-view')
 shows=cached_catalog()
 venue_labels={'sierra-nevada':'Sierra Nevada','thomas-wolfe':"Harrah's",'harrahs-arena':"Harrah's",'ayurprana':'AyurPrana','oskar-blues-brevard':'Oskar Blues'}
-revival_icon='data:image/webp;base64,'+base64.b64encode((Path(__file__).parent/'assets'/'revival.webp').read_bytes()).decode()
 for show in shows:
- if show['venue_id']=='revival':show['venue_icon']=revival_icon
  show['venue_name']=venue_labels.get(show['venue_id'],show['venue_name'])
  if show['venue_id']=='pulp':
   show['venue_name']='The Orange Peel'

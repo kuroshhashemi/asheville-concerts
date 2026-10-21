@@ -13,7 +13,7 @@ class HistoryTests(unittest.TestCase):
     def test_missing_zero_and_stale_are_not_growth(self):
         self.assertIsNone(comparison(self.rows()[1:],date(2026,10,4)))
         self.assertIsNone(comparison(self.rows(0),date(2026,10,4)))
-        self.assertIsNone(comparison(self.rows(),date(2026,11,4)))
+        self.assertIsNone(comparison(self.rows(),date(2027,2,4)))
     def test_zero_current_is_valid_decline(self):
         self.assertEqual(comparison(self.rows(latest=0),date(2026,10,4))['value'],-100)
 
@@ -34,7 +34,53 @@ class HistoryFailureTests(unittest.TestCase):
    with connect(db) as c:c.execute("UPDATE artists SET spotify_artist_id=?,spotify_profile_url=?",(sid,'https://open.spotify.com/artist/'+sid))
    save(sid,[{'date':'2026-04-01','listeners':100}],'https://pastspot.com/test','history',db)
    with connect(db) as c:c.execute("UPDATE history_checks SET checked_at='2020-01-01T00:00:00+00:00'")
-   with patch('concert_discovery.pastspot.requests.get',return_value=Mock(status_code=403)) as request:refresh_history(db,limit=1)
+   with patch('concert_discovery.pastspot.requests.get',return_value=Mock(status_code=403)) as request:refresh_history(db,limit=1,allow_brightdata=False)
    with connect(db) as c:
     self.assertEqual(c.execute('SELECT status FROM history_checks').fetchone()[0],'blocked')
     self.assertEqual(c.execute('SELECT count(*) FROM listener_history').fetchone()[0],1)
+
+class QueueTests(unittest.TestCase):
+ def test_limit_and_provider_deferrals_are_recorded(self):
+  import tempfile
+  from pathlib import Path
+  from datetime import timedelta
+  from unittest.mock import patch,Mock
+  from concert_discovery.storage import initialize,connect
+  from concert_discovery.api_sources import event
+  from concert_discovery.refresh import save_events
+  from concert_discovery.pastspot import refresh_history
+  with tempfile.TemporaryDirectory() as tmp:
+   db=Path(tmp)/'db';initialize(db)
+   e=event('EulogyOfficial','https://example.com/show','Example',(date.today()+timedelta(days=30)).isoformat(),'eulogy',[{'name':'Example','role':'headliner','confidence':1}]);save_events([e],db)
+   with connect(db) as c:c.execute("UPDATE artists SET spotify_artist_id=?",('a'*22,))
+   result=refresh_history(db,limit=0)
+   self.assertEqual(result['history_queued'],1)
+   with connect(db) as c:self.assertEqual(c.execute('SELECT reason FROM growth_queue').fetchone()[0],'Daily batch limit reached')
+   with patch('concert_discovery.pastspot.requests.get',return_value=Mock(status_code=403)):refresh_history(db,allow_brightdata=False)
+   with connect(db) as c:
+    self.assertEqual(c.execute('SELECT count(*) FROM growth_queue').fetchone()[0],0)
+    self.assertEqual(c.execute('SELECT status FROM history_checks').fetchone()[0],'blocked')
+
+class CachePolicyTests(unittest.TestCase):
+ def test_success_and_unavailable_cache_survive_digest_force(self):
+  from datetime import datetime,timezone,timedelta
+  from concert_discovery.pastspot import due
+  now=datetime.now(timezone.utc)
+  for status in ('history','not_found','no_history'):
+   self.assertFalse(due({'status':status,'checked_at':(now-timedelta(days=89)).isoformat()},force=True,now=now))
+   self.assertTrue(due({'status':status,'checked_at':(now-timedelta(days=91)).isoformat()},now=now))
+  self.assertTrue(due({'status':'blocked','checked_at':(now-timedelta(days=2)).isoformat()},now=now))
+ def test_past_show_does_not_trigger_growth(self):
+  import tempfile
+  from pathlib import Path
+  from unittest.mock import patch
+  from concert_discovery.storage import initialize,connect
+  from concert_discovery.api_sources import event
+  from concert_discovery.refresh import save_events
+  from concert_discovery.pastspot import refresh_history
+  with tempfile.TemporaryDirectory() as tmp:
+   db=Path(tmp)/'db';initialize(db)
+   save_events([event('EulogyOfficial','https://example.com/past','Example','2020-01-01','eulogy',[{'name':'Example','role':'headliner','confidence':1}])],db)
+   with connect(db) as c:c.execute('UPDATE artists SET spotify_artist_id=?',('a'*22,))
+   with patch('concert_discovery.pastspot.requests.get') as get:
+    refresh_history(db,force=True);get.assert_not_called()

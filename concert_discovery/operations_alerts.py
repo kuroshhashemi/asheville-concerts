@@ -1,8 +1,53 @@
 """Private owner alerts, deduplicated and throttled; no subscriber distribution."""
-import os,json,hashlib,smtplib,ssl
+import os,hashlib,smtplib,ssl
 from datetime import datetime,timezone,timedelta
 from email.message import EmailMessage
 from concert_discovery.storage import connect,DATABASE_PATH,utc_now
+
+def readable_report(problems,db_path,now):
+ from zoneinfo import ZoneInfo
+ from concert_discovery.prices import load,for_show,label
+ prices=load();lines=[f'{len(problems)} data checks need attention.',
+  'These checks have repeatedly failed or remained unprocessed. This warning alone does not stop the weekly email.',
+  'Saved values are retained. A failed price check does not mean a show is sold out.','']
+ fields={'tickets':'Ticket price / availability','spotify':'Spotify match','listeners':'Spotify listeners','photo':'Artist photo','genre':'Genre','growth':'Six-month listener growth','venue_icon':'Venue icon'}
+ def stamp(value):
+  if not value:return 'Not attempted yet'
+  try:return datetime.fromisoformat(value.replace('Z','+00:00')).astimezone(ZoneInfo('America/New_York')).strftime('%a %b %d, %I:%M %p %Z')
+  except ValueError:return 'Unknown'
+ with connect(db_path) as c:
+  tables={r[0] for r in c.execute("SELECT name FROM sqlite_master WHERE type='table'")}
+  for item in problems:
+   show=None;heading='Artist awaiting identification'
+   if item['entity_type']=='show' and 'shows' in tables:
+    r=c.execute('SELECT * FROM shows WHERE dedupe_key=?',(item['entity_key'],)).fetchone()
+    if r:
+     show=dict(r);heading=show.get('title') or 'Untitled show'
+     venue=c.execute('SELECT name FROM venues WHERE venue_id=?',(show['venue_id'],)).fetchone() if 'venues' in tables else None
+     day=show.get('performance_start','')[:10]
+     try:day=datetime.fromisoformat(day).strftime('%b %d, %Y')
+     except ValueError:pass
+     heading+=' — '+(venue[0] if venue else 'Venue unknown')+' — '+day
+     show['sources']=[dict(r) for r in c.execute('SELECT source_url FROM show_sources WHERE show_id=?',(show['show_id'],))] if 'show_sources' in tables else []
+   elif item['entity_type']=='artist' and 'artists' in tables:
+    r=c.execute('SELECT display_name FROM artists WHERE artist_id=?',(item['entity_key'],)).fetchone()
+    if r:heading=r[0]
+   reason='The automated page check did not return usable data; the saved result does not establish the exact cause.' if item['status']=='blocked' else 'Still queued; no completed check is recorded.'
+   raw=(item.get('detail') or '').lower()
+   if '403' in raw:reason='The source refused automated access (HTTP 403).'
+   elif '429' in raw or 'rate_limit' in raw:reason='The source temporarily limited requests.'
+   elif 'timeout' in raw:reason='The source did not respond before the request timed out.'
+   retry=item.get('next_attempt_at')
+   try:due=not retry or datetime.fromisoformat(retry.replace('Z','+00:00'))<=now
+   except (ValueError,TypeError):due=True
+   lines.extend([heading,'Check: '+fields.get(item['field'],item['field'].replace('_',' ').capitalize()),'Problem: '+reason])
+   if show and item['field']=='tickets':
+    price=for_show(show,prices)
+    lines.append('Saved price: '+(label(price)+' (retained; refresh unsuccessful)' if price else 'None yet'))
+    if show.get('ticket_url'):lines.append('Ticket page: '+show['ticket_url'])
+   lines.extend(['Last attempt: '+stamp(item.get('checked_at')),
+    'Retry: '+('Eligible now; next daily collection, subject to provider/request limits.' if due else 'Eligible after '+stamp(retry)+'; retried during collection.'),''])
+ return '\n'.join(lines)
 
 
 def notify(kind,detail,db_path=DATABASE_PATH,now=None):
@@ -33,11 +78,9 @@ def check(db_path=DATABASE_PATH,now=None):
  for r in rows:
   since=r['first_failure_at'] if r['status']=='blocked' else r['first_seen_at']
   age=now-datetime.fromisoformat(since) if since else timedelta(0)
-  if (r['status']=='blocked' and r['consecutive_failures']>=2 and age>=timedelta(hours=24)) or (r['status']=='pending' and age>=timedelta(hours=48)):
-   problems.append({k:r[k] for k in ('entity_type','entity_key','field','status','detail')})
+  if (r['status']=='blocked' and r['consecutive_failures']>=2 and age>=timedelta(hours=24)) or (r['status'] in ('pending','queued') and age>=timedelta(hours=48)):
+   problems.append(dict(r))
  if not problems:return {'operations_alert':'no_persistent_failures'}
  problems.sort(key=lambda r:(r['entity_type'],r['entity_key'],r['field']))
- from collections import Counter
- counts=Counter(r['field']+' / '+r['status'] for r in problems)
- detail=f'{len(problems)} persistent metadata collection problems.\n'+json.dumps(dict(counts),indent=2)+'\n\nExamples (up to 10):\n'+json.dumps(problems[:10],indent=2)
+ detail=readable_report(problems,db_path,now)
  return notify('metadata-failures',detail,db_path,now)
