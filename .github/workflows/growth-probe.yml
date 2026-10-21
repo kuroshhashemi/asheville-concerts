@@ -14,8 +14,8 @@ jobs:
         shell: python
         run: |
           import urllib.request, urllib.error, json, re
-          for host in ('pastspot.com', 'www.pastspot.com'):
-              url='https://'+host+'/artists/08Ld63UgKrJ0nZnCkzHtzc'
+          for host in ('pastspot.com',):
+              url='https://'+host+'/api/artists/08Ld63UgKrJ0nZnCkzHtzc/period-stats?periods=2026-04-10,2026-10-09'
               try:
                   with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0'}),timeout=20) as r:
                       body=r.read(3000000).decode('utf-8','replace')
