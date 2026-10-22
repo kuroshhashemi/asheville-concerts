@@ -5,7 +5,7 @@ from concert_discovery.login_health import LoginStore,concerns
 
 def monitor(store,notify,now=None):
     now=now or datetime.now(timezone.utc)
-    try:rows=store.recent()
+    try:rows=store.recent(hours=48)
     except Exception:
         return {'login_monitor':notify('login-storage-unavailable','Login tracking could not be read. This may mean the monitoring database or permissions are broken; it does not establish whether Google sign-in itself works. Check the app and Supabase.')} 
     result={}

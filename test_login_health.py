@@ -9,7 +9,7 @@ class LoginHealthTests(unittest.TestCase):
  def test_abandoned_attempt_not_failure(self):self.assertEqual(concerns([self.row()],self.now),[])
  def test_incomplete_cluster_but_not_new_or_old_or_test_attempts(self):
   self.assertEqual(concerns([self.row() for _ in range(5)],self.now)[0][0],'login-incomplete')
-  for row in (self.row(minutes=1),self.row(minutes=180),self.row(is_test=True)):
+  for row in (self.row(minutes=1),self.row(minutes=60*49),self.row(is_test=True)):
    self.assertEqual(concerns([row]*6,self.now),[])
  def test_errors_alert_and_success_does_not(self):
   self.assertEqual(concerns([self.row('error')],self.now)[0][0],'login-errors')
@@ -36,3 +36,7 @@ class LoginHealthTests(unittest.TestCase):
  def test_monitor_reports_storage_failure(self):
   store=Mock();store.recent.side_effect=RuntimeError;send=Mock(return_value={})
   monitor(store,send,self.now);self.assertEqual(send.call_args.args[0],'login-storage-unavailable')
+
+ def test_daily_monitor_does_not_miss_yesterday_cluster(self):
+  rows=[self.row(minutes=24*60+i) for i in range(5)]
+  self.assertEqual(concerns(rows,self.now)[0][0],'login-incomplete')

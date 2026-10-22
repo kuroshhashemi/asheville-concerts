@@ -52,10 +52,17 @@ def concerns(rows,now=None):
     incomplete=[]
     for r in active:
         age=now-datetime.fromisoformat(r['started_at'].replace('Z','+00:00'))
-        if r['outcome']=='started' and timedelta(minutes=30)<=age<=timedelta(hours=2):incomplete.append(r)
+        if r['outcome']=='started' and timedelta(minutes=30)<=age<=timedelta(hours=48):incomplete.append(r)
+    # Find a two-hour cluster anywhere in the daily monitor's overlapping lookback.
+    ordered=sorted(incomplete,key=lambda r:r['started_at']);cluster=[]
+    for row in ordered:
+        stamp=datetime.fromisoformat(row['started_at'].replace('Z','+00:00'))
+        window=[r for r in ordered if timedelta(0)<=stamp-datetime.fromisoformat(r['started_at'].replace('Z','+00:00'))<=timedelta(hours=2)]
+        if len(window)>len(cluster):cluster=window
+    incomplete=cluster
     result=[]
-    if errors:result.append(('login-errors',f'Latest recorded error: {max(r["started_at"] for r in errors)}. {len(errors)} sign-in attempt(s) reported an application authentication error in the last 24 hours. Check Login health in the owner view. No credentials or raw authentication responses were logged.'))
-    if len(incomplete)>=5:result.append(('login-incomplete',f'Latest incomplete attempt: {max(r["started_at"] for r in incomplete)}. {len(incomplete)} sign-in attempts started 30 minutes to 2 hours ago without a successful return. This could indicate a login problem, but cancellations or closed tabs can produce the same signal. Check the sign-in flow.'))
+    if errors:result.append(('login-errors',f'Latest recorded error: {max(r["started_at"] for r in errors)}. {len(errors)} sign-in attempt(s) reported an application authentication error in the last 48 hours. Check Login health in the owner view. No credentials or raw authentication responses were logged.'))
+    if len(incomplete)>=5:result.append(('login-incomplete',f'Latest incomplete attempt: {max(r["started_at"] for r in incomplete)}. {len(incomplete)} sign-in attempts clustered within two hours without a successful return (checked over the last 48 hours). This could indicate a login problem, but cancellations or closed tabs can produce the same signal. Check the sign-in flow.'))
     return result
 
 
