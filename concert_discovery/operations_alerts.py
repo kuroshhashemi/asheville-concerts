@@ -60,7 +60,7 @@ def notify(kind,detail,db_path=DATABASE_PATH,now=None):
   old=c.execute('SELECT * FROM operations_alerts WHERE kind=?',(kind,)).fetchone()
   if old and (old['signature']==signature or now-datetime.fromisoformat(old['sent_at'])<timedelta(hours=24)):return {'operations_alert':'unchanged_or_throttled'}
  msg=EmailMessage();msg['From']=sender;msg['To']=sender
- msg['Subject']='Asheville Soundcheck: '+('weekly email held' if kind=='digest-held' else 'shows withheld from weekly email' if kind.startswith('digest-withheld:') else 'collection needs attention')
+ msg['Subject']='Asheville Soundcheck: '+('sign-in needs attention' if kind.startswith('login-') else 'weekly email held' if kind=='digest-held' else 'shows withheld from weekly email' if kind.startswith('digest-withheld:') else 'collection needs attention')
  msg.set_content(detail+'\n\nOwner-only diagnostic: https://asheville-soundcheck.streamlit.app/')
  try:
   with smtplib.SMTP_SSL('smtp.gmail.com',465,context=ssl.create_default_context(),timeout=20) as smtp:

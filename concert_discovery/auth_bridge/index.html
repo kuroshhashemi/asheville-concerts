@@ -10,7 +10,7 @@ window.addEventListener('message',e=>{
  if(!a.logged_in&&(!p||Date.now()-p.created>86400000)){p={id:crypto.randomUUID(),created:Date.now(),started:false};write(p)}
  const value=a.logged_in?(p?.started?{returned:p.id}:{}):(p?{prepared:p.id}:{});
  const signature=JSON.stringify(value);
- if(signature!==last){last=signature;send('streamlit:setComponentValue',{value,dataType:'json'})}
+ if(Object.keys(value).length&&signature!==last){last=signature;send('streamlit:setComponentValue',{value,dataType:'json'})}
  if(!parent.soundcheckAuthCapture){
   parent.soundcheckAuthCapture=true;
   parent.document.addEventListener('click',event=>{
