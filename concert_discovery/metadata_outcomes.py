@@ -72,12 +72,12 @@ def synchronize(db_path=DATABASE_PATH):
    from concert_discovery.ticketmaster_prices import event_id
    urls=[url]+[r['source_url'] for r in s.get('sources',[])];ids={url_key(u) for u in urls if u}|{event_id(u) for u in urls if event_id(u)}
    checks=[r for k in ids for r in ticket_checks.get(k,[])];latest=max(checks,key=lambda r:r.get('checked_at',''),default={})
-   failed=latest.get('status') in ('blocked','error','failed','blocked_or_unavailable') and (not p or latest.get('checked_at','')>p.get('observed_at',p.get('checked_at','')))
-   state='complete' if s.get('sold_out') else 'unavailable' if s.get('on_sale_label') else 'blocked' if failed else 'complete' if p is not None else 'blocked' if g.get('Reason') in ('Access blocked','Collection failed') else 'pending' if g.get('Reason') in ('Not checked','Saved price missing') else 'unavailable' if g.get('Reason')=='Tickets unavailable' or latest.get('status')=='unavailable' else 'unresolved'
+   failed=latest.get('status') in ('blocked','error','failed','blocked_or_unavailable','available') and (not p or latest.get('checked_at','')>p.get('observed_at',p.get('checked_at','')))
+   state='unavailable' if latest.get('status')=='password_required' else 'complete' if s.get('sold_out') else 'unavailable' if s.get('on_sale_label') else 'blocked' if failed else 'complete' if p is not None else 'blocked' if g.get('Reason') in ('Access blocked','Collection failed') else 'pending' if g.get('Reason') in ('Not checked','Saved price missing') else 'unavailable' if g.get('Reason')=='Tickets unavailable' or latest.get('status')=='unavailable' else 'unresolved'
    checked=latest.get('checked_at') or (p.get('observed_at') if p else None)
    retry=s.get('on_sale_at')
    if checked and state=='blocked':retry=(datetime.fromisoformat(checked.replace('Z','+00:00'))+timedelta(days=1)).isoformat()
-   put('show',key,'tickets',state,checked,retry,latest.get('status') if failed else g.get('Reason','Sold Out' if s.get('sold_out') else 'Saved price or resale'))
+   put('show',key,'tickets',state,checked,retry,'Tickets available, but price extraction failed' if failed and latest.get('status')=='available' else latest.get('status') if failed else g.get('Reason','Sold Out' if s.get('sold_out') else 'Saved price or resale'))
    for f,good in (('date',s.get('performance_start')),('venue',s.get('venue_name')),('title',s.get('title')),('type',s.get('event_classification'))):
     put('show',key,f,'complete' if good else 'pending',detail='Saved source data or classification')
   for vid in {s['venue_id'] for s in shows}:

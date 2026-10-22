@@ -51,7 +51,7 @@ def refresh(db_path=DATABASE_PATH,limit=6,shows=None,backend="auto",priority_ids
                 if urlsplit(url).scheme!='https' or host not in hosts or key in seen or key in recent or for_show(show,prices) or show.get('sold_out') or show.get('on_sale_label'):continue
                 if result['rendered_price_pages']>=limit:break
                 seen.add(key);result['rendered_price_pages']+=1;outcome='unavailable'
-                final_url=url
+                final_url=url;brevard_price=None
                 try:
                     page.goto(url,wait_until='domcontentloaded',timeout=90000 if remote else 15000)
                     final_url=page.url
@@ -59,7 +59,7 @@ def refresh(db_path=DATABASE_PATH,limit=6,shows=None,backend="auto",priority_ids
                     if final_url!=url and host in hosts:
                         from concert_discovery.ticket_destinations import verified_show_link
                         with connect(db_path) as c:verified_show_link(c,show['show_id'],final_url,url)
-                    if host=='etix.com':page.locator('[role="combobox"][aria-label*="Price:"]').first.wait_for(timeout=10000)
+                    if host=='etix.com':page.locator('[role="combobox"]').first.wait_for(timeout=10000)
                     elif host=='tixr.com':page.locator('.ticket[data-row-type="primary"] .info').first.wait_for(timeout=10000)
                     elif host=='ticketmaster.com':
                         page.locator('[role="menu"][aria-label^="Ticket listings"]').first.wait_for(state='attached',timeout=20000)
@@ -69,9 +69,8 @@ def refresh(db_path=DATABASE_PATH,limit=6,shows=None,backend="auto",priority_ids
                         page.get_by_role('radio',name='Set quantity to: 1 Ticket',exact=True).check(timeout=10000)
                         page.get_by_role('menuitem').first.wait_for(timeout=15000)
                     elif host=='secured.brevardmusic.org':
-                        page.get_by_role('button',name=re.compile(r'^Back(?:,|$)')).click(timeout=30000)
-                        page.get_by_role('button',name='Pricing Legend',exact=True).click(timeout=10000)
-                        page.locator('#tn-syos-legend-container').wait_for(timeout=10000)
+                        from concert_discovery.brevard_pricing import collect
+                        brevard_price=collect(page)
                     elif host in ('wl.seetickets.us','wl.eventim.us'):page.locator('#eventview select[id^="tt_"]').first.wait_for(timeout=30000)
                     else:page.locator('h1').first.wait_for(timeout=15000)
                     markup=page.content()
@@ -82,26 +81,33 @@ def refresh(db_path=DATABASE_PATH,limit=6,shows=None,backend="auto",priority_ids
                     with connect(db_path) as c:
                         schema(c)
                         c.execute('INSERT OR REPLACE INTO identity_page_cache VALUES(?,?,?,?)',(url,encode_markup(markup),200,utc_now()))
-                    price=from_ticket_markup(final_url,markup,selected_quantity=1 if host=='ticketmaster.com' else None)
+                    price=brevard_price or from_ticket_markup(final_url,markup,selected_quantity=1 if host=='ticketmaster.com' else None)
                     if price:
                         save({'source_url':url,'source_name':'Rendered ticket provider'},price)
                         if final_url!=url:save({'source_url':final_url,'source_name':'Rendered ticket provider'},price)
                         result['rendered_prices_saved']+=1;outcome='priced'
+                    else:
+                        from concert_discovery.availability import access_condition,ticket_page_status
+                        outcome=access_condition(final_url,markup) or ticket_page_status(final_url,markup) or 'unavailable'
                 except Exception:
                     # Sold-out pages have no price selector. Preserve their explicit
                     # notice rather than treating that as a provider-wide failure.
                     from concert_discovery.availability import ticket_page_status,record_ticket_page
                     try:markup=page.content()
                     except Exception:markup=''
+                    from concert_discovery.availability import access_condition
+                    from concert_discovery.source_links import schema,encode_markup
+                    if markup:
+                        with connect(db_path) as c:
+                            schema(c);c.execute('INSERT OR REPLACE INTO identity_page_cache VALUES(?,?,?,?)',(url,encode_markup(markup),200,utc_now()))
+                    price=from_ticket_markup(final_url,markup,selected_quantity=1 if host=='ticketmaster.com' else None) if markup else None
                     status=ticket_page_status(final_url,markup) if markup else None
-                    if status:
-                        record_ticket_page(final_url,markup,db_path)
-                        if final_url!=url:
-                            from concert_discovery.ticket_destinations import verified_show_link
-                            with connect(db_path) as c:verified_show_link(c,show['show_id'],final_url,url)
-                        outcome=status
-                    else:
-                        outcome='blocked_or_unavailable'
+                    condition=access_condition(final_url,markup) if markup else None
+                    if status:record_ticket_page(final_url,markup,db_path)
+                    if price:
+                        save({'source_url':url,'source_name':'Rendered ticket provider'},price)
+                        result['rendered_prices_saved']+=1;outcome='priced'
+                    else:outcome=condition or status or 'blocked_or_unavailable'
                 with connect(db_path) as c:c.execute('INSERT OR REPLACE INTO '+table+' VALUES(?,?,?)',(key,utc_now(),outcome))
         finally:browser.close()
     return result

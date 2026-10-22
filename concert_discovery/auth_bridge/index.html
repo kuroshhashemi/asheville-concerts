@@ -1,0 +1,25 @@
+<!doctype html><html><body><script>
+const send=(type,extra={})=>parent.postMessage({isStreamlitMessage:true,type,...extra},'*');
+const key='soundcheck:login-health:v1';let last='';
+function read(){try{return JSON.parse(parent.sessionStorage.getItem(key)||'null')}catch(e){return null}}
+function write(p){try{parent.sessionStorage.setItem(key,JSON.stringify(p))}catch(e){}}
+window.addEventListener('message',e=>{
+ if(e.data.type!=='streamlit:render')return;
+ const a=e.data.args||{};let p=read();
+ if(p&&a.ack===p.id){try{parent.sessionStorage.removeItem(key)}catch(e){}p=null}
+ if(!a.logged_in&&(!p||Date.now()-p.created>86400000)){p={id:crypto.randomUUID(),created:Date.now(),started:false};write(p)}
+ const value=a.logged_in?(p?.started?{returned:p.id}:{}):(p?{prepared:p.id}:{});
+ const signature=JSON.stringify(value);
+ if(signature!==last){last=signature;send('streamlit:setComponentValue',{value,dataType:'json'})}
+ if(!parent.soundcheckAuthCapture){
+  parent.soundcheckAuthCapture=true;
+  parent.document.addEventListener('click',event=>{
+   const b=event.target.closest('.st-key-google_signin_popup button');
+   if(!b||b.textContent.trim()!=='Sign In')return;
+   let p=read();if(p){p.started=true;write(p)}
+  },true);
+ }
+ send('streamlit:setFrameHeight',{height:0});
+});
+send('streamlit:componentReady',{apiVersion:1});
+</script></body></html>

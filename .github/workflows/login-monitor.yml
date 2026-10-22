@@ -1,0 +1,36 @@
+name: Monitor sign-in health
+on:
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+  workflow_dispatch:
+  push:
+    paths:
+      - 'concert_discovery/auth_monitor.py'
+      - '.github/workflows/login-monitor.yml'
+permissions:
+  contents: read
+concurrency:
+  group: login-health-monitor
+  cancel-in-progress: false
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests
+      - uses: actions/cache@v4
+        with:
+          path: /tmp/soundcheck-auth-monitor.sqlite3
+          key: auth-alert-ledger-${{ github.run_id }}
+          restore-keys: auth-alert-ledger-
+      - name: Report actionable login issues only to the owner
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+          EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
+        run: python -m concert_discovery.auth_monitor

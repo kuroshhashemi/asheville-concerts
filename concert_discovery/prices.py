@@ -127,6 +127,8 @@ def from_ticket_markup(url, markup, *, selected_quantity=None):
         for node in tree.root.walk():
             if node.attrs.get('role')=='combobox':
                 text=node.attrs.get('aria-label','')
+                if not text and node.attrs.get('aria-labelledby'):
+                    ids=set(node.attrs['aria-labelledby'].split());text=' '.join(n.text() for n in tree.root.walk() if n.attrs.get('id') in ids)
                 if re.search(r'\b(student|child|children|youth|two pack|2 pack|four pack|4 pack)\b',text,re.I):continue
                 if 'Price:' in text:
                     values.extend(float(v.replace(',','')) for v in re.findall(r'\$([\d,]+(?:\.\d{1,2})?)',text.split('Price:',1)[1]))
@@ -135,6 +137,12 @@ def from_ticket_markup(url, markup, *, selected_quantity=None):
                 if node.has('smoketest-total'):
                     match=re.search(r'Total per ticket[^:]*:\s*((?:From\s*)?\$[\d,.]+(?:\s*(?:to|-)\s*\$[\d,.]+)?)',node.text(),re.I)
                     if match:values.extend(float(v.replace(',','')) for v in re.findall(r'\$([\d,]+(?:\.\d{1,2})?)',match[1]))
+        if not values:
+            for node in tree.root.walk():
+                text=node.text()
+                if node.tag not in ('div','p','span') or re.search(r'\b(student|child|children|youth)\b',text,re.I):continue
+                match=re.search(r'Total per ticket including taxes:\s*((?:From\s*)?\$[\d,.]+(?:\s*(?:to|-)\s*\$[\d,.]+)?)',text,re.I)
+                if match:values.extend(float(v.replace(',','')) for v in re.findall(r'\$([\d,]+(?:\.\d{1,2})?)',match[1]))
         if not values:
             match=re.search(r'TICKET PRICES CURRENTLY AVAILABLE(.*?)TICKET SALE DATES',tree.root.text(),re.S)
             if match and not re.search(r'\b(student|child|children|youth)\b',match[1],re.I):
@@ -198,11 +206,11 @@ def from_ticket_markup(url, markup, *, selected_quantity=None):
                 if price:return price
     elif host in ('wl.seetickets.us','wl.eventim.us'):
         def current_nodes(node):
-            if node.attrs.get('id','').startswith('addtomyorder'):return
+            if node.attrs.get('id','').startswith('addtomyorder') or node.has('after-event-recommendations'):return
             yield node
             for child in node.children:
                 if hasattr(child,'attrs'):yield from current_nodes(child)
-        root=next((n for n in tree.root.walk() if n.attrs.get('id')=='eventview'),None)
+        root=next((n for n in tree.root.walk() if n.attrs.get('id')=='eventview' or (n.attrs.get('id')=='main' and n.has('event-pg'))),None)
         if root:
             for n in current_nodes(root):
                 if n.tag!='li':continue

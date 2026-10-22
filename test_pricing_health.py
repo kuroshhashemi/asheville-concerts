@@ -22,4 +22,4 @@ class PricingHealthTests(unittest.TestCase):
    counts,rows=report(shows,prices,db)
    self.assertEqual(counts,{'Missing price':1,'Sold Out':1,'Price / Free':1,'Not yet on sale':1,'Resale':1})
    self.assertEqual([r['Reason'] for r in rows],['Access blocked','Not on sale yet'])
-   self.assertIn('Oct 24',rows[0]['Retry eligible (ET)'])
+   self.assertIn('Oct 18',rows[0]['Retry eligible (ET)'])

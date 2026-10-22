@@ -32,14 +32,15 @@ def ticket_page_status(url,markup):
         if any(n.attrs.get('data-product-state')=='OPEN' for n in tickets):return 'available'
         if tickets and all(n.attrs.get('data-product-state') in ('QUEUED','SOLD_OUT') for n in tickets) and any(re.search(r'\bwaitlist\b|\bsold out\b',n.text(),re.I) for n in tickets):return 'sold_out'
     elif host in ('wl.eventim.us','wl.seetickets.us'):
-        root=next((n for n in t.root.walk() if n.attrs.get('id')=='eventview'),None)
+        root=next((n for n in t.root.walk() if n.attrs.get('id')=='eventview' or (n.attrs.get('id')=='main' and n.has('event-pg'))),None)
         if root:
             def scoped(n):
-                if n.attrs.get('id','').startswith('addtomyorder'):return
+                if n.attrs.get('id','').startswith('addtomyorder') or n.has('after-event-recommendations'):return
                 yield n
                 for child in n.children:
                     if hasattr(child,'attrs'):yield from scoped(child)
             nodes=list(scoped(root))
+            if any(n.has('sold-out-info-box') and re.search(r'Tickets are not available',n.text(),re.I) for n in nodes):return 'sold_out'
             if any(n.tag=='select' and n.attrs.get('id','').startswith('tt_') and 'disabled' not in n.attrs for n in nodes):return 'available'
             if any(n.tag in ('span','p','div') and not any(d.attrs.get('id','').startswith('addtomyorder') for d in n.walk()) and re.fullmatch(r'(?:This event is )?sold[ -]out[.!]?',n.text().strip(),re.I) for n in nodes):return 'sold_out'
     return None
@@ -90,3 +91,12 @@ def future_sale_label(value):
         if date<=datetime.now(timezone.utc):return None
         return f'On Sale {date.month}/{date.day}'
     except ValueError:return None
+
+def access_condition(url,markup):
+    from urllib.parse import urlsplit
+    from concert_discovery.official_calendar import Tree
+    host=(urlsplit(url).hostname or '').removeprefix('www.')
+    tree=Tree();tree.feed(markup)
+    if host in ('wl.eventim.us','wl.seetickets.us') and any(n.tag=='form' and n.attrs.get('id')=='eventpassform' for n in tree.root.walk()):return 'password_required'
+    if 'queue-it' in markup.lower() and host=='secured.brevardmusic.org':return 'waiting_room'
+    return None

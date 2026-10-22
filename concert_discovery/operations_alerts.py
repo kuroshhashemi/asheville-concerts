@@ -32,9 +32,10 @@ def readable_report(problems,db_path,now):
    elif item['entity_type']=='artist' and 'artists' in tables:
     r=c.execute('SELECT display_name FROM artists WHERE artist_id=?',(item['entity_key'],)).fetchone()
     if r:heading=r[0]
-   reason='The automated page check did not return usable data; the saved result does not establish the exact cause.' if item['status']=='blocked' else 'Still queued; no completed check is recorded.'
+   reason='The automated page check did not return usable data; the saved result does not establish the exact cause.' if item['status']=='blocked' else 'A check was attempted, but the field remains unresolved.' if item.get('checked_at') else 'Still queued; no completed check is recorded.'
    raw=(item.get('detail') or '').lower()
-   if '403' in raw:reason='The source refused automated access (HTTP 403).'
+   if 'price extraction failed' in raw:reason='Tickets were available, but the collector could not extract their price.'
+   elif '403' in raw:reason='The source refused automated access (HTTP 403).'
    elif '429' in raw or 'rate_limit' in raw:reason='The source temporarily limited requests.'
    elif 'timeout' in raw:reason='The source did not respond before the request timed out.'
    retry=item.get('next_attempt_at')

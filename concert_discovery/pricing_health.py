@@ -35,6 +35,8 @@ def report(shows, prices=None, db_path=None):
         try:markup=decode_markup(page.get('markup','')).casefold()
         except (ValueError,TypeError):markup=''
         if state=='Not yet on sale':reason='Not on sale yet';detail=show['on_sale_label']
+        elif status=='password_required' or 'a password is required to buy tickets' in markup:reason='Password required';detail='Sales are restricted; recheck daily for public access.'
+        elif status=='available':reason='Price extraction failed';detail='Tickets were available, but no usable adult price was extracted.'
         elif 'tickets are not available' in markup:reason='Tickets unavailable';detail='Provider does not explain whether sold out or not on sale.'
         elif http in (202,403,429) or status in ('blocked','blocked_or_unavailable') or any(t in markup for t in ("confirm you're not a bot",'please verify you are a human')):reason='Access blocked';detail='Automated request could not read the ticket page.'
         elif status in ('failed','error','unavailable') and http!=200:reason='Collection failed';detail='Request or provider service failed; no price inferred.'
@@ -45,7 +47,7 @@ def report(shows, prices=None, db_path=None):
         checked=latest.get('checked_at') or page.get('checked_at');retry=None
         if state=='Not yet on sale':retry=show.get('on_sale_at')
         elif checked:
-            days=7 if latest.get('collector')=='ticket_price_checks' or status in ('priced','sold_out') else 1
+            days=1
             try:retry=(datetime.fromisoformat(checked.replace('Z','+00:00'))+timedelta(days=days)).isoformat()
             except ValueError:pass
         def display_time(value):
