@@ -1,23 +1,38 @@
 {
-  "refreshed_at": "2026-10-22T15:40:27+00:00",
+  "refreshed_at": "2026-10-23T15:29:32+00:00",
   "pipeline_completed": true,
   "enrichment_completed": true,
   "collection_usable": true,
-  "source_records": 679,
+  "source_records": 771,
   "warnings": [
-    "SongkickPublic: 406 Client Error: Not Acceptable for url: https://www.songkick.com/metro-areas/86726-us-mills-river",
-    "SongkickOrange: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/289-orange-peel/calendar",
-    "SongkickGrey: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/39035-grey-eagle/calendar",
-    "SongkickAMH: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/107138-asheville-music-hall/calendar",
-    "SongkickEulogy: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/4519500-eulogy/calendar",
     "Sierra admission labels unavailable; existing prices retained.",
-    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" title=\"Patio Show: Sean Tobin\" data-cya11y-org-font-size=\"16\" href=\"https://www.thegreyeagle.com/event/patio-show-sean-tobin/the-patio/asheville-north-carolina/\">\u2026</a>\n",
+    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"Patio Show: Tall Boys AVL duo\" href=\"https://www.thegreyeagle.com/event/patio-show-tall-boys-avl-duo/the-patio/asheville-north-carolina/\">\u2026</a>\n",
     "Third Room ticket links unavailable; saved destinations retained.",
     "Spotify concert feed not enabled: separate CheckLeaked provider key missing."
   ],
   "duplicates_consolidated": [],
-  "run_id": "03ccef22-4c76-48e2-ba1c-5c3d1eeba336",
+  "run_id": "72bc34a3-19cf-48a8-a118-e1a916093963",
   "show_validation_issues": [
+    {
+      "show_id": 12394,
+      "dedupe_key": "ticket:grey-eagle:https://www.songkick.com/concerts/43458034-ellis-paul-at-grey-eagle-music-hall:2026-11-29 00:00:00",
+      "title": "Ellis Paul",
+      "date": "2026-11-29 00:00:00",
+      "venue": "The Grey Eagle",
+      "reasons": [
+        "Possible duplicate or conflicting date/time: 2026-11-29 00:00:00 / 2026-11-29 20:00:00"
+      ]
+    },
+    {
+      "show_id": 7451,
+      "dedupe_key": "ticket:grey-eagle:https://www.etix.com/ticket/p/86352734/an-evening-with-ellis-paul-asheville-grey-eagle-music-hall:2026-11-29 20:00:00",
+      "title": "An Evening With Ellis Paul",
+      "date": "2026-11-29 20:00:00",
+      "venue": "The Grey Eagle",
+      "reasons": [
+        "Possible duplicate or conflicting date/time: 2026-11-29 00:00:00 / 2026-11-29 20:00:00"
+      ]
+    },
     {
       "show_id": 9271,
       "dedupe_key": "ticket:third-room:https://prod-nts-api.seeticketsusa.us/v1.0.0/promote/ywzmolnuvvmtnjk1ntazoje4/clickthru:2027-04-16 20:00:00",
@@ -39,23 +54,23 @@
       ]
     }
   ],
-  "new_shows_for_enrichment": 5,
+  "new_shows_for_enrichment": 13,
   "venue_icon_requests": 0,
   "matching_attempted": 25,
-  "matching_matched": 2,
-  "matching_ambiguous": 23,
+  "matching_matched": 12,
+  "matching_ambiguous": 13,
   "matching_blocked": 0,
   "matching_pending": 0,
   "source_candidates_found": 0,
   "page_requests": 40,
   "attempted": 40,
   "metrics_saved": 40,
-  "history_requests": 3,
+  "history_requests": 14,
   "history_queued": 0,
   "history_provider_status": "available",
   "history_stop_reason": null,
-  "price_page_requests": 12,
-  "price_pages_checked": 8,
+  "price_page_requests": 13,
+  "price_pages_checked": 12,
   "price_pages_priced": 0,
   "price_providers_blocked": [
     "etix.com",
@@ -65,22 +80,22 @@
   "ticketmaster_prices_saved": 0,
   "ticketmaster_price_failures": 3,
   "ticketmaster_error_types": [
-    "HTTPError HTTP 403",
+    "WebSocketBadStatusException HTTP 1013",
     "HTTPError HTTP 403",
     "HTTPError HTTP 403"
   ],
   "brightdata_requests": 6,
-  "brightdata_prices_saved": 5,
-  "brightdata_failed": 1,
-  "rendered_price_pages": 5,
-  "rendered_prices_saved": 1,
+  "brightdata_prices_saved": 4,
+  "brightdata_failed": 2,
+  "rendered_price_pages": 1,
+  "rendered_prices_saved": 0,
   "metadata_outcomes": {
-    "unresolved": 71,
-    "waiting_for_identity": 210,
-    "unavailable": 251,
-    "complete": 2621,
-    "blocked": 3,
-    "pending": 1
+    "complete": 2631,
+    "unresolved": 77,
+    "waiting_for_identity": 228,
+    "unavailable": 275,
+    "pending": 8,
+    "blocked": 3
   },
-  "operations_alert": "sent_to_owner"
+  "operations_alert": "unchanged_or_throttled"
 }
