@@ -1,38 +1,18 @@
 {
-  "refreshed_at": "2026-10-23T15:29:32+00:00",
+  "refreshed_at": "2026-10-24T14:10:56+00:00",
   "pipeline_completed": true,
   "enrichment_completed": true,
   "collection_usable": true,
-  "source_records": 771,
+  "source_records": 754,
   "warnings": [
     "Sierra admission labels unavailable; existing prices retained.",
-    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"Patio Show: Tall Boys AVL duo\" href=\"https://www.thegreyeagle.com/event/patio-show-tall-boys-avl-duo/the-patio/asheville-north-carolina/\">\u2026</a>\n",
+    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"Patio Show: Doss Church & the Unholy Noise\" href=\"https://www.thegreyeagle.com/event/patio-show-doss-church-the-unholy-noise-2/the-patio/asheville-north-carolina/\">\u2026</a>\n",
     "Third Room ticket links unavailable; saved destinations retained.",
     "Spotify concert feed not enabled: separate CheckLeaked provider key missing."
   ],
   "duplicates_consolidated": [],
-  "run_id": "72bc34a3-19cf-48a8-a118-e1a916093963",
+  "run_id": "0b13e982-13bb-43a0-8eb2-bd0ab1eb4b90",
   "show_validation_issues": [
-    {
-      "show_id": 12394,
-      "dedupe_key": "ticket:grey-eagle:https://www.songkick.com/concerts/43458034-ellis-paul-at-grey-eagle-music-hall:2026-11-29 00:00:00",
-      "title": "Ellis Paul",
-      "date": "2026-11-29 00:00:00",
-      "venue": "The Grey Eagle",
-      "reasons": [
-        "Possible duplicate or conflicting date/time: 2026-11-29 00:00:00 / 2026-11-29 20:00:00"
-      ]
-    },
-    {
-      "show_id": 7451,
-      "dedupe_key": "ticket:grey-eagle:https://www.etix.com/ticket/p/86352734/an-evening-with-ellis-paul-asheville-grey-eagle-music-hall:2026-11-29 20:00:00",
-      "title": "An Evening With Ellis Paul",
-      "date": "2026-11-29 20:00:00",
-      "venue": "The Grey Eagle",
-      "reasons": [
-        "Possible duplicate or conflicting date/time: 2026-11-29 00:00:00 / 2026-11-29 20:00:00"
-      ]
-    },
     {
       "show_id": 9271,
       "dedupe_key": "ticket:third-room:https://prod-nts-api.seeticketsusa.us/v1.0.0/promote/ywzmolnuvvmtnjk1ntazoje4/clickthru:2027-04-16 20:00:00",
@@ -54,27 +34,26 @@
       ]
     }
   ],
-  "new_shows_for_enrichment": 13,
+  "new_shows_for_enrichment": 5,
   "venue_icon_requests": 0,
   "matching_attempted": 25,
-  "matching_matched": 12,
-  "matching_ambiguous": 13,
+  "matching_matched": 3,
+  "matching_ambiguous": 22,
   "matching_blocked": 0,
   "matching_pending": 0,
   "source_candidates_found": 0,
   "page_requests": 40,
   "attempted": 40,
   "metrics_saved": 40,
-  "history_requests": 14,
+  "history_requests": 3,
   "history_queued": 0,
   "history_provider_status": "available",
   "history_stop_reason": null,
-  "price_page_requests": 13,
-  "price_pages_checked": 12,
-  "price_pages_priced": 0,
+  "price_page_requests": 12,
+  "price_pages_checked": 4,
+  "price_pages_priced": 1,
   "price_providers_blocked": [
-    "etix.com",
-    "tixr.com"
+    "etix.com"
   ],
   "ticketmaster_price_events_checked": 3,
   "ticketmaster_prices_saved": 0,
@@ -85,17 +64,17 @@
     "HTTPError HTTP 403"
   ],
   "brightdata_requests": 6,
-  "brightdata_prices_saved": 4,
-  "brightdata_failed": 2,
-  "rendered_price_pages": 1,
-  "rendered_prices_saved": 0,
+  "brightdata_prices_saved": 6,
+  "brightdata_failed": 0,
+  "rendered_price_pages": 3,
+  "rendered_prices_saved": 1,
   "metadata_outcomes": {
-    "complete": 2631,
-    "unresolved": 77,
-    "waiting_for_identity": 228,
-    "unavailable": 275,
-    "pending": 8,
-    "blocked": 3
+    "complete": 2544,
+    "unavailable": 266,
+    "unresolved": 74,
+    "waiting_for_identity": 219,
+    "pending": 1,
+    "blocked": 2
   },
-  "operations_alert": "unchanged_or_throttled"
+  "operations_alert": "no_persistent_failures"
 }
