@@ -1,17 +1,25 @@
 {
-  "refreshed_at": "2026-10-26T19:30:51+00:00",
+  "refreshed_at": "2026-10-27T16:03:02+00:00",
   "pipeline_completed": true,
   "enrichment_completed": true,
   "collection_usable": true,
-  "source_records": 742,
+  "source_records": 754,
   "warnings": [
     "Sierra admission labels unavailable; existing prices retained.",
-    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"Patio Show: Julianna Jade\" href=\"https://www.thegreyeagle.com/event/patio-show-julianna-jade-2/the-patio/asheville-north-carolina/\">\u2026</a>\n",
+    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"Patio Show: Tom Fenton & the Rhythmic Revolution\" href=\"https://www.thegreyeagle.com/event/patio-show-tom-fenton-the-rhythmic-revolution/the-patio/asheville-north-carolina/\">\u2026</a>\n",
     "Third Room ticket links unavailable; saved destinations retained.",
     "Spotify concert feed not enabled: separate CheckLeaked provider key missing."
   ],
-  "duplicates_consolidated": [],
-  "run_id": "dbd651e2-6fe9-4f23-a03f-6ad2da33364e",
+  "duplicates_consolidated": [
+    {
+      "keep": 10789,
+      "removed": 15533,
+      "title": "EFFIN",
+      "date": "2027-02-25",
+      "reason": "reversible duplicate alias"
+    }
+  ],
+  "run_id": "251c3483-57e3-4993-8fc7-bd577d4c1cca",
   "show_validation_issues": [
     {
       "show_id": 9271,
@@ -37,8 +45,8 @@
   "new_shows_for_enrichment": 5,
   "venue_icon_requests": 0,
   "matching_attempted": 25,
-  "matching_matched": 0,
-  "matching_ambiguous": 25,
+  "matching_matched": 2,
+  "matching_ambiguous": 23,
   "matching_blocked": 0,
   "matching_pending": 0,
   "source_candidates_found": 0,
@@ -50,8 +58,8 @@
   "history_provider_status": "available",
   "history_stop_reason": null,
   "price_page_requests": 12,
-  "price_pages_checked": 17,
-  "price_pages_priced": 1,
+  "price_pages_checked": 10,
+  "price_pages_priced": 0,
   "price_providers_blocked": [
     "etix.com"
   ],
@@ -59,21 +67,22 @@
   "ticketmaster_prices_saved": 0,
   "ticketmaster_price_failures": 3,
   "ticketmaster_error_types": [
+    "HTTPError HTTP 403",
     "WebSocketBadStatusException HTTP 1013",
-    "WebSocketBadStatusException HTTP 1013",
-    "HTTPError HTTP 403"
+    "WebSocketBadStatusException HTTP 1013"
   ],
   "brightdata_requests": 6,
-  "brightdata_prices_saved": 3,
-  "brightdata_failed": 3,
-  "rendered_price_pages": 3,
-  "rendered_prices_saved": 3,
+  "brightdata_prices_saved": 4,
+  "brightdata_failed": 2,
+  "rendered_price_pages": 2,
+  "rendered_prices_saved": 0,
   "metadata_outcomes": {
-    "complete": 2443,
-    "unavailable": 259,
-    "unresolved": 69,
-    "waiting_for_identity": 204,
-    "pending": 1
+    "unresolved": 72,
+    "waiting_for_identity": 210,
+    "unavailable": 261,
+    "complete": 2454,
+    "pending": 1,
+    "blocked": 2
   },
-  "operations_alert": "sent_to_owner"
+  "operations_alert": "unchanged_or_throttled"
 }
