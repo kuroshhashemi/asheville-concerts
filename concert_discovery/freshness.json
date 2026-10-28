@@ -1,25 +1,17 @@
 {
-  "refreshed_at": "2026-10-27T16:03:02+00:00",
+  "refreshed_at": "2026-10-28T16:52:29+00:00",
   "pipeline_completed": true,
   "enrichment_completed": true,
   "collection_usable": true,
-  "source_records": 754,
+  "source_records": 760,
   "warnings": [
     "Sierra admission labels unavailable; existing prices retained.",
-    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"Patio Show: Tom Fenton & the Rhythmic Revolution\" href=\"https://www.thegreyeagle.com/event/patio-show-tom-fenton-the-rhythmic-revolution/the-patio/asheville-north-carolina/\">\u2026</a>\n",
+    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"Patio Show: Laurel Canyon East\" href=\"https://www.thegreyeagle.com/event/patio-show-laurel-canyon-east-2/the-patio/asheville-north-carolina/\">\u2026</a>\n",
     "Third Room ticket links unavailable; saved destinations retained.",
     "Spotify concert feed not enabled: separate CheckLeaked provider key missing."
   ],
-  "duplicates_consolidated": [
-    {
-      "keep": 10789,
-      "removed": 15533,
-      "title": "EFFIN",
-      "date": "2027-02-25",
-      "reason": "reversible duplicate alias"
-    }
-  ],
-  "run_id": "251c3483-57e3-4993-8fc7-bd577d4c1cca",
+  "duplicates_consolidated": [],
+  "run_id": "d32135c9-4a75-4915-b372-db6cfb78c23a",
   "show_validation_issues": [
     {
       "show_id": 9271,
@@ -42,24 +34,24 @@
       ]
     }
   ],
-  "new_shows_for_enrichment": 5,
+  "new_shows_for_enrichment": 7,
   "venue_icon_requests": 0,
   "matching_attempted": 25,
-  "matching_matched": 2,
-  "matching_ambiguous": 23,
+  "matching_matched": 3,
+  "matching_ambiguous": 22,
   "matching_blocked": 0,
   "matching_pending": 0,
   "source_candidates_found": 0,
   "page_requests": 40,
   "attempted": 40,
-  "metrics_saved": 40,
-  "history_requests": 2,
+  "metrics_saved": 39,
+  "history_requests": 3,
   "history_queued": 0,
   "history_provider_status": "available",
   "history_stop_reason": null,
   "price_page_requests": 12,
-  "price_pages_checked": 10,
-  "price_pages_priced": 0,
+  "price_pages_checked": 16,
+  "price_pages_priced": 2,
   "price_providers_blocked": [
     "etix.com"
   ],
@@ -69,20 +61,20 @@
   "ticketmaster_error_types": [
     "HTTPError HTTP 403",
     "WebSocketBadStatusException HTTP 1013",
-    "WebSocketBadStatusException HTTP 1013"
+    "HTTPError HTTP 403"
   ],
   "brightdata_requests": 6,
   "brightdata_prices_saved": 4,
   "brightdata_failed": 2,
-  "rendered_price_pages": 2,
+  "rendered_price_pages": 0,
   "rendered_prices_saved": 0,
   "metadata_outcomes": {
+    "complete": 2460,
     "unresolved": 72,
-    "waiting_for_identity": 210,
-    "unavailable": 261,
-    "complete": 2454,
-    "pending": 1,
-    "blocked": 2
+    "waiting_for_identity": 213,
+    "unavailable": 268,
+    "blocked": 1,
+    "pending": 1
   },
-  "operations_alert": "unchanged_or_throttled"
+  "operations_alert": "no_persistent_failures"
 }
