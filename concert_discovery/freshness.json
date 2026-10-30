@@ -1,18 +1,46 @@
 {
-  "refreshed_at": "2026-10-29T17:08:55+00:00",
+  "refreshed_at": "2026-10-30T16:54:22+00:00",
   "pipeline_completed": true,
   "enrichment_completed": true,
   "collection_usable": true,
-  "source_records": 765,
+  "source_records": 768,
   "warnings": [
     "Sierra admission labels unavailable; existing prices retained.",
-    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" title=\"Patio Show: Trilby\" data-cya11y-org-font-size=\"16\" href=\"https://www.thegreyeagle.com/event/patio-show-trilby-2/the-patio/asheville-north-carolina/\">\u2026</a>\n",
+    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"Patio Show: Ashley Heath\" href=\"https://www.thegreyeagle.com/event/patio-show-ashley-heath/the-patio/asheville-north-carolina/\">\u2026</a>\n",
     "Third Room ticket links unavailable; saved destinations retained.",
     "Spotify concert feed not enabled: separate CheckLeaked provider key missing."
   ],
-  "duplicates_consolidated": [],
-  "run_id": "97fa1d86-f937-48cd-8c8c-abd34f44f18c",
+  "duplicates_consolidated": [
+    {
+      "keep": 614,
+      "removed": 17747,
+      "title": "Zoso \u2013 The Ultimate Led Zeppelin Experience",
+      "date": "2027-02-07",
+      "reason": "reversible duplicate alias"
+    }
+  ],
+  "run_id": "ab914b69-c65d-4536-8103-9603182d5627",
   "show_validation_issues": [
+    {
+      "show_id": 17652,
+      "dedupe_key": "ticket:orange-peel:https://www.songkick.com/concerts/43492702-cigarettes-sunset-at-orange-peel:2027-03-18 20:00:00",
+      "title": "Cigarettes",
+      "date": "2027-03-18 20:00:00",
+      "venue": "The Orange Peel",
+      "reasons": [
+        "Possible duplicate or conflicting date/time: 2027-03-18 20:00:00 / 2027-03-19 20:00:00"
+      ]
+    },
+    {
+      "show_id": 15904,
+      "dedupe_key": "ticket:orange-peel:https://www.etix.com/ticket/p/62944640/cigarettes-sunset-asheville-the-orange-peel:2027-03-19 20:00:00",
+      "title": "Cigarettes @ Sunset",
+      "date": "2027-03-19 20:00:00",
+      "venue": "The Orange Peel",
+      "reasons": [
+        "Possible duplicate or conflicting date/time: 2027-03-18 20:00:00 / 2027-03-19 20:00:00"
+      ]
+    },
     {
       "show_id": 9271,
       "dedupe_key": "ticket:third-room:https://prod-nts-api.seeticketsusa.us/v1.0.0/promote/ywzmolnuvvmtnjk1ntazoje4/clickthru:2027-04-16 20:00:00",
@@ -34,24 +62,24 @@
       ]
     }
   ],
-  "new_shows_for_enrichment": 13,
+  "new_shows_for_enrichment": 7,
   "venue_icon_requests": 0,
   "matching_attempted": 25,
-  "matching_matched": 12,
-  "matching_ambiguous": 13,
+  "matching_matched": 1,
+  "matching_ambiguous": 24,
   "matching_blocked": 0,
   "matching_pending": 0,
   "source_candidates_found": 0,
   "page_requests": 40,
   "attempted": 40,
   "metrics_saved": 39,
-  "history_requests": 12,
+  "history_requests": 2,
   "history_queued": 0,
   "history_provider_status": "available",
   "history_stop_reason": null,
-  "price_page_requests": 13,
-  "price_pages_checked": 11,
-  "price_pages_priced": 0,
+  "price_page_requests": 12,
+  "price_pages_checked": 6,
+  "price_pages_priced": 1,
   "price_providers_blocked": [
     "etix.com",
     "tixr.com"
@@ -68,13 +96,14 @@
   "brightdata_prices_saved": 4,
   "brightdata_failed": 2,
   "rendered_price_pages": 3,
-  "rendered_prices_saved": 3,
+  "rendered_prices_saved": 2,
   "metadata_outcomes": {
-    "complete": 2497,
-    "unavailable": 282,
+    "complete": 2480,
+    "unavailable": 275,
     "unresolved": 74,
-    "waiting_for_identity": 216,
-    "blocked": 1
+    "waiting_for_identity": 219,
+    "blocked": 1,
+    "pending": 1
   },
   "operations_alert": "no_persistent_failures"
 }
