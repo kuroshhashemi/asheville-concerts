@@ -1,17 +1,17 @@
 {
-  "refreshed_at": "2026-10-31T15:54:38+00:00",
+  "refreshed_at": "2026-11-01T16:57:32+00:00",
   "pipeline_completed": true,
   "enrichment_completed": true,
   "collection_usable": true,
-  "source_records": 745,
+  "source_records": 728,
   "warnings": [
     "Sierra admission labels unavailable; existing prices retained.",
-    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"Patio show: Reed Turchi Album Release\" href=\"https://www.thegreyeagle.com/event/patio-show-reed-turchi-album-release/the-patio/asheville-north-carolina/\">\u2026</a>\n",
+    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" title=\"Yoga Taco Mosa\" data-cya11y-org-font-size=\"16\" href=\"https://www.thegreyeagle.com/event/yoga-taco-mosa-42/special-events-at-the-grey-eagle-music-hall/asheville-north-carolina/\">\u2026</a>\n",
     "Third Room ticket links unavailable; saved destinations retained.",
     "Spotify concert feed not enabled: separate CheckLeaked provider key missing."
   ],
   "duplicates_consolidated": [],
-  "run_id": "f8e45901-78f5-4f87-8ad1-08e15e0d85b4",
+  "run_id": "5535573c-eea0-4322-bdeb-098d1f8c53cb",
   "show_validation_issues": [
     {
       "show_id": 9271,
@@ -34,24 +34,24 @@
       ]
     }
   ],
-  "new_shows_for_enrichment": 3,
+  "new_shows_for_enrichment": 2,
   "venue_icon_requests": 0,
   "matching_attempted": 25,
-  "matching_matched": 1,
-  "matching_ambiguous": 24,
+  "matching_matched": 2,
+  "matching_ambiguous": 23,
   "matching_blocked": 0,
   "matching_pending": 0,
   "source_candidates_found": 0,
   "page_requests": 40,
   "attempted": 40,
-  "metrics_saved": 39,
-  "history_requests": 1,
+  "metrics_saved": 38,
+  "history_requests": 2,
   "history_queued": 0,
   "history_provider_status": "available",
   "history_stop_reason": null,
   "price_page_requests": 12,
-  "price_pages_checked": 9,
-  "price_pages_priced": 0,
+  "price_pages_checked": 14,
+  "price_pages_priced": 1,
   "price_providers_blocked": [
     "etix.com"
   ],
@@ -64,17 +64,16 @@
     "HTTPError HTTP 403"
   ],
   "brightdata_requests": 6,
-  "brightdata_prices_saved": 5,
-  "brightdata_failed": 1,
-  "rendered_price_pages": 0,
-  "rendered_prices_saved": 0,
+  "brightdata_prices_saved": 3,
+  "brightdata_failed": 3,
+  "rendered_price_pages": 3,
+  "rendered_prices_saved": 1,
   "metadata_outcomes": {
-    "complete": 2394,
-    "unavailable": 264,
-    "unresolved": 75,
-    "waiting_for_identity": 219,
-    "blocked": 2,
-    "pending": 1
+    "unresolved": 72,
+    "waiting_for_identity": 213,
+    "unavailable": 263,
+    "complete": 2325,
+    "blocked": 2
   },
-  "operations_alert": "no_persistent_failures"
+  "operations_alert": "sent_to_owner"
 }
