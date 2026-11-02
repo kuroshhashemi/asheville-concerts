@@ -68,8 +68,9 @@ class EmailStore:
         return bool(rows)
 
     def sent_keys(self, subscription_id):
+        # Catch-up must not resend a message that SMTP may already have accepted.
         rows = self.request('GET', 'email_digest_deliveries', params={
-            'subscription_id': 'eq.' + subscription_id, 'status': 'eq.sent', 'select': 'show_keys'})
+            'subscription_id': 'eq.' + subscription_id, 'status': 'in.(sent,uncertain,sending)', 'select': 'show_keys'})
         return {key for row in rows for key in row['show_keys']}
 
     def claim(self, subscription_id, end, keys):

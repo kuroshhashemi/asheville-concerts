@@ -63,3 +63,13 @@ class DestinationTests(unittest.TestCase):
     verified_show_link(c,1,artist,artist)
     self.assertEqual(c.execute('SELECT url FROM official_ticket_links WHERE show_id=1').fetchone()[0],direct)
     self.assertEqual(retain_verified_link(c,1,artist),direct)
+
+ def test_explicit_replacement_requires_matching_event_and_unambiguous_instruction(self):
+  from concert_discovery.ticket_destinations import replacement_ticket_link,replacement_matches
+  show={'title':'Homemade Spaceship (Peel After Show)','performance_start':'2026-12-16 23:30:00','venue_name':'Asheville Music Hall'}
+  html='<add-to-calendar-button name="Homemade Spaceship (Peel After Show)" startdate="2026-12-16" location="Asheville Music Hall"></add-to-calendar-button><div class="description"><p>TICKETS ARE PURCHASED <a href="https://posh.vip/e/example">HERE</a></p></div>'
+  self.assertEqual(replacement_ticket_link(html,'https://www.etix.com/ticket/p/12345678/example',show),'https://posh.vip/e/example')
+  self.assertIsNone(replacement_ticket_link(html.replace('2026-12-16','2026-12-17'),'https://www.etix.com/ticket/p/12345678/example',show))
+  self.assertIsNone(replacement_ticket_link(html.replace('TICKETS ARE PURCHASED','Recommended event'),'https://www.etix.com/ticket/p/12345678/example',show))
+  self.assertTrue(replacement_matches('<h1>Homemade Spaceship</h1><h2>Asheville Music Hall</h2><p>Wednesday, December 16th 2026</p>',show))
+  self.assertFalse(replacement_matches('<h1>Homemade Spaceship</h1><h2>Asheville Music Hall</h2><p>December 17th 2026</p>',show))

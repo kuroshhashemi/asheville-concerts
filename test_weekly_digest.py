@@ -70,6 +70,21 @@ class DigestTests(unittest.TestCase):
         with patch('concert_discovery.weekly_digest.get_shows', return_value=catalog), patch('concert_discovery.reconciliation.key_aliases', return_value={'old-key': '5'}):
             self.assertEqual([s['show_id'] for s in new_shows(END - timedelta(days=7), END, self.db, ['old-key'])], [1])
 
+    def test_unknown_listeners_catch_up_after_window_without_resending_or_pre_subscription_backlog(self):
+        with sqlite3.connect(self.db) as c:
+            c.execute('CREATE TABLE show_discovery(show_id INTEGER,first_seen_at TEXT,eligible INTEGER)')
+            c.execute('INSERT INTO show_discovery VALUES(?,?,?)',(1,(END-timedelta(days=3)).isoformat(),1))
+        show={'show_id':1,'dedupe_key':'pending','audience':None,'event_classification':{'category':'live_music'}}
+        subscribed=(END-timedelta(days=5)).isoformat()
+        with patch('concert_discovery.weekly_digest.get_shows',return_value=[show]),patch('concert_discovery.reconciliation.key_aliases',return_value={}):
+            self.assertEqual(new_shows(END-timedelta(days=7),END,self.db,subscribed_at=subscribed),[])
+            show['audience']=0  # A checked zero is known; it is not a missing count.
+            self.assertEqual(new_shows(END,END+timedelta(days=7),self.db,subscribed_at=subscribed),[show])
+            self.assertEqual(new_shows(END,END+timedelta(days=7),self.db,['pending'],subscribed_at=subscribed),[])
+            self.assertEqual(new_shows(END,END+timedelta(days=7),self.db,subscribed_at=END.isoformat()),[])
+            show['audience']=None
+            self.assertEqual(new_shows(END,END+timedelta(days=7),self.db,subscribed_at=subscribed),[])
+
     def test_full_metadata_and_html_escaping(self):
         artist = {'display_name': 'Band <script>', 'genre': 'indie-rock', 'spotify_profile_url': 'https://open.spotify.com/artist/example', 'image_url': 'https://example.com/photo.jpg'}
         show = {'performance_start': '2026-11-02 20:00:00', 'title': 'Band', 'venue_id': 'sierra-nevada', 'venue_name': 'Sierra Nevada · Mills River',
@@ -186,6 +201,9 @@ class DigestTests(unittest.TestCase):
 
     def test_atomic_claim_and_scoped_unsubscribe(self):
         store = EmailStore('https://example.supabase.co', 'private-key')
+        with patch.object(store, 'request', return_value=[{'show_keys':['possibly-delivered']}]) as request:
+            self.assertEqual(store.sent_keys('user'),{'possibly-delivered'})
+            self.assertEqual(request.call_args.kwargs['params']['status'],'in.(sent,uncertain,sending)')
         with patch.object(store, 'request', side_effect=[[], []]) as request:
             self.assertFalse(store.claim('user', END.isoformat(), ['show']))
             self.assertEqual(request.call_args.kwargs['params']['status'], 'eq.failed')

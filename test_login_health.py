@@ -40,3 +40,9 @@ class LoginHealthTests(unittest.TestCase):
  def test_daily_monitor_does_not_miss_yesterday_cluster(self):
   rows=[self.row(minutes=24*60+i) for i in range(5)]
   self.assertEqual(concerns(rows,self.now)[0][0],'login-incomplete')
+
+ def test_daily_health_reads_actual_user_storage_without_fetching_choices(self):
+  store=LoginStore('https://example.com','secret');store.call=Mock(return_value=[])
+  store.check_user_storage()
+  self.assertEqual([c.args[1] for c in store.call.call_args_list],['user_show_statuses','user_filter_settings','app_user_activity'])
+  self.assertTrue(all(c.kwargs['params']=={'select':'user_id','limit':1} for c in store.call.call_args_list))

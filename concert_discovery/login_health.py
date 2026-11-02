@@ -37,6 +37,10 @@ class LoginStore:
     def recent(self,hours=24):
         cutoff=(datetime.now(timezone.utc)-timedelta(hours=hours)).isoformat()
         return self.call('GET','app_login_attempts',params={'started_at':'gte.'+cutoff,'select':'*','order':'started_at.desc','limit':1000})
+    def check_user_storage(self):
+        """Read minimal columns, without logging personal choices or preferences."""
+        for table,column in (('user_show_statuses','user_id'),('user_filter_settings','user_id'),('app_user_activity','user_id')):
+            self.call('GET',table,params={'select':column,'limit':1})
     def last_alert(self,kind):
         rows=self.call('GET','app_auth_alerts',params={'kind':'eq.'+kind,'select':'sent_at','limit':1})
         return rows[0]['sent_at'] if rows else None

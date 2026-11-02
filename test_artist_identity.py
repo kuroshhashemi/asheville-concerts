@@ -24,3 +24,18 @@ class IdentityTests(unittest.TestCase):
    with connect(db) as c:
     c.execute('INSERT INTO artists SELECT ?,?, ?,?,match_status,match_confidence,match_reason,updated_at FROM artists WHERE artist_id=?',('conflict',"Example's Band",'B'*22,'https://open.spotify.com/artist/'+'B'*22,a))
    self.assertEqual(len(reconcile(db)['conflicts']),1)
+
+ def test_after_show_context_reuses_artist_without_erasing_real_projects(self):
+  from concert_discovery.event_sources import parse_performers
+  from concert_discovery.artist_identity import key
+  from concert_discovery.reconciliation import same_bill
+  with tempfile.TemporaryDirectory() as td:
+   db=Path(td)/'db';initialize(db)
+   with connect(db) as c:
+    base=upsert_artist(c,'Example Band','A'*22)
+    self.assertEqual(upsert_artist(c,'Example Band (Arena After Show)'),base)
+    self.assertEqual(upsert_artist(c,'Example Band (Aftershow)'),base)
+    self.assertNotEqual(upsert_artist(c,'Example Band (Acoustic Project)'),base)
+   self.assertEqual(parse_performers('Example Band (Arena After Show)')[0]['name'],'Example Band')
+   self.assertTrue(same_bill('Example Band (Arena After Show)','Example Band'))
+   self.assertNotEqual(key('Example Band (Other Project)'),key('Example Band'))

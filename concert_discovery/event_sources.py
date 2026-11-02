@@ -154,6 +154,8 @@ def strip_billing_prefix(title):
     return clean
 
 def parse_performers(title: str) -> List[Dict[str, object]]:
+    from concert_discovery.artist_identity import strip_event_suffix
+    title=strip_event_suffix(title)
     clean = strip_billing_prefix(title)
     clean = re.sub(r"^(?:(?:rescheduled|postponed|cancelled|canceled)\s*[:–—-]\s*)+", "", clean, flags=re.I)
     checked = OFFICIAL_EVENT_CHECKS.get(normalize(clean))

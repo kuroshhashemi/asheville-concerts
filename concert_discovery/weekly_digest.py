@@ -42,7 +42,7 @@ def monday_end(current):
     return local.replace(hour=9, minute=0, second=0, microsecond=0).astimezone(timezone.utc)
 
 
-def new_shows(start, end, db_path=DATABASE_PATH, sent_keys=()):
+def new_shows(start, end, db_path=DATABASE_PATH, sent_keys=(), subscribed_at=None):
     # Use exactly the visible catalog's duplicate/cancellation/recurrence rules.
     catalog = get_shows(db_path, user_id='email-view')
     with connect(db_path) as c:
@@ -50,10 +50,13 @@ def new_shows(start, end, db_path=DATABASE_PATH, sent_keys=()):
     from concert_discovery.reconciliation import key_aliases
     aliases = key_aliases(db_path)
     already_sent = {aliases.get(key, key) for key in sent_keys}
+    # Outstanding eligible discoveries remain pending until sent or no longer upcoming.
+    # Subscription date and sent-key ledger provide durable per-recipient catch-up.
+    floor=instant(subscribed_at) if subscribed_at else start
     result = []
     for show in catalog:
         record = discovered.get(show['show_id'])
-        if (record and record['eligible'] and start <= instant(record['first_seen_at']) < end
+        if (record and record['eligible'] and floor <= instant(record['first_seen_at']) < end
                 and show['dedupe_key'] not in already_sent
                 and show.get('audience') is not None
                 and show.get('event_classification',{}).get('category')=='live_music'):
@@ -206,7 +209,7 @@ def run(store, sender, password, current=None, db_path=DATABASE_PATH):
         start = max(instant(subscription['subscribed_at']), instant(subscription['last_processed_at']) if subscription.get('last_processed_at') else end - timedelta(days=7))
         if start >= end:
             continue
-        shows = new_shows(start, end, db_path, store.sent_keys(sid))
+        shows = new_shows(start, end, db_path, store.sent_keys(sid),subscribed_at=subscription['subscribed_at'])
         from concert_discovery.digest_readiness import require_ready
         if os.environ.get('DIGEST_PREFLIGHT') == '1' and shows:
             from concert_discovery.digest_preflight import prepare
@@ -214,7 +217,7 @@ def run(store, sender, password, current=None, db_path=DATABASE_PATH):
             if retry_rows:prepare(retry_rows,db_path,attempted_artists=prepared_artists)
             prepared_keys.update(s['dedupe_key'] for s in retry_rows)
             # Matching may have populated identities and metrics since selection.
-            shows = new_shows(start, end, db_path, store.sent_keys(sid))
+            shows = new_shows(start, end, db_path, store.sent_keys(sid),subscribed_at=subscription['subscribed_at'])
         from concert_discovery.show_validation import partition
         shows,withheld=partition(shows,get_shows(db_path),db_path)
         for row in withheld:withheld_report[row['dedupe_key']]=row

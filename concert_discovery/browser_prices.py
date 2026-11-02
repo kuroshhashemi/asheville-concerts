@@ -12,7 +12,7 @@ def refresh(db_path=DATABASE_PATH,limit=6,shows=None,backend="auto",priority_ids
     shows=get_shows(db_path) if shows is None else shows
     shows=[s for s in shows if str(s.get('performance_start',''))[:10]>=date.today().isoformat()]
     prices=load();cutoff=(datetime.now(timezone.utc)-timedelta(days=1)).isoformat()
-    hosts={'etix.com','tixr.com','secured.brevardmusic.org','jambase.com','wl.seetickets.us','wl.eventim.us','prod-nts-api.seeticketsusa.us','ticketmaster.com'}
+    hosts={'etix.com','tixr.com','secured.brevardmusic.org','jambase.com','wl.seetickets.us','wl.eventim.us','prod-nts-api.seeticketsusa.us','ticketmaster.com','posh.vip'}
     from pathlib import Path
     import os
     config={}
@@ -51,7 +51,7 @@ def refresh(db_path=DATABASE_PATH,limit=6,shows=None,backend="auto",priority_ids
                 if urlsplit(url).scheme!='https' or host not in hosts or key in seen or key in recent or for_show(show,prices) or show.get('sold_out') or show.get('on_sale_label'):continue
                 if result['rendered_price_pages']>=limit:break
                 seen.add(key);result['rendered_price_pages']+=1;outcome='unavailable'
-                final_url=url;brevard_price=None
+                final_url=url;brevard_price=None;replacement_pending=False
                 try:
                     page.goto(url,wait_until='domcontentloaded',timeout=90000 if remote else 15000)
                     final_url=page.url
@@ -59,7 +59,21 @@ def refresh(db_path=DATABASE_PATH,limit=6,shows=None,backend="auto",priority_ids
                     if final_url!=url and host in hosts:
                         from concert_discovery.ticket_destinations import verified_show_link
                         with connect(db_path) as c:verified_show_link(c,show['show_id'],final_url,url)
-                    if host=='etix.com':page.locator('[role="combobox"]').first.wait_for(timeout=10000)
+                    if host=='etix.com':
+                        from concert_discovery.ticket_destinations import replacement_ticket_link,replacement_matches,verified_show_link
+                        alternate=replacement_ticket_link(page.content(),final_url,show)
+                        if alternate:
+                            replacement_pending=True
+                            page.goto(alternate,wait_until='domcontentloaded',timeout=30000)
+                            page.locator('h1').first.wait_for(timeout=10000)
+                            if not replacement_matches(page.content(),show):
+                                outcome='replacement_identity_unverified'
+                                with connect(db_path) as c:c.execute('INSERT OR REPLACE INTO '+table+' VALUES(?,?,?)',(key,utc_now(),outcome))
+                                continue
+                            replacement_pending=False
+                            final_url=page.url;host=(urlsplit(final_url).hostname or '').removeprefix('www.')
+                            with connect(db_path) as c:verified_show_link(c,show['show_id'],final_url,url)
+                        else:page.locator('[role="combobox"]').first.wait_for(timeout=10000)
                     elif host=='tixr.com':page.locator('.ticket[data-row-type="primary"] .info').first.wait_for(timeout=10000)
                     elif host=='ticketmaster.com':
                         page.locator('[role="menu"][aria-label^="Ticket listings"]').first.wait_for(state='attached',timeout=20000)
@@ -81,6 +95,7 @@ def refresh(db_path=DATABASE_PATH,limit=6,shows=None,backend="auto",priority_ids
                     with connect(db_path) as c:
                         schema(c)
                         c.execute('INSERT OR REPLACE INTO identity_page_cache VALUES(?,?,?,?)',(url,encode_markup(markup),200,utc_now()))
+                        if final_url!=url:c.execute('INSERT OR REPLACE INTO identity_page_cache VALUES(?,?,?,?)',(final_url,encode_markup(markup),200,utc_now()))
                     price=brevard_price or from_ticket_markup(final_url,markup,selected_quantity=1 if host=='ticketmaster.com' else None)
                     if price:
                         save({'source_url':url,'source_name':'Rendered ticket provider'},price)
@@ -90,6 +105,9 @@ def refresh(db_path=DATABASE_PATH,limit=6,shows=None,backend="auto",priority_ids
                         from concert_discovery.availability import access_condition,ticket_page_status
                         outcome=access_condition(final_url,markup) or ticket_page_status(final_url,markup) or 'unavailable'
                 except Exception:
+                    if replacement_pending:
+                        with connect(db_path) as c:c.execute('INSERT OR REPLACE INTO '+table+' VALUES(?,?,?)',(key,utc_now(),'replacement_identity_unverified'))
+                        continue
                     # Sold-out pages have no price selector. Preserve their explicit
                     # notice rather than treating that as a provider-wide failure.
                     from concert_discovery.availability import ticket_page_status,record_ticket_page

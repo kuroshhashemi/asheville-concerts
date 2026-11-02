@@ -1,8 +1,14 @@
 """Conservative punctuation normalization, retaining independently linked identities."""
-import unicodedata
+import unicodedata,re
 from concert_discovery.storage import connect
 
+def strip_event_suffix(name):
+    # A parenthesized after-show description is event context, not an artist.
+    # Keep other parentheses (project names, locations, etc.) untouched.
+    return re.sub(r'\s+\((?:[\w’\x27 -]+\s+)?after[ -]?show\)\s*$', '', name, flags=re.I).strip()
+
 def key(name):
+    name=strip_event_suffix(name)
     return ' '.join(unicodedata.normalize('NFKC',name).casefold().translate(str.maketrans({'’':"'",'‘':"'",'ʼ':"'",'`':"'"})).split())
 
 def reconcile(db_path=None):

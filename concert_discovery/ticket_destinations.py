@@ -186,3 +186,43 @@ def reconcile_ticketmaster(events, db_path=DATABASE_PATH):
                 verified_show_link(c,show['show_id'],url,url);changed+=1
             save_sale(c,show['show_id'],event.get('sales',{}).get('public',{}).get('startDateTime'),url)
     return changed
+
+
+def replacement_ticket_link(markup, source_url, show):
+    """Explicit ticket instructions inside the matching Etix event, not recommendations."""
+    from concert_discovery.official_calendar import Tree
+    from concert_discovery.event_sources import normalize
+    if (urlsplit(source_url).hostname or '').removeprefix('www.')!='etix.com':return None
+    tree=Tree();tree.feed(markup)
+    calendar=next((n for n in tree.root.walk() if n.tag=='add-to-calendar-button'),None)
+    if not calendar:return None
+    if calendar.attrs.get('startdate')!=show['performance_start'][:10]:return None
+    if normalize(calendar.attrs.get('name',''))!=normalize(show['title']):return None
+    if normalize(calendar.attrs.get('location',''))!=normalize(show['venue_name']):return None
+    allowed={'etix.com','tixr.com','posh.vip','eventbrite.com','wl.eventim.us','wl.seetickets.us','ticketmaster.com'}
+    found=set()
+    for scope in tree.root.walk():
+        if not scope.has('description'):continue
+        for node in scope.walk():
+            if node.tag not in ('p','li'):continue
+            if not re.search(r'\btickets?\s+(?:(?:are|can be)\s+)?(?:purchased|available|sold)|\b(?:buy|purchase|get)\s+tickets?',node.text(),re.I):continue
+            for a in node.walk():
+                if a.tag!='a':continue
+                dest=a.attrs.get('href','');p=urlsplit(dest)
+                if p.scheme=='https' and not p.username and not p.password and (p.hostname or '').removeprefix('www.') in allowed and not generic_destination(dest) and dest!=source_url:found.add(dest)
+    return next(iter(found)) if len(found)==1 else None
+
+
+def replacement_matches(markup, show):
+    """Require the bill, venue and calendar day on the destination before saving it."""
+    from concert_discovery.official_calendar import Tree
+    from concert_discovery.event_sources import normalize
+    from datetime import datetime
+    tree=Tree();tree.feed(markup)
+    text=normalize(' '.join(n.text() for n in tree.root.walk() if n.tag in ('h1','h2','h3','title','p','span','div')))
+    title=normalize(re.sub(r'\([^)]*\)','',show['title']).strip())
+    day=datetime.fromisoformat(show['performance_start'][:10])
+    dates=(day.strftime('%b %d %Y'),day.strftime('%B %d %Y'),day.strftime('%Y-%m-%d'))
+    # Strip ordinal day suffixes used in human-readable event descriptions.
+    text=re.sub(r'\b(\d+)(?:st|nd|rd|th)\b',r'\1',text)
+    return bool(title and title in text and normalize(show['venue_name']) in text and any(normalize(d) in text for d in dates))

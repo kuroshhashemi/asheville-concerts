@@ -5,6 +5,8 @@ from difflib import SequenceMatcher
 
 def same_bill(a,b):
  def tokens(x):
+  from concert_discovery.artist_identity import strip_event_suffix
+  x=strip_event_suffix(x)
   x=re.sub(r'\s+(?:&|and)\s+friends\s*$','',x,flags=re.I)
   x=re.sub(r'\s*[-–:]?\s*\(?night\s+\d+\)?\s*$','',x,flags=re.I)
   words=re.findall(r'[a-z0-9]+',x.casefold())

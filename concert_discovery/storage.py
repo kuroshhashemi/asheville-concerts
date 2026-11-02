@@ -373,7 +373,8 @@ def upsert_artist(
     spotify_artist_id: Optional[str] = None,
     match_reason: str = "No source-provided Spotify artist URL; left unmatched for manual review.",
 ) -> str:
-    from concert_discovery.artist_identity import key
+    from concert_discovery.artist_identity import key,strip_event_suffix
+    name=strip_event_suffix(name)
     if connection.execute("SELECT 1 FROM sqlite_master WHERE name='artist_name_aliases'").fetchone():
         from concert_discovery.spotify_matching import name_key
         alias=connection.execute('SELECT artist_id FROM artist_name_aliases WHERE name_key=?',(name_key(name),)).fetchone()
