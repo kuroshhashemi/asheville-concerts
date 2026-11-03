@@ -1,25 +1,25 @@
 {
-  "refreshed_at": "2026-11-02T22:28:51+00:00",
+  "refreshed_at": "2026-11-03T18:05:04+00:00",
   "pipeline_completed": true,
   "enrichment_completed": true,
   "collection_usable": true,
-  "source_records": 730,
+  "source_records": 731,
   "warnings": [
     "Sierra admission labels unavailable; existing prices retained.",
-    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" title=\"Sam Shackleton\" data-cya11y-org-font-size=\"16\" href=\"https://www.thegreyeagle.com/event/sam-shackleton/grey-eagle-music-hall/asheville-north-carolina/\">\u2026</a>\n",
+    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"Kim Roney for Mayor Election Results Watch Party\" href=\"https://www.thegreyeagle.com/event/kim-roney-for-mayor-election-results-watch-party/special-events-at-the-grey-eagle-music-hall/asheville-north-carolina/\">\u2026</a>\n",
     "Third Room ticket links unavailable; saved destinations retained.",
     "Spotify concert feed not enabled: separate CheckLeaked provider key missing."
   ],
   "duplicates_consolidated": [
     {
-      "keep": 614,
-      "removed": 18743,
-      "title": "Zoso \u2013 The Ultimate Led Zeppelin Experience",
-      "date": "2027-02-07",
+      "keep": 17475,
+      "removed": 18441,
+      "title": "Homemade Spaceship (Peel After Show)",
+      "date": "2026-12-16",
       "reason": "reversible duplicate alias"
     }
   ],
-  "run_id": "dd4255fd-d505-41cb-8c95-9e8d2345205f",
+  "run_id": "dd4e1826-a8c5-47f7-b0bf-faef8be88044",
   "show_validation_issues": [
     {
       "show_id": 9271,
@@ -42,23 +42,23 @@
       ]
     }
   ],
-  "new_shows_for_enrichment": 3,
+  "new_shows_for_enrichment": 5,
   "venue_icon_requests": 0,
   "matching_attempted": 25,
-  "matching_matched": 2,
-  "matching_ambiguous": 23,
+  "matching_matched": 3,
+  "matching_ambiguous": 22,
   "matching_blocked": 0,
   "matching_pending": 0,
   "source_candidates_found": 0,
   "page_requests": 40,
   "attempted": 40,
-  "metrics_saved": 40,
+  "metrics_saved": 38,
   "history_requests": 3,
   "history_queued": 0,
   "history_provider_status": "available",
   "history_stop_reason": null,
   "price_page_requests": 12,
-  "price_pages_checked": 9,
+  "price_pages_checked": 8,
   "price_pages_priced": 1,
   "price_providers_blocked": [
     "etix.com",
@@ -69,20 +69,21 @@
   "ticketmaster_price_failures": 3,
   "ticketmaster_error_types": [
     "HTTPError HTTP 403",
-    "HTTPError HTTP 403",
+    "WebSocketBadStatusException HTTP 1013",
     "HTTPError HTTP 403"
   ],
   "brightdata_requests": 6,
   "brightdata_prices_saved": 3,
   "brightdata_failed": 3,
-  "rendered_price_pages": 2,
+  "rendered_price_pages": 0,
   "rendered_prices_saved": 0,
   "metadata_outcomes": {
     "complete": 2325,
-    "unresolved": 71,
-    "waiting_for_identity": 210,
-    "unavailable": 262,
-    "blocked": 2
+    "unresolved": 70,
+    "waiting_for_identity": 207,
+    "unavailable": 264,
+    "blocked": 3,
+    "pending": 1
   },
-  "operations_alert": "sent_to_owner"
+  "operations_alert": "unchanged_or_throttled"
 }
