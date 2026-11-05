@@ -1,17 +1,17 @@
 {
-  "refreshed_at": "2026-11-04T18:17:04+00:00",
+  "refreshed_at": "2026-11-05T18:14:08+00:00",
   "pipeline_completed": true,
   "enrichment_completed": true,
   "collection_usable": true,
-  "source_records": 738,
+  "source_records": 743,
   "warnings": [
     "Sierra admission labels unavailable; existing prices retained.",
-    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"Patio Show: Miriam\u2019s Militia\" href=\"https://www.thegreyeagle.com/event/patio-show-miriams-militia-2/the-patio/asheville-north-carolina/\">\u2026</a>\n",
+    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"Patio Show: Whitney Mong\u00e9\" href=\"https://www.thegreyeagle.com/event/patio-show-whitney-mong%c3%a9/the-patio/asheville-north-carolina/\">\u2026</a>\n",
     "Third Room ticket links unavailable; saved destinations retained.",
     "Spotify concert feed not enabled: separate CheckLeaked provider key missing."
   ],
   "duplicates_consolidated": [],
-  "run_id": "0b9f262a-fbf3-4b46-9173-7c78bc5a7375",
+  "run_id": "5e8aecdd-ec1e-4081-9b8c-46412cb74854",
   "show_validation_issues": [
     {
       "show_id": 21706,
@@ -44,23 +44,23 @@
       ]
     }
   ],
-  "new_shows_for_enrichment": 8,
+  "new_shows_for_enrichment": 7,
   "venue_icon_requests": 0,
   "matching_attempted": 25,
-  "matching_matched": 7,
-  "matching_ambiguous": 18,
+  "matching_matched": 2,
+  "matching_ambiguous": 23,
   "matching_blocked": 0,
   "matching_pending": 0,
   "source_candidates_found": 0,
   "page_requests": 40,
   "attempted": 40,
-  "metrics_saved": 39,
-  "history_requests": 8,
+  "metrics_saved": 40,
+  "history_requests": 2,
   "history_queued": 0,
   "history_provider_status": "available",
   "history_stop_reason": null,
   "price_page_requests": 12,
-  "price_pages_checked": 15,
+  "price_pages_checked": 6,
   "price_pages_priced": 0,
   "price_providers_blocked": [
     "etix.com",
@@ -70,22 +70,22 @@
   "ticketmaster_prices_saved": 0,
   "ticketmaster_price_failures": 3,
   "ticketmaster_error_types": [
-    "WebSocketBadStatusException HTTP 1013",
-    "WebSocketBadStatusException HTTP 1013",
+    "HTTPError HTTP 403",
+    "HTTPError HTTP 403",
     "WebSocketBadStatusException HTTP 1013"
   ],
   "brightdata_requests": 6,
   "brightdata_prices_saved": 2,
   "brightdata_failed": 4,
-  "rendered_price_pages": 6,
-  "rendered_prices_saved": 3,
+  "rendered_price_pages": 2,
+  "rendered_prices_saved": 1,
   "metadata_outcomes": {
-    "unresolved": 74,
-    "waiting_for_identity": 210,
-    "unavailable": 270,
-    "complete": 2358,
+    "complete": 2333,
+    "unavailable": 273,
+    "unresolved": 76,
+    "waiting_for_identity": 225,
     "pending": 1,
     "blocked": 2
   },
-  "operations_alert": "sent_to_owner"
+  "operations_alert": "unchanged_or_throttled"
 }
