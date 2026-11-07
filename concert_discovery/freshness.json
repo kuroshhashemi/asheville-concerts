@@ -1,17 +1,17 @@
 {
-  "refreshed_at": "2026-11-06T17:42:25+00:00",
+  "refreshed_at": "2026-11-07T16:39:41+00:00",
   "pipeline_completed": true,
   "enrichment_completed": true,
   "collection_usable": true,
-  "source_records": 732,
+  "source_records": 723,
   "warnings": [
     "Sierra admission labels unavailable; existing prices retained.",
-    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"Patio Show: Drew Ryder Smith\" href=\"https://www.thegreyeagle.com/event/patio-show-drew-ryder-smith/the-patio/asheville-north-carolina/\">\u2026</a>\n",
+    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" title=\"Patio Show: JM Stevens\" data-cya11y-org-font-size=\"16\" href=\"https://www.thegreyeagle.com/event/patio-show-jm-stevens/the-patio/asheville-north-carolina/\">\u2026</a>\n",
     "Third Room ticket links unavailable; saved destinations retained.",
     "Spotify concert feed not enabled: separate CheckLeaked provider key missing."
   ],
   "duplicates_consolidated": [],
-  "run_id": "4b5151be-6f5b-4a94-8f14-5190589d458f",
+  "run_id": "256c8bcd-7cad-4bc2-a3a1-18f42df01776",
   "show_validation_issues": [
     {
       "show_id": 21706,
@@ -44,23 +44,23 @@
       ]
     }
   ],
-  "new_shows_for_enrichment": 5,
+  "new_shows_for_enrichment": 7,
   "venue_icon_requests": 0,
   "matching_attempted": 25,
-  "matching_matched": 0,
-  "matching_ambiguous": 25,
+  "matching_matched": 5,
+  "matching_ambiguous": 20,
   "matching_blocked": 0,
   "matching_pending": 0,
   "source_candidates_found": 0,
   "page_requests": 40,
   "attempted": 40,
-  "metrics_saved": 37,
-  "history_requests": 2,
+  "metrics_saved": 40,
+  "history_requests": 5,
   "history_queued": 0,
   "history_provider_status": "available",
   "history_stop_reason": null,
   "price_page_requests": 12,
-  "price_pages_checked": 11,
+  "price_pages_checked": 4,
   "price_pages_priced": 0,
   "price_providers_blocked": [
     "etix.com",
@@ -75,17 +75,17 @@
     "HTTPError HTTP 403"
   ],
   "brightdata_requests": 6,
-  "brightdata_prices_saved": 4,
-  "brightdata_failed": 2,
-  "rendered_price_pages": 4,
+  "brightdata_prices_saved": 1,
+  "brightdata_failed": 5,
+  "rendered_price_pages": 3,
   "rendered_prices_saved": 0,
   "metadata_outcomes": {
-    "unresolved": 77,
-    "waiting_for_identity": 228,
-    "complete": 2306,
-    "unavailable": 272,
-    "blocked": 6,
+    "unresolved": 75,
+    "waiting_for_identity": 222,
+    "unavailable": 283,
+    "complete": 2264,
+    "blocked": 5,
     "pending": 1
   },
-  "operations_alert": "sent_to_owner"
+  "operations_alert": "unchanged_or_throttled"
 }
