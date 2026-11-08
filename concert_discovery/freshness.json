@@ -1,17 +1,17 @@
 {
-  "refreshed_at": "2026-11-07T16:39:41+00:00",
+  "refreshed_at": "2026-11-08T16:52:20+00:00",
   "pipeline_completed": true,
   "enrichment_completed": true,
   "collection_usable": true,
-  "source_records": 723,
+  "source_records": 701,
   "warnings": [
     "Sierra admission labels unavailable; existing prices retained.",
-    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" title=\"Patio Show: JM Stevens\" data-cya11y-org-font-size=\"16\" href=\"https://www.thegreyeagle.com/event/patio-show-jm-stevens/the-patio/asheville-north-carolina/\">\u2026</a>\n",
+    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"COUNTRY BRUNCH w/ Elizabeth McCorvey\" href=\"https://www.thegreyeagle.com/event/country-brunch-w-elizabeth-mccorvey/special-events-at-the-grey-eagle-music-hall/asheville-north-carolina/\">\u2026</a>\n",
     "Third Room ticket links unavailable; saved destinations retained.",
     "Spotify concert feed not enabled: separate CheckLeaked provider key missing."
   ],
   "duplicates_consolidated": [],
-  "run_id": "256c8bcd-7cad-4bc2-a3a1-18f42df01776",
+  "run_id": "808a2eaa-f4cf-4ea9-b0a5-ec9a57f67352",
   "show_validation_issues": [
     {
       "show_id": 21706,
@@ -44,27 +44,26 @@
       ]
     }
   ],
-  "new_shows_for_enrichment": 7,
+  "new_shows_for_enrichment": 0,
   "venue_icon_requests": 0,
   "matching_attempted": 25,
-  "matching_matched": 5,
-  "matching_ambiguous": 20,
+  "matching_matched": 0,
+  "matching_ambiguous": 25,
   "matching_blocked": 0,
   "matching_pending": 0,
   "source_candidates_found": 0,
   "page_requests": 40,
   "attempted": 40,
-  "metrics_saved": 40,
-  "history_requests": 5,
+  "metrics_saved": 39,
+  "history_requests": 0,
   "history_queued": 0,
-  "history_provider_status": "available",
+  "history_provider_status": "not_checked",
   "history_stop_reason": null,
   "price_page_requests": 12,
   "price_pages_checked": 4,
   "price_pages_priced": 0,
   "price_providers_blocked": [
-    "etix.com",
-    "tixr.com"
+    "etix.com"
   ],
   "ticketmaster_price_events_checked": 3,
   "ticketmaster_prices_saved": 0,
@@ -75,17 +74,17 @@
     "HTTPError HTTP 403"
   ],
   "brightdata_requests": 6,
-  "brightdata_prices_saved": 1,
-  "brightdata_failed": 5,
-  "rendered_price_pages": 3,
+  "brightdata_prices_saved": 4,
+  "brightdata_failed": 2,
+  "rendered_price_pages": 2,
   "rendered_prices_saved": 0,
   "metadata_outcomes": {
-    "unresolved": 75,
-    "waiting_for_identity": 222,
-    "unavailable": 283,
-    "complete": 2264,
-    "blocked": 5,
-    "pending": 1
+    "unresolved": 72,
+    "waiting_for_identity": 210,
+    "unavailable": 263,
+    "complete": 2183,
+    "pending": 1,
+    "blocked": 1
   },
-  "operations_alert": "unchanged_or_throttled"
+  "operations_alert": "sent_to_owner"
 }
