@@ -1,17 +1,17 @@
 {
-  "refreshed_at": "2026-11-08T16:52:20+00:00",
+  "refreshed_at": "2026-11-09T23:09:58+00:00",
   "pipeline_completed": true,
   "enrichment_completed": true,
   "collection_usable": true,
-  "source_records": 701,
+  "source_records": 707,
   "warnings": [
     "Sierra admission labels unavailable; existing prices retained.",
-    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"COUNTRY BRUNCH w/ Elizabeth McCorvey\" href=\"https://www.thegreyeagle.com/event/country-brunch-w-elizabeth-mccorvey/special-events-at-the-grey-eagle-music-hall/asheville-north-carolina/\">\u2026</a>\n",
+    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" title=\"The Feels\" data-cya11y-org-font-size=\"16\" href=\"https://www.thegreyeagle.com/event/the-feels/special-events-at-the-grey-eagle-music-hall/asheville-north-carolina/\">\u2026</a>\n",
     "Third Room ticket links unavailable; saved destinations retained.",
     "Spotify concert feed not enabled: separate CheckLeaked provider key missing."
   ],
   "duplicates_consolidated": [],
-  "run_id": "808a2eaa-f4cf-4ea9-b0a5-ec9a57f67352",
+  "run_id": "7ff35ad9-dc91-4468-a466-5d6138bdcd44",
   "show_validation_issues": [
     {
       "show_id": 21706,
@@ -44,24 +44,24 @@
       ]
     }
   ],
-  "new_shows_for_enrichment": 0,
+  "new_shows_for_enrichment": 5,
   "venue_icon_requests": 0,
   "matching_attempted": 25,
-  "matching_matched": 0,
-  "matching_ambiguous": 25,
+  "matching_matched": 3,
+  "matching_ambiguous": 22,
   "matching_blocked": 0,
   "matching_pending": 0,
   "source_candidates_found": 0,
   "page_requests": 40,
   "attempted": 40,
   "metrics_saved": 39,
-  "history_requests": 0,
+  "history_requests": 4,
   "history_queued": 0,
-  "history_provider_status": "not_checked",
+  "history_provider_status": "available",
   "history_stop_reason": null,
   "price_page_requests": 12,
   "price_pages_checked": 4,
-  "price_pages_priced": 0,
+  "price_pages_priced": 1,
   "price_providers_blocked": [
     "etix.com"
   ],
@@ -79,10 +79,10 @@
   "rendered_price_pages": 2,
   "rendered_prices_saved": 0,
   "metadata_outcomes": {
+    "complete": 2179,
+    "unavailable": 267,
     "unresolved": 72,
     "waiting_for_identity": 210,
-    "unavailable": 263,
-    "complete": 2183,
     "pending": 1,
     "blocked": 1
   },
