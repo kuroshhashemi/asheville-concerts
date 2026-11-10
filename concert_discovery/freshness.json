@@ -1,9 +1,9 @@
 {
-  "refreshed_at": "2026-11-09T23:09:58+00:00",
+  "refreshed_at": "2026-11-10T18:06:17+00:00",
   "pipeline_completed": true,
   "enrichment_completed": true,
   "collection_usable": true,
-  "source_records": 707,
+  "source_records": 739,
   "warnings": [
     "Sierra admission labels unavailable; existing prices retained.",
     "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" title=\"The Feels\" data-cya11y-org-font-size=\"16\" href=\"https://www.thegreyeagle.com/event/the-feels/special-events-at-the-grey-eagle-music-hall/asheville-north-carolina/\">\u2026</a>\n",
@@ -11,7 +11,7 @@
     "Spotify concert feed not enabled: separate CheckLeaked provider key missing."
   ],
   "duplicates_consolidated": [],
-  "run_id": "7ff35ad9-dc91-4468-a466-5d6138bdcd44",
+  "run_id": "62e22f3a-b711-481b-91f5-c5be1911c851",
   "show_validation_issues": [
     {
       "show_id": 21706,
@@ -44,24 +44,24 @@
       ]
     }
   ],
-  "new_shows_for_enrichment": 5,
+  "new_shows_for_enrichment": 12,
   "venue_icon_requests": 0,
   "matching_attempted": 25,
-  "matching_matched": 3,
-  "matching_ambiguous": 22,
+  "matching_matched": 7,
+  "matching_ambiguous": 18,
   "matching_blocked": 0,
   "matching_pending": 0,
   "source_candidates_found": 0,
   "page_requests": 40,
   "attempted": 40,
   "metrics_saved": 39,
-  "history_requests": 4,
+  "history_requests": 10,
   "history_queued": 0,
   "history_provider_status": "available",
   "history_stop_reason": null,
   "price_page_requests": 12,
-  "price_pages_checked": 4,
-  "price_pages_priced": 1,
+  "price_pages_checked": 5,
+  "price_pages_priced": 2,
   "price_providers_blocked": [
     "etix.com"
   ],
@@ -69,22 +69,22 @@
   "ticketmaster_prices_saved": 0,
   "ticketmaster_price_failures": 3,
   "ticketmaster_error_types": [
-    "HTTPError HTTP 403",
-    "HTTPError HTTP 403",
-    "HTTPError HTTP 403"
+    "WebSocketBadStatusException HTTP 403",
+    "WebSocketBadStatusException HTTP 403",
+    "WebSocketBadStatusException HTTP 403"
   ],
   "brightdata_requests": 6,
-  "brightdata_prices_saved": 4,
-  "brightdata_failed": 2,
+  "brightdata_prices_saved": 5,
+  "brightdata_failed": 1,
   "rendered_price_pages": 2,
   "rendered_prices_saved": 0,
   "metadata_outcomes": {
-    "complete": 2179,
-    "unavailable": 267,
-    "unresolved": 72,
-    "waiting_for_identity": 210,
-    "pending": 1,
-    "blocked": 1
+    "complete": 2257,
+    "unavailable": 282,
+    "unresolved": 73,
+    "waiting_for_identity": 213,
+    "pending": 2,
+    "blocked": 3
   },
-  "operations_alert": "sent_to_owner"
+  "operations_alert": "unchanged_or_throttled"
 }
