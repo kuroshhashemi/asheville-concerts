@@ -1,17 +1,26 @@
 {
-  "refreshed_at": "2026-11-12T18:33:06+00:00",
+  "refreshed_at": "2026-11-13T18:00:58+00:00",
   "pipeline_completed": true,
   "enrichment_completed": true,
   "collection_usable": true,
-  "source_records": 758,
+  "source_records": 765,
   "warnings": [
+    "SongkickPublic: SongkickPublic returned no parseable upcoming events.",
     "Sierra admission labels unavailable; existing prices retained.",
-    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"Jesse Roper w/ Jarrod Dickenson\" href=\"https://www.thegreyeagle.com/event/jesse-roper-w-jarrod-dickenson/grey-eagle-music-hall/asheville-north-carolina/\">\u2026</a>\n",
+    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"Eddie 9V w/ Leroy From the North\" href=\"https://www.thegreyeagle.com/event/eddie-9v-w-leroy-from-the-north/grey-eagle-music-hall/asheville-north-carolina/\">\u2026</a>\n",
     "Third Room ticket links unavailable; saved destinations retained.",
     "Spotify concert feed not enabled: separate CheckLeaked provider key missing."
   ],
-  "duplicates_consolidated": [],
-  "run_id": "8c6b715b-6b63-4610-8002-9b2ec349c2bb",
+  "duplicates_consolidated": [
+    {
+      "keep": 24761,
+      "removed": 28027,
+      "title": "Silversun Pickups",
+      "date": "2027-03-05",
+      "reason": "reversible duplicate alias"
+    }
+  ],
+  "run_id": "1f82d275-855f-4289-b6ac-fc2def58124e",
   "show_validation_issues": [
     {
       "show_id": 21706,
@@ -21,6 +30,26 @@
       "venue": "Sierra Nevada \u00b7 Mills River",
       "reasons": [
         "Missing or invalid title"
+      ]
+    },
+    {
+      "show_id": 28265,
+      "dedupe_key": "ticket:third-room:https://prod-nts-api.seeticketsusa.us/v1.0.0/promote/ywzmolnuvvmtnzexmdq2oje4/clickthru:2027-02-08 23:30:00",
+      "title": "Larry Keel and Jon Stickley at Third Room",
+      "date": "2027-02-08 23:30:00",
+      "venue": "Third Room",
+      "reasons": [
+        "Possible duplicate or conflicting date/time: 2027-02-08 23:30:00 / 2027-02-09 23:30:00"
+      ]
+    },
+    {
+      "show_id": 28268,
+      "dedupe_key": "ticket:third-room:https://wl.eventim.us/event/larry-keel-and-jon-stickley-trio/711046:2027-02-09 23:30:00",
+      "title": "Larry Keel and Jon Stickley at Third Room",
+      "date": "2027-02-09 23:30:00",
+      "venue": "Third Room",
+      "reasons": [
+        "Possible duplicate or conflicting date/time: 2027-02-08 23:30:00 / 2027-02-09 23:30:00"
       ]
     },
     {
@@ -44,24 +73,24 @@
       ]
     }
   ],
-  "new_shows_for_enrichment": 9,
+  "new_shows_for_enrichment": 8,
   "venue_icon_requests": 0,
   "matching_attempted": 25,
-  "matching_matched": 5,
-  "matching_ambiguous": 20,
+  "matching_matched": 3,
+  "matching_ambiguous": 22,
   "matching_blocked": 0,
   "matching_pending": 0,
   "source_candidates_found": 0,
   "page_requests": 40,
   "attempted": 40,
-  "metrics_saved": 37,
-  "history_requests": 5,
+  "metrics_saved": 39,
+  "history_requests": 3,
   "history_queued": 0,
   "history_provider_status": "available",
   "history_stop_reason": null,
   "price_page_requests": 12,
   "price_pages_checked": 4,
-  "price_pages_priced": 1,
+  "price_pages_priced": 3,
   "price_providers_blocked": [
     "etix.com",
     "tixr.com"
@@ -75,17 +104,17 @@
     "WebSocketBadStatusException HTTP 403"
   ],
   "brightdata_requests": 6,
-  "brightdata_prices_saved": 3,
-  "brightdata_failed": 3,
-  "rendered_price_pages": 5,
+  "brightdata_prices_saved": 4,
+  "brightdata_failed": 2,
+  "rendered_price_pages": 6,
   "rendered_prices_saved": 0,
   "metadata_outcomes": {
-    "complete": 2326,
-    "unavailable": 284,
-    "unresolved": 76,
-    "waiting_for_identity": 225,
-    "pending": 2,
-    "blocked": 7
+    "complete": 2313,
+    "unresolved": 74,
+    "waiting_for_identity": 219,
+    "unavailable": 269,
+    "pending": 3,
+    "blocked": 12
   },
-  "operations_alert": "sent_to_owner"
+  "operations_alert": "unchanged_or_throttled"
 }
