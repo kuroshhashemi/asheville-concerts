@@ -1945,14 +1945,14 @@
     "source_url": "https://dice.fm/event/6a063f8e6a8b6300017fed2f"
   },
   "thegreyeagle.com/event/caitlin-krisko-the-broadcast-album-release-show-2/grey-eagle-music-hall/asheville-north-carolina": {
-    "min": 22.21,
-    "max": 22.21,
+    "min": 25.6,
+    "max": 25.6,
     "from_price": false,
     "source_url": "https://www.thegreyeagle.com/event/caitlin-krisko-the-broadcast-album-release-show-2/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.101206+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.154333+00:00"
   },
   "etix.com/ticket/p/96043458/caitlin-krisko-the-broadcastalbum-release-show-asheville-grey-eagle-music-hall": {
     "min": 22.21,
@@ -2015,8 +2015,8 @@
     "source_url": "https://www.thegreyeagle.com/event/mamas-broke-reunion-album-release-tour/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.133732+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.186318+00:00"
   },
   "etix.com/ticket/p/47647336/mamas-brokereunionalbum-release-tour-asheville-grey-eagle-music-hall": {
     "min": 25.6,
@@ -2082,8 +2082,8 @@
     "source_url": "https://www.thegreyeagle.com/event/golden-folk-sessions-22/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.158455+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.208296+00:00"
   },
   "etix.com/ticket/p/39572904/golden-folk-sessions-asheville-grey-eagle-music-hall": {
     "min": 14.3,
@@ -2173,8 +2173,8 @@
     "source_url": "https://www.thegreyeagle.com/event/king-buffalo-w-l-a-witch/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.182664+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.230201+00:00"
   },
   "songkick.com/concerts/43224235-king-buffalo-at-grey-eagle-music-hall": {
     "min": 31.25,
@@ -2312,8 +2312,8 @@
     "source_url": "https://dice.fm/event/6a7c7a91c8387b000112ba8d",
     "source": "Structured event data",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:54:58.503367+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:40:37.691588+00:00"
   },
   "link.dice.fm/D648873f07ed": {
     "min": 64.25,
@@ -2322,8 +2322,8 @@
     "source_url": "https://link.dice.fm/D648873f07ed",
     "source": "Structured event data",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:55:00.209544+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:40:38.220072+00:00"
   },
   "songkick.com/concerts/43368344-claudio-simonetti-at-eulogy": {
     "min": 64.25,
@@ -2332,8 +2332,8 @@
     "source_url": "https://www.songkick.com/concerts/43368344-claudio-simonetti-at-eulogy",
     "source": "Structured event data",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-12",
-    "observed_at": "2026-11-12T18:27:36+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:40:01+00:00"
   },
   "thegreyeagle.com/event/the-travers-brothership-presents-the-last-waltz/grey-eagle-music-hall/asheville-north-carolina": {
     "min": 26.66,
@@ -2342,8 +2342,8 @@
     "source_url": "https://www.thegreyeagle.com/event/the-travers-brothership-presents-the-last-waltz/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.219952+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.260144+00:00"
   },
   "etix.com/ticket/p/59756647/the-travers-brothership-presentsthe-last-waltz-asheville-grey-eagle-music-hall": {
     "min": 26.66,
@@ -2361,8 +2361,8 @@
     "source_url": "https://www.thegreyeagle.com/event/david-wilcox-annual-thanksgiving-homecoming-concert-5/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.231870+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.269499+00:00"
   },
   "etix.com/ticket/p/47034390/david-wilcox-annual-thanksgiving-homecoming-concert-asheville-grey-eagle-music-hall": {
     "min": 35.9,
@@ -2454,8 +2454,8 @@
     "source_url": "https://www.thegreyeagle.com/event/southern-culture-on-the-skids-w-its-snakes/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.274543+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.304309+00:00"
   },
   "songkick.com/concerts/43299498-southern-culture-on-the-skids-at-grey-eagle-music-hall": {
     "min": 27.06,
@@ -2500,8 +2500,8 @@
     "source_url": "https://www.thegreyeagle.com/event/the-lemon-twigs-2/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.286715+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.314109+00:00"
   },
   "songkick.com/concerts/43374297-lemon-twigs-at-grey-eagle-music-hall": {
     "min": 31.25,
@@ -2592,8 +2592,8 @@
     "source_url": "https://www.thegreyeagle.com/event/bill-kirchen-and-the-two-turtle-doves-honky-tonk-holiday-show/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.342441+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.370327+00:00"
   },
   "etix.com/ticket/p/84264342/bill-kirchen-and-the-two-turtle-doveshonky-tonk-holiday-show-asheville-grey-eagle-music-hall": {
     "min": 35.9,
@@ -2611,8 +2611,8 @@
     "source_url": "https://www.thegreyeagle.com/event/the-2026-christmas-yarn-ball/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.354227+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.381850+00:00"
   },
   "etix.com/ticket/p/89472889/the-2026-christmas-yarn-ball-asheville-grey-eagle-music-hall": {
     "min": 27.66,
@@ -2648,8 +2648,8 @@
     "source_url": "https://www.thegreyeagle.com/event/golden-folk-sessions-23/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.366364+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.392556+00:00"
   },
   "etix.com/ticket/p/70735584/golden-folk-sessions-asheville-grey-eagle-music-hall": {
     "min": 14.3,
@@ -2739,8 +2739,8 @@
     "source_url": "https://www.thegreyeagle.com/event/willi-carlisle-the-universal-bubba-tour/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.671091+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.548775+00:00"
   },
   "songkick.com/concerts/43442873-willi-carlisle-at-grey-eagle-music-hall": {
     "min": 30.75,
@@ -2767,8 +2767,8 @@
     "source_url": "https://www.thegreyeagle.com/event/the-asheville-mountain-boys-album-release-show/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.697166+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.568566+00:00"
   },
   "etix.com/ticket/p/60868627/the-asheville-mountain-boysalbum-release-show-asheville-grey-eagle-music-hall": {
     "min": 22.51,
@@ -2804,8 +2804,8 @@
     "source_url": "https://www.thegreyeagle.com/event/thao-full-band-show-me-tour/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.773905+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.599289+00:00"
   },
   "etix.com/ticket/p/37997297/thao-full-bandshow-metour-asheville-grey-eagle-music-hall": {
     "min": 32.78,
@@ -2843,8 +2843,8 @@
     "source_url": "https://sierranevada.com/event/somewhat-petty",
     "source": "SierraOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:46.959156+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:53.133397+00:00"
   },
   "tixr.com/groups/revivalavl/events/brigitte-calls-me-baby-irreversible-tour-198119": {
     "min": 32.57,
@@ -3339,8 +3339,8 @@
     "source_url": "https://www.harrahscherokeecenterasheville.com/events/2027-the-gala-1/",
     "source": "Structured event data",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-07",
-    "observed_at": "2026-11-07T16:32:55.828639+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:40:12.022306+00:00"
   },
   "harrahscherokeecenterasheville.com/events/2027-the-gala-2": {
     "min": 10.0,
@@ -3349,8 +3349,8 @@
     "source_url": "https://www.harrahscherokeecenterasheville.com/events/2027-the-gala-2/",
     "source": "Structured event data",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-07",
-    "observed_at": "2026-11-07T16:32:56.007207+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:40:12.377434+00:00"
   },
   "harrahscherokeecenterasheville.com/events/2027-the-gala-3": {
     "min": 10.0,
@@ -3387,8 +3387,8 @@
     "source_url": "https://sierranevada.com/event/celebration-artisan-market-mills-river",
     "source": "SierraOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:46.841936+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:53.069680+00:00"
   },
   "etix.com/ticket/p/52718104/jacoozy-asheville-the-one-stop": {
     "min": 13.15,
@@ -4878,11 +4878,11 @@
     "max": 64.25,
     "from_price": false,
     "includes_fees": true,
-    "source_url": "https://dice.fm/event/avxqqx-claudio-simonettis-goblin-tenebre-23rd-nov-eulogy-asheville-tickets?_branch_match_id=1649847399112442400&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1XcxM7GwMDdOMzBPTQEA3mc3YCEAAAA%3D",
+    "source_url": "https://dice.fm/event/avxqqx-claudio-simonettis-goblin-tenebre-23rd-nov-eulogy-asheville-tickets?_branch_match_id=1650191074518884756&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1XcxM7GwMDdOMzBPTQEA3mc3YCEAAAA%3D",
     "source": "Structured event data",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:55:00.158872+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:40:38.186206+00:00"
   },
   "dice.fm/event/rydpxy-on-company-time-the-pto-tour-10th-oct-eulogy-asheville-tickets": {
     "min": 32.0,
@@ -5003,8 +5003,8 @@
     "source_url": "https://www.thegreyeagle.com/event/burlesque-brunch-48/special-events-at-the-grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.114135+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.169180+00:00"
   },
   "thegreyeagle.com/event/burlesque-brunch-49/special-events-at-the-grey-eagle-music-hall/asheville-north-carolina": {
     "min": 20.45,
@@ -5013,8 +5013,8 @@
     "source_url": "https://www.thegreyeagle.com/event/burlesque-brunch-49/special-events-at-the-grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.398280+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.419652+00:00"
   },
   "thegreyeagle.com/event/candler-rice-debut-ep-release-show/special-events-at-the-grey-eagle-music-hall/asheville-north-carolina": {
     "min": 22.1,
@@ -5023,8 +5023,8 @@
     "source_url": "https://www.thegreyeagle.com/event/candler-rice-debut-ep-release-show/special-events-at-the-grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.435432+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.451929+00:00"
   },
   "thegreyeagle.com/event/hans-williams-2/grey-eagle-music-hall/asheville-north-carolina": {
     "min": 31.75,
@@ -5033,8 +5033,8 @@
     "source_url": "https://www.thegreyeagle.com/event/hans-williams-2/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.518335+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.507856+00:00"
   },
   "thegreyeagle.com/event/14th-annual-django-reinhardt-birthday-celebration/grey-eagle-music-hall/asheville-north-carolina": {
     "min": 30.75,
@@ -5043,8 +5043,8 @@
     "source_url": "https://www.thegreyeagle.com/event/14th-annual-django-reinhardt-birthday-celebration/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.542932+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.527847+00:00"
   },
   "jambase.com/show/brian-felix-organ-trio-little-jumbo-20261026": {
     "min": 0,
@@ -5070,8 +5070,8 @@
     "source_url": "https://www.jambase.com/show/jacoozy-taproom-at-highland-brewing-company-20261128",
     "source": "JamBase",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:44.486566+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:51.237658+00:00"
   },
   "jambase.com/show/kendall-street-company-oskar-blues-brewery-20261212": {
     "min": 0,
@@ -5079,8 +5079,8 @@
     "source_url": "https://www.jambase.com/show/kendall-street-company-oskar-blues-brewery-20261212",
     "source": "JamBase",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:44.960301+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:51.599771+00:00"
   },
   "jambase.com/band/brian-felix-organ-trio": {
     "min": 0,
@@ -5171,22 +5171,22 @@
     "max": 64.25,
     "from_price": false,
     "includes_fees": true,
-    "source_url": "https://dice.fm/event/avxqqx?_branch_match_id=1649847399112442400&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1XcxM7GwMDdOMzBPTQEA3mc3YCEAAAA%3D",
+    "source_url": "https://dice.fm/event/avxqqx?_branch_match_id=1650191074518884756&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1XcxM7GwMDdOMzBPTQEA3mc3YCEAAAA%3D",
     "source": "Structured event data",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:55:00.178166+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:40:38.199005+00:00"
   },
   "agzl.app.link/mqbhC2vQx5b": {
     "min": 64.25,
     "max": 64.25,
     "from_price": false,
     "includes_fees": true,
-    "source_url": "https://agzl.app.link/mqbhC2vQx5b?_p=c1163fdc90077af5e7038ffcec",
+    "source_url": "https://agzl.app.link/mqbhC2vQx5b?_p=c40a36c79c1c65f3e7038ff9ec",
     "source": "Structured event data",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:55:00.197909+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:40:38.211798+00:00"
   },
   "dice.fm/event/eo9aqw-dish-horsesitter-clinton-aunt-ant-23rd-oct-static-age-records-asheville-tickets": {
     "min": 14.56,
@@ -5325,33 +5325,33 @@
     "max": 22.04,
     "from_price": false,
     "includes_fees": true,
-    "source_url": "https://dice.fm/event/6dy5dq-day-dream-farewell-show-w-blue-roses-the-moon-and-you-3rd-dec-eulogy-asheville-tickets?_branch_match_id=1649847418361130713&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1U83NTK1MDJNS0tJSQEAq6LNdyEAAAA%3D",
+    "source_url": "https://dice.fm/event/6dy5dq-day-dream-farewell-show-w-blue-roses-the-moon-and-you-3rd-dec-eulogy-asheville-tickets?_branch_match_id=1650191108192302473&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1U83NTK1MDJNS0tJSQEAq6LNdyEAAAA%3D",
     "source": "Structured event data",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:55:04.454993+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:40:46.218929+00:00"
   },
   "dice.fm/event/6dy5dq": {
     "min": 22.04,
     "max": 22.04,
     "from_price": false,
     "includes_fees": true,
-    "source_url": "https://dice.fm/event/6dy5dq?_branch_match_id=1649847418361130713&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1U83NTK1MDJNS0tJSQEAq6LNdyEAAAA%3D",
+    "source_url": "https://dice.fm/event/6dy5dq?_branch_match_id=1650191108192302473&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1U83NTK1MDJNS0tJSQEAq6LNdyEAAAA%3D",
     "source": "Structured event data",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:55:04.474622+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:40:46.231685+00:00"
   },
   "agzl.app.link/QkptI9do66b": {
     "min": 22.04,
     "max": 22.04,
     "from_price": false,
     "includes_fees": true,
-    "source_url": "https://agzl.app.link/QkptI9do66b?_p=c1163fdc90077af5e7038ffcec",
+    "source_url": "https://agzl.app.link/QkptI9do66b?_p=c40a36c79c1c65f3e7038ff9ec",
     "source": "Structured event data",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:55:04.494247+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:40:46.244040+00:00"
   },
   "link.dice.fm/g525825ffddd": {
     "min": 22.04,
@@ -5360,8 +5360,8 @@
     "source_url": "https://link.dice.fm/g525825ffddd",
     "source": "Structured event data",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:55:04.519855+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:40:46.252252+00:00"
   },
   "dice.fm/event/7d9l29-new-orthodox-mike-johnson-jed-willis-12th-nov-static-age-records-asheville-tickets": {
     "min": 12.12,
@@ -5458,8 +5458,8 @@
     "source_url": "https://www.thegreyeagle.com/event/an-evening-with-ellis-paul/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.243598+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.278948+00:00"
   },
   "thegreyeagle.com/event/chatham-county-line-winter-wilder-holiday-tour-2026/grey-eagle-music-hall/asheville-north-carolina": {
     "min": 25.6,
@@ -5468,8 +5468,8 @@
     "source_url": "https://www.thegreyeagle.com/event/chatham-county-line-winter-wilder-holiday-tour-2026/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.317603+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.339820+00:00"
   },
   "thegreyeagle.com/event/billy-jonas-band-welcome-the-new-year-family-concert-3/grey-eagle-music-hall/asheville-north-carolina": {
     "min": 17.42,
@@ -5478,8 +5478,8 @@
     "source_url": "https://www.thegreyeagle.com/event/billy-jonas-band-welcome-the-new-year-family-concert-3/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.463806+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.476905+00:00"
   },
   "thegreyeagle.com/event/james-mcmurtry-and-the-martial-law-review/grey-eagle-music-hall/asheville-north-carolina": {
     "min": 32.81,
@@ -5488,8 +5488,8 @@
     "source_url": "https://www.thegreyeagle.com/event/james-mcmurtry-and-the-martial-law-review/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.608659+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.538780+00:00"
   },
   "dice.fm/event/v3x25d-project-pat-16th-oct-eulogy-asheville-tickets": {
     "min": 70.32,
@@ -5530,8 +5530,8 @@
     "source_url": "https://www.jambase.com/show/dangermuffin-oskar-blues-brewery-20261231",
     "source": "JamBase",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:45.391512+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:51.930503+00:00"
   },
   "jambase.com/band/dangermuffin": {
     "min": 0,
@@ -6176,8 +6176,8 @@
     "source_url": "https://www.harrahscherokeecenterasheville.com/events/2026-the-big-crafty-4/",
     "source": "Structured event data",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-10",
-    "observed_at": "2026-11-10T17:58:54+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:40:04+00:00"
   },
   "etix.com/ticket/p/61271182/an-evening-with-jacoozyfeaturing-preshow-with-dj-rhuckas-brevard-185-king-street": {
     "min": 17.5,
@@ -6530,8 +6530,8 @@
     "source_url": "https://www.thegreyeagle.com/event/tropidelic-with-mihali-mellodose/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.684108+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.558251+00:00"
   },
   "wl.eventim.us/event/chmura/708863": {
     "min": 29.57,
@@ -6754,8 +6754,8 @@
     "source_url": "https://www.thegreyeagle.com/event/new-years-eve-with-electro-lust-auspicious-golden-fish/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.494389+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.487459+00:00"
   },
   "dice.fm/event/dkq76g-deer-tick-6th-nov-eulogy-asheville-tickets": {
     "min": 34.5,
@@ -7120,8 +7120,8 @@
     "source_url": "https://theorangepeel.net/event/eblen-toy-drive-kickoff-concert-feat-the-vinyl-brothers/the-orange-peel/asheville-north-carolina/",
     "source": "OrangePeelOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:47.387805+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:53.446872+00:00"
   },
   "thegreyeagle.com/event/chatham-rabbits-w-alexa-rose/grey-eagle-music-hall/asheville-north-carolina": {
     "min": 28.17,
@@ -7140,8 +7140,8 @@
     "source_url": "https://www.thegreyeagle.com/event/stevie-tombstone-dylan-walshe-and-jade-moore/special-events-at-the-grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.448528+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.463427+00:00"
   },
   "dice.fm/event/pyxb78-gimme-gimme-disco-11th-dec-eulogy-asheville-tickets": {
     "min": 22.82,
@@ -7253,8 +7253,8 @@
     "source_url": "https://www.thegreyeagle.com/event/gratifly-fireflygatherings-hoe-down-throw-down/special-events-at-the-grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.207444+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.250371+00:00"
   },
   "sierranevada.com/event/celebration-artisan-market": {
     "min": 0,
@@ -7262,8 +7262,8 @@
     "source_url": "https://sierranevada.com/event/celebration-artisan-market",
     "source": "SierraOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:46.887161+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:53.076363+00:00"
   },
   "wl.eventim.us/event/Star-Monster-w-PHYPHR-ASHEVILLE/709654": {
     "min": 18.12,
@@ -7382,8 +7382,8 @@
     "source_url": "https://www.thegreyeagle.com/event/mountain-mama-songs-that-bring-me-home/special-events-at-the-grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.146263+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.197529+00:00"
   },
   "thegreyeagle.com/event/the-moth-presents-asheville-storyslam-home-for-the-holidays/grey-eagle-music-hall/asheville-north-carolina": {
     "min": 22.21,
@@ -7392,41 +7392,41 @@
     "source_url": "https://www.thegreyeagle.com/event/the-moth-presents-asheville-storyslam-home-for-the-holidays/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.170797+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.219549+00:00"
   },
   "dice.fm/event/dlggro--club-slayyy-slayyyter-hyperpop-night-4th-dec-eulogy-asheville-tickets": {
     "min": 22.04,
     "max": 22.04,
     "from_price": true,
     "includes_fees": true,
-    "source_url": "https://dice.fm/event/dlggro--club-slayyy-slayyyter-hyperpop-night-4th-dec-eulogy-asheville-tickets?_branch_match_id=1649847424566708200&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1S9MS05KszQxSko2MAYALkLA0CEAAAA%3D",
+    "source_url": "https://dice.fm/event/dlggro--club-slayyy-slayyyter-hyperpop-night-4th-dec-eulogy-asheville-tickets?_branch_match_id=1650191112822554816&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1S9MS05KszQxSko2MAYALkLA0CEAAAA%3D",
     "source": "Structured event data",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:55:05.705909+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:40:47.575590+00:00"
   },
   "dice.fm/event/dlggro": {
     "min": 22.04,
     "max": 22.04,
     "from_price": true,
     "includes_fees": true,
-    "source_url": "https://dice.fm/event/dlggro?_branch_match_id=1649847424566708200&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1S9MS05KszQxSko2MAYALkLA0CEAAAA%3D",
+    "source_url": "https://dice.fm/event/dlggro?_branch_match_id=1650191112822554816&utm_medium=partners_api&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1S9MS05KszQxSko2MAYALkLA0CEAAAA%3D",
     "source": "Structured event data",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:55:05.725464+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:40:47.588552+00:00"
   },
   "agzl.app.link/rYj2tc9iC7b": {
     "min": 22.04,
     "max": 22.04,
     "from_price": true,
     "includes_fees": true,
-    "source_url": "https://agzl.app.link/rYj2tc9iC7b?_p=c1163fdc90077af5e7038ffcec",
+    "source_url": "https://agzl.app.link/rYj2tc9iC7b?_p=c40a36c79c1c65f3e7038ff9ec",
     "source": "Structured event data",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:55:05.744355+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:40:47.601225+00:00"
   },
   "link.dice.fm/qfcbf942bc03": {
     "min": 22.04,
@@ -7435,8 +7435,8 @@
     "source_url": "https://link.dice.fm/qfcbf942bc03",
     "source": "Structured event data",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:55:05.755953+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:40:47.609660+00:00"
   },
   "etix.com/ticket/p/75544648/luna-presents-sonidowiiss-elinnovador-asheville-asheville-music-hall": {
     "min": 30.6,
@@ -7588,8 +7588,8 @@
     "source_url": "https://sierranevada.com/event/terraoke",
     "source": "SierraOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:46.907898+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:53.091177+00:00"
   },
   "dice.fm/event/6ad933c6f3f79d000181f9a1": {
     "min": 22.82,
@@ -7754,8 +7754,8 @@
     "source_url": "https://www.thegreyeagle.com/event/10th-annual-trolley-la-la-la-ft-brody-hunt-and-the-silent-knights/special-events-at-the-grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.422296+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.439344+00:00"
   },
   "etix.com/ticket/p/92730894/bourbon-n-beats-wace-bentley-and-peter-the-poet-asheville-pulp": {
     "min": 15.83,
@@ -7794,8 +7794,8 @@
     "source_url": "https://www.thegreyeagle.com/event/isaac-hadden-x-new-dawn-starkestra/special-events-at-the-grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.305368+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.328940+00:00"
   },
   "thegreyeagle.com/event/larry-campbell-and-teresa-williams/grey-eagle-music-hall/asheville-north-carolina": {
     "min": 32.81,
@@ -7804,8 +7804,8 @@
     "source_url": "https://www.thegreyeagle.com/event/larry-campbell-and-teresa-williams/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.710095+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.579308+00:00"
   },
   "thegreyeagle.com/event/andrew-scotchie-everyday-victories-album-release-show-w-datrian-johnson-mckinney/grey-eagle-music-hall/asheville-north-carolina": {
     "min": 20.45,
@@ -7814,8 +7814,8 @@
     "source_url": "https://www.thegreyeagle.com/event/andrew-scotchie-everyday-victories-album-release-show-w-datrian-johnson-mckinney/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.761953+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.589754+00:00"
   },
   "thegreyeagle.com/event/an-evening-with-bring-out-yer-dead/grey-eagle-music-hall/asheville-north-carolina": {
     "min": 25.6,
@@ -7824,8 +7824,8 @@
     "source_url": "https://www.thegreyeagle.com/event/an-evening-with-bring-out-yer-dead/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.797952+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.623341+00:00"
   },
   "etix.com/ticket/p/59187711/panchiko-asheville-the-orange-peel": {
     "min": 45.85,
@@ -8062,8 +8062,8 @@
     "source_url": "https://www.thegreyeagle.com/event/jill-andrews/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.506497+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.497704+00:00"
   },
   "sierranevada.com/event/north-mississippi-allstars-4": {
     "min": 55.0,
@@ -8072,8 +8072,8 @@
     "source_url": "https://sierranevada.com/event/north-mississippi-allstars-4",
     "source": "SierraOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:46.946168+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:53.122021+00:00"
   },
   "dice.fm/event/lqa8ww-wild-pink-w-why-bonnie-3rd-mar-static-age-records-asheville-tickets": {
     "min": 24.25,
@@ -8156,8 +8156,8 @@
     "source_url": "https://www.thegreyeagle.com/event/dj-giddy-up-saturday-night-hoedown-3/special-events-at-the-grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.195501+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.240518+00:00"
   },
   "thegreyeagle.com/event/make-the-yuletide-gay-flamy-grant-crys-matthews-heather-mae/grey-eagle-music-hall/asheville-north-carolina": {
     "min": 30.25,
@@ -8166,8 +8166,8 @@
     "source_url": "https://www.thegreyeagle.com/event/make-the-yuletide-gay-flamy-grant-crys-matthews-heather-mae/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.256373+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.289597+00:00"
   },
   "thegreyeagle.com/event/amanda-anne-platt-the-honeycutters-the-holiday-spectacular-show-vi/grey-eagle-music-hall/asheville-north-carolina": {
     "min": 27.41,
@@ -8176,8 +8176,8 @@
     "source_url": "https://www.thegreyeagle.com/event/amanda-anne-platt-the-honeycutters-the-holiday-spectacular-show-vi/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.386143+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.408682+00:00"
   },
   "thegreyeagle.com/event/gabe-quinn/grey-eagle-music-hall/asheville-north-carolina": {
     "min": 20.2,
@@ -8186,8 +8186,8 @@
     "source_url": "https://www.thegreyeagle.com/event/gabe-quinn/grey-eagle-music-hall/asheville-north-carolina/",
     "source": "GreyEagleOfficial",
     "detail": "Advertised event price",
-    "checked_at": "2026-11-13",
-    "observed_at": "2026-11-13T17:53:40.785616+00:00"
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:39:48.612946+00:00"
   },
   "dice.fm/event/ekgepy-brown-horse-13th-feb-eulogy-asheville-tickets": {
     "min": 22.04,
@@ -8450,5 +8450,105 @@
     "detail": "Advertised event price",
     "checked_at": "2026-11-13",
     "observed_at": "2026-11-13T18:00:34.509981+00:00"
+  },
+  "wl.eventim.us/event/ARTIFAKTS-X-LATE-NIGHT-RADIO-ASHEVILLE/710420": {
+    "min": 28.58,
+    "max": 38.99,
+    "includes_fees": true,
+    "source_url": "https://wl.eventim.us/event/ARTIFAKTS-X-LATE-NIGHT-RADIO-ASHEVILLE/710420?afflky=DiscoDonnie&nts_trk=ca49ae43-bd63-4a00-91bc-479b5a0c1861&utm_source=jambase&affiliateId=18",
+    "source": "Structured event data",
+    "detail": "Advertised event price",
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:41:20.481428+00:00"
+  },
+  "wl.seetickets.us/event/ARTIFAKTS-X-LATE-NIGHT-RADIO-ASHEVILLE/710420": {
+    "min": 28.58,
+    "max": 38.99,
+    "includes_fees": true,
+    "source_url": "https://wl.seetickets.us/event/ARTIFAKTS-X-LATE-NIGHT-RADIO-ASHEVILLE/710420?afflky=DiscoDonnie&nts_trk=ca49ae43-bd63-4a00-91bc-479b5a0c1861&utm_source=jambase&affiliateId=18",
+    "source": "Structured event data",
+    "detail": "Advertised event price",
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:41:20.491080+00:00"
+  },
+  "prod-nts-api.seeticketsusa.us/v1.0.0/promote/YWZmOlNUVVMtNzEwNDIwOjE4/clickthru": {
+    "min": 28.58,
+    "max": 38.99,
+    "includes_fees": true,
+    "source_url": "https://prod-nts-api.seeticketsusa.us/v1.0.0/promote/YWZmOlNUVVMtNzEwNDIwOjE4/clickthru?utm_source=jambase",
+    "source": "Structured event data",
+    "detail": "Advertised event price",
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:41:20.500049+00:00"
+  },
+  "etix.com/ticket/p/83679852/places-to-befred-again-tribute-party-asheville-asheville-music-hall": {
+    "min": 10.0,
+    "max": 10.0,
+    "from_price": false,
+    "source_url": "https://www.etix.com/ticket/p/83679852/places-to-befred-again-tribute-party-asheville-asheville-music-hall?partner_id=100",
+    "source": "Bright Data ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:43:16.210731+00:00"
+  },
+  "etix.com/ticket/p/83284726/random-animals-ashley-heath-her-heathens-jeff-santiago-asheville-the-orange-peel": {
+    "min": 12.0,
+    "max": 12.0,
+    "from_price": false,
+    "source_url": "https://www.etix.com/ticket/p/83284726/random-animals-ashley-heath-her-heathens-jeff-santiago-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Bright Data ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:44:40.145254+00:00"
+  },
+  "tixr.com/groups/revivalavl/events/corduroy-cadets-live-in-concert-213673": {
+    "min": 15.0,
+    "max": 15.0,
+    "from_price": false,
+    "source_url": "https://www.tixr.com/groups/revivalavl/events/corduroy-cadets-live-in-concert-213673?utm_campaign=jambase&utm_source=jambase",
+    "source": "Bright Data ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:45:09.143737+00:00"
+  },
+  "ticketmaster.com/event/2D006565BB82BAF8": {
+    "min": 10.0,
+    "max": 10.0,
+    "from_price": false,
+    "source_url": "https://www.ticketmaster.com/event/2D006565BB82BAF8",
+    "source": "Rendered ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:47:10.507837+00:00"
+  },
+  "etix.com/ticket/p/58723561/beach-bunnyout-of-office-tour-asheville-the-orange-peel": {
+    "min": 10.0,
+    "max": 10.0,
+    "from_price": false,
+    "source_url": "https://www.etix.com/ticket/p/58723561/beach-bunnyout-of-office-tour-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Rendered ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:47:10.664928+00:00"
+  },
+  "etix.com/ticket/p/56279089/the-menzingerseverything-i-ever-saw-north-american-tour-asheville-the-orange-peel": {
+    "min": 10.0,
+    "max": 10.0,
+    "from_price": false,
+    "source_url": "https://www.etix.com/ticket/p/56279089/the-menzingerseverything-i-ever-saw-north-american-tour-asheville-the-orange-peel?cobrand=1161&partner_id=100",
+    "source": "Rendered ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:47:10.763645+00:00"
+  },
+  "etix.com/ticket/p/65605390/patio-showchristina-chandler-asheville-grey-eagle-patio-stage": {
+    "min": 10.0,
+    "max": 10.0,
+    "from_price": false,
+    "source_url": "https://www.etix.com/ticket/p/65605390/patio-showchristina-chandler-asheville-grey-eagle-patio-stage?partner_id=100",
+    "source": "Rendered ticket provider",
+    "detail": "Advertised event price",
+    "checked_at": "2026-11-14",
+    "observed_at": "2026-11-14T16:47:11.278754+00:00"
   }
 }

@@ -1,37 +1,19 @@
 {
-  "refreshed_at": "2026-11-13T18:00:58+00:00",
+  "refreshed_at": "2026-11-14T16:47:13+00:00",
   "pipeline_completed": true,
   "enrichment_completed": true,
   "collection_usable": true,
-  "source_records": 765,
+  "source_records": 748,
   "warnings": [
     "SongkickPublic: SongkickPublic returned no parseable upcoming events.",
     "Sierra admission labels unavailable; existing prices retained.",
-    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"Eddie 9V w/ Leroy From the North\" href=\"https://www.thegreyeagle.com/event/eddie-9v-w-leroy-from-the-north/grey-eagle-music-hall/asheville-north-carolina/\">\u2026</a>\n",
+    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"Patio Show: Christina Chandler\" href=\"https://www.thegreyeagle.com/event/patio-show-christina-chandler-2/the-patio/asheville-north-carolina/\">\u2026</a>\n",
     "Third Room ticket links unavailable; saved destinations retained.",
     "Spotify concert feed not enabled: separate CheckLeaked provider key missing."
   ],
-  "duplicates_consolidated": [
-    {
-      "keep": 24761,
-      "removed": 28027,
-      "title": "Silversun Pickups",
-      "date": "2027-03-05",
-      "reason": "reversible duplicate alias"
-    }
-  ],
-  "run_id": "1f82d275-855f-4289-b6ac-fc2def58124e",
+  "duplicates_consolidated": [],
+  "run_id": "bbbdf890-f9f5-4f6f-84ae-aa1a59d1ab4b",
   "show_validation_issues": [
-    {
-      "show_id": 21706,
-      "dedupe_key": "ticket:sierra-nevada:https://sierranevada.com/event/27588-2:2026-11-13 18:30:00",
-      "title": "(untitled)",
-      "date": "2026-11-13 18:30:00",
-      "venue": "Sierra Nevada \u00b7 Mills River",
-      "reasons": [
-        "Missing or invalid title"
-      ]
-    },
     {
       "show_id": 28265,
       "dedupe_key": "ticket:third-room:https://prod-nts-api.seeticketsusa.us/v1.0.0/promote/ywzmolnuvvmtnzexmdq2oje4/clickthru:2027-02-08 23:30:00",
@@ -73,24 +55,24 @@
       ]
     }
   ],
-  "new_shows_for_enrichment": 8,
+  "new_shows_for_enrichment": 6,
   "venue_icon_requests": 0,
   "matching_attempted": 25,
-  "matching_matched": 3,
-  "matching_ambiguous": 22,
+  "matching_matched": 2,
+  "matching_ambiguous": 23,
   "matching_blocked": 0,
   "matching_pending": 0,
   "source_candidates_found": 0,
   "page_requests": 40,
   "attempted": 40,
-  "metrics_saved": 39,
-  "history_requests": 3,
+  "metrics_saved": 40,
+  "history_requests": 2,
   "history_queued": 0,
   "history_provider_status": "available",
   "history_stop_reason": null,
   "price_page_requests": 12,
-  "price_pages_checked": 4,
-  "price_pages_priced": 3,
+  "price_pages_checked": 8,
+  "price_pages_priced": 0,
   "price_providers_blocked": [
     "etix.com",
     "tixr.com"
@@ -104,17 +86,17 @@
     "WebSocketBadStatusException HTTP 403"
   ],
   "brightdata_requests": 6,
-  "brightdata_prices_saved": 4,
-  "brightdata_failed": 2,
+  "brightdata_prices_saved": 3,
+  "brightdata_failed": 3,
   "rendered_price_pages": 6,
-  "rendered_prices_saved": 0,
+  "rendered_prices_saved": 4,
   "metadata_outcomes": {
-    "complete": 2313,
-    "unresolved": 74,
-    "waiting_for_identity": 219,
-    "unavailable": 269,
-    "pending": 3,
-    "blocked": 12
+    "complete": 2251,
+    "unavailable": 270,
+    "unresolved": 73,
+    "waiting_for_identity": 216,
+    "blocked": 9,
+    "pending": 1
   },
-  "operations_alert": "unchanged_or_throttled"
+  "operations_alert": "sent_to_owner"
 }
