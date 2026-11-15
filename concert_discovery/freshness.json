@@ -1,18 +1,19 @@
 {
-  "refreshed_at": "2026-11-14T16:47:13+00:00",
+  "refreshed_at": "2026-11-15T17:25:46+00:00",
   "pipeline_completed": true,
   "enrichment_completed": true,
   "collection_usable": true,
-  "source_records": 748,
+  "source_records": 669,
   "warnings": [
     "SongkickPublic: SongkickPublic returned no parseable upcoming events.",
     "Sierra admission labels unavailable; existing prices retained.",
-    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"Patio Show: Christina Chandler\" href=\"https://www.thegreyeagle.com/event/patio-show-christina-chandler-2/the-patio/asheville-north-carolina/\">\u2026</a>\n",
+    "OrangePeelOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n",
+    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" title=\"Burlesque Brunch\" data-cya11y-org-font-size=\"16\" href=\"https://www.thegreyeagle.com/event/burlesque-brunch-48/special-events-at-the-grey-eagle-music-hall/asheville-north-carolina/\">\u2026</a>\n",
     "Third Room ticket links unavailable; saved destinations retained.",
     "Spotify concert feed not enabled: separate CheckLeaked provider key missing."
   ],
   "duplicates_consolidated": [],
-  "run_id": "bbbdf890-f9f5-4f6f-84ae-aa1a59d1ab4b",
+  "run_id": "2f9b1fda-beb7-4b59-a04b-ad707c22cbc9",
   "show_validation_issues": [
     {
       "show_id": 28265,
@@ -55,27 +56,26 @@
       ]
     }
   ],
-  "new_shows_for_enrichment": 6,
+  "new_shows_for_enrichment": 1,
   "venue_icon_requests": 0,
   "matching_attempted": 25,
-  "matching_matched": 2,
-  "matching_ambiguous": 23,
+  "matching_matched": 3,
+  "matching_ambiguous": 22,
   "matching_blocked": 0,
   "matching_pending": 0,
   "source_candidates_found": 0,
   "page_requests": 40,
   "attempted": 40,
-  "metrics_saved": 40,
-  "history_requests": 2,
+  "metrics_saved": 39,
+  "history_requests": 3,
   "history_queued": 0,
   "history_provider_status": "available",
   "history_stop_reason": null,
   "price_page_requests": 12,
-  "price_pages_checked": 8,
-  "price_pages_priced": 0,
+  "price_pages_checked": 7,
+  "price_pages_priced": 1,
   "price_providers_blocked": [
-    "etix.com",
-    "tixr.com"
+    "etix.com"
   ],
   "ticketmaster_price_events_checked": 3,
   "ticketmaster_prices_saved": 0,
@@ -89,14 +89,13 @@
   "brightdata_prices_saved": 3,
   "brightdata_failed": 3,
   "rendered_price_pages": 6,
-  "rendered_prices_saved": 4,
+  "rendered_prices_saved": 3,
   "metadata_outcomes": {
-    "complete": 2251,
-    "unavailable": 270,
-    "unresolved": 73,
-    "waiting_for_identity": 216,
-    "blocked": 9,
-    "pending": 1
+    "complete": 2212,
+    "unavailable": 272,
+    "unresolved": 77,
+    "waiting_for_identity": 225,
+    "blocked": 4
   },
   "operations_alert": "sent_to_owner"
 }
