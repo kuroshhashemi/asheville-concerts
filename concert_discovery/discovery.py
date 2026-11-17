@@ -67,6 +67,7 @@ def get_shows(db_path=None, user_id=OWNER, include_recurring=False):
             genre_sources={r['artist_id']:r['source_url'] for r in c.execute('SELECT * FROM artist_genres')}
     shows=[s for s in shows if s['show_id'] not in aliases and s['show_id'] not in retired and s['show_id'] not in cancelled and s['show_id'] not in category_exclusions and s['show_id'] not in reviewed_exclusions]
     for s in shows:
+        if s['venue_id'] in ('harrahs-arena','thomas-wolfe'):s['venue_name']="Harrah's"
         s['just_announced']=announcements.get(s['show_id'])
         # Apostrophe typography from different providers must not duplicate a performer.
         from concert_discovery.spotify_matching import name_key

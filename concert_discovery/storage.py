@@ -214,6 +214,8 @@ def initialize(db_path: Optional[Path] = None) -> None:
             "INSERT OR IGNORE INTO venues (venue_id, name, official_url, feed_alias, coverage_note) VALUES (?, ?, ?, ?, ?)",
             VENUE_ROWS,
         )
+        # Shared public venue name; keep room IDs and all show/account keys stable.
+        connection.execute("UPDATE venues SET name=? WHERE venue_id IN ('harrahs-arena','thomas-wolfe')", ("Harrah's",))
         from concert_discovery.additional_venues import VENUE_ICONS
         connection.executemany("INSERT OR IGNORE INTO venue_icons(venue_id,icon_url) VALUES (?,?)", VENUE_ICONS.items())
         from concert_discovery.pricing_catalog_patch import apply as apply_public_ticket_evidence

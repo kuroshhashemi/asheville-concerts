@@ -154,7 +154,7 @@ def parse_harrah(html,today=None,days=None):
         if not n.has('event-wrap_feed'):continue
         nodes=list(n.walk());heading=next((x for x in nodes if x.tag=='h3'),None)
         dn=next((x for x in nodes if x.has('event-date')),None);vn=next((x for x in nodes if x.has('event-venue')),None)
-        if not heading or not dn or not vn:continue
+        if not heading or not dn:continue
         anchor=next((x for x in heading.walk() if x.tag=='a'),None)
         if not anchor:continue
         title=heading.text();url=anchor.attrs['href']
@@ -164,7 +164,8 @@ def parse_harrah(html,today=None,days=None):
         day=datetime.strptime(f'{year} {raw[1]} {raw[2]}','%Y %b %d').date()
         if not ym and day.month<today.month:day=day.replace(year=today.year+1)
         if not today<=day<=end:continue
-        venue=vn.text();vid=venue_id_for(venue)
+        venue=vn.text() if vn and vn.text().strip() else "Harrah's"
+        vid=venue_id_for(venue) if venue!="Harrah's" else 'harrahs-arena'
         if not vid:continue
         billing_title=strip_billing_prefix(title)
         billing=re.split(r'\s*[–:]\s*',billing_title)[0]
@@ -172,6 +173,7 @@ def parse_harrah(html,today=None,days=None):
         if billing=='JJ Grey & Mofro':performers=[dict(name=billing,role='headliner',confidence=1)]
         else:performers=parse_performers(billing)
         out[url]=_event('HarrahOfficial',url,title,day.isoformat(),venue,performers,url)
+        out[url]['venue_id']=vid
         out[url]['ticket_availability']=text_availability(n.text())
         out[url]['category_text']=n.text()
         out[url]['event_status']='cancelled' if re.search(r'\bcancell?ed\b',n.text(),re.I) else 'scheduled'
@@ -229,7 +231,14 @@ def fetch_all_calendars(days=None,snapshots=None):
                 controls=[n for n in tree.root.walk() if n.tag in ('a','button') and re.search(r'load more|show more|next page',n.text(),re.I)]
                 if controls:raise ValueError('Harrah calendar has uncollected pages; retirement disabled')
                 from concert_discovery.calendar_audit import snapshots as make_snapshots
-                return events,None,make_snapshots(events,url,1) if days is None else None
+                if days is None:
+                    # Both rooms share one authoritative calendar. A room-less
+                    # card must still count as present for either saved room ID.
+                    import uuid
+                    keys=[e['source_key'] for e in events]
+                    shared=[dict(check_id=str(uuid.uuid4()),venue_id=vid,complete=True,event_keys=keys,source_url=url,pages=1) for vid in ('harrahs-arena','thomas-wolfe')]
+                    return events,None,shared
+                return events,None,None
             else:events=parse_structured_events(r.text,source,days=days)
             if source=='SongkickPublic':events=[e for e in events if e['venue_id']=='sierra-nevada']
             return events,None,None

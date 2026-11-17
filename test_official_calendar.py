@@ -28,3 +28,19 @@ class HarrahStatusPrefixTests(unittest.TestCase):
    row=parse_harrah(html,date(2026,10,6))[0]
    self.assertEqual(row['title'],title)
    self.assertEqual([p['name'] for p in row['performers']],['Daniel Tosh'])
+
+class HarrahSharedVenueTests(unittest.TestCase):
+ def test_missing_room_is_still_a_harrah_event_and_snapshot_covers_both_rooms(self):
+  from unittest.mock import patch,Mock
+  from concert_discovery.official_calendar import parse_harrah,fetch_all_calendars
+  html='<div class="event-wrap_feed"><h3><a href="https://www.harrahscherokeecenterasheville.com/events/2099-example/">Example Band</a></h3><div class="event-date">Apr 13</div></div>'
+  row=parse_harrah(html,date(2098,11,17))[0]
+  self.assertEqual(row['venue_id'],'harrahs-arena')
+  self.assertEqual(row['venue_as_reported'],"Harrah's")
+  response=Mock(text=html)
+  snapshots=[]
+  with patch('concert_discovery.official_calendar.CALENDARS',[('HarrahOfficial','https://www.harrahscherokeecenterasheville.com/events-tickets/','harrah')]),patch('concert_discovery.official_calendar.requests.get',return_value=response):
+   events,errors=fetch_all_calendars(snapshots=snapshots)
+  self.assertEqual(errors,[])
+  self.assertEqual({s['venue_id'] for s in snapshots},{'harrahs-arena','thomas-wolfe'})
+  self.assertTrue(all(s['event_keys']==[events[0]['source_key']] for s in snapshots))

@@ -74,6 +74,6 @@ def warning(db_path=DATABASE_PATH):
   if stamp:
    try:fresh=datetime.fromisoformat(stamp.replace('Z','+00:00')).replace(tzinfo=timezone.utc)>=cutoff
    except ValueError:pass
-  if not row or row['status']!='complete' or not fresh:names.append(venues.get(vid,vid))
+  if not row or row['status']!='complete' or not fresh:names.append("Harrah's" if vid in ('harrahs-arena','thomas-wolfe') else venues.get(vid,vid))
  names=list(dict.fromkeys(names))
  return (', '.join(names)+' data awaiting sync') if names else None

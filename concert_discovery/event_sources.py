@@ -14,8 +14,8 @@ EVENTS_API = "https://livemusicasheville.com/wp-json/tribe/events/v1/events"
 
 VENUES = {
     'one-stop':dict(name='The One Stop',official_url='https://ashevillemusichall.com/',aliases=('one stop',),note='Separate room from Music Hall.'),
-    'harrahs-arena':dict(name='Harrah’s Cherokee Center · Arena',official_url='https://www.harrahscherokeecenterasheville.com/events-tickets/',aliases=('exploreasheville.com arena',),note='Arena within Harrah’s Cherokee Center.'),
-    'thomas-wolfe':dict(name='Thomas Wolfe Auditorium',official_url='https://www.harrahscherokeecenterasheville.com/events-tickets/',aliases=('thomas wolfe',),note='Auditorium within Harrah’s Cherokee Center.'),
+    'harrahs-arena':dict(name="Harrah's",official_url='https://www.harrahscherokeecenterasheville.com/events-tickets/',aliases=('exploreasheville.com arena',),note='Arena within Harrah’s Cherokee Center.'),
+    'thomas-wolfe':dict(name="Harrah's",official_url='https://www.harrahscherokeecenterasheville.com/events-tickets/',aliases=('thomas wolfe',),note='Auditorium within Harrah’s Cherokee Center.'),
     'sierra-nevada':dict(name='Sierra Nevada · Mills River',official_url='https://sierranevada.com/events/mills-river',aliases=('sierra nevada',),note='Mills River only.'),
     "asheville-music-hall": {
         "name": "Asheville Music Hall",
