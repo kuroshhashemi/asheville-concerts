@@ -1,21 +1,22 @@
 {
-  "refreshed_at": "2026-11-16T23:03:24+00:00",
+  "refreshed_at": "2026-11-17T14:26:05+00:00",
   "pipeline_completed": true,
   "enrichment_completed": true,
   "collection_usable": true,
-  "source_records": 680,
+  "source_records": 648,
   "warnings": [
-    "HarrahOfficial: Unparsed Harrah card; retirement disabled",
-    "SongkickPublic: SongkickPublic returned no parseable upcoming events.",
+    "SongkickPublic: 406 Client Error: Not Acceptable for url: https://www.songkick.com/metro-areas/86726-us-mills-river",
+    "SongkickOrange: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/289-orange-peel/calendar",
+    "SongkickGrey: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/39035-grey-eagle/calendar",
+    "SongkickAMH: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/107138-asheville-music-hall/calendar",
+    "SongkickEulogy: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/4519500-eulogy/calendar",
     "Sierra admission labels unavailable; existing prices retained.",
-    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"WORLD-FAMOUS OPEN MIC NIGHT\" href=\"https://www.thegreyeagle.com/event/world-famous-open-mic-night/special-events-at-the-grey-eagle-music-hall/asheville-north-carolina/\">\u2026</a>\n",
+    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"Mountain MAMA: Songs that Bring me Home\" href=\"https://www.thegreyeagle.com/event/mountain-mama-songs-that-bring-me-home/special-events-at-the-grey-eagle-music-hall/asheville-north-carolina/\">\u2026</a>\n",
     "Third Room ticket links unavailable; saved destinations retained.",
-    "Spotify concert feed not enabled: separate CheckLeaked provider key missing.",
-    "harrahs-arena: No complete calendar snapshot; cached listings retained",
-    "thomas-wolfe: No complete calendar snapshot; cached listings retained"
+    "Spotify concert feed not enabled: separate CheckLeaked provider key missing."
   ],
   "duplicates_consolidated": [],
-  "run_id": "664b153e-9907-45d8-9c8d-fdeb918e61a9",
+  "run_id": "53e5aa57-7e6a-440f-bcd1-ee051ec09ca7",
   "show_validation_issues": [
     {
       "show_id": 28265,
@@ -58,24 +59,24 @@
       ]
     }
   ],
-  "new_shows_for_enrichment": 8,
+  "new_shows_for_enrichment": 1,
   "venue_icon_requests": 0,
   "matching_attempted": 25,
-  "matching_matched": 7,
-  "matching_ambiguous": 18,
+  "matching_matched": 0,
+  "matching_ambiguous": 25,
   "matching_blocked": 0,
   "matching_pending": 0,
   "source_candidates_found": 0,
   "page_requests": 40,
   "attempted": 40,
   "metrics_saved": 40,
-  "history_requests": 7,
+  "history_requests": 0,
   "history_queued": 0,
-  "history_provider_status": "available",
+  "history_provider_status": "not_checked",
   "history_stop_reason": null,
   "price_page_requests": 12,
-  "price_pages_checked": 5,
-  "price_pages_priced": 1,
+  "price_pages_checked": 9,
+  "price_pages_priced": 0,
   "price_providers_blocked": [
     "etix.com"
   ],
@@ -90,15 +91,14 @@
   "brightdata_requests": 6,
   "brightdata_prices_saved": 4,
   "brightdata_failed": 2,
-  "rendered_price_pages": 3,
+  "rendered_price_pages": 0,
   "rendered_prices_saved": 0,
   "metadata_outcomes": {
-    "unresolved": 72,
-    "waiting_for_identity": 210,
-    "unavailable": 256,
-    "complete": 2197,
-    "blocked": 4,
-    "pending": 1
+    "unresolved": 70,
+    "waiting_for_identity": 207,
+    "unavailable": 249,
+    "complete": 2186,
+    "blocked": 3
   },
-  "operations_alert": "sent_to_owner"
+  "operations_alert": "unchanged_or_throttled"
 }
