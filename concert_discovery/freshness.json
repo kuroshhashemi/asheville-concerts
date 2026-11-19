@@ -1,9 +1,9 @@
 {
-  "refreshed_at": "2026-11-18T19:00:27+00:00",
+  "refreshed_at": "2026-11-19T19:10:45+00:00",
   "pipeline_completed": true,
   "enrichment_completed": true,
   "collection_usable": true,
-  "source_records": 671,
+  "source_records": 675,
   "warnings": [
     "SongkickPublic: 406 Client Error: Not Acceptable for url: https://www.songkick.com/metro-areas/86726-us-mills-river",
     "SongkickOrange: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/289-orange-peel/calendar",
@@ -11,12 +11,12 @@
     "SongkickAMH: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/107138-asheville-music-hall/calendar",
     "SongkickEulogy: 406 Client Error: Not Acceptable for url: https://www.songkick.com/venues/4519500-eulogy/calendar",
     "Sierra admission labels unavailable; existing prices retained.",
-    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" title=\"Golden Folk Sessions\" data-cya11y-org-font-size=\"16\" href=\"https://www.thegreyeagle.com/event/golden-folk-sessions-22/grey-eagle-music-hall/asheville-north-carolina/\">\u2026</a>\n",
+    "GreyEagleOfficial browser calendar unavailable: Locator.wait_for: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#eventTitle\").first to be visible\n    43 \u00d7 locator resolved to hidden <a class=\"url\" rel=\"bookmark\" id=\"eventTitle\" data-cya11y-org-font-size=\"16\" title=\"THE MOTH Presents: Asheville StorySLAM \u2013 \u201cHOME FOR THE HOLIDAYS\u201d\" href=\"https://www.thegreyeagle.com/event/the-moth-presents-asheville-storyslam-home-for-the-holidays/grey-eagle-music-hall/asheville-north-carolina/\">\u2026</a>\n",
     "Third Room ticket links unavailable; saved destinations retained.",
     "Spotify concert feed not enabled: separate CheckLeaked provider key missing."
   ],
   "duplicates_consolidated": [],
-  "run_id": "a1a07066-8a26-41da-97cb-120dc177bd42",
+  "run_id": "3dcb653e-8340-40c4-98bd-c2b6ef79bec0",
   "show_validation_issues": [
     {
       "show_id": 28265,
@@ -59,27 +59,26 @@
       ]
     }
   ],
-  "new_shows_for_enrichment": 7,
+  "new_shows_for_enrichment": 5,
   "venue_icon_requests": 0,
   "matching_attempted": 25,
-  "matching_matched": 5,
-  "matching_ambiguous": 20,
+  "matching_matched": 2,
+  "matching_ambiguous": 23,
   "matching_blocked": 0,
   "matching_pending": 0,
   "source_candidates_found": 0,
   "page_requests": 40,
   "attempted": 40,
   "metrics_saved": 40,
-  "history_requests": 5,
+  "history_requests": 2,
   "history_queued": 0,
   "history_provider_status": "available",
   "history_stop_reason": null,
   "price_page_requests": 12,
-  "price_pages_checked": 5,
-  "price_pages_priced": 0,
+  "price_pages_checked": 7,
+  "price_pages_priced": 1,
   "price_providers_blocked": [
-    "etix.com",
-    "tixr.com"
+    "etix.com"
   ],
   "ticketmaster_price_events_checked": 3,
   "ticketmaster_prices_saved": 0,
@@ -93,13 +92,13 @@
   "brightdata_prices_saved": 2,
   "brightdata_failed": 4,
   "rendered_price_pages": 6,
-  "rendered_prices_saved": 1,
+  "rendered_prices_saved": 0,
   "metadata_outcomes": {
-    "complete": 2280,
     "unresolved": 73,
     "waiting_for_identity": 216,
-    "unavailable": 255,
-    "blocked": 6
+    "unavailable": 259,
+    "complete": 2290,
+    "blocked": 7
   },
   "operations_alert": "sent_to_owner"
 }
