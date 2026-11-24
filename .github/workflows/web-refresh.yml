@@ -21,7 +21,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: pip install -r requirements.txt
+      - run: pip install -r requirements.txt playwright
       - name: Collect and enrich one source
         env:
           CALENDAR_SOURCE: ${{ inputs.source }}
@@ -29,6 +29,8 @@ jobs:
           SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
           BRIGHTDATA_API_KEY: ${{ secrets.BRIGHTDATA_API_KEY }}
           BRIGHTDATA_UNLOCKER_ZONE: ${{ secrets.BRIGHTDATA_UNLOCKER_ZONE }}
+          BRIGHTDATA_BROWSER_USERNAME: ${{ secrets.BRIGHTDATA_BROWSER_USERNAME }}
+          BRIGHTDATA_BROWSER_PASSWORD: ${{ secrets.BRIGHTDATA_BROWSER_PASSWORD }}
         run: python -m concert_discovery.web_refresh --source "$CALENDAR_SOURCE"
       - name: Save successful catalog and public web snapshot
         run: |

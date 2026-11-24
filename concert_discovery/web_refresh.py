@@ -29,6 +29,7 @@ def run(source,db_path=DATABASE_PATH):
         from concert_discovery.matching_queue import run as match
         from concert_discovery.source_links import discover
         match(limit=len(aids),db_path=db_path,artist_ids=aids)
+        sids={a['spotify_artist_id'] for s in get_shows(db_path) if s['venue_id'] in vids for a in s['headliners'] if a.get('spotify_artist_id')}
         # Each optional field is isolated: one provider cannot cancel other fields.
         from concert_discovery.pastspot import refresh_history
         from concert_discovery.price_refresh import refresh as prices
@@ -37,6 +38,10 @@ def run(source,db_path=DATABASE_PATH):
         for name,call in [('source links',lambda:discover(db_path,artist_ids=aids)),('listeners',lambda:enrich(limit=len(aids),db_path=db_path,artist_ids=aids)),('growth',lambda:refresh_history(db_path,limit=len(sids),spotify_ids=sids)),('prices',lambda:prices(db_path=db_path,shows=shows)),('Ticketmaster prices',lambda:tm(db_path=db_path,shows=shows)),('provider prices',lambda:bright(db_path=db_path,shows=shows))]:
             try:call()
             except Exception:errors.append(name+' unavailable; saved data retained')
+        try:
+            from concert_discovery.browser_prices import refresh as rendered_prices
+            rendered_prices(db_path=db_path,shows=shows,backend='remote')
+        except Exception:errors.append('Rendered ticket prices unavailable; saved prices retained')
         from concert_discovery.metadata_outcomes import synchronize
         synchronize(db_path);finish(rid,errors,db_path)
         path=Path(db_path).with_name('freshness.json');state=json.loads(path.read_text()) if path.exists() else {}
