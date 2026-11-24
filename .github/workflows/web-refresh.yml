@@ -1,0 +1,43 @@
+name: Refresh web preview source
+run-name: Web refresh ${{ inputs.source }}
+on:
+  workflow_dispatch:
+    inputs:
+      source:
+        required: true
+        type: choice
+        options: [HarrahOfficial, OrangePeelOfficial, MusicHallOfficial, GreyEagleOfficial, EulogyOfficial, BrevardOfficial, SierraOfficial]
+permissions:
+  contents: write
+concurrency:
+  group: concert-catalog
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - name: Collect and enrich one source
+        env:
+          CALENDAR_SOURCE: ${{ inputs.source }}
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+          BRIGHTDATA_API_KEY: ${{ secrets.BRIGHTDATA_API_KEY }}
+          BRIGHTDATA_UNLOCKER_ZONE: ${{ secrets.BRIGHTDATA_UNLOCKER_ZONE }}
+        run: python -m concert_discovery.web_refresh --source "$CALENDAR_SOURCE"
+      - name: Save successful catalog and public web snapshot
+        run: |
+          python -m concert_discovery.compact_catalog
+          python -m concert_discovery.web_snapshot --output concert_discovery/assets/web-catalog.json
+          git config user.name 'Concert refresh'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add concert_discovery/concert_data.sqlite3 concert_discovery/freshness.json concert_discovery/assets/ticket-prices.json concert_discovery/assets/web-catalog.json concert_discovery/api_budget.sqlite3
+          if ! git diff --cached --quiet; then
+            git commit -m 'Save targeted source and shared web snapshot'
+            git push
+          fi
