@@ -96,3 +96,10 @@ jobs:
             git commit -m 'Publish shared web catalog'
             git push
           fi
+
+      - name: Publish latest snapshot to shared preview storage
+        if: steps.window.outputs.run == 'true'
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+        run: python -m concert_discovery.web_publish concert_discovery/assets/web-catalog.json
