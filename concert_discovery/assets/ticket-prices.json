@@ -3337,30 +3337,30 @@
     "max": 40.0,
     "from_price": false,
     "source_url": "https://www.harrahscherokeecenterasheville.com/events/2027-the-gala-1/",
-    "source": "Structured event data",
+    "source": "Ticket provider advertised price",
     "detail": "Advertised event price",
     "checked_at": "2026-11-24",
-    "observed_at": "2026-11-24T01:01:01.901382+00:00"
+    "observed_at": "2026-11-24T01:01:01+00:00"
   },
   "harrahscherokeecenterasheville.com/events/2027-the-gala-2": {
     "min": 10.0,
     "max": 40.0,
     "from_price": false,
     "source_url": "https://www.harrahscherokeecenterasheville.com/events/2027-the-gala-2/",
-    "source": "Structured event data",
+    "source": "Ticket provider advertised price",
     "detail": "Advertised event price",
     "checked_at": "2026-11-24",
-    "observed_at": "2026-11-24T01:01:02.299299+00:00"
+    "observed_at": "2026-11-24T01:01:02+00:00"
   },
   "harrahscherokeecenterasheville.com/events/2027-the-gala-3": {
     "min": 10.0,
     "max": 40.0,
     "from_price": false,
     "source_url": "https://www.harrahscherokeecenterasheville.com/events/2027-the-gala-3/",
-    "source": "Structured event data",
+    "source": "Ticket provider advertised price",
     "detail": "Advertised event price",
     "checked_at": "2026-11-24",
-    "observed_at": "2026-11-24T01:01:02.704390+00:00"
+    "observed_at": "2026-11-24T01:01:02+00:00"
   },
   "etix.com/ticket/p/49207036/maria-bamford-asheville-the-orange-peel": {
     "min": 45.85,
@@ -6174,7 +6174,7 @@
     "max": 0,
     "includes_fees": true,
     "source_url": "https://www.harrahscherokeecenterasheville.com/events/2026-the-big-crafty-4/",
-    "source": "Structured event data",
+    "source": "Ticket provider advertised price",
     "detail": "Advertised event price",
     "checked_at": "2026-11-24",
     "observed_at": "2026-11-24T01:00:54+00:00"
