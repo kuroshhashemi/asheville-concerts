@@ -193,7 +193,7 @@ CALENDARS=[
  ('SongkickAMH','https://www.songkick.com/venues/107138-asheville-music-hall/calendar','structured'),
  ('SongkickEulogy','https://www.songkick.com/venues/4519500-eulogy/calendar','structured'),
 ]
-def fetch_all_calendars(days=None,snapshots=None):
+def fetch_all_calendars(days=None,snapshots=None,sources=None):
     from concurrent.futures import ThreadPoolExecutor
     def fetch(spec):
         source,url,kind=spec
@@ -245,7 +245,7 @@ def fetch_all_calendars(days=None,snapshots=None):
         except (requests.RequestException,ValueError) as error:return [],source+': '+str(error),None
     events=[];errors=[]
     with ThreadPoolExecutor(max_workers=4) as pool:
-        for listings,error,snapshot in pool.map(fetch,CALENDARS):
+        for listings,error,snapshot in pool.map(fetch,[spec for spec in CALENDARS if sources is None or spec[0] in sources]):
             if snapshot and snapshots is not None:snapshots.extend(snapshot if isinstance(snapshot,list) else [snapshot])
             events.extend(listings)
             if error:errors.append(error)
